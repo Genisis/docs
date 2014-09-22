@@ -59,7 +59,59 @@ bulkRequest.add(client.prepareIndex("twitter", "tweet", "2")
 BulkResponse bulkResponse = bulkRequest.execute().actionGet();
 if (bulkResponse.hasFailures()) {
     // process failures by iterating through each bulk response item
-}</pre></div><div class="navfooter"><span class="prev"><a href="delete.html">
+}</pre><h2><a id="_using_bulk_processor"></a>Using Bulk Processor<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/bulk.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2><p>The <code class="literal">BulkProcessor</code> class offers a simple interface to flush bulk operations automatically based on the number or size
+of requests, or after a given period.</p><p>To use it, first create a <code class="literal">BulkProcessor</code> instance:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.action.bulk.BulkProcessor;
+
+BulkProcessor bulkProcessor = BulkProcessor.builder(
+        client,  <a id="CO1-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        new BulkProcessor.Listener() {
+            @Override
+            public void beforeBulk(long executionId,
+                                   BulkRequest request) { ... } <a id="CO1-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+
+            @Override
+            public void afterBulk(long executionId,
+                                  BulkRequest request,
+                                  BulkResponse response) { ... } <a id="CO1-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+
+            @Override
+            public void afterBulk(long executionId,
+                                  BulkRequest request,
+                                  Throwable failure) { ... } <a id="CO1-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>
+        })
+        .setBulkActions(10000) <a id="CO1-5"></a><span><img src="images/icons/callouts/5.png" alt="" /></span>
+        .setBulkSize(new ByteSizeValue(1, ByteSizeUnit.GB)) <a id="CO1-6"></a><span><img src="images/icons/callouts/6.png" alt="" /></span>
+        .setFlushInterval(TimeValue.timeValueSeconds(5)) <a id="CO1-7"></a><span><img src="images/icons/callouts/7.png" alt="" /></span>
+        .setConcurrentRequests(1) <a id="CO1-8"></a><span><img src="images/icons/callouts/8.png" alt="" /></span>
+        .build();</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+Add your elasticsearch client
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+This method is called just before bulk is executed. You can for example see the numberOfActions with
+    <code class="literal">request.numberOfActions()</code>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+This method is called after bulk execution. You can for example check if there was some failing requests
+    with <code class="literal">response.hasFailures()</code>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+This method is called when the bulk failed and raised a <code class="literal">Throwable</code>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-5"><span><img src="images/icons/callouts/5.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+We want to execute the bulk every 10 000 requests
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-6"><span><img src="images/icons/callouts/6.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+We want to flush the bulk every 1gb
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-7"><span><img src="images/icons/callouts/7.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+We want to flush the bulk every 5 seconds whatever the number of requests
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-8"><span><img src="images/icons/callouts/8.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+Set the number of concurrent requests. A value of 0 means that only a single request will  be allowed to be
+    executed. A value of 1 means 1 concurrent request is allowed to be executed while accumulating new bulk requests.
+</p></td></tr></table></div><p>Then you can simply add your requests to the <code class="literal">BulkProcessor</code>:</p><pre class="programlisting prettyprint lang-java">bulkProcessor.add(new IndexRequest("twitter", "tweet", "1").source(/* your doc here */));
+bulkProcessor.add(new DeleteRequest("twitter", "tweet", "2"));</pre><p>By default, <code class="literal">BulkProcessor</code>:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+sets bulkActions to <code class="literal">1000</code>
+</li><li class="listitem">
+sets bulkSize to <code class="literal">5mb</code>
+</li><li class="listitem">
+does not set flushInterval
+</li><li class="listitem">
+sets concurrentRequests to 1
+</li></ul></div></div><div class="navfooter"><span class="prev"><a href="delete.html">
               « 
               Delete API</a>
            
