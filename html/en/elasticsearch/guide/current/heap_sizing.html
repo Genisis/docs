@@ -70,7 +70,7 @@ bandwidth is used and you effectively "lose" memory.  Infact, it takes until aro
 heap using compressed oops.</p><p>The moral of the story is this: even when you have memory to spare, try to avoid
 crossing the 32gb Heap boundary.  It wastes memory, reduces CPU performance and
 makes the GC struggle with large heaps.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>I have a machine with 1TB RAM!</strong></p></div></div></div><p>The 32gb line is fairly important.  So what do you do when your machine has a lot
-of memory?  It is becoming increasingly common to see super-servers with 300-500mb
+of memory?  It is becoming increasingly common to see super-servers with 300-500gb
 of RAM.</p><p>First, we would recommend to avoid such large machines (see <a class="xref" href="hardware.html" title="Hardware">Hardware</a>).</p><p>But if you already have the machines, you have to practical options:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 Are you doing most full-text search?  Consider giving 32gb to Elasticsearch
 and just let Lucene use the rest of memory via the OS file system cache.  All that
@@ -79,7 +79,7 @@ memory will cache segments and lead to blisteringly fast full-text search
 Are you doing a lot of sorting/aggregations?  You’ll likely want that memory
 in the heap then.  Instead of one node with 32gb+ of RAM, consider running two or
 more nodes on a single machine.  Still adhere to the 50% rule though.  So if your
-machine has 124mb of RAM, run two nodes each with 32gb.  This means 64gb will be
+machine has 128gb of RAM, run two nodes each with 32gb.  This means 64gb will be
 used for heaps, and 64 will be leftover for Lucene.
 </p><p class="simpara">If you choose this option, set <code class="literal">cluster.routing.allocation.same_shard.host: true</code>
 in your config.  This will prevent a primary and a replica shard from co-locating
