@@ -39,7 +39,7 @@
 }</pre><p>By default, the filter will only find "missing" fields, i.e., fields
 that have no values. It can be configured also to find fields with an
 explicit <code class="literal">null_value</code> mapped for them. Here is an example that will both
-find missing field that don’t exists (<code class="literal">existence</code> set to <code class="literal">true</code>), or
+find missing field that doesn’t exist (<code class="literal">existence</code> set to <code class="literal">true</code>), or
 have null values (<code class="literal">null_value</code> set to <code class="literal">true</code>).</p><pre class="programlisting prettyprint lang-js">{
     "constant_score" : {
         "filter" : {
