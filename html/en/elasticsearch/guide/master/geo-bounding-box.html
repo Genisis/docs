@@ -101,7 +101,7 @@ The <code class="literal">location.lat</code> and <code class="literal">location
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO230-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Setting the <code class="literal">type</code> parameter to <code class="literal">indexed</code> (instead of the default
     <code class="literal">memory</code>) tells Elasticsearch to use the inverted index for this filter.
-</p></td></tr></table></div><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>While a <code class="literal">geo_point</code> field can contain multiple geo-points, the
+</p></td></tr></table></div><div class="caution admon"><div class="icon"><img alt="Caution" src="images/icons/caution.png" /></div><div class="admon_content"><p>While a <code class="literal">geo_point</code> field can contain multiple geo-points, the
 <code class="literal">lat_lon</code> optimization can only be used on fields which contain a single
 geo-point.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="filter-by-geopoint.html">
               « 

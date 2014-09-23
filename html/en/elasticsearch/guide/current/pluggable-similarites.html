@@ -62,7 +62,7 @@ all fields in the same way.  It will treat all <code class="literal">title</code
 are short) as more important than all <code class="literal">body</code> fields (because they are long).</p><p>BM25 also considers shorter fields to have more weight than longer fields, but
 it considers each field separately by taking the average length of the field
 into account. It can distinguish between a short <code class="literal">title</code> field and a <code class="literal">long</code>
-title field.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>In <a class="xref" href="query-time-boosting.html" title="Query time boosting">Query time boosting</a> we said that the <code class="literal">title</code> field has a
+title field.</p><div class="caution admon"><div class="icon"><img alt="Caution" src="images/icons/caution.png" /></div><div class="admon_content"><p>In <a class="xref" href="query-time-boosting.html" title="Query time boosting">Query time boosting</a> we said that the <code class="literal">title</code> field has a
 “natural” boost over the <code class="literal">body</code> field because of its length.  This natural
 boost disappears with BM25 as differences in field length only apply within a
 single field.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="bm25-tunability"></a>Tuning BM25<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/170_Relevance/70_Pluggable_similarities.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>One of the nice features of BM25 is that, unlike TF/IDF, it has two parameters

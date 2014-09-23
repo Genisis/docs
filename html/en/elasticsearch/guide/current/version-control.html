@@ -45,8 +45,8 @@ processing the sale of one widget each:</p><div class="figure"><a id="img-data-l
 <code class="literal">web_2</code> is unaware that its copy of the <code class="literal">stock_count</code> is out of date. The
 result is that we think we have more widgets than we actually do, and we’re
 going to disappoint customers by selling them stock that doesn’t exist.</p><p>The more frequently that changes are made, or the longer the gap between
-reading data and updating it, the more likely it is that we will lose changes.</p><p>There are two approaches to ensuring that changes are not lost when
-making concurrent updates:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+reading data and updating it, the more likely it is that we will lose changes.</p><p>In the database world, there are two commonly used approaches to ensuring that
+changes are not lost when making concurrent updates:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <span class="emphasis"><em>Pessimistic concurrency control</em></span>
 </span></dt><dd>
 widely used by relational databases, assumes that conflicting changes are

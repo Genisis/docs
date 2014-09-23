@@ -94,7 +94,7 @@ index and type in the URL, as follows:</p><div class="horizontal"><table cellpad
 </td></tr></tbody></table></div><p>When you search within a single index, Elasticsearch forwards the search
 request to a primary or replica of every shard in that index, then gathers the
 results from each shard. Searching within multiple indices works in exactly
-the same way — there are just more shards involved.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Searching one index which has 5 primary shards is <span class="strong"><strong>exactly equivalent</strong></span> to
+the same way — there are just more shards involved.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Searching one index which has 5 primary shards is <span class="strong"><strong>exactly equivalent</strong></span> to
 searching 5 indices which have one primary shard each.</p></div></div><p>Later, you will see how this simple fact makes it easy to scale flexibly
 as your requirements change.</p></div><div class="navfooter"><span class="prev"><a href="empty-search.html">
               « 

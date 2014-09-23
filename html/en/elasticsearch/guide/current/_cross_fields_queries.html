@@ -71,7 +71,7 @@ frequencies across fields.</p><pre class="literallayout">+blended("peter", field
 +blended("smith", fields: [first_name, last_name])</pre><p>In other words, it looks up the IDF of <code class="literal">smith</code> in both the <code class="literal">first_name</code> and
 the <code class="literal">last_name</code> fields and uses the minimum of the two as the IDF for both
 fields.  The fact that <code class="literal">smith</code> is a common last name means that it will be
-treated as a common first name too.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>For the <code class="literal">cross_fields</code> query type to work optimally, all fields should have
+treated as a common first name too.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>For the <code class="literal">cross_fields</code> query type to work optimally, all fields should have
 the same analyzer.  Fields which share an analyzer are grouped together as
 blended fields.</p><p>If you include fields with a different analysis chain, they will be  added to
 the query in the same way as for <code class="literal">best_fields</code>.  For instance, if we added the

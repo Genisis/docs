@@ -72,7 +72,7 @@ the query.</p><p>The response to this scroll request includes the first batch of
 Although we specified a <code class="literal">size</code> of 1,000, we actually get back many more
 documents.  When scanning, the <code class="literal">size</code> is applied to each shard, so you will
 get back a maximum of <code class="literal">size * number_of_primary_shards</code> documents in each
-batch.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>The scroll request also returns  a <span class="strong"><strong>new <code class="literal">_scroll_id</code></strong></span>.  Every time
+batch.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The scroll request also returns  a <span class="strong"><strong>new <code class="literal">_scroll_id</code></strong></span>.  Every time
 we make the next scroll request, we must pass the <code class="literal">_scroll_id</code> returned by the
 <span class="strong"><strong>previous</strong></span> scroll request.</p></div></div><p>When no more hits are returned, we have processed all matching documents.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Some of the <a class="ulink" href="http://www.elasticsearch.org/guide" target="_top">official Elasticsearch clients</a>
 provide <span class="emphasis"><em>scan-and-scroll</em></span> helpers which provide an easy wrapper around this

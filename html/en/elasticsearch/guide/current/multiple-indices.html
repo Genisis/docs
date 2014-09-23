@@ -32,7 +32,7 @@
 only a single index.  When we issue a search request, it is forwarded to a
 copy (a primary or a replica) of all the shards in an index.  If we issue the
 same search request on multiple indices, the exact same thing happens — there
-are just more shards involved.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Searching 1 index of 50 shards is exactly equivalent to searching
+are just more shards involved.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Searching 1 index of 50 shards is exactly equivalent to searching
 50 indices with 1 shard each: both search requests hit 50 shards.</p></div></div><p>This can be a useful fact to remember when you need to add capacity on the
 fly.  Instead of having to reindex your data into a bigger index, you can
 just:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">

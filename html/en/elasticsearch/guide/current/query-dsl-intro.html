@@ -82,7 +82,7 @@ other to create complex queries. Clauses can be:</p><div class="itemizedlist"><u
 query clauses, including other compound clauses. This means that compound
 clauses can be nested within each other, allowing the expression
 of very complex logic.</p><p>As an example, the following query looks for emails that contain
-<code class="literal">"business opportunity"</code> and must either be starred, or both be in the Inbox
+<code class="literal">"business opportunity"</code> and should either be starred, or be both in the Inbox
 and not marked as spam:</p><pre class="programlisting prettyprint lang-js">{
     "bool": {
         "must": { "match":      { "email": "business opportunity" }},

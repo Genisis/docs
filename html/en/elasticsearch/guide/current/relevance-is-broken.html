@@ -58,7 +58,7 @@ introducing the <a class="link" href="match-query.html" title="The match query">
 the local IDF <span class="strong"><strong>is</strong></span> the global IDF.</p><p>The second workaround is to add <code class="literal">?search_type=dfs_query_then_fetch</code> to your
 search requests. The <code class="literal">dfs</code> stands for <span class="emphasis"><em>Distributed Frequency Search</em></span> and it
 tells Elasticsearch to first retrieve the local IDF from each shard in order
-to calculate the global IDF across the whole index.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Don’t use <code class="literal">dfs_query_then_fetch</code> in production.  It really isn’t
+to calculate the global IDF across the whole index.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Don’t use <code class="literal">dfs_query_then_fetch</code> in production.  It really isn’t
 required. Just having enough data will ensure that your term frequencies are
 well distributed. There is no reason to add this extra DFS step to every query
 that you run.</p></div></div></div><div class="navfooter"><span class="prev"><a href="_controlling_analysis.html">

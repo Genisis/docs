@@ -77,9 +77,10 @@ less than
 <p>
 less than or equal to
 </p>
-</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_exists_literal_and_literal_missing_literal_filters"></a><code class="literal">exists</code> and <code class="literal">missing</code> filters<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">exists</code> and <code class="literal">missing</code> filters are used to find documents where
-the specified field either has one or more values (<code class="literal">exists</code>) or doesn’t have
-any values (<code class="literal">missing</code>). It is similar in nature to <code class="literal">IS_NULL</code> in SQL:</p><pre class="programlisting prettyprint lang-js">{
+</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_exists_literal_and_literal_missing_literal_filters"></a><code class="literal">exists</code> and <code class="literal">missing</code> filters<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">exists</code> and <code class="literal">missing</code> filters are used to find documents where the
+specified field either has one or more values (<code class="literal">exists</code>) or doesn’t have any
+values (<code class="literal">missing</code>). It is similar in nature to <code class="literal">IS_NULL</code> (<code class="literal">missing</code>) and <code class="literal">NOT
+IS_NULL</code> (<code class="literal">exists</code>)in SQL:</p><pre class="programlisting prettyprint lang-js">{
     "exists":   {
         "field":    "title"
     }
@@ -184,9 +185,9 @@ match <span class="strong"><strong>both</strong></span> conditions will rank eve
             { "range": { "date": { "gte": "2014-01-01" }}}
         ]
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Bool_query.json" target="sense">View in Sense</a><p>If there are no <code class="literal">must</code> clauses, then at least one <code class="literal">should</code> clause has to
-match, but if there is at least one <code class="literal">must</code> clause, then no <code class="literal">should</code>
-clauses are required to match.</p></div></div><div class="navfooter"><span class="prev"><a href="_queries_and_filters.html">
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Bool_query.json" target="sense">View in Sense</a><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>If there are no <code class="literal">must</code> clauses, then at least one <code class="literal">should</code> clause has to
+match, but if there is at least one <code class="literal">must</code> clause, then no <code class="literal">should</code> clauses
+are required to match.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="_queries_and_filters.html">
               « 
               Queries and Filters</a>
            

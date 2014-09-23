@@ -144,7 +144,9 @@ Text to analyze</pre><a class="sense_widget" href="sense_widget.html?snippets/05
 }</pre><p>The <code class="literal">token</code> is the actual term that will be stored in the index. The
 <code class="literal">position</code> indicates the order in which the terms appeared in the original
 text. The <code class="literal">start_offset</code> and <code class="literal">end_offset</code> indicate the character positions
-that the original word occupied in the original string.</p><p>The <code class="literal">analyze</code> API is a really useful tool for understanding what is happening
+that the original word occupied in the original string.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The <code class="literal">type</code> values like <code class="literal">&lt;ALPHANUM&gt;</code> vary per analyzer and can be ignored.
+The only place that they are used in Elasticsearch is in the
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-keep-types-tokenfilter.html" target="_top"><code class="literal">keep_types</code> token filter</a>.</p></div></div><p>The <code class="literal">analyze</code> API is a really useful tool for understanding what is happening
 inside Elasticsearch indices, and we will talk more about it as we progress.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_specifying_analyzers"></a>Specifying analyzers<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/40_Analysis.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>When Elasticsearch detects a new string field in your documents, it
 automatically configures it as a full text <code class="literal">string</code> field and analyzes it with
 the <code class="literal">standard</code> analyzer.</p><p>You don’t always want this. Perhaps you want to apply a different analyzer

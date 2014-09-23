@@ -28,7 +28,10 @@
            
           <a href="complex-core-fields.html">Complex core field types
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-intro"></a>Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_exact_values_vs_full_text.html">Exact values vs. Full text</a></span></dt><dt><span class="section"><a href="inverted-index.html">Inverted index</a></span></dt><dt><span class="section"><a href="analysis-intro.html">Analysis and analyzers</a></span></dt><dt><span class="section"><a href="mapping-intro.html">Mapping</a></span></dt><dt><span class="section"><a href="complex-core-fields.html">Complex core field types</a></span></dt></dl></div><p>As explained in <a class="xref" href="data-in-data-out.html" title="Data in, data out"><em>Data in, data out</em></a>, each document in an index has a <span class="emphasis"><em>type</em></span>.
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-intro"></a>Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_exact_values_vs_full_text.html">Exact values vs. Full text</a></span></dt><dt><span class="section"><a href="inverted-index.html">Inverted index</a></span></dt><dt><span class="section"><a href="analysis-intro.html">Analysis and analyzers</a></span></dt><dt><span class="section"><a href="mapping-intro.html">Mapping</a></span></dt><dt><span class="section"><a href="complex-core-fields.html">Complex core field types</a></span></dt></dl></div><p>In order to be able to treat date fields as dates, numberic fields as numbers,
+and string fields as full text or exact value strings, Elasticsearch needs to
+know what type of data each field contains.  This information is contained in
+the <span class="emphasis"><em>mapping</em></span>.</p><p>As explained in <a class="xref" href="data-in-data-out.html" title="Data in, data out"><em>Data in, data out</em></a>, each document in an index has a <span class="emphasis"><em>type</em></span>.
 Every type has its own <span class="emphasis"><em>mapping</em></span> or <span class="emphasis"><em>schema definition</em></span>. A mapping
 defines the fields within a type, the datatype for each field,
 and how the field should be handled by Elasticsearch. A mapping is also used
@@ -153,7 +156,19 @@ Elasticsearch generated dynamically from the documents that we indexed:</p><pre 
       }
    }
 }</pre><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Incorrect mappings, such as having an <code class="literal">age</code> field mapped as type <code class="literal">string</code>
-instead of <code class="literal">integer</code>, can produce confusing results to your queries.</p><p>Instead of assuming that your mapping is correct, check it!</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="custom-field-mappings"></a>Customizing field mappings<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The most important attribute of a field is the <code class="literal">type</code>. For fields
+instead of <code class="literal">integer</code>, can produce confusing results to your queries.</p><p>Instead of assuming that your mapping is correct, check it!</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="custom-field-mappings"></a>Customizing field mappings<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While the basic field datatypes are sufficient for many cases, you will often
+need to customize the mapping for individual fields, especially string fields.
+Custom mappings allow you to:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+distinguish between full text string fields and exact value string fields,
+</li><li class="listitem">
+use language-specific analyzers,
+</li><li class="listitem">
+optimize a field for partial matching,
+</li><li class="listitem">
+specify custom date formats,
+</li><li class="listitem">
+and much more.
+</li></ul></div><p>The most important attribute of a field is the <code class="literal">type</code>. For fields
 other than <code class="literal">string</code> fields, you will seldom need to map anything other
 than <code class="literal">type</code>:</p><pre class="programlisting prettyprint lang-js">{
     "number_of_clicks": {
@@ -212,7 +227,7 @@ by specifying one of the built-in analyzers, such as
 }</pre><p>In <a class="xref" href="custom-analyzers.html" title="Custom analyzers">Custom analyzers</a> we will show you how to define and use custom analyzers
 as well.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="updating-a-mapping"></a>Updating a mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>You can specify the mapping for a type when you first create an index.
 Alternatively, you can add the mapping for a new type (or update the mapping
-for an existing type) later, using the <code class="literal">/_mapping</code> endpoint.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>While you can <span class="strong"><strong>add</strong></span> to an existing mapping, you can’t <span class="strong"><strong>change</strong></span> it.  If a field
+for an existing type) later, using the <code class="literal">/_mapping</code> endpoint.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>While you can <span class="strong"><strong>add</strong></span> to an existing mapping, you can’t <span class="strong"><strong>change</strong></span> it.  If a field
 already exists in the mapping, then it probably means that data from that
 field has already been indexed.  If you were to change the field mapping, then
 the already indexed data would be wrong and would not be properly searchable.</p></div></div><p>We can update a mapping to add a new field, but we can’t change an existing

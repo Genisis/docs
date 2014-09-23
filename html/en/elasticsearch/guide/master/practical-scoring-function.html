@@ -158,7 +158,7 @@ to apply a boost to a field at index time.  Actually, this boost is applied to
 every term in the field, rather than to the field itself.</p><p>In order to store this boost value in the index without using up more space
 than necessary, this field-level index-time boost is combined with the field
 length norm (see  <a class="xref" href="scoring-theory.html#field-norm" title="Field length norm">Field length norm</a>) and stored in the index as a single byte.
-This is the value returned by <code class="literal">norm(t,d)</code> in the formula above.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>We strongly recommend against using field-level index-time boosts for a few
+This is the value returned by <code class="literal">norm(t,d)</code> in the formula above.</p><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>We strongly recommend against using field-level index-time boosts for a few
 reasons:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 Combining the boost with the field length norm and storing it in a single
     byte means that the field length norm loses precision. The result is that

@@ -73,7 +73,7 @@ A string representation, with <code class="literal">"lat,lon"</code>.
 An object representation with <code class="literal">lat</code> and <code class="literal">lon</code> explicitly named.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO227-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 An array representation with <code class="literal">[lon,lat]</code>.
-</p></td></tr></table></div><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Everybody gets caught at least once: string geo-points are
+</p></td></tr></table></div><div class="caution admon"><div class="icon"><img alt="Caution" src="images/icons/caution.png" /></div><div class="admon_content"><p>Everybody gets caught at least once: string geo-points are
 <code class="literal">"latitude,longitude"</code>, while array geo-points are <code class="literal">[longitude,latitude]</code> — the opposite order!</p><p>Originally, both strings and arrays in Elasticsearch used latitude followed by
 longitude. However, it was decided early on to switch the order for arrays in
 order to conform with GeoJSON.</p><p>The result is a bear trap that captures all unsuspecting users on their

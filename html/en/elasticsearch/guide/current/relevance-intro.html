@@ -38,8 +38,8 @@ calculating how similar the spelling of the found word is to the original
 search term, a <code class="literal">terms</code> query would incorporate the percentage of terms that
 were found, but what we usually mean by <span class="emphasis"><em>relevance</em></span> is the algorithm that we
 use to calculate how similar the contents of a full text field are to a full
-text query string.</p><p>The standard <span class="emphasis"><em>similarity algorithm</em></span> used in Elasticsearch is known as TF/IDF,
-or Term Frequency/Inverse Document Frequency, which takes the following
+text query string.</p><p>The standard <span class="emphasis"><em>similarity algorithm</em></span> used in Elasticsearch is known as  <span class="emphasis"><em>Term
+Frequency/Inverse Document Frequency</em></span>, or <span class="emphasis"><em>TF/IDF</em></span>, which takes the following
 factors into account:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 Term frequency
 </span></dt><dd>
@@ -64,7 +64,8 @@ fuzzy queries.</p><p>Relevance is not just about full text search though. It can
 to <code class="literal">yes|no</code> clauses, where the more clauses that match, the higher the
 <code class="literal">_score</code>.</p><p>When multiple query clauses are combined using a compound query like the
 <code class="literal">bool</code> query, the <code class="literal">_score</code> from each of these query clauses is combined to
-calculate the overall <code class="literal">_score</code> for the document.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="explain"></a>Understanding the score<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/056_Sorting/90_What_is_relevance.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>When debugging a complex query, it can be difficult to understand
+calculate the overall <code class="literal">_score</code> for the document.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>We have a whole chapter dedicated to relevance calculations and how to
+bend them to your will in <a class="xref" href="controlling-relevance.html" title="Controlling relevance"><em>Controlling relevance</em></a>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="explain"></a>Understanding the score<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/056_Sorting/90_What_is_relevance.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>When debugging a complex query, it can be difficult to understand
 exactly how a <code class="literal">_score</code> has been calculated.  Elasticsearch
 has the option of producing an <span class="emphasis"><em>explanation</em></span> with every search result,
 by setting the <code class="literal">explain</code> parameter to <code class="literal">true</code>.</p><pre class="programlisting prettyprint lang-js">GET /_search?explain <a id="CO26-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
@@ -125,7 +126,7 @@ Term frequency
 Inverse document frequency
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO27-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Field length norm
-</p></td></tr></table></div><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Producing the <code class="literal">explain</code> output is expensive. It is a debugging tool
+</p></td></tr></table></div><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>Producing the <code class="literal">explain</code> output is expensive. It is a debugging tool
 only — don’t leave it turned on in production.</p></div></div><p>The first part is the summary of the calculation. It tells us that it has
 calculated the <span class="emphasis"><em>weight</em></span> — term frequency/inverse document frequency or TF/IDF — of the term <code class="literal">"honeymoon"</code> in the field <code class="literal">tweet</code>, for document <code class="literal">0</code>.  (This is
 an internal document ID and, for our purposes, can be ignored.)</p><p>It then provides details of how the weight was calculated:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
@@ -146,7 +147,7 @@ Field length norm
 </dd></dl></div><p>Explanations for more complicated queries can appear to be very complex, but
 really they just contain more of the same calculations that appear in the
 example above. This information can be invaluable for debugging why search
-results appear in the order that they do.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The output from explain can be difficult to read in JSON, but it is easier
+results appear in the order that they do.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The output from <code class="literal">explain</code> can be difficult to read in JSON, but it is easier
 when it is formatted as YAML. Just add <code class="literal">format=yaml</code> to the query string.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="explain-api"></a>Understanding why a document matched<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/056_Sorting/90_What_is_relevance.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While the <code class="literal">explain</code> option adds an explanation for every result, you can use
 the <code class="literal">explain</code> API to understand why one particular document matched or, more
 importantly, why it <span class="strong"><strong>didn’t</strong></span> match.</p><p>The path for the request is <code class="literal">/index/type/id/_explain</code>, as in:</p><pre class="programlisting prettyprint lang-js">GET /us/tweet/12/_explain

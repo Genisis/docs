@@ -57,7 +57,7 @@ The values in the <code class="literal">first_name</code> and <code class="liter
     are also copied to the <code class="literal">full_name</code> field.
 </p></td></tr></table></div><p>With this mapping in place, we can query the <code class="literal">first_name</code> field for first
 names, the <code class="literal">last_name</code> field for last name, or the <code class="literal">full_name</code> field for first
-and last names.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Mappings of the <code class="literal">first_name</code> and <code class="literal">last_name</code> fields have no bearing
+and last names.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Mappings of the <code class="literal">first_name</code> and <code class="literal">last_name</code> fields have no bearing
 on how the <code class="literal">full_name</code> field is indexed. The <code class="literal">full_name</code> field copies the
 string values from the other two fields, then indexes them according to the
 mapping of the <code class="literal">full_name</code> field only.</p></div></div></div><div class="navfooter"><span class="prev"><a href="field-centric.html">
