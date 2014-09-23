@@ -224,11 +224,11 @@ ways.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 c
 postcodes example from <a class="link" href="prefix-query.html" title="prefix query">earlier in this chapter</a>.  Of course,
 the <code class="literal">postcode</code> field would need to be <code class="literal">analyzed</code> instead of <code class="literal">not_analyzed</code> but
 you could use the <code class="literal">keyword</code> tokenizer to treat the postcodes as if they were
-<code class="literal">not_analyzed</code>.</p><div class="sidebar"><div class="titlepage"></div><p>The <code class="literal">keyword</code> tokenizer is the NOOP tokenizer, the tokenizer which does
+<code class="literal">not_analyzed</code>.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The <code class="literal">keyword</code> tokenizer is the NOOP tokenizer, the tokenizer which does
 nothing.  Whatever string it receives as input, it emits exactly the same
 string as a single token.  It can therefore be used for values that we would
 normally treat as <code class="literal">not_analyzed</code> but which require some other analysis
-transformation such as lowercasing.</p></div><pre class="programlisting prettyprint lang-js">{
+transformation such as lowercasing.</p></div></div><pre class="programlisting prettyprint lang-js">{
     "analysis": {
         "filter": {
             "postcode_filter": {

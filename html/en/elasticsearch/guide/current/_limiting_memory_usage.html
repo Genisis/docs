@@ -75,7 +75,7 @@ setting to the <code class="literal">config/elasticsearch.yml</code> file:</p><p
 Can be set to a percentage of the heap size, or a concrete
     value like <code class="literal">5gb</code>.
 </p></td></tr></table></div><p>With this setting in place, the least recently used fielddata will be evicted
-to make space for newly loaded data.</p><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>There is another setting which you may see online:  <code class="literal">indices.fielddata.cache.expire</code></p><p>We beg that you <span class="strong"><strong>never</strong></span> use this setting!  It will likely be deprecated in the
+to make space for newly loaded data.</p><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Fielddata expiry</h4><p>There is another setting which you may see online:  <code class="literal">indices.fielddata.cache.expire</code></p><p>We beg that you <span class="strong"><strong>never</strong></span> use this setting!  It will likely be deprecated in the
 future.</p><p>This setting tells Elasticsearch to evict values from fielddata if they are older
 than <code class="literal">expire</code>, whether the values are being used or not.</p><p>This is <span class="strong"><strong>terrible</strong></span> for performance.  Evictions are costly, and this effectively
 <span class="emphasis"><em>schedules</em></span> evictions on purpose, for no real gain.</p><p>There isn’t a good reason to use this setting; we literally cannot theory-craft
@@ -99,7 +99,7 @@ etc). It then checks to see whether loading the required fielddata would push
 the total fielddata size over the configured percentage of the heap.</p><p>If the estimated query size is larger than the limit, the circuit breaker is
 "tripped" and the query will be aborted and return an exception.  This happens
 <span class="strong"><strong>before</strong></span> data is loaded, which means that you won’t hit an
-OutOfMemoryException.</p><div class="sidebar"><div class="titlepage"></div><p>Elasticsearch has a family of circuit breakers, all of which work to ensure
+OutOfMemoryException.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Available circuit breakers</strong></p></div></div></div><p>Elasticsearch has a family of circuit breakers, all of which work to ensure
 that memory limits are not exceeded:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">indices.breaker.fielddata.limit</code>
 </span></dt><dd>
@@ -134,12 +134,12 @@ settings can cause potential OOM exceptions, which will take down an entire
 node.</p><p>On the other hand, an overly conservative value will simply return a query
 exception which can be handled by your application.  An exception is better
 than a crash. These exceptions should also encourage you to reassess your
-query: why <span class="strong"><strong>does</strong></span> a single query need more than 60% of the heap?</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Circuit breaker and Fielddata size</strong></p></div></div></div><p>In <a class="xref" href="_limiting_memory_usage.html#fielddata-size" title="Fielddata size">Fielddata size</a> we spoke about adding a limit to the size of fielddata,
+query: why <span class="strong"><strong>does</strong></span> a single query need more than 60% of the heap?</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4>Circuit breaker and Fielddata size</h4><p>In <a class="xref" href="_limiting_memory_usage.html#fielddata-size" title="Fielddata size">Fielddata size</a> we spoke about adding a limit to the size of fielddata,
 to ensure that old unused fielddata can be evicted.  The relationship between
 <code class="literal">indices.fielddata.cache.size</code> and <code class="literal">indices.breaker.fielddata.limit</code> is an
 important one.  If the circuit breaker limit is lower than the cache size,
 then no data will ever be evicted.  In order for it to work properly, the
-circuit breaker limit <span class="strong"><strong>must</strong></span> be higher than the cache size.</p></div><p>It is important to note that the circuit breaker compares estimated query size
+circuit breaker limit <span class="strong"><strong>must</strong></span> be higher than the cache size.</p></div></div><p>It is important to note that the circuit breaker compares estimated query size
 against the total heap size, <span class="strong"><strong>not</strong></span> against the actual amount of heap memory
 used.  This is done for a variety of technical reasons (e.g. the heap may look
 "full" but is actually just garbage waiting to be collected, which is hard to

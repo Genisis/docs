@@ -30,11 +30,11 @@
                »
             </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="fielddata"></a>Fielddata<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/90_fielddata.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="fielddata.html">Fielddata</a></span></dt><dt><span class="section"><a href="aggregations-and-analysis.html">Aggregations and Analysis</a></span></dt><dt><span class="section"><a href="_limiting_memory_usage.html">Limiting Memory Usage</a></span></dt><dt><span class="section"><a href="_fielddata_filtering.html">Fielddata Filtering</a></span></dt><dt><span class="section"><a href="doc-values.html">Doc Values</a></span></dt><dt><span class="section"><a href="preload-fielddata.html">Pre-Loading Fielddata</a></span></dt><dt><span class="section"><a href="_preventing_combinatorial_explosions.html">Preventing Combinatorial Explosions</a></span></dt></dl></div><p>Aggregations work via a data structure known as <span class="emphasis"><em>fielddata</em></span> (briefly introduced
 in <a class="xref" href="fielddata-intro.html" title="Fielddata">Fielddata</a>).  Fielddata is often the largest consumer of memory
-in an Elasticsearch cluster, so it is important to understand how it works.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Fielddata: memory vs. disk</strong></p></div></div></div><p>Fielddata can be loaded on-the-fly into memory, or built at index time and
+in an Elasticsearch cluster, so it is important to understand how it works.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4>Fielddata: memory vs. disk</h4><p>Fielddata can be loaded on-the-fly into memory, or built at index time and
 stored on disk.  Later, we will talk about on-disk fielddata in
 <a class="xref" href="doc-values.html" title="Doc Values">Doc Values</a>. For now we will focus on in-memory fielddata as it is
 currently the default mode of operation in Elasticsearch. This may well change
-in a future version.</p></div><p>Fielddata exists because inverted indices are only efficient for certain operations.
+in a future version.</p></div></div><p>Fielddata exists because inverted indices are only efficient for certain operations.
 The inverted index excels at finding documents which contain a term.  It does not
 perform well in the opposite direction: determining which terms exist in a single
 document. Aggregations need this secondary access pattern.</p><p>Consider the following inverted index:</p><pre class="literallayout">Term      Doc_1   Doc_2   Doc_3
@@ -84,16 +84,16 @@ Doc_2 | brown, dogs, foxes, in, lazy, leap, over, quick, summer
 Doc_3 | dog, dogs, fox, jumped, over, quick, the
 -----------------------------------------------------------------</pre><p>Once the data has been uninverted, it is trivial to collect the unique tokens from
 <code class="literal">Doc_1</code> and <code class="literal">Doc_2</code>.  Go to the rows for each document, collect all the terms and
-take the union of the two sets.</p><div class="sidebar"><div class="titlepage"></div><p>The fielddata cache is per-segment. In other words, when a new segment becomes
+take the union of the two sets.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The fielddata cache is per-segment. In other words, when a new segment becomes
 visible to search, the fielddata caches from old segments remain valid. Only
-the data for the new segment needs to be loaded into memory.</p></div><p>Thus, search and aggregations are closely intertwined.  Search finds documents
+the data for the new segment needs to be loaded into memory.</p></div></div><p>Thus, search and aggregations are closely intertwined.  Search finds documents
 using the inverted index.  Aggregations collect and aggregate values from
 fielddata, which is itself generated from the inverted index.</p><p>The rest of this chapter will be discussing various functionality that either
-decreases fielddata’s memory footprint, or increases execution speed.</p><div class="sidebar"><div class="titlepage"></div><p>Fielddata is not just used for aggregations.  It is required for any
+decreases fielddata’s memory footprint, or increases execution speed.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Fielddata is not just used for aggregations.  It is required for any
 operation that needs to look up the value contained in a specific document.
 Besides aggregations, this includes sorting, scripts which access field
 values, parent-child relationships (see <a class="xref" href="parent-child.html" title="Parent-child relationship"><em>Parent-child relationship</em></a>), and certain types
-of queries or filters, such as the <a class="link" href="geo-distance.html" title="geo_distance filter"><code class="literal">geo_distance</code></a> filter.</p></div></div><div class="navfooter"><span class="prev"><a href="_controlling_memory_use_and_latency.html">
+of queries or filters, such as the <a class="link" href="geo-distance.html" title="geo_distance filter"><code class="literal">geo_distance</code></a> filter.</p></div></div></div><div class="navfooter"><span class="prev"><a href="_controlling_memory_use_and_latency.html">
               « 
               Controlling memory use and latency</a>
            

@@ -38,10 +38,10 @@ is bigger or more meaningful than each word in isolation. The two clauses
 “I’m not happy…” and “Happy I’m not…” contain the sames words, in
 close proximity, but have quite different meanings.</p><p>If, instead of indexing each word independently, we were to index pairs of
 words then we could retain more of the context in which the words were used.</p><p>For the sentence <code class="literal">"Sue ate the alligator"</code>, we would not only index each word
-(or <span class="emphasis"><em>unigram</em></span>) as a term:</p><pre class="literallayout">["sue", "ate", "the", "alligator"]</pre><p>but also each word <span class="strong"><strong>and its neighbour</strong></span> as single terms:</p><pre class="literallayout">["sue ate", "ate the", "the alligator"]</pre><p>These word pairs (or <span class="emphasis"><em>bigrams</em></span>) are known as <span class="emphasis"><em>shingles</em></span>.</p><div class="sidebar"><div class="titlepage"></div><p>Shingles are not restricted to being pairs of words; you could index word
+(or <span class="emphasis"><em>unigram</em></span>) as a term:</p><pre class="literallayout">["sue", "ate", "the", "alligator"]</pre><p>but also each word <span class="strong"><strong>and its neighbour</strong></span> as single terms:</p><pre class="literallayout">["sue ate", "ate the", "the alligator"]</pre><p>These word pairs (or <span class="emphasis"><em>bigrams</em></span>) are known as <span class="emphasis"><em>shingles</em></span>.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Shingles are not restricted to being pairs of words; you could index word
 triplets (<span class="emphasis"><em>trigrams</em></span>) as well:</p><pre class="literallayout">["sue ate the", "ate the alligator"]</pre><p>Trigrams give you a higher degree of precision, but greatly increases the
 number of unique terms in the index. Bigrams are sufficient for most use
-cases.</p></div><p>Of course, shingles are only useful if the user enters their query in the same
+cases.</p></div></div><p>Of course, shingles are only useful if the user enters their query in the same
 order as in the original document; a query for <code class="literal">"sue alligator"</code> would match
 the individual words but none of our shingles.</p><p>Fortunately, users tend to express themselves using similar constructs to
 those that appear in the data they are searching. But this point is an

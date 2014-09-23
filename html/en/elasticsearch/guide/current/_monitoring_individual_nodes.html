@@ -126,8 +126,7 @@ how many merges are currently active, how many docs are involved, the cumulative
 size of segments being merged and how much time has been spent on merges in total.
 </p><p class="simpara">Merge statistics can be important if your cluster is write-heavy.  Merging consumes
 a large amount of disk I/O and CPU resources.  If your index is write-heavy and
-you see large merge numbers, be sure to read the section on optimizing for indexing
-(TODO).</p><p class="simpara">Note: updates and deletes will contribute to large merge numbers too, since they
+you see large merge numbers, be sure to read <a class="xref" href="indexing-performance.html" title="Indexing Performance Tips">Indexing Performance Tips</a>.</p><p class="simpara">Note: updates and deletes will contribute to large merge numbers too, since they
 cause segment "fragmentation" which needs to be merged out eventually.</p></li></ul></div><pre class="programlisting prettyprint lang-js">        "filter_cache": {
            "memory_size_in_bytes": 48,
            "evictions": 0
@@ -250,48 +249,48 @@ to the process), and the max size the heap is allowed to grow to.  Ideally,
 <code class="literal">heap_committed_in_bytes</code> should be identical to <code class="literal">heap_max_in_bytes</code>.  If the
 committed size is smaller, the JVM will have to resize the heap eventually…
 and this is a very expensive process.  If your numbers are not identical, see
-this section <a class="xref" href="TODO.html" title="Appendix A. TODO">Appendix A, <em>TODO</em></a> in the next chapter to configure it correctly.
+<a class="xref" href="heap-sizing.html" title="Heap: Sizing and Swapping">Heap: Sizing and Swapping</a> for how to configure it correctly.
 </p><p class="simpara">The <code class="literal">heap_used_percent</code> metric is a useful number to keep an eye on.  Elasticsearch
 is configured to initiate GCs when the heap reaches 75% full.  If your node is
 consistently &gt;= 75%, that indicates that your node is experiencing "memory pressure".
 This is a warning sign that slow GCs may be in your near future.</p><p class="simpara">If the heap usage is consistently &gt;=85%, you are in trouble.  Heaps over 90-95%
 are in risk of horrible performance with long 10-30s GCs at best, Out-of-memory
-(OOM) exceptions at worst.</p></li></ul></div><pre class="programlisting prettyprint lang-js">               "pools": {
-                  "young": {
-                     "used_in_bytes": 138467752,
-                     "max_in_bytes": 279183360,
-                     "peak_used_in_bytes": 279183360,
-                     "peak_max_in_bytes": 279183360
-                  },
-                  "survivor": {
-                     "used_in_bytes": 34865152,
-                     "max_in_bytes": 34865152,
-                     "peak_used_in_bytes": 34865152,
-                     "peak_max_in_bytes": 34865152
-                  },
-                  "old": {
-                     "used_in_bytes": 283919256,
-                     "max_in_bytes": 724828160,
-                     "peak_used_in_bytes": 283919256,
-                     "peak_max_in_bytes": 724828160
-                  }
-               }
-            },</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+(OOM) exceptions at worst.</p></li></ul></div><pre class="programlisting prettyprint lang-js">   "pools": {
+      "young": {
+         "used_in_bytes": 138467752,
+         "max_in_bytes": 279183360,
+         "peak_used_in_bytes": 279183360,
+         "peak_max_in_bytes": 279183360
+      },
+      "survivor": {
+         "used_in_bytes": 34865152,
+         "max_in_bytes": 34865152,
+         "peak_used_in_bytes": 34865152,
+         "peak_max_in_bytes": 34865152
+      },
+      "old": {
+         "used_in_bytes": 283919256,
+         "max_in_bytes": 724828160,
+         "peak_used_in_bytes": 283919256,
+         "peak_max_in_bytes": 724828160
+      }
+   }
+},</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 The <code class="literal">young</code>, <code class="literal">survivor</code> and <code class="literal">old</code> sections will give you a breakdown of memory
 usage of each generation in the GC.  These stats are handy to keep an eye on
 relative sizes, but are often not overly important when debugging problems.
-</li></ul></div><pre class="programlisting prettyprint lang-js">            "gc": {
-               "collectors": {
-                  "young": {
-                     "collection_count": 13,
-                     "collection_time_in_millis": 923
-                  },
-                  "old": {
-                     "collection_count": 0,
-                     "collection_time_in_millis": 0
-                  }
-               }
-            }</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+</li></ul></div><pre class="programlisting prettyprint lang-js">"gc": {
+   "collectors": {
+      "young": {
+         "collection_count": 13,
+         "collection_time_in_millis": 923
+      },
+      "old": {
+         "collection_count": 0,
+         "collection_time_in_millis": 0
+      }
+   }
+}</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
 <code class="literal">gc</code> section shows the garbage collection counts and cumulative time for both
 young and old generations.  You can safely ignore the young generation counts
 for the most part:  this number will usually be very large.  That is perfectly
@@ -303,20 +302,21 @@ hard to give an exact number when you should start worrying (e.g. a node with a
 reasons why tools such as Marvel are so helpful.  GC counts <span class="emphasis"><em>over time</em></span> are the
 important consideration.</p><p class="simpara">Time spent GC’ing is also important.  For example, a certain amount of garbage
 is generated while indexing documents.  This is normal, and causes a GC every
-now-and-then.  These GCs are almost always fast — a millisecond or two — and
-do not impact the node.  This is much different from 10 second GCs.</p><p class="simpara">Our best advice is to collect collection counts and duration periodically (or use Marvel)
+now-and-then.  These GCs are almost always fast and have little effect on the
+node — young generation takes a millisecond or two, and old generation takes
+a few hundred milliseconds.  This is much different from 10 second GCs.</p><p class="simpara">Our best advice is to collect collection counts and duration periodically (or use Marvel)
 and keep an eye out for frequent GCs.  You can also enable slow-GC logging,
-discussed in <a class="xref" href="TODO.html" title="Appendix A. TODO">Appendix A, <em>TODO</em></a></p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_threadpool_section"></a>Threadpool Section<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/30_node_stats.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Elasticsearch maintains a number of threadpools internally.  These threadpools
+discussed in <a class="xref" href="logging.html" title="Logging">Logging</a>.</p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_threadpool_section"></a>Threadpool Section<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/30_node_stats.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Elasticsearch maintains a number of threadpools internally.  These threadpools
 cooperate to get work done, passing work between each other as necessary. In
 general, you don’t need to configure or tune the threadpools, but it is sometimes
-useful to see their stats so you can gain insight into how your cluster is behaving.</p><p>There are about a dozen threadpools, but they all share the same format:</p><pre class="programlisting prettyprint lang-js">          "index": {
-             "threads": 1,
-             "queue": 0,
-             "active": 0,
-             "rejected": 0,
-             "largest": 1,
-             "completed": 1
-          }</pre><p>Each threadpool lists the number of threads that are configured (<code class="literal">threads</code>),
+useful to see their stats so you can gain insight into how your cluster is behaving.</p><p>There are about a dozen threadpools, but they all share the same format:</p><pre class="programlisting prettyprint lang-js">  "index": {
+     "threads": 1,
+     "queue": 0,
+     "active": 0,
+     "rejected": 0,
+     "largest": 1,
+     "completed": 1
+  }</pre><p>Each threadpool lists the number of threads that are configured (<code class="literal">threads</code>),
 how many of those threads are actively processing some work (<code class="literal">active</code>) and how
 many work units are sitting in a queue (<code class="literal">queue</code>).</p><p>If the queue fills up to its limit, new workunits will begin to be rejected and
 you will see that reflected in the <code class="literal">rejected</code> statistic.  This is often a sign

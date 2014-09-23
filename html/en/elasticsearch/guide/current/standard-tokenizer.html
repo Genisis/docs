@@ -45,12 +45,12 @@ mixture of languages.</p><p>Punctuation may or may not be considered to be part 
 where it appears:</p><pre class="programlisting prettyprint lang-js">GET /_analyze?tokenizer=standard
 You're my 'favourite'.</pre><p>In the above example, the apostrophe in <code class="literal">You're</code> is treated as part of the
 word while the single quotes in <code class="literal">'favourite'</code> are not, resulting in the
-following terms: <code class="literal">You're</code>, <code class="literal">my</code>, <code class="literal">favourite</code>.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong><code class="literal">uax_url_email</code> tokenizer</strong></p></div></div></div><p>The <code class="literal">uax_url_email</code> tokenizer works in exactly the same way as the <code class="literal">standard</code>
+following terms: <code class="literal">You're</code>, <code class="literal">my</code>, <code class="literal">favourite</code>.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4><code class="literal">uax_url_email</code> tokenizer</h4><p>The <code class="literal">uax_url_email</code> tokenizer works in exactly the same way as the <code class="literal">standard</code>
 tokenizer, except that it recognises email addresses and URLs as emits them as
 single tokens. The <code class="literal">standard</code> tokenizer, on the other hand, would try to
 break them up into individual words. For instance, the email address
 <code class="literal">joe-bloggs@foo-bar.com</code> would result in the tokens <code class="literal">joe</code>, <code class="literal">bloggs</code>, <code class="literal">foo</code>,
-<code class="literal">bar.com</code>.</p></div><p>The <code class="literal">standard</code> tokenizer is a reasonable starting point for tokenizing most
+<code class="literal">bar.com</code>.</p></div></div><p>The <code class="literal">standard</code> tokenizer is a reasonable starting point for tokenizing most
 languages, especially Western languages.  In fact, it forms the basis of most
 of the language-specific analyzers like the <code class="literal">english</code>, <code class="literal">french</code>, and <code class="literal">spanish</code>
 analyzers.</p><p>Its support for Asian languages, however, is limited and you should consider

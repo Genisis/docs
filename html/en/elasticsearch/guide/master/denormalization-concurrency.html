@@ -50,9 +50,9 @@ the equivalent of:</p><pre class="literallayout">grep "some text" /clinton/proje
 The file name.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO258-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The full path to the directory holding the file.
-</p></td></tr></table></div><div class="sidebar"><div class="titlepage"></div><p>We should also index <code class="literal">directory</code> documents so that we can list all files and
-sub-directories within a directory, but for brevity’s sake, we will ignore
-that requirement.</p></div><p>We also want to be able to search for files that live anywhere in the
+</p></td></tr></table></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Really, we should also index <code class="literal">directory</code> documents so that we can list all
+files and sub-directories within a directory, but for brevity’s sake, we will
+ignore that requirement.</p></div></div><p>We also want to be able to search for files that live anywhere in the
 directory tree below a particular directory, the equivalent of:</p><pre class="literallayout">grep -r "some text" /clinton</pre><p>In order to support this, we need to index the path hierarchy:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">/clinton</code>
 </li><li class="listitem">

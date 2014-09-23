@@ -70,13 +70,13 @@ tokens are in the same form:</p><pre class="programlisting prettyprint lang-js">
   }
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO144-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Normalize all tokens into the <code class="literal">nfkc</code> normalization form.
-</p></td></tr></table></div><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>When to normalize</strong></p></div></div></div><p>Besides the <code class="literal">icu_normalizer</code> token filter mentioned above, there is also an
+</p></td></tr></table></div><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4>When to normalize</h4><p>Besides the <code class="literal">icu_normalizer</code> token filter mentioned above, there is also an
 <code class="literal">icu_normalizer</code> <span class="strong"><strong>character</strong></span> filter, which does the same job as the token
 filter, but it does it before the text reaches the tokenizer.  When using the
 <code class="literal">standard</code> tokenizer or <code class="literal">icu_tokenizer</code>, this doesn’t really matter.  These
 tokenizers know how to deal with all forms of Unicode correctly.</p><p>However, if you plan on using a different tokenizer, such as the <code class="literal">ngram</code>,
 <code class="literal">edge_ngram</code> or <code class="literal">pattern</code> tokenizers, then it woud make sense to use the
-<code class="literal">icu_normalizer</code> character filter in preference to the token filter.</p></div><p>Usually, though, not only will you want to normalize the byte order of tokens,
+<code class="literal">icu_normalizer</code> character filter in preference to the token filter.</p></div></div><p>Usually, though, not only will you want to normalize the byte order of tokens,
 but also to lowercase them. This can be done with the <code class="literal">icu_normalizer</code> using
 the custom normalization form <code class="literal">nfkc_cf</code>, which we discuss in the next section.</p></div><div class="navfooter"><span class="prev"><a href="asciifolding-token-filter.html">
               « 

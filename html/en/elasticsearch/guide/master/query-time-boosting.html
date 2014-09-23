@@ -93,12 +93,12 @@ Documents in the <code class="literal">docs_2014_10</code> index will be boosted
 the <code class="literal">t.getBoost()</code> element. Boosts are not applied at the level that they
 appear in the query DSL.  Instead, any boost values are combined and passsed
 down to the individual terms.  The <code class="literal">t.getBoost()</code> method returns any <code class="literal">boost</code>
-value applied to the term itself or to any of the queries higher up the chain.</p><div class="sidebar"><div class="titlepage"></div><p>In fact, reading the <a class="link" href="relevance-intro.html#explain" title="Understanding the score"><code class="literal">explain</code></a> output is a little more complex
+value applied to the term itself or to any of the queries higher up the chain.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>In fact, reading the <a class="link" href="relevance-intro.html#explain" title="Understanding the score"><code class="literal">explain</code></a> output is a little more complex
 than that. You won’t see the <code class="literal">boost</code> value or <code class="literal">t.getBoost()</code> mentioned in the
 <code class="literal">explanation</code> at all.  Instead, the boost is rolled into the
 <a class="link" href="practical-scoring-function.html#query-norm" title="Query normalization factor"><code class="literal">queryNorm</code></a> that is applied to a particular term. Although we said that
 the <code class="literal">queryNorm</code> is the  same for every term, you will see that the <code class="literal">queryNorm</code>
-for a boosted term is higher than the <code class="literal">queryNorm</code> for an unboosted term.</p></div></div></div><div class="navfooter"><span class="prev"><a href="practical-scoring-function.html">
+for a boosted term is higher than the <code class="literal">queryNorm</code> for an unboosted term.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="practical-scoring-function.html">
               « 
               Lucene’s Practical Scoring Function</a>
            

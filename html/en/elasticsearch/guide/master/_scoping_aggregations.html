@@ -122,7 +122,7 @@ results and the aggregation results:</p><pre class="programlisting prettyprint l
 You can transform any static dashboard into a real-time data exploration device
 by adding a search bar.  This allows the user to search for terms and see all
 of the graphs (which are powered by aggregations, and thus scoped to the query)
-update in real-time.  Try that with Hadoop!</p><p>when the search changes?</p><h3><a id="_global_bucket"></a>Global Bucket<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/40_scope.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>You’ll often want your aggregation to be scoped to your query.  But sometimes
+update in real-time.  Try that with Hadoop!</p><h3><a id="_global_bucket"></a>Global Bucket<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/40_scope.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>You’ll often want your aggregation to be scoped to your query.  But sometimes
 you’ll want to search for some subset of data, but aggregate across <span class="emphasis"><em>all</em></span> of
 your data.</p><p>For example, say you want to know the average price for Ford cars compared to the
 average price of <span class="emphasis"><em>all</em></span> cars. We can use a regular aggregation (scoped to the query)

@@ -113,9 +113,9 @@ whether a field contains a particular error code or a particular browser
 identifier. The length of the field does not affect the outcome.  Disabling
 norms can save a significant amount of memory.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_putting_it_together"></a>Putting it together<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/170_Relevance/10_Scoring_theory.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>These three factors — term frequency, inverse document frequency, and field
 length norm — are calculated and stored at index time.  Together, they are
-used to calculate the <span class="emphasis"><em>weight</em></span> of a single term in a particular document.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Document vs Field</strong></p></div></div></div><p>When we refer to documents in the above formulae, we are actually talking about
+used to calculate the <span class="emphasis"><em>weight</em></span> of a single term in a particular document.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4>Document vs Field</h4><p>When we refer to documents in the above formulae, we are actually talking about
 a field within a document.  Each field has its own inverted index and thus,
-for TF/IDF purposes, the value of the field is the value of the document.</p></div><p>When we run a simple <code class="literal">term</code> query with <code class="literal">explain</code> set to <code class="literal">true</code> (see
+for TF/IDF purposes, the value of the field is the value of the document.</p></div></div><p>When we run a simple <code class="literal">term</code> query with <code class="literal">explain</code> set to <code class="literal">true</code> (see
 <a class="xref" href="relevance-intro.html#explain" title="Understanding the score">Understanding the score</a>), you will see that the only factors involved in calculating the
 score are the ones explained above:</p><pre class="programlisting prettyprint lang-json">PUT /my_index/doc/1
 { "text" : "quick brown fox" }
@@ -149,11 +149,11 @@ Vector Space Model.</p></div></div><div class="section"><div class="titlepage"><
 against a document. The output is a single score which represents how well the
 document matches the query.  In order to do this, it represents the document
 and the query as <span class="emphasis"><em>vectors</em></span>.</p><p>A vector is really just a one-dimensional array containing numbers, like:</p><pre class="literallayout">[1,2,5,22,3,8]</pre><p>In the Vector Space Model, each number in the vector is the <span class="emphasis"><em>weight</em></span> of a term,
-as calculated with <a class="link" href="scoring-theory.html#tfidf" title="Term frequency/Inverse document frequency (TF/IDF)">Term Frequency/Inverse Document Frequency</a>.</p><div class="sidebar"><div class="titlepage"></div><p>While TF/IDF is the default way of calculating term weights for the Vector
+as calculated with <a class="link" href="scoring-theory.html#tfidf" title="Term frequency/Inverse document frequency (TF/IDF)">Term Frequency/Inverse Document Frequency</a>.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>While TF/IDF is the default way of calculating term weights for the Vector
 Space Model, it is not the only way.  Other models like Okapi-BM25 exist and
 are available in Elasticsearch.  TF/IDF is the default because it is a
 simple, efficient algorithm which produces high quality search results, and
-has stood the test of time.</p></div><p>Imagine that we have a query for “happy hippopotamus”.  A common word like
+has stood the test of time.</p></div></div><p>Imagine that we have a query for “happy hippopotamus”.  A common word like
 <code class="literal">happy</code> will have a low weight, while an uncommon term like <code class="literal">hippopotamus</code>
 will have a high weight. Let’s assume that <code class="literal">happy</code> has a weight of 2 and
 <code class="literal">hippopotamus</code> has a weight of 5.  We can plot this simple two-dimensional
@@ -177,12 +177,12 @@ angle between the query vector and the document vector, it is possible to
 assign a relevance score to each document. The angle between document 1 and
 the query is large, so it is of low relevance.  Document 2 is closer to the
 query, meaning that it is reasonably relevant, and document 3 is a perfect
-match.</p><div class="sidebar"><div class="titlepage"></div><p>In practice, only two-dimensional vectors (queries with two terms) can  be
+match.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>In practice, only two-dimensional vectors (queries with two terms) can  be
 plotted easily on a graph. Fortunately, <span class="emphasis"><em>linear algebra</em></span> — the branch of
 mathematics which deals with vectors — provides us with tools to compare the
 angle between multi-dimensional vectors, which means that we can apply the
 same principles explained above to queries which consist of many terms.</p><p>You can read more about how to compare two vectors using <span class="emphasis"><em>Cosine Similarity</em></span>
-at <a class="ulink" href="http://en.wikipedia.org/wiki/Cosine_similarity" target="_top">http://en.wikipedia.org/wiki/Cosine_similarity</a>.</p></div><p>Now that we have talked about the theoretical basis of scoring, we can move on
+at <a class="ulink" href="http://en.wikipedia.org/wiki/Cosine_similarity" target="_top">http://en.wikipedia.org/wiki/Cosine_similarity</a>.</p></div></div><p>Now that we have talked about the theoretical basis of scoring, we can move on
 to see how scoring is implemented in Lucene.</p></div></div><div class="navfooter"><span class="prev"><a href="controlling-relevance.html">
               « 
               Controlling relevance</a>

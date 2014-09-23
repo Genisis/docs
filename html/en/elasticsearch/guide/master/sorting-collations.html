@@ -227,10 +227,10 @@ using the <a class="link" href="sorting-collations.html#uca" title="Unicode Coll
 { "index": { "_id": 4 }}
 { "name": "Böhm" }
 
-GET /my_index/user/_search?sort=name.sort</pre><div class="sidebar"><div class="titlepage"></div><p>The first thing to notice is that the <code class="literal">sort</code> key returned with each document,
-which in earlier examples looked like <code class="literal">brown</code> and <code class="literal">böhm</code>, now looks like
-gobbledygook: <code class="literal">ᖔ乏昫တ倈⠀\u0001</code>.  The reason is that the <code class="literal">icu_collation</code> filter
-emits keys intended only for efficient sorting, not for any other purposes.</p></div><p>The above search returns our docs in this order: <code class="literal">bailey</code>, <code class="literal">Boffey</code>, <code class="literal">Böhm</code>,
+GET /my_index/user/_search?sort=name.sort</pre><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Binary sort keys</strong></p></div></div></div><p>Note that the <code class="literal">sort</code> key returned with each document, which in earlier
+examples looked like <code class="literal">brown</code> and <code class="literal">böhm</code>, now looks like gobbledygook:
+<code class="literal">ᖔ乏昫တ倈⠀\u0001</code>.  The reason is that the <code class="literal">icu_collation</code> filter emits keys
+intended only for efficient sorting, not for any other purposes.</p></div><p>The above search returns our docs in this order: <code class="literal">bailey</code>, <code class="literal">Boffey</code>, <code class="literal">Böhm</code>,
 <code class="literal">BROWN</code>. This is already an improvement as the sort order is now correct for
 English and German, but it is still incorrect for German phonebooks and
 Swedish. The next step is to customize our mapping for different languages.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_specifying_a_language"></a>Specifying a language<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/220_Token_normalization/60_Sorting_and_collations.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">icu_collation</code> filter can be configured to use the collation table for a
@@ -245,8 +245,8 @@ German
 Austrian German
 </span></dt><dd><pre class="programlisting prettyprint lang-json">{ "language": "de", "country": "AT" }</pre></dd><dt><span class="term">
 German phonebooks
-</span></dt><dd><pre class="programlisting prettyprint lang-json">{ "language": "en", "variant": "@collation=phonebook" }</pre></dd></dl></div><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Supported locales</strong></p></div></div></div><p>You can read more about the locales supported by ICU here:
-<a class="ulink" href="http://userguide.icu-project.org/locale" target="_top">http://userguide.icu-project.org/locale</a></p></div><p>This example shows how to setup the German phonebook sort order:</p><pre class="programlisting prettyprint lang-js">PUT /my_index
+</span></dt><dd><pre class="programlisting prettyprint lang-json">{ "language": "en", "variant": "@collation=phonebook" }</pre></dd></dl></div><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4>Supported locales</h4><p>You can read more about the locales supported by ICU here:
+<a class="ulink" href="http://userguide.icu-project.org/locale" target="_top">http://userguide.icu-project.org/locale</a></p></div></div><p>This example shows how to setup the German phonebook sort order:</p><pre class="programlisting prettyprint lang-js">PUT /my_index
 {
   "settings": {
     "number_of_shards": 1,

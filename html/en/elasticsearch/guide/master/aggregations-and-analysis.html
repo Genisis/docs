@@ -177,11 +177,11 @@ the following tokens:</p><div class="itemizedlist"><ul class="itemizedlist" type
 especially when analyzing paragraphs of text.  When these are loaded into memory
 you can easily exhaust your heap space.</p><p>So, before aggregating across fields, take a second to verify that the fields are
 <code class="literal">not_analyzed</code>.  And if you want to aggregate analyzed fields, ensure the analysis
-process is not creating an obscene number of tokens.</p><div class="sidebar"><div class="titlepage"></div><p>At the end of the day, it doesn’t matter whether a field is <code class="literal">analyzed</code> or
+process is not creating an obscene number of tokens.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>At the end of the day, it doesn’t matter whether a field is <code class="literal">analyzed</code> or
 <code class="literal">not_analyzed</code>.   The more unique values in a field — the higher the
 cardinality of the field —  the more memory that is required. This is
 especially true for string fields where every unique string must be held in
-memory — longer strings use more memory.</p></div></div></div><div class="navfooter"><span class="prev"><a href="fielddata.html">
+memory — longer strings use more memory.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="fielddata.html">
               « 
               Fielddata</a>
            

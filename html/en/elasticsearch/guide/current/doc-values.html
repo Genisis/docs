@@ -72,9 +72,9 @@ Setting <code class="literal">doc_values</code> to <code class="literal">true</c
     fielddata.
 </p></td></tr></table></div><p>That’s it!  Queries, aggregations, sorting, and scripts will function as
 normal… they’ll just be using doc values now.  There is no other
-configuration necessary.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>When to use doc values</strong></p></div></div></div><p>Use doc values freely.  The more you use them, the less stress you place on
+configuration necessary.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4>When to use doc values</h4><p>Use doc values freely.  The more you use them, the less stress you place on
 the heap.  It is possible that doc values will become the default format in
-the near future.</p></div></div></div><div class="navfooter"><span class="prev"><a href="_fielddata_filtering.html">
+the near future.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="_fielddata_filtering.html">
               « 
               Fielddata Filtering</a>
            

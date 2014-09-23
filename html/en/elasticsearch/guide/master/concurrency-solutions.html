@@ -55,8 +55,8 @@ solutions using Elasticsearch, all of which involve some form of locking:</p><di
 <a class="xref" href="concurrency-solutions.html#document-locking" title="Document locking">Document locking</a>
 </li><li class="listitem">
 <a class="xref" href="concurrency-solutions.html#tree-locking" title="Tree locking">Tree locking</a>
-</li></ul></div><div class="sidebar"><div class="titlepage"></div><p>The solutions described below could also be implemented by applying the same
-principles using some external system instead of Elasticsearch.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="global-lock"></a>Global lock<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/400_Relationships/26_Concurrency_solutions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>We can avoid concurrency issues completely by only allowing one process to
+</li></ul></div><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The solutions described below could also be implemented by applying the same
+principles using some external system instead of Elasticsearch.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="global-lock"></a>Global lock<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/400_Relationships/26_Concurrency_solutions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>We can avoid concurrency issues completely by only allowing one process to
 make changes at any time.  Most changes will only involve a few files and will
 complete very quickly.  A rename of a top-level directory may block all other
 changes for longer, but these are likely to be much less frequent.</p><p>Because document-level changes in Elasticsearch are ACIDic, we can use the

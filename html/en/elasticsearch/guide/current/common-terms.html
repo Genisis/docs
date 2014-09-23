@@ -83,12 +83,12 @@ the high frequency terms <code class="literal">and</code> and <code class="liter
 by the <code class="literal">must</code> clause. The sole job of the <code class="literal">should</code> clause is to score a
 document like “Quick <span class="strong"><strong>AND THE</strong></span> dead” higher than “<span class="strong"><strong>THE</strong></span> quick but
 dead”.  This approach greatly reduces the number of documents that need to be
-examined and scored.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong><code class="literal">and</code> query</strong></p></div></div></div><p>Setting the operator parameter to <code class="literal">and</code> would make <span class="strong"><strong>all</strong></span> low frequency terms
+examined and scored.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4><code class="literal">and</code> query</h4><p>Setting the operator parameter to <code class="literal">and</code> would make <span class="strong"><strong>all</strong></span> low frequency terms
 required, and score documents that contain <span class="strong"><strong>all</strong></span> high frequency terms higher.
 However, matching documents would not be required to contain all high
 frequency terms.  If you would prefer all low and high frequency terms to be
 required, then you should use a <code class="literal">bool</code> query instead.   As we saw in
-<a class="xref" href="stopwords-performance.html#stopwords-and" title="and operator"><code class="literal">and</code> operator</a>, this is already an efficient query.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_controlling_precision_2"></a>Controlling precision<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/240_Stopwords/40_Divide_and_conquer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">minimum_should_match</code> parameter can be combined with <code class="literal">cutoff_frequency</code>
+<a class="xref" href="stopwords-performance.html#stopwords-and" title="and operator"><code class="literal">and</code> operator</a>, this is already an efficient query.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_controlling_precision_2"></a>Controlling precision<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/240_Stopwords/40_Divide_and_conquer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">minimum_should_match</code> parameter can be combined with <code class="literal">cutoff_frequency</code>
 but it only applies to the low frequency terms.  This query:</p><pre class="programlisting prettyprint lang-json">{
   "match": {
     "text": {

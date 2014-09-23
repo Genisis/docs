@@ -59,12 +59,12 @@ First, we define a token filter of type <code class="literal">synonym</code>.
 We will discuss synonym formats in <a class="xref" href="synonym-formats.html" title="Formatting synonyms">Formatting synonyms</a>.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO180-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Then we create a custom analyzer which uses the <code class="literal">my_synonym_filter</code>.
-</p></td></tr></table></div><div class="sidebar"><div class="titlepage"></div><p>Synonyms can be specified inline with the <code class="literal">synonyms</code> parameter, or in a
+</p></td></tr></table></div><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Synonyms can be specified inline with the <code class="literal">synonyms</code> parameter, or in a
 synonyms file which must be present on every node in the cluster. The path to
 the synonyms file should be specified with the <code class="literal">synonyms_path</code> parameter, and
 should be either absolute or relative to the Elasticsearch <code class="literal">config</code> directory.
 See <a class="xref" href="using-stopwords.html#updating-stopwords" title="Updating stopwords">Updating stopwords</a> for techniques that can be used to refresh the
-synonyms list.</p></div><p>Testing out our analyzer with the <code class="literal">analyze</code> API shows the following:</p><pre class="programlisting prettyprint lang-json">GET /my_index/_analyze?analyzer=my_synonyms
+synonyms list.</p></div></div><p>Testing out our analyzer with the <code class="literal">analyze</code> API shows the following:</p><pre class="programlisting prettyprint lang-json">GET /my_index/_analyze?analyzer=my_synonyms
 Elizabeth is the English queen</pre><pre class="programlisting prettyprint lang-text">Pos 1: (elizabeth)
 Pos 2: (is)
 Pos 3: (the)

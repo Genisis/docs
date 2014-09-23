@@ -28,7 +28,7 @@
            
           <a href="backing-up-your-cluster.html">Backing up your Cluster
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_rolling_restarts"></a>Rolling Restarts<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/520_Post_Deployment/40_rolling_restart.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_changing_settings_dynamically.html">Changing settings dynamically</a></span></dt><dt><span class="section"><a href="_logging.html">Logging</a></span></dt><dt><span class="section"><a href="indexing-performance.html">Indexing Performance Tips</a></span></dt><dt><span class="section"><a href="_rolling_restarts.html">Rolling Restarts</a></span></dt><dt><span class="section"><a href="backing-up-your-cluster.html">Backing up your Cluster</a></span></dt><dt><span class="section"><a href="_restoring_from_a_snapshot.html">Restoring from a snapshot</a></span></dt></dl></div><p>There will come a time when you need to perform a rolling restart of your
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_rolling_restarts"></a>Rolling Restarts<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/520_Post_Deployment/40_rolling_restart.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_changing_settings_dynamically.html">Changing settings dynamically</a></span></dt><dt><span class="section"><a href="logging.html">Logging</a></span></dt><dt><span class="section"><a href="indexing-performance.html">Indexing Performance Tips</a></span></dt><dt><span class="section"><a href="_rolling_restarts.html">Rolling Restarts</a></span></dt><dt><span class="section"><a href="backing-up-your-cluster.html">Backing up your Cluster</a></span></dt><dt><span class="section"><a href="_restoring_from_a_snapshot.html">Restoring from a snapshot</a></span></dt></dl></div><p>There will come a time when you need to perform a rolling restart of your
 cluster — keeping the cluster online and operational, but taking nodes offline
 one at a time.</p><p>The common reason is either an Elasticsearch version upgrade, or some kind of
 maintenance on the server itself (OS update, hardware, etc).  Whatever the case,
@@ -54,7 +54,7 @@ short, this is a good idea.  You can disable allocation with:
 }</pre></li><li class="listitem"><p class="simpara">
 Shutdown a single node, preferably using the <span class="emphasis"><em>Shutdown API</em></span> on that particular
 machine:
-</p><pre class="programlisting prettyprint lang-js">PUT /_cluster/nodes/_local/_shutdown</pre></li><li class="listitem">
+</p><pre class="programlisting prettyprint lang-js">POST /_cluster/nodes/_local/_shutdown</pre></li><li class="listitem">
 Perform maintenance/upgrade
 </li><li class="listitem">
 Restart node, confirm that it joins the cluster

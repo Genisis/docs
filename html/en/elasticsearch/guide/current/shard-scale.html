@@ -41,8 +41,8 @@ index, which has only one shard:</p><pre class="programlisting prettyprint lang-
   }
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO291-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Create an index with one primary shard and zero replica shards.
-</p></td></tr></table></div><p>This setup may be small, but it serves our current needs and is cheap to run.</p><div class="sidebar"><div class="titlepage"></div><p>At the moment we are talking only about <span class="emphasis"><em>primary</em></span> shards.  We will discuss
-<span class="emphasis"><em>replica</em></span> shards later on in <a class="xref" href="replica-shards.html" title="Replica shards">Replica shards</a>.</p></div><p>One glorious day, the Internet discovers us, and a single node just can’t keep up with
+</p></td></tr></table></div><p>This setup may be small, but it serves our current needs and is cheap to run.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>At the moment we are talking only about <span class="emphasis"><em>primary</em></span> shards.  We will discuss
+<span class="emphasis"><em>replica</em></span> shards later on in <a class="xref" href="replica-shards.html" title="Replica shards">Replica shards</a>.</p></div></div><p>One glorious day, the Internet discovers us, and a single node just can’t keep up with
 the traffic.  We decide to add a second node.  What happens?</p><div class="figure"><a id="img-one-shard"></a><p class="title"><strong>Figure 33. An index with one shard has no scale factor</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/410_15_one_shard.png" alt="An index with one shard has no scale factor" /></div></div></div><br class="figure-break" /><p>The answer is: nothing.  Because we have only one shard, there is nothing to
 put on the second node. We can’t increase the number of shards in the index,
 because the number of shards is an important element in the algorithm used to

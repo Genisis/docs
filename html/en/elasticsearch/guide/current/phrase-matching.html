@@ -42,13 +42,13 @@ string to produce a list of terms. It then searches for all the terms, but
 only keeps documents which contain <span class="strong"><strong>all</strong></span> of the search terms in the same
 <span class="strong"><strong>positions</strong></span>, relative to each other.  A query for the phrase <code class="literal">"quick fox"</code>
 would not match any of our documents because no document contains the word
-<code class="literal">"quick"</code> immediately followed by <code class="literal">"fox"</code>.</p><div class="sidebar"><div class="titlepage"></div><p>The <code class="literal">match_phrase</code> query can also be written as a <code class="literal">match</code> query with type
+<code class="literal">"quick"</code> immediately followed by <code class="literal">"fox"</code>.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The <code class="literal">match_phrase</code> query can also be written as a <code class="literal">match</code> query with type
 <code class="literal">phrase</code>:</p><pre class="programlisting prettyprint lang-js">"match": {
     "title": {
         "query": "quick brown fox",
         "type":  "phrase"
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/120_Proximity_Matching/05_Match_phrase_query.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_positions"></a>Term positions<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/120_Proximity_Matching/05_Phrase_matching.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>When a string is analyzed, the analyzer returns not only a list of terms, but
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/120_Proximity_Matching/05_Match_phrase_query.json" target="sense">View in Sense</a></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_positions"></a>Term positions<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/120_Proximity_Matching/05_Phrase_matching.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>When a string is analyzed, the analyzer returns not only a list of terms, but
 also the <span class="emphasis"><em>position</em></span> or order of each term in the original string:</p><pre class="programlisting prettyprint lang-js">GET /_analyze?analyzer=standard
 Quick brown fox</pre><a class="sense_widget" href="sense_widget.html?snippets/120_Proximity_Matching/05_Term_positions.json" target="sense">View in Sense</a><p>This returns:</p><pre class="programlisting prettyprint lang-js">{
    "tokens": [
@@ -84,12 +84,12 @@ all of the words in exactly the order specified, with no words inbetween.</p></d
 the position of <code class="literal">brown</code> must be <code class="literal">1</code> greater than the position of <code class="literal">quick</code>
 </li><li class="listitem">
 the position of <code class="literal">fox</code> must be <code class="literal">2</code> greater than the position of <code class="literal">quick</code>
-</li></ul></div><p>If any of these conditions is not met, the document is not considered a match.</p><div class="sidebar"><div class="titlepage"></div><p>Internally, the <code class="literal">match_phrase</code> query use the low-level <code class="literal">span</code> query family to
+</li></ul></div><p>If any of these conditions is not met, the document is not considered a match.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Internally, the <code class="literal">match_phrase</code> query use the low-level <code class="literal">span</code> query family to
 do position-aware matching. Span queries are term-level queries, so they have
 no analysis phase — they search for the exact term specified.</p><p>Thankfully, most people never need to use the <code class="literal">span</code> queries directly as the
 <code class="literal">match_phrase</code> query is usually good enough. However, certain specialized
 fields, like patent searches, use these low-level queries to perform very
-specific carefully constructed positional searches.</p></div></div></div><div class="navfooter"><span class="prev"><a href="proximity-matching.html">
+specific carefully constructed positional searches.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="proximity-matching.html">
               « 
               Proximity matching</a>
            

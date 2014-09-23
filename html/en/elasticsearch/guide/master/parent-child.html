@@ -45,9 +45,9 @@ Child documents can be returned as the results of a search request.
 </li></ul></div><p>Elasticsearch maintains a map of which parents are associated with
 which children.  It is thanks to this map that query-time joins are fast, but
 it does place a limitation on the parent-child relationship: the parent
-document and all of its children <span class="strong"><strong>must</strong></span> live on the same shard.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Fielddata vs Doc values</strong></p></div></div></div><p>At the time of going to press, the parent-child ID map is held in memory as
+document and all of its children <span class="strong"><strong>must</strong></span> live on the same shard.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><h4>Memory vs Doc values</h4><p>At the time of going to press, the parent-child ID map is held in memory as
 part of <a class="link" href="fielddata.html" title="Fielddata">fielddata</a>.  There are plans afoot to change the default
-setting to use <a class="link" href="doc-values.html" title="Doc Values">doc values</a> by default instead.</p></div></div><div class="navfooter"><span class="prev"><a href="nested-aggregation.html">
+setting to use <a class="link" href="doc-values.html" title="Doc Values">doc values</a> by default instead.</p></div></div></div><div class="navfooter"><span class="prev"><a href="nested-aggregation.html">
               « 
               Nested aggregations</a>
            

@@ -91,7 +91,7 @@ Using the <code class="literal">filter</code> bucket to apply a filter in additi
 This <code class="literal">avg</code> metric will therefore only average docs which are both "ford" and sold in the last month
 </p></td></tr></table></div><p>Since the <code class="literal">filter</code> bucket operates like any other bucket, you are free to nest
 other buckets and metrics inside.  All nested components will "inherit" the filter.
-This allows you to filter selective portions of the aggregation as required.</p><h3><a id="_post_filter"></a>Post Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/45_filtering.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>So far, we have a way to filter the both search results and aggregations (a
+This allows you to filter selective portions of the aggregation as required.</p><h3><a id="_post_filter"></a>Post Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/45_filtering.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>So far, we have a way to filter both the search results and aggregations (a
 <code class="literal">filtered</code> query), as well as filtering individual portions of the aggregation
 (<code class="literal">filter</code> bucket).</p><p>You may be thinking to yourself "hmm…is there a way to filter <span class="emphasis"><em>just</em></span> the search
 results but not the aggregation?".  The answer is to use a <code class="literal">post_filter</code>.</p><p>This is a top-level search request element which accepts a filter.  The filter is

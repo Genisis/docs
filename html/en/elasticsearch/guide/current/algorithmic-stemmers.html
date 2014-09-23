@@ -39,11 +39,11 @@ which is still the recommended English stemmer today.  Martin Porter
 subsequently went on to create the
 <a class="ulink" href="http://snowball.tartarus.org/" target="_top">Snowball language</a> for creating stemming
 algorithms and a number of the stemmers available in Elasticsearch are
-written in Snowball.</p><div class="sidebar"><div class="titlepage"></div><p>The <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-kstem-tokenfilter.html" target="_top"><code class="literal">kstem</code> token filter</a> is a stemmer
+written in Snowball.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><h4><code class="literal">kstem</code> token filter</h4><p>The <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-kstem-tokenfilter.html" target="_top"><code class="literal">kstem</code> token filter</a> is a stemmer
 for English which combines the algorithmic approach with a built-in
 dictionary. The dictionary contains a list of root words and exceptions in
 order to avoid conflating words incorrectly. <code class="literal">kstem</code> tends to stem less
-aggressively than the Porter stemmer.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_using_an_algorithmic_stemmer"></a>Using an algorithmic stemmer<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/230_Stemming/10_Algorithmic_stemmers.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While you can use the
+aggressively than the Porter stemmer.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_using_an_algorithmic_stemmer"></a>Using an algorithmic stemmer<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/230_Stemming/10_Algorithmic_stemmers.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While you can use the
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-porterstem-tokenfilter.html" target="_top"><code class="literal">porter_stem</code></a> or
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-kstem-tokenfilter.html" target="_top"><code class="literal">kstem</code></a> token filter directly, or
 create a language-specific Snowball stemmer with the
