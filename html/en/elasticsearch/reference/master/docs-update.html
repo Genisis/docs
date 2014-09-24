@@ -53,9 +53,9 @@ will still add it, since its a list):</p><pre class="programlisting prettyprint 
         "tag" : "blue"
     }
 }'</pre><p>We can also add a new field to the document:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
-    "script" : "ctx._source.text = \"some text\""
+    "script" : "ctx._source.name_of_new_field = \"value_of_new_field\""
 }'</pre><p>We can also remove a field from the document:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
-    "script" : "ctx._source.remove(\"text\")"
+    "script" : "ctx._source.remove(\"name_of_field\")"
 }'</pre><p>And, we can delete the doc if the tags contain blue, or ignore (noop):</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/test/type1/1/_update' -d '{
     "script" : "ctx._source.tags.contains(tag) ? ctx.op = \"delete\" : ctx.op = \"none\"",
     "params" : {
