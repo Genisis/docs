@@ -67,15 +67,17 @@ Extract the zip or tarball to a new directory, usually in the same volume as the
 Copy the configuration files from the old Elasticsearch installation’s config directory to the new Elasticsearch installation’s config directory.  Move data files from the old Elasticsesarch installation’s data directory if necessary.  If data files are not located within the tarball’s extraction directory, they will not have to be moved.
 </li><li class="listitem">
 The simplest solution for moving from one version to another is to have a symbolic link for <span class="emphasis"><em>elasticsearch</em></span> that points to the currently running version.  This link can be easily updated and will provide a stable access point to the most recent version.  Update this symbolic link if it is being used.
-</li></ul></div></li></ul></div><p>*To upgrade using a .deb or .rpm package:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
-Use rpm or deb to install the new package.  All files should be placed in their proper locations, and config files should not be overwritten.
+</li></ul></div></li><li class="listitem"><p class="simpara">
+To upgrade using a <code class="literal">.deb</code> or <code class="literal">.rpm</code> package:
 </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+Use <code class="literal">rpm</code> or <code class="literal">dpkg</code> to install the new package.  All files should be placed in their proper locations, and config files should not be overwritten.
+</li></ul></div></li><li class="listitem">
 Start the now upgraded node.  Confirm that it joins the cluster.
 </li><li class="listitem">
 Repeat this process for all remaining nodes.
 </li><li class="listitem">
 When the process is complete on all nodes, you can re-enable shard reallocation:
-</li></ul></div></li></ul></div><pre class="programlisting prettyprint lang-sh">        curl -XPUT localhost:9200/_cluster/settings -d '{
+</li></ul></div><pre class="programlisting prettyprint lang-sh">        curl -XPUT localhost:9200/_cluster/settings -d '{
                 "transient" : {
                     "cluster.routing.allocation.enable" : "all"
                 }
