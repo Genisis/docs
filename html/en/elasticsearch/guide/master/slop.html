@@ -35,8 +35,10 @@ the query “quick fox”, even though the positions aren’t exactly equivalent
 {
     "query": {
         "match_phrase": {
-            "title": "quick fox",
-            "slop":  1
+            "title": {
+                "query": "quick fox",
+                "slop":  1
+            }
         }
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/120_Proximity_Matching/10_Slop.json" target="sense">View in Sense</a><p>The <code class="literal">slop</code> parameter tells the <code class="literal">match_phrase</code> query how far apart terms are
