@@ -153,7 +153,13 @@ full, it will abort the request.</p><pre class="programlisting prettyprint lang-
         queue_size: 1000</pre><h3><a id="processors"></a>Processors setting<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/modules/threadpool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The number of processors is automatically detected, and the thread pool
 settings are automatically set based on it. Sometimes, the number of processors
 are wrongly detected, in such cases, the number of processors can be
-explicitly set using the <code class="literal">processors</code> setting.</p><p>In order to check the number of processors detected, use the nodes info
+explicitly set using the <code class="literal">processors</code> setting.  The example below sets
+the number of processors to 4, which means that the default search thread pool size
+is 4 x 3 = 12.</p><pre class="programlisting prettyprint lang-js">processors: 4</pre><p>This setting is important when running multiple node instances on a single
+bare-metal machine.  Each node will detect that it has the full number of
+processors.  But in reality, they are sharing processors on the single machine.
+In other words, it is advised to lower the <code class="literal">processors</code> setting accordingly.  For example,
+on a 24 core machine and running 3 nodes, set processors to 8.</p><p>In order to check the number of processors detected, use the nodes info
 API with the <code class="literal">os</code> flag.</p></div><div class="navfooter"><span class="prev"><a href="modules-advanced-scripting.html">
               « 
               Text scoring in scripts</a>
