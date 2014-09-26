@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Running As a Service on Linux</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="setup.html" title="Setup" /><link rel="prev" href="setup-configuration.html" title="Configuration" /><link rel="next" href="setup-service-win.html" title="Running as a Service on Windows" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.4]
+    </a></span> » <span class="breadcrumb-link"><a href="setup.html">Setup </a></span> » <span class="breadcrumb-node">Running As a Service on Linux</span></div><div class="navheader"><span class="prev"><a href="setup-configuration.html">
+              « 
+              Configuration</a>
+           
+        </span><span class="next">
+           
+          <a href="setup-service-win.html">Running as a Service on Windows
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="setup-service"></a>Running As a Service on Linux<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="setup-configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="setup-service.html">Running As a Service on Linux</a></span></dt><dt><span class="chapter"><a href="setup-service-win.html">Running as a Service on Windows</a></span></dt><dt><span class="chapter"><a href="setup-dir-layout.html">Directory Layout</a></span></dt><dt><span class="chapter"><a href="setup-repositories.html">Repositories</a></span></dt><dt><span class="chapter"><a href="setup-upgrade.html">Upgrading</a></span></dt></dl></div><p>In order to run elasticsearch as a service on your operating system, the provided packages try to make it as easy as possible for you to start and stop elasticsearch during reboot and upgrades.</p><h3><a id="_linux"></a>Linux<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Currently our build automatically creates a debian package and an RPM package, which is available on the download page. The package itself does not have any dependencies, but you have to make sure that you installed a JDK.</p><p>Each package features a configuration file, which allows you to set the following parameters</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">ES_USER</code>
+</p>
+</td><td valign="top">
+<p>
+The user to run as, defaults to <code class="literal">elasticsearch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">ES_GROUP</code>
+</p>
+</td><td valign="top">
+<p>
+The group to run as, defaults to <code class="literal">elasticsearch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">ES_HEAP_SIZE</code>
+</p>
+</td><td valign="top">
+<p>
+The heap size to start with
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">ES_HEAP_NEWSIZE</code>
+</p>
+</td><td valign="top">
+<p>
+The size of the new generation heap
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">ES_DIRECT_SIZE</code>
+</p>
+</td><td valign="top">
+<p>
+The maximum size of the direct memory
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">MAX_OPEN_FILES</code>
+</p>
+</td><td valign="top">
+<p>
+Maximum number of open files, defaults to <code class="literal">65535</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">MAX_LOCKED_MEMORY</code>
+</p>
+</td><td valign="top">
+<p>
+Maximum locked memory size. Set to "unlimited" if you use the bootstrap.mlockall option in elasticsearch.yml. You must also set ES_HEAP_SIZE.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">MAX_MAP_COUNT</code>
+</p>
+</td><td valign="top">
+<p>
+Maximum number of memory map areas a process may have. If you use <code class="literal">mmapfs</code> as index store type, make sure this is set to a high value. For more information, check the <a class="ulink" href="https://github.com/torvalds/linux/blob/master/Documentation/sysctl/vm.txt" target="_top">linux kernel documentation</a> about <code class="literal">max_map_count</code>. This is set via <code class="literal">sysctl</code> before starting elasticsearch. Defaults to <code class="literal">65535</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">LOG_DIR</code>
+</p>
+</td><td valign="top">
+<p>
+Log directory, defaults to <code class="literal">/var/log/elasticsearch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">DATA_DIR</code>
+</p>
+</td><td valign="top">
+<p>
+Data directory, defaults to <code class="literal">/var/lib/elasticsearch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">WORK_DIR</code>
+</p>
+</td><td valign="top">
+<p>
+Work directory, defaults to <code class="literal">/tmp/elasticsearch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">CONF_DIR</code>
+</p>
+</td><td valign="top">
+<p>
+Configuration file directory (which needs to include <code class="literal">elasticsearch.yml</code> and <code class="literal">logging.yml</code> files), defaults to <code class="literal">/etc/elasticsearch</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">CONF_FILE</code>
+</p>
+</td><td valign="top">
+<p>
+Path to configuration file, defaults to <code class="literal">/etc/elasticsearch/elasticsearch.yml</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">ES_JAVA_OPTS</code>
+</p>
+</td><td valign="top">
+<p>
+Any additional java options you may want to apply. This may be useful, if you need to set the <code class="literal">node.name</code> property, but do not want to change the <code class="literal">elasticsearch.yml</code> configuration file, because it is distributed via a provisioning system like puppet or chef. Example: <code class="literal">ES_JAVA_OPTS="-Des.node.name=search-01"</code>
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">RESTART_ON_UPGRADE</code>
+</p>
+</td><td valign="top">
+<p>
+Configure restart on package upgrade, defaults to <code class="literal">false</code>. This means you will have to restart your elasticsearch instance after installing a package manually. The reason for this is to ensure, that upgrades in a cluster do not result in a continuous shard reallocation resulting in high network traffic and reducing the response times of your cluster.
+</p>
+</td></tr></tbody></table></div><h4><a id="_debian_ubuntu"></a>Debian/Ubuntu<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The debian package ships with everything you need as it uses standard debian tools like update <code class="literal">update-rc.d</code> to define the runlevels it runs on. The init script is placed at <code class="literal">/etc/init.d/elasticsearch</code> as you would expect it. The configuration file is placed at <code class="literal">/etc/default/elasticsearch</code>.</p><p>The debian package does not start up the service by default. The reason for this is to prevent the instance to accidentally join a cluster, without being configured appropriately. After installing using <code class="literal">dpkg -i</code> you can use the following commands to ensure, that elasticsearch starts when the system is booted and then start up elasticsearch:</p><pre class="programlisting prettyprint lang-sh">sudo update-rc.d elasticsearch defaults 95 10
+sudo /etc/init.d/elasticsearch start</pre><h5><a id="_installing_the_oracle_jdk"></a>Installing the oracle JDK<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h5><p>The usual recommendation is to run the Oracle JDK with elasticsearch. However Ubuntu and Debian only ship the OpenJDK due to license issues. You can easily install the oracle installer package though. In case you are missing the <code class="literal">add-apt-repository</code> command under Debian GNU/Linux, make sure have at least Debian Wheezy and the package <code class="literal">python-software-properties</code> installed</p><pre class="programlisting prettyprint lang-sh">sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+java -version</pre><p>The last command should verify a successful installation of the Oracle JDK.</p><h4><a id="_rpm_based_distributions"></a>RPM based distributions<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><h5><a id="_using_chkconfig"></a>Using chkconfig<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h5><p>Some RPM based distributions are using <code class="literal">chkconfig</code> to enable and disable services. The init script is located at <code class="literal">/etc/init.d/elasticsearch</code>, where as the configuration file is placed at <code class="literal">/etc/sysconfig/elasticsearch</code>. Like the debian package the RPM package is not started by default after installation, you have to do this manually by entering the following commands</p><pre class="programlisting prettyprint lang-sh">sudo /sbin/chkconfig --add elasticsearch
+sudo service elasticsearch start</pre><h5><a id="_using_systemd"></a>Using systemd<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/setup/as-a-service.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h5><p>Distributions like SUSE do not use the <code class="literal">chkconfig</code> tool to register services, but rather <code class="literal">systemd</code> and its command <code class="literal">/bin/systemctl</code> to start and stop services (at least in newer versions, otherwise use the <code class="literal">chkconfig</code> commands above). The configuration file is also placed at <code class="literal">/etc/sysconfig/elasticsearch</code>. After installing the RPM, you have to change the systemd configuration and then start up elasticsearch</p><pre class="programlisting prettyprint lang-sh">sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable elasticsearch.service
+sudo /bin/systemctl start elasticsearch.service</pre><p>Also note that changing the <code class="literal">MAX_MAP_COUNT</code> setting in <code class="literal">/etc/sysconfig/elasticsearch</code> does not have any effect, you will have to change it in <code class="literal">/usr/lib/sysctl.d/elasticsearch.conf</code> in order to have it applied at startup.</p></div><div class="navfooter"><span class="prev"><a href="setup-configuration.html">
+              « 
+              Configuration</a>
+           
+        </span><span class="next">
+           
+          <a href="setup-service-win.html">Running as a Service on Windows
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>

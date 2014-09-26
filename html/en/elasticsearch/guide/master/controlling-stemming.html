@@ -33,15 +33,15 @@ especially, will blithely apply their rules to any words they encounter
 perhaps conflating words that you would prefer to keep separate.  Maybe, for
 your use case, it is important to keep <code class="literal">skies</code> and <code class="literal">skiing</code> as distinct words
 rather than stemming them both down to <code class="literal">ski</code> (as would happen with the
-<code class="literal">english</code> analyzer).</p><p>The <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-keyword-marker-tokenfilter.html" target="_top"><code class="literal">keyword_marker</code></a> and
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-stemmer-override-tokenfilter.html" target="_top"><code class="literal">stemmer_override</code></a> token filters
+<code class="literal">english</code> analyzer).</p><p>The <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-keyword-marker-tokenfilter.html" target="_top"><code class="literal">keyword_marker</code></a> and
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-stemmer-override-tokenfilter.html" target="_top"><code class="literal">stemmer_override</code></a> token filters
 allow us to customize the stemming process.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="preventing-stemming"></a>Preventing stemming<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/230_Stemming/50_Controlling_stemming.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <a class="link" href="configuring-language-analyzers.html#stem-exclusion"><code class="literal">stem_exclusion</code></a> parameter for language analyzers (see
 <a class="xref" href="configuring-language-analyzers.html" title="Configuring language analyzers">Configuring language analyzers</a>) allowed us to specify a list of words that
 should not be stemmed.  Internally, these language analyzers use the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-keyword-marker-tokenfilter.html" target="_top"><code class="literal">keyword_marker</code> token filter</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-keyword-marker-tokenfilter.html" target="_top"><code class="literal">keyword_marker</code> token filter</a>
 to mark the listed words as <span class="emphasis"><em>keywords</em></span>, which prevents subsequent stemming
 token filters from touching those words.</p><p>For instance, we can create a simple custom analyzer which uses the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-porterstem-tokenfilter.html" target="_top"><code class="literal">porter_stem</code></a> token filter,
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-porterstem-tokenfilter.html" target="_top"><code class="literal">porter_stem</code></a> token filter,
 but prevents the word <code class="literal">skies</code> from being stemmed:</p><pre class="programlisting prettyprint lang-json">PUT /my_index
 {
   "settings": {
@@ -77,7 +77,7 @@ file. The file should contain one word per line, and must be present on every
 node in the cluster. See <a class="xref" href="using-stopwords.html#updating-stopwords" title="Updating stopwords">Updating stopwords</a> for tips on how to update this
 file.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="customizing-stemming"></a>Customizing stemming<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/230_Stemming/50_Controlling_stemming.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>In the example above, we prevented <code class="literal">skies</code> from being stemmed, but perhaps we
 would prefer it to be stemmed to <code class="literal">sky</code> instead.  The
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-stemmer-override-tokenfilter.html" target="_top"><code class="literal">stemmer_override</code></a> token
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-stemmer-override-tokenfilter.html" target="_top"><code class="literal">stemmer_override</code></a> token
 filter allows us to specify our own custom stemming rules. At the same time,
 we can handle some irregular forms like stemming <code class="literal">mice</code> to <code class="literal">mouse</code> and <code class="literal">feet</code>
 to <code class="literal">foot</code>:</p><pre class="programlisting prettyprint lang-json">PUT /my_index

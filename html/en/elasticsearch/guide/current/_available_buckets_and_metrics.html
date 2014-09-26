@@ -34,55 +34,55 @@ the component.  Instead of re-describing them here, we are simply going to
 link to the reference docs and provide a brief description.  Skim the list
 so that you know what is available, and check the reference docs when you need
 exact parameters.</p><h3><a id="_buckets_2"></a>Buckets<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/28_bucket_metric_list.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-global-aggregation.html" target="_top">Global</a>: includes all documents in your index
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-global-aggregation.html" target="_top">Global</a>: includes all documents in your index
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html" target="_top">Filter</a>: only includes documents that match
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-filter-aggregation.html" target="_top">Filter</a>: only includes documents that match
     the filter
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-missing-aggregation.html" target="_top">Missing</a>: all documents which <span class="emphasis"><em>do not</em></span> have
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-missing-aggregation.html" target="_top">Missing</a>: all documents which <span class="emphasis"><em>do not</em></span> have
     a particular field
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html" target="_top">Terms</a>: generates a new bucket for each unique term
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-terms-aggregation.html" target="_top">Terms</a>: generates a new bucket for each unique term
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-range-aggregation.html" target="_top">Range</a>: creates arbitrary ranges which documents
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-range-aggregation.html" target="_top">Range</a>: creates arbitrary ranges which documents
     fall into
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-daterange-aggregation.html" target="_top">Date Range</a>: similar to Range, but calendar
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-daterange-aggregation.html" target="_top">Date Range</a>: similar to Range, but calendar
     aware
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-iprange-aggregation.html" target="_top">IPV4 Range</a>: similar to Range, but can handle "IP logic" like CIDR masks, etc
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-iprange-aggregation.html" target="_top">IPV4 Range</a>: similar to Range, but can handle "IP logic" like CIDR masks, etc
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-geodistance-aggregation.html" target="_top">Geo Distance</a>: similar to Range, but operates on
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-geodistance-aggregation.html" target="_top">Geo Distance</a>: similar to Range, but operates on
     geo points
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-histogram-aggregation.html" target="_top">Histogram</a>: equal-width, dynamic ranges
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-histogram-aggregation.html" target="_top">Histogram</a>: equal-width, dynamic ranges
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html" target="_top">Date Histogram</a>: similar to Histogram, but
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-datehistogram-aggregation.html" target="_top">Date Histogram</a>: similar to Histogram, but
     calendar aware
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-nested-aggregation.html" target="_top">Nested</a>: a special bucket for working with
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-nested-aggregation.html" target="_top">Nested</a>: a special bucket for working with
     nested documents (see <a class="xref" href="nested-aggregation.html" title="Nested aggregations">Nested aggregations</a>)
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-geohashgrid-aggregation.html" target="_top">Geohash Grid</a>: partitions documents according to
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-geohashgrid-aggregation.html" target="_top">Geohash Grid</a>: partitions documents according to
     what geohash grid they fall into (see <a class="xref" href="geohash-grid-agg.html" title="geohash_grid aggregation"><code class="literal">geohash_grid</code> aggregation</a>)
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html" target="_top">TopHits</a>: Return the top search results grouped by the value of a field (see <a class="xref" href="top-hits.html" title="Field collapsing">Field collapsing</a>)
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-top-hits-aggregation.html" target="_top">TopHits</a>: Return the top search results grouped by the value of a field (see <a class="xref" href="top-hits.html" title="Field collapsing">Field collapsing</a>)
 </li></ul></div><h3><a id="_metrics_2"></a>Metrics<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/28_bucket_metric_list.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-Individual statistics: <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-min-aggregation.html" target="_top">Min</a>, <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-max-aggregation.html" target="_top">Max</a>, <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html" target="_top">Avg</a>, <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-sum-aggregation.html" target="_top">Sum</a>
+Individual statistics: <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-min-aggregation.html" target="_top">Min</a>, <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-max-aggregation.html" target="_top">Max</a>, <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-avg-aggregation.html" target="_top">Avg</a>, <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-sum-aggregation.html" target="_top">Sum</a>
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html" target="_top">Stats</a>: calculates min/mean/max/sum/count of documents in bucket
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-stats-aggregation.html" target="_top">Stats</a>: calculates min/mean/max/sum/count of documents in bucket
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-extendedstats-aggregation.html" target="_top">Extended Stats</a>: Same as stats, except it also includes variance, std deviation, sum of squares
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-extendedstats-aggregation.html" target="_top">Extended Stats</a>: Same as stats, except it also includes variance, std deviation, sum of squares
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-valuecount-aggregation.html" target="_top">Value Count</a>: calculates the number of values, which may
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-valuecount-aggregation.html" target="_top">Value Count</a>: calculates the number of values, which may
     be different from the number of documents (e.g. multi-valued fields)
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html" target="_top">Cardinality</a>: calculates number of distinct/unique values (see <a class="xref" href="cardinality.html" title="Finding Distinct Counts">Finding Distinct Counts</a>)
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-cardinality-aggregation.html" target="_top">Cardinality</a>: calculates number of distinct/unique values (see <a class="xref" href="cardinality.html" title="Finding Distinct Counts">Finding Distinct Counts</a>)
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html" target="_top">Percentiles</a>: calculates percentiles/quantiles for
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-percentile-aggregation.html" target="_top">Percentiles</a>: calculates percentiles/quantiles for
     numeric values in a bucket (see <a class="xref" href="percentiles.html" title="Calculating Percentiles">Calculating Percentiles</a>)
 </li><li class="listitem">
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-bucket-significantterms-aggregation.html" target="_top">Significant Terms</a>: finds "uncommonly common" terms
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-bucket-significantterms-aggregation.html" target="_top">Significant Terms</a>: finds "uncommonly common" terms
     (see <a class="xref" href="significant-terms.html" title="Significant Terms"><em>Significant Terms</em></a>)
 </li></ul></div></div><div class="navfooter"><span class="prev"><a href="_one_final_modification.html">
               « 

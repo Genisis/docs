@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Plugins</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-tribe.html" title="Tribe node" /><link rel="next" href="modules-scripting.html" title="Scripting" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.4]
+    </a></span> » <span class="breadcrumb-link"><a href="modules.html">Modules </a></span> » <span class="breadcrumb-node">Plugins</span></div><div class="navheader"><span class="prev"><a href="modules-tribe.html">
+              « 
+              Tribe node</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-scripting.html">Scripting
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-plugins"></a>Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-tribe.html">Tribe node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-advanced-scripting.html">Text scoring in scripts</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt><dt><span class="chapter"><a href="modules-snapshots.html">Snapshot And Restore</a></span></dt></dl></div><h3><a id="_plugins"></a>Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Plugins are a way to enhance the basic elasticsearch functionality in a
+custom manner. They range from adding custom mapping types, custom
+analyzers (in a more built in fashion), native scripts, custom discovery
+and more.</p><h4><a id="installing"></a>Installing plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Installing plugins can either be done manually by placing them under the
+<code class="literal">plugins</code> directory, or using the <code class="literal">plugin</code> script. Several plugins can
+be found under the <a class="ulink" href="https://github.com/elasticsearch" target="_top">elasticsearch</a>
+organization in GitHub, starting with <code class="literal">elasticsearch-</code>.</p><p>Installing plugins typically take the following form:</p><pre class="programlisting prettyprint lang-shell">plugin --install &lt;org&gt;/&lt;user/component&gt;/&lt;version&gt;</pre><p>The plugins will be
+automatically downloaded in this case from <code class="literal">download.elasticsearch.org</code>,
+and in case they don’t exist there, from maven (central and sonatype).</p><p>Note that when the plugin is located in maven central or sonatype
+repository, <code class="literal">&lt;org&gt;</code> is the artifact <code class="literal">groupId</code> and <code class="literal">&lt;user/component&gt;</code> is
+the <code class="literal">artifactId</code>.</p><p>A plugin can also be installed directly by specifying the URL for it,
+for example:</p><pre class="programlisting prettyprint lang-shell">bin/plugin --url file:///path/to/plugin --install plugin-name</pre><p>You can run <code class="literal">bin/plugin -h</code>.</p><h4><a id="site-plugins"></a>Site Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Plugins can have "sites" in them, any plugin that exists under the
+<code class="literal">plugins</code> directory with a <code class="literal">_site</code> directory, its content will be
+statically served when hitting <code class="literal">/_plugin/[plugin_name]/</code> url. Those can
+be added even after the process has started.</p><p>Installed plugins that do not contain any java related content, will
+automatically be detected as site plugins, and their content will be
+moved under <code class="literal">_site</code>.</p><p>The ability to install plugins from Github allows to easily install site
+plugins hosted there by downloading the actual repo, for example,
+running:</p><pre class="programlisting prettyprint lang-js">bin/plugin --install mobz/elasticsearch-head
+bin/plugin --install lukas-vlcek/bigdesk</pre><p>Will install both of those site plugins, with <code class="literal">elasticsearch-head</code>
+available under <code class="literal">http://localhost:9200/_plugin/head/</code> and <code class="literal">bigdesk</code>
+available under <code class="literal">http://localhost:9200/_plugin/bigdesk/</code>.</p><h4><a id="_mandatory_plugins"></a>Mandatory Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>If you rely on some plugins, you can define mandatory plugins using the
+<code class="literal">plugin.mandatory</code> attribute, for example, here is a sample config:</p><pre class="programlisting prettyprint lang-js">plugin.mandatory: mapper-attachments,lang-groovy</pre><p>For safety reasons, if a mandatory plugin is not installed, the node
+will not start.</p><h4><a id="_installed_plugins"></a>Installed Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A list of the currently loaded plugins can be retrieved using the
+<a class="link" href="cluster-nodes-info.html" title="Nodes Info">Node Info API</a>.</p><h4><a id="_removing_plugins"></a>Removing plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Removing plugins can either be done manually by removing them under the
+<code class="literal">plugins</code> directory, or using the <code class="literal">plugin</code> script.</p><p>Removing plugins typically take the following form:</p><pre class="programlisting prettyprint lang-shell">plugin --remove &lt;pluginname&gt;</pre><h4><a id="_silent_verbose_mode"></a>Silent/Verbose mode<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>When running the <code class="literal">plugin</code> script, you can get more information (debug mode) using <code class="literal">--verbose</code>.
+On the opposite, if you want <code class="literal">plugin</code> script to be silent, use <code class="literal">--silent</code> option.</p><p>Note that exit codes could be:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">0</code>: everything was OK
+</li><li class="listitem">
+<code class="literal">64</code>: unknown command or incorrect option parameter
+</li><li class="listitem">
+<code class="literal">74</code>: IO error
+</li><li class="listitem">
+<code class="literal">70</code>: other errors
+</li></ul></div><pre class="programlisting prettyprint lang-shell">bin/plugin --install mobz/elasticsearch-head --verbose
+plugin --remove head --silent</pre><h4><a id="_timeout_settings"></a>Timeout settings<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>By default, the <code class="literal">plugin</code> script will wait indefinitely when downloading before failing.
+The timeout parameter can be used to explicitly specify how long it waits. Here is some examples of setting it to
+different values:</p><pre class="programlisting prettyprint lang-shell"># Wait for 30 seconds before failing
+bin/plugin --install mobz/elasticsearch-head --timeout 30s
+
+# Wait for 1 minute before failing
+bin/plugin --install mobz/elasticsearch-head --timeout 1m
+
+# Wait forever (default)
+bin/plugin --install mobz/elasticsearch-head --timeout 0</pre><h4><a id="_proxy_settings"></a>Proxy settings<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>To install a plugin via a proxy, you can pass the proxy details using the environment variables <code class="literal">proxyHost</code> and <code class="literal">proxyPort</code>.</p><p>On Linux and Mac, here is an example of setting it:</p><pre class="programlisting prettyprint lang-shell">bin/plugin -DproxyHost=host_name -DproxyPort=port_number --install mobz/elasticsearch-head</pre><p>On Windows, here is an example of setting it:</p><pre class="programlisting prettyprint lang-shell">set JAVA_OPTS="-DproxyHost=host_name -DproxyPort=port_number"
+bin/plugin --install mobz/elasticsearch-head</pre><h4><a id="_lucene_version_dependent_plugins"></a>Lucene version dependent plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>For some plugins, such as analysis plugins, a specific major Lucene version is
+required to run. In that case, the plugin provides in its <code class="literal">es-plugin.properties</code>
+file the Lucene version for which the plugin was built for.</p><p>If present at startup the node will check the Lucene version before loading the plugin.</p><p>You can disable that check using <code class="literal">plugins.check_lucene: false</code>.</p><h3><a id="known-plugins"></a>Known Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><h4><a id="analysis-plugins"></a>Analysis Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-icu" target="_top">ICU Analysis plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-kuromoji" target="_top">Japanese (Kuromoji) Analysis plugin</a>.
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-smartcn" target="_top">Smart Chinese Analysis Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-stempel" target="_top">Stempel (Polish) Analysis plugin</a>
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/barminator/elasticsearch-analysis-annotation" target="_top">Annotation Analysis Plugin</a> (by Michal Samek)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/yakaz/elasticsearch-analysis-combo/" target="_top">Combo Analysis Plugin</a> (by Olivier Favre, Yakaz)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/jprante/elasticsearch-analysis-hunspell" target="_top">Hunspell Analysis Plugin</a> (by Jörg Prante)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-ik" target="_top">IK Analysis Plugin</a> (by Medcl)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/suguru/elasticsearch-analysis-japanese" target="_top">Japanese Analysis plugin</a> (by suguru).
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-mmseg" target="_top">Mmseg Analysis Plugin</a> (by Medcl)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/chytreg/elasticsearch-analysis-morfologik" target="_top">Morfologik (Polish) Analysis plugin</a> (by chytreg)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/imotov/elasticsearch-analysis-morphology" target="_top">Russian and English Morphological Analysis Plugin</a> (by Igor Motov)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/synhershko/elasticsearch-analysis-hebrew" target="_top">Hebrew Analysis Plugin</a> (by Itamar Syn-Hershko)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-pinyin" target="_top">Pinyin Analysis Plugin</a> (by Medcl)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/medcl/elasticsearch-analysis-string2int" target="_top">String2Integer Analysis Plugin</a> (by Medcl)
+</li></ul></div><h4><a id="discovery-plugins"></a>Discovery Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws" target="_top">AWS Cloud Plugin</a> - EC2 discovery and S3 Repository
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-azure" target="_top">Azure Cloud Plugin</a> - Azure discovery
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-gce" target="_top">Google Compute Engine Cloud Plugin</a> - GCE discovery
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/shikhar/eskka" target="_top">eskka Discovery Plugin</a> (by Shikhar Bhushan)
+</li></ul></div><h4><a id="river"></a>River Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-couchdb" target="_top">CouchDB River Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-rabbitmq" target="_top">RabbitMQ River Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-twitter" target="_top">Twitter River Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-river-wikipedia" target="_top">Wikipedia River Plugin</a>
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/domdorn/elasticsearch-river-activemq/" target="_top">ActiveMQ River Plugin</a> (by Dominik Dorn)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/albogdano/elasticsearch-river-amazonsqs" target="_top">Amazon SQS River Plugin</a> (by Alex Bogdanovski)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/xxBedy/elasticsearch-river-csv" target="_top">CSV River Plugin</a> (by Martin Bednar)
+</li><li class="listitem">
+<a class="ulink" href="http://www.pilato.fr/dropbox/" target="_top">Dropbox River Plugin</a> (by David Pilato)
+</li><li class="listitem">
+<a class="ulink" href="http://www.pilato.fr/fsriver/" target="_top">FileSystem River Plugin</a> (by David Pilato)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/obazoud/elasticsearch-river-git" target="_top">Git River Plugin</a> (by Olivier Bazoud)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/uberVU/elasticsearch-river-github" target="_top">GitHub River Plugin</a> (by uberVU)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sksamuel/elasticsearch-river-hazelcast" target="_top">Hazelcast River Plugin</a> (by Steve Samuel)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/jprante/elasticsearch-river-jdbc" target="_top">JDBC River Plugin</a> (by Jörg Prante)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/qotho/elasticsearch-river-jms" target="_top">JMS River Plugin</a> (by Steve Sarandos)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/endgameinc/elasticsearch-river-kafka" target="_top">Kafka River Plugin</a> (by Endgame Inc.)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/tlrx/elasticsearch-river-ldap" target="_top">LDAP River Plugin</a> (by Tanguy Leroux)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/richardwilly98/elasticsearch-river-mongodb/" target="_top">MongoDB River Plugin</a> (by Richard Louapre)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sksamuel/elasticsearch-river-neo4j" target="_top">Neo4j River Plugin</a> (by Steve Samuel)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/jprante/elasticsearch-river-oai/" target="_top">Open Archives Initiative (OAI) River Plugin</a> (by Jörg Prante)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sksamuel/elasticsearch-river-redis" target="_top">Redis River Plugin</a> (by Steve Samuel)
+</li><li class="listitem">
+<a class="ulink" href="http://dadoonet.github.com/rssriver/" target="_top">RSS River Plugin</a> (by David Pilato)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/adamlofts/elasticsearch-river-sofa" target="_top">Sofa River Plugin</a> (by adamlofts)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/javanna/elasticsearch-river-solr/" target="_top">Solr River Plugin</a> (by Luca Cavanna)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sunnygleason/elasticsearch-river-st9" target="_top">St9 River Plugin</a> (by Sunny Gleason)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/plombard/SubversionRiver" target="_top">Subversion River Plugin</a> (by Pascal Lombard)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/kzwang/elasticsearch-river-dynamodb" target="_top">DynamoDB River Plugin</a> (by Kevin Wang)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/salyh/elasticsearch-river-imap" target="_top">IMAP/POP3 Email River Plugin</a> (by Hendrik Saly)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/codelibs/elasticsearch-river-web" target="_top">Web River Plugin</a> (by CodeLibs Project)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/eea/eea.elasticsearch.river.rdf" target="_top">EEA ElasticSearch RDF River Plugin</a> (by the European Environment Agency)
+</li></ul></div><h4><a id="transport"></a>Transport Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-memcached" target="_top">Memcached transport plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-thrift" target="_top">Thrift Transport</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-transport-wares" target="_top">Servlet transport</a>
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/tlrx/transport-zeromq" target="_top">ZeroMQ transport layer plugin</a> (by Tanguy Leroux)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sonian/elasticsearch-jetty" target="_top">Jetty HTTP transport plugin</a> (by Sonian Inc.)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/kzwang/elasticsearch-transport-redis" target="_top">Redis transport plugin</a> (by Kevin Wang)
+</li></ul></div><h4><a id="scripting"></a>Scripting Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/hiredman/elasticsearch-lang-clojure" target="_top">Clojure Language Plugin</a> (by Kevin Downey)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-groovy" target="_top">Groovy lang Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-javascript" target="_top">JavaScript language Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-lang-python" target="_top">Python language Plugin</a>
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/NLPchina/elasticsearch-sql/" target="_top">SQL language Plugin</a> (by nlpcn)
+</li></ul></div><h4><a id="site"></a>Site Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/lukas-vlcek/bigdesk" target="_top">BigDesk Plugin</a> (by Lukáš Vlček)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/mobz/elasticsearch-head" target="_top">Elasticsearch Head Plugin</a> (by Ben Birch)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/royrusso/elasticsearch-HQ" target="_top">Elasticsearch HQ</a> (by Roy Russo)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/andrewvc/elastic-hammer" target="_top">Hammer Plugin</a> (by Andrew Cholakian)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/polyfractal/elasticsearch-inquisitor" target="_top">Inquisitor Plugin</a> (by Zachary Tong)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/karmi/elasticsearch-paramedic" target="_top">Paramedic Plugin</a> (by Karel Minařík)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/polyfractal/elasticsearch-segmentspy" target="_top">SegmentSpy Plugin</a> (by Zachary Tong)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/xyu/elasticsearch-whatson" target="_top">Whatson Plugin</a> (by Xiao Yu)
+</li></ul></div><h4><a id="repository-plugins"></a>Snapshot/Restore Repository Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-hadoop/tree/master/repository-hdfs" target="_top">Hadoop HDFS</a> Repository
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-cloud-aws#s3-repository" target="_top">AWS S3</a> Repository
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/kzwang/elasticsearch-repository-gridfs" target="_top">GridFS</a> Repository (by Kevin Wang)
+</li></ul></div><h4><a id="misc"></a>Misc Plugins<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/plugins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><p class="title"><strong>Supported by Elasticsearch</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/elasticsearch/elasticsearch-mapper-attachments" target="_top">Mapper Attachments Type plugin</a>
+</li></ul></div><div class="itemizedlist"><p class="title"><strong>Supported by the community</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="ulink" href="https://github.com/carrot2/elasticsearch-carrot2" target="_top">carrot2 Plugin</a>: Results clustering with carrot2 (by Dawid Weiss)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/derryx/elasticsearch-changes-plugin" target="_top">Elasticsearch Changes Plugin</a> (by Thomas Peuss)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/johtani/elasticsearch-extended-analyze" target="_top">Extended Analyze Plugin</a> (by Jun Ohtani)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/spinscale/elasticsearch-graphite-plugin" target="_top">Elasticsearch Graphite Plugin</a> (by Alexander Reelsen)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/mattweber/elasticsearch-mocksolrplugin" target="_top">Elasticsearch Mock Solr Plugin</a> (by Matt Weber)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/viniciusccarvalho/elasticsearch-newrelic" target="_top">Elasticsearch New Relic Plugin</a> (by Vinicius Carvalho)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/swoop-inc/elasticsearch-statsd-plugin" target="_top">Elasticsearch Statsd Plugin</a> (by Swoop Inc.)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/endgameinc/elasticsearch-term-plugin" target="_top">Terms Component Plugin</a> (by Endgame Inc.)
+</li><li class="listitem">
+<a class="ulink" href="http://tlrx.github.com/elasticsearch-view-plugin" target="_top">Elasticsearch View Plugin</a> (by Tanguy Leroux)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/sonian/elasticsearch-zookeeper" target="_top">ZooKeeper Discovery Plugin</a> (by Sonian Inc.)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/kzwang/elasticsearch-image" target="_top">Elasticsearch Image Plugin</a> (by Kevin Wang)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/wikimedia/search-highlighter" target="_top">Elasticsearch Experimental Highlighter</a> (by Wikimedia Foundation/Nik Everett)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/salyh/elasticsearch-security-plugin" target="_top">Elasticsearch Security Plugin</a> (by Hendrik Saly)
+</li><li class="listitem">
+<a class="ulink" href="https://github.com/codelibs/elasticsearch-taste" target="_top">Elasticsearch Taste Plugin</a> (by CodeLibs Project)
+</li><li class="listitem">
+<a class="ulink" href="http://siren.solutions/siren/downloads/" target="_top">Elasticsearch SIREn Plugin</a>: Nested data search (by SIREn Solutions)
+</li></ul></div></div><div class="navfooter"><span class="prev"><a href="modules-tribe.html">
+              « 
+              Tribe node</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-scripting.html">Scripting
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>

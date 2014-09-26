@@ -60,7 +60,7 @@ directory tree below a particular directory, the equivalent of:</p><pre class="l
 </li><li class="listitem">
 <code class="literal">/clinton/projects/elasticsearch</code>
 </li></ul></div><p>This hierarchy can be generated automatically from the <code class="literal">path</code> field using the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-pathhierarchy-tokenizer.html" target="_top"><code class="literal">path_hierarchy</code> tokenizer</a>:</p><pre class="programlisting prettyprint lang-json">PUT /fs
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-pathhierarchy-tokenizer.html" target="_top"><code class="literal">path_hierarchy</code> tokenizer</a>:</p><pre class="programlisting prettyprint lang-json">PUT /fs
 {
   "settings": {
     "analysis": {
@@ -73,7 +73,7 @@ directory tree below a particular directory, the equivalent of:</p><pre class="l
   }
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO259-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The custom <code class="literal">paths</code> analyzer uses the <code class="literal">path_hierarchy</code> tokenizer with its
-    default settings. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-pathhierarchy-tokenizer.html" target="_top"><code class="literal">path_hierarchy</code> tokenizer</a>.
+    default settings. See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-pathhierarchy-tokenizer.html" target="_top"><code class="literal">path_hierarchy</code> tokenizer</a>.
 </p></td></tr></table></div><p>The mapping for the <code class="literal">file</code> type would look like this:</p><pre class="programlisting prettyprint lang-json">PUT /fs/_mapping/file
 {
   "properties": {

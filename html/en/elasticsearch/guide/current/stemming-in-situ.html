@@ -37,7 +37,7 @@ Pos 3: (foxes,fox) <a id="CO165-1"></a><span><img src="images/icons/callouts/1.p
 Pos 4: (jumped,jump) <a id="CO165-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span></pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO165-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO165-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The stemmed and unstemmed forms occupy the same position.
 </p></td></tr></table></div><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>Read <a class="xref" href="stemming-in-situ.html#stemming-in-situ-good-idea" title="Is stemming in situ a good idea">Is stemming in situ a good idea</a> before using this approach.</p></div></div><p>To achieve stemming <span class="emphasis"><em>in situ</em></span> we will use the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-keyword-repeat-tokenfilter.html" target="_top"><code class="literal">keyword_repeat</code></a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-keyword-repeat-tokenfilter.html" target="_top"><code class="literal">keyword_repeat</code></a>
 token filter which, like the <code class="literal">keyword_marker</code> token filter (see
 <a class="xref" href="controlling-stemming.html#preventing-stemming" title="Preventing stemming">Preventing stemming</a>) marks each term as a keyword to prevent the subsequent
 stemmer from touching it.  However, it also repeats the term in the same
@@ -49,7 +49,7 @@ The stemmed and unstemmed forms are the same, and so are repeated
     needlessly.
 </p></td></tr></table></div><p>To prevent the useless repetition of terms which are the same in their stemmed
 and unstemmed forms, we add the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-unique-tokenfilter.html" target="_top"><code class="literal">unique</code></a> token filter into the mix:</p><pre class="programlisting prettyprint lang-json">PUT /my_index
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-unique-tokenfilter.html" target="_top"><code class="literal">unique</code></a> token filter into the mix:</p><pre class="programlisting prettyprint lang-json">PUT /my_index
 {
   "settings": {
     "analysis": {

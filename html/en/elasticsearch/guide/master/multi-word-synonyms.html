@@ -133,7 +133,7 @@ recommend using it.  In <a class="xref" href="search-lite.html#query-string-quer
 frequently lead to surprising results or even syntax errors.</p><p>One of the gotchas of this query involves multi-word synonyms. In order to
 support its search-syntax, it has to parse the query string to recognise
 special operators like <code class="literal">AND</code>, <code class="literal">OR</code>, <code class="literal">+</code>, <code class="literal">-</code>, <code class="literal">field:</code> etc.  (See the full
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax" target="_top"><code class="literal">query_string</code> syntax</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/query-dsl-query-string-query.html#query-string-syntax" target="_top"><code class="literal">query_string</code> syntax</a>
 here.)</p><p>As part of this parsing process, it breaks up the query string on whitespace,
 and passes each word that it finds to the relevant analyzer separately. This
 means that your synonym analyzer will never receive a multi-word synonym.

@@ -71,8 +71,8 @@ only target a single index. For this reason, we have to switch the index alias
 to point only to the new index.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>A document <code class="literal">GET</code> request, like an indexing request, can only target one index.
 This makes retrieving a document by ID a bit more complicated in this
 scenario.  Instead, run a search request with the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-ids-query.html" target="_top"><code class="literal">ids</code> query</a>, or do a
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-multi-get.html" target="_top"><code class="literal">multi-get</code></a> request on <code class="literal">tweets_1</code> and <code class="literal">tweets_2</code>.</p></div></div><p>Using multiple indices to expand index capacity on the fly is of particular
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/query-dsl-ids-query.html" target="_top"><code class="literal">ids</code> query</a>, or do a
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/docs-multi-get.html" target="_top"><code class="literal">multi-get</code></a> request on <code class="literal">tweets_1</code> and <code class="literal">tweets_2</code>.</p></div></div><p>Using multiple indices to expand index capacity on the fly is of particular
 benefit when dealing with time-based data such as logs or social event
 streams, which we will discuss in the next section.</p></div><div class="navfooter"><span class="prev"><a href="replica-shards.html">
               « 

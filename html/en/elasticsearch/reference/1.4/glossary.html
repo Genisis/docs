@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Glossary of terms</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="index.html" title="Reference [1.4]" /><link rel="prev" href="assertions.html" title="Assertions" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.4]
+    </a></span> » <span class="breadcrumb-node">Glossary of terms</span></div><div class="navheader"><span class="prev"><a href="assertions.html">
+              « 
+              Assertions</a>
+           
+        </span><span class="next">
+           
+          </span></div><div class="glossary"><div class="titlepage"><div><div><h1 class="title"><a id="glossary"></a>Glossary of terms<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/glossary.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><dl><dt><span class="glossterm">
+<a id="glossary-analysis"></a> analysis 
+</span></dt><dd class="glossdef"><p>
+  Analysis is the process of converting <a class="link" href="glossary.html#glossary-text">full text</a> to
+  <a class="link" href="glossary.html#glossary-term">terms</a>. Depending on which analyzer is used, these phrases:
+  <code class="literal">FOO BAR</code>, <code class="literal">Foo-Bar</code>, <code class="literal">foo,bar</code> will probably all result in the
+  terms <code class="literal">foo</code> and <code class="literal">bar</code>. These terms are what is actually stored in
+  the index.
+ 
+  A full text query (not a <a class="link" href="glossary.html#glossary-term">term</a> query) for <code class="literal">FoO:bAR</code> will
+  also be analyzed to the terms <code class="literal">foo</code>,<code class="literal">bar</code> and will thus match the
+  terms stored in the index.
+ 
+  It is this process of analysis (both at index time and at search time)
+  that allows elasticsearch to perform full text queries.
+ 
+  Also see <a class="link" href="glossary.html#glossary-text">text</a> and <a class="link" href="glossary.html#glossary-term">term</a>.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-cluster"></a> cluster 
+</span></dt><dd class="glossdef"><p>
+  A cluster consists of one or more <a class="link" href="glossary.html#glossary-node">nodes</a> which share the
+  same cluster name. Each cluster has a single master node which is
+  chosen automatically by the cluster and which can be replaced if the
+  current master node fails.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-document"></a> document 
+</span></dt><dd class="glossdef"><p>
+  A document is a JSON document which is stored in elasticsearch. It is
+  like a row in a table in a relational database. Each document is
+  stored in an <a class="link" href="glossary.html#glossary-index">index</a> and has a <a class="link" href="glossary.html#glossary-type">type</a> and an
+  <a class="link" href="glossary.html#glossary-id">id</a>.
+ 
+  A document is a JSON object (also known in other languages as a hash /
+  hashmap / associative array) which contains zero or more
+  <a class="link" href="glossary.html#glossary-field">fields</a>, or key-value pairs.
+ 
+  The original JSON document that is indexed will be stored in the
+  <a class="link" href="glossary.html#glossary-source_field"><code class="literal">_source</code> field</a>, which is returned by default when
+  getting or searching for a document.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-id"></a> id 
+</span></dt><dd class="glossdef"><p>
+  The ID of a <a class="link" href="glossary.html#glossary-document">document</a> identifies a document. The
+  <code class="literal">index/type/id</code> of a document must be unique. If no ID is provided,
+  then it will be auto-generated. (also see <a class="link" href="glossary.html#glossary-routing">routing</a>)
+</p></dd><dt><span class="glossterm">
+<a id="glossary-field"></a> field 
+</span></dt><dd class="glossdef"><p>
+  A <a class="link" href="glossary.html#glossary-document">document</a> contains a list of fields, or key-value
+  pairs. The value can be a simple (scalar) value (eg a string, integer,
+  date), or a nested structure like an array or an object. A field is
+  similar to a column in a table in a relational database.
+ 
+  The <a class="link" href="glossary.html#glossary-mapping">mapping</a> for each field has a field <span class="emphasis"><em>type</em></span> (not to
+  be confused with document <a class="link" href="glossary.html#glossary-type">type</a>) which indicates the type
+  of data that can be stored in that field, eg <code class="literal">integer</code>, <code class="literal">string</code>,
+  <code class="literal">object</code>. The mapping also allows you to define (amongst other things)
+  how the value for a field should be analyzed.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-index"></a> index 
+</span></dt><dd class="glossdef"><p>
+  An index is like a <span class="emphasis"><em>database</em></span> in a relational database. It has a
+  <a class="link" href="glossary.html#glossary-mapping">mapping</a> which defines multiple <a class="link" href="glossary.html#glossary-type">types</a>.
+ 
+  An index is a logical namespace which maps to one or more
+  <a class="link" href="glossary.html#glossary-primary-shard">primary shards</a> and can have zero or more
+  <a class="link" href="glossary.html#glossary-replica-shard">replica shards</a>.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-mapping"></a> mapping 
+</span></dt><dd class="glossdef"><p>
+  A mapping is like a <span class="emphasis"><em>schema definition</em></span> in a relational database. Each
+  <a class="link" href="glossary.html#glossary-index">index</a> has a mapping, which defines each <a class="link" href="glossary.html#glossary-type">type</a>
+  within the index, plus a number of index-wide settings.
+ 
+  A mapping can either be defined explicitly, or it will be generated
+  automatically when a document is indexed.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-node"></a> node 
+</span></dt><dd class="glossdef"><p>
+  A node is a running instance of elasticsearch which belongs to a
+  <a class="link" href="glossary.html#glossary-cluster">cluster</a>. Multiple nodes can be started on a single
+  server for testing purposes, but usually you should have one node per
+  server.
+ 
+  At startup, a node will use unicast (or multicast, if specified) to
+  discover an existing cluster with the same cluster name and will try
+  to join that cluster.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-primary-shard"></a> primary shard 
+</span></dt><dd class="glossdef"><p>
+  Each document is stored in a single primary <a class="link" href="glossary.html#glossary-shard">shard</a>. When
+  you index a document, it is indexed first on the primary shard, then
+  on all <a class="link" href="glossary.html#glossary-replica-shard">replicas</a> of the primary shard.
+ 
+  By default, an <a class="link" href="glossary.html#glossary-index">index</a> has 5 primary shards. You can
+  specify fewer or more primary shards to scale the number of
+  <a class="link" href="glossary.html#glossary-document">documents</a> that your index can handle.
+ 
+  You cannot change the number of primary shards in an index, once the
+  index is created.
+ 
+  See also <a class="link" href="glossary.html#glossary-routing">routing</a>
+</p></dd><dt><span class="glossterm">
+<a id="glossary-replica-shard"></a> replica shard 
+</span></dt><dd class="glossdef"><p>
+  Each <a class="link" href="glossary.html#glossary-primary-shard">primary shard</a> can have zero or more
+  replicas. A replica is a copy of the primary shard, and has two
+  purposes:
+ 
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+increase failover: a replica shard can be promoted to a primary
+  shard if the primary fails
+</li><li class="listitem">
+increase performance: get and search requests can be handled by
+  primary or replica shards.
+ 
+  By default, each primary shard has one replica, but the number of
+  replicas can be changed dynamically on an existing index. A replica
+  shard will never be started on the same node as its primary shard.
+</li></ol></div></dd><dt><span class="glossterm">
+<a id="glossary-routing"></a> routing 
+</span></dt><dd class="glossdef"><p>
+  When you index a document, it is stored on a single
+  <a class="link" href="glossary.html#glossary-primary-shard">primary shard</a>. That shard is chosen by hashing
+  the <code class="literal">routing</code> value. By default, the <code class="literal">routing</code> value is derived from
+  the ID of the document or, if the document has a specified parent
+  document, from the ID of the parent document (to ensure that child and
+  parent documents are stored on the same shard).
+ 
+  This value can be overridden by specifying a <code class="literal">routing</code> value at index
+  time, or a <a class="link" href="mapping-routing-field.html" title="_routing">routing   field</a> in the <a class="link" href="glossary.html#glossary-mapping">mapping</a>.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-shard"></a> shard 
+</span></dt><dd class="glossdef"><p>
+  A shard is a single Lucene instance. It is a low-level “worker” unit
+  which is managed automatically by elasticsearch. An index is a logical
+  namespace which points to <a class="link" href="glossary.html#glossary-primary-shard">primary</a> and
+  <a class="link" href="glossary.html#glossary-replica-shard">replica</a> shards.
+ 
+  Other than defining the number of primary and replica shards that an
+  index should have, you never need to refer to shards directly.
+  Instead, your code should deal only with an index.
+ 
+  Elasticsearch distributes shards amongst all <a class="link" href="glossary.html#glossary-node">nodes</a> in the
+  <a class="link" href="glossary.html#glossary-cluster">cluster</a>, and can move shards automatically from one
+  node to another in the case of node failure, or the addition of new
+  nodes.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-source_field"></a> source field 
+</span></dt><dd class="glossdef"><p>
+  By default, the JSON document that you index will be stored in the
+  <code class="literal">_source</code> field and will be returned by all get and search requests.
+  This allows you access to the original object directly from search
+  results, rather than requiring a second step to retrieve the object
+  from an ID.
+ 
+  Note: the exact JSON string that you indexed will be returned to you,
+  even if it contains invalid JSON. The contents of this field do not
+  indicate anything about how the data in the object has been indexed.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-term"></a> term 
+</span></dt><dd class="glossdef"><p>
+  A term is an exact value that is indexed in elasticsearch. The terms
+  <code class="literal">foo</code>, <code class="literal">Foo</code>, <code class="literal">FOO</code> are NOT equivalent. Terms (i.e. exact values) can
+  be searched for using <span class="emphasis"><em>term</em></span> queries.
+   See also <a class="link" href="glossary.html#glossary-text">text</a> and <a class="link" href="glossary.html#glossary-analysis">analysis</a>.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-text"></a> text 
+</span></dt><dd class="glossdef"><p>
+  Text (or full text) is ordinary unstructured text, such as this
+  paragraph. By default, text will be <a class="link" href="glossary.html#glossary-analysis">analyzed</a> into
+  <a class="link" href="glossary.html#glossary-term">terms</a>, which is what is actually stored in the index.
+ 
+  Text <a class="link" href="glossary.html#glossary-field">fields</a> need to be analyzed at index time in order to
+  be searchable as full text, and keywords in full text queries must be
+  analyzed at search time to produce (and search for) the same terms
+  that were generated at index time.
+ 
+  See also <a class="link" href="glossary.html#glossary-term">term</a> and <a class="link" href="glossary.html#glossary-analysis">analysis</a>.
+</p></dd><dt><span class="glossterm">
+<a id="glossary-type"></a> type 
+</span></dt><dd class="glossdef"><p>
+  A type is like a <span class="emphasis"><em>table</em></span> in a relational database. Each type has a
+  list of <a class="link" href="glossary.html#glossary-field">fields</a> that can be specified for
+  <a class="link" href="glossary.html#glossary-document">documents</a> of that type. The <a class="link" href="glossary.html#glossary-mapping">mapping</a>
+  defines how each field in the document is analyzed.
+</p></dd></dl></div><div class="navfooter"><span class="prev"><a href="assertions.html">
+              « 
+              Assertions</a>
+           
+        </span><span class="next">
+           
+          </span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>

@@ -68,7 +68,7 @@ and which contain either of the words <code class="literal">"aggregations"</code
 </li></ul></div><pre class="programlisting prettyprint lang-js">+name:(mary john) +date:&gt;2014-09-10 +(aggregations geo)</pre><a class="sense_widget" href="sense_widget.html?snippets/050_Search/20_All_field.json" target="sense">View in Sense</a><p>which, as a properly encoded query string looks like the slightly less
 readable:</p><pre class="programlisting prettyprint lang-js">?q=%2Bname%3A(mary+john)+%2Bdate%3A%3E2014-09-10+%2B(aggregations+geo)</pre><p>As you can see from the above examples, this <span class="emphasis"><em>lite</em></span> query string search is
 surprisingly powerful. Its query syntax, which is explained in detail in the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current//query-dsl-query-string-query.html#query-string-syntax" target="_top">Query String Syntax</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4//query-dsl-query-string-query.html#query-string-syntax" target="_top">Query String Syntax</a>
 reference docs, allows us to express quite complex queries succinctly. This
 makes it great for throwaway queries from the command line or during
 development.</p><p>However, you can also see that its terseness can make it cryptic and

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Similarity module</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="index-modules.html" title="Index Modules" /><link rel="prev" href="fielddata-formats.html" title="Field data formats" /><link rel="next" href="testing.html" title="Testing" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.4]
+    </a></span> » <span class="breadcrumb-link"><a href="index-modules.html">Index Modules </a></span> » <span class="breadcrumb-node">Similarity module</span></div><div class="navheader"><span class="prev"><a href="fielddata-formats.html">
+              « 
+              Field data formats</a>
+           
+        </span><span class="next">
+           
+          <a href="testing.html">Testing 
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="index-modules-similarity"></a>Similarity module<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="index-modules-analysis.html">Analysis</a></span></dt><dt><span class="chapter"><a href="index-modules-allocation.html">Index Shard Allocation</a></span></dt><dt><span class="chapter"><a href="index-modules-slowlog.html">Index Slow Log</a></span></dt><dt><span class="chapter"><a href="index-modules-merge.html">Merge</a></span></dt><dt><span class="chapter"><a href="index-modules-store.html">Store</a></span></dt><dt><span class="chapter"><a href="index-modules-mapper.html">Mapper</a></span></dt><dt><span class="chapter"><a href="index-modules-translog.html">Translog</a></span></dt><dt><span class="chapter"><a href="index-modules-cache.html">Cache</a></span></dt><dt><span class="chapter"><a href="index-modules-shard-query-cache.html">Shard query cache</a></span></dt><dt><span class="chapter"><a href="index-modules-fielddata.html">Field data</a></span></dt><dt><span class="chapter"><a href="fielddata-formats.html">Field data formats</a></span></dt><dt><span class="chapter"><a href="index-modules-similarity.html">Similarity module</a></span></dt></dl></div><p>A similarity (scoring / ranking model) defines how matching documents
+are scored. Similarity is per field, meaning that via the mapping one
+can define a different similarity per field.</p><p>Configuring a custom similarity is considered a expert feature and the
+builtin similarities are most likely sufficient as is described in the
+<a class="link" href="mapping-core-types.html" title="Core Types">mapping section</a></p><h3><a id="configuration"></a>Configuring a similarity<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Most existing or custom Similarities have configuration options which
+can be configured via the index settings as shown below. The index
+options can be provided when creating an index or updating index
+settings.</p><pre class="programlisting prettyprint lang-js">"similarity" : {
+  "my_similarity" : {
+    "type" : "DFR",
+    "basic_model" : "g",
+    "after_effect" : "l",
+    "normalization" : "h2",
+    "normalization.h2.c" : "3.0"
+  }
+}</pre><p>Here we configure the DFRSimilarity so it can be referenced as
+<code class="literal">my_similarity</code> in mappings as is illustrate in the below example:</p><pre class="programlisting prettyprint lang-js">{
+  "book" : {
+    "properties" : {
+      "title" : { "type" : "string", "similarity" : "my_similarity" }
+    }
+}</pre><h3><a id="_available_similarities"></a>Available similarities<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><h4><a id="default-similarity"></a>Default similarity<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The default similarity that is based on the TF/IDF model. This
+similarity has the following option:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">discount_overlaps</code>
+</span></dt><dd>
+    Determines whether overlap tokens (Tokens with
+    0 position increment) are ignored when computing norm. By default this
+    is true, meaning overlap tokens do not count when computing norms.
+</dd></dl></div><p>Type name: <code class="literal">default</code></p><h4><a id="bm25"></a>BM25 similarity<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Another TF/IDF based similarity that has built-in tf normalization and
+is supposed to work better for short fields (like names). See
+<a class="ulink" href="http://en.wikipedia.org/wiki/Okapi_BM25" target="_top">Okapi_BM25</a> for more details.
+This similarity has the following options:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">k1</code>
+</p>
+</td><td valign="top">
+<p>
+    Controls non-linear term frequency normalization
+    (saturation).
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">b</code>
+</p>
+</td><td valign="top">
+<p>
+    Controls to what degree document length normalizes tf values.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">discount_overlaps</code>
+</p>
+</td><td valign="top">
+<p>
+    Determines whether overlap tokens (Tokens with
+    0 position increment) are ignored when computing norm. By default this
+    is true, meaning overlap tokens do not count when computing norms.
+</p>
+</td></tr></tbody></table></div><p>Type name: <code class="literal">BM25</code></p><h4><a id="drf"></a>DFR similarity<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Similarity that implements the
+<a class="ulink" href="http://lucene.apache.org/core/4_1_0/core/org/apache/lucene/search/similarities/DFRSimilarity.html" target="_top">divergence
+from randomness</a> framework. This similarity has the following options:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">basic_model</code>
+</p>
+</td><td valign="top">
+<p>
+    Possible values: <code class="literal">be</code>, <code class="literal">d</code>, <code class="literal">g</code>, <code class="literal">if</code>, <code class="literal">in</code>, <code class="literal">ine</code> and <code class="literal">p</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">after_effect</code>
+</p>
+</td><td valign="top">
+<p>
+    Possible values: <code class="literal">no</code>, <code class="literal">b</code> and <code class="literal">l</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">normalization</code>
+</p>
+</td><td valign="top">
+<p>
+    Possible values: <code class="literal">no</code>, <code class="literal">h1</code>, <code class="literal">h2</code>, <code class="literal">h3</code> and <code class="literal">z</code>.
+</p>
+</td></tr></tbody></table></div><p>All options but the first option need a normalization value.</p><p>Type name: <code class="literal">DFR</code></p><h4><a id="ib"></a>IB similarity.<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p><a class="ulink" href="http://lucene.apache.org/core/4_1_0/core/org/apache/lucene/search/similarities/IBSimilarity.html" target="_top">Information
+based model</a> . This similarity has the following options:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">distribution</code>
+</p>
+</td><td valign="top">
+<p>
+Possible values: <code class="literal">ll</code> and <code class="literal">spl</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">lambda</code>
+</p>
+</td><td valign="top">
+<p>
+Possible values: <code class="literal">df</code> and <code class="literal">ttf</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">normalization</code>
+</p>
+</td><td valign="top">
+<p>
+Same as in <code class="literal">DFR</code> similarity.
+</p>
+</td></tr></tbody></table></div><p>Type name: <code class="literal">IB</code></p><h4><a id="lm_dirichlet"></a>LM Dirichlet similarity.<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p><a class="ulink" href="http://lucene.apache.org/core/4_7_1/core/org/apache/lucene/search/similarities/LMDirichletSimilarity.html" target="_top">LM
+Dirichlet similarity</a> . This similarity has the following options:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">mu</code>
+</p>
+</td><td valign="top">
+<p>
+Default to <code class="literal">2000</code>.
+</p>
+</td></tr></tbody></table></div><p>Type name: <code class="literal">LMDirichlet</code></p><h4><a id="lm_jelinek_mercer"></a>LM Jelinek Mercer similarity.<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p><a class="ulink" href="http://lucene.apache.org/core/4_7_1/core/org/apache/lucene/search/similarities/LMJelinekMercerSimilarity.html" target="_top">LM
+Jelinek Mercer similarity</a> . This similarity has the following options:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">lambda</code>
+</p>
+</td><td valign="top">
+<p>
+The optimal value depends on both the collection and the query. The optimal value is around <code class="literal">0.1</code>
+for title queries and <code class="literal">0.7</code> for long queries. Default to <code class="literal">0.1</code>.
+</p>
+</td></tr></tbody></table></div><p>Type name: <code class="literal">LMJelinekMercer</code></p><h4><a id="default-base"></a>Default and Base Similarities<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/index-modules/similarity.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>By default, Elasticsearch will use whatever similarity is configured as
+<code class="literal">default</code>. However, the similarity functions <code class="literal">queryNorm()</code> and <code class="literal">coord()</code>
+are not per-field. Consequently, for expert users wanting to change the
+implementation used for these two methods, while not changing the
+<code class="literal">default</code>, it is possible to configure a similarity with the name
+<code class="literal">base</code>. This similarity will then be used for the two methods.</p><p>You can change the default similarity for all fields like this:</p><pre class="programlisting prettyprint lang-js">index.similarity.default.type: BM25</pre></div><div class="navfooter"><span class="prev"><a href="fielddata-formats.html">
+              « 
+              Field data formats</a>
+           
+        </span><span class="next">
+           
+          <a href="testing.html">Testing 
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>

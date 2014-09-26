@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Scripting</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="modules.html" title="Modules" /><link rel="prev" href="modules-plugins.html" title="Plugins" /><link rel="next" href="modules-advanced-scripting.html" title="Text scoring in scripts" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.4]
+    </a></span> » <span class="breadcrumb-link"><a href="modules.html">Modules </a></span> » <span class="breadcrumb-node">Scripting</span></div><div class="navheader"><span class="prev"><a href="modules-plugins.html">
+              « 
+              Plugins</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-advanced-scripting.html">Text scoring in scripts
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="modules-scripting"></a>Scripting<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="modules-cluster.html">Cluster</a></span></dt><dt><span class="chapter"><a href="modules-discovery.html">Discovery</a></span></dt><dt><span class="chapter"><a href="modules-gateway.html">Gateway</a></span></dt><dt><span class="chapter"><a href="modules-http.html">HTTP</a></span></dt><dt><span class="chapter"><a href="modules-indices.html">Indices</a></span></dt><dt><span class="chapter"><a href="modules-memcached.html">memcached</a></span></dt><dt><span class="chapter"><a href="modules-network.html">Network Settings</a></span></dt><dt><span class="chapter"><a href="modules-node.html">Node</a></span></dt><dt><span class="chapter"><a href="modules-tribe.html">Tribe node</a></span></dt><dt><span class="chapter"><a href="modules-plugins.html">Plugins</a></span></dt><dt><span class="chapter"><a href="modules-scripting.html">Scripting</a></span></dt><dt><span class="chapter"><a href="modules-advanced-scripting.html">Text scoring in scripts</a></span></dt><dt><span class="chapter"><a href="modules-threadpool.html">Thread Pool</a></span></dt><dt><span class="chapter"><a href="modules-thrift.html">Thrift</a></span></dt><dt><span class="chapter"><a href="modules-transport.html">Transport</a></span></dt><dt><span class="chapter"><a href="modules-snapshots.html">Snapshot And Restore</a></span></dt></dl></div><p>The scripting module allows to use scripts in order to evaluate custom
+expressions. For example, scripts can be used to return "script fields"
+as part of a search request, or can be used to evaluate a custom score
+for a query and so on.</p><p>The scripting module uses by default <a class="ulink" href="http://groovy.codehaus.org/" target="_top">groovy</a>
+(previously <a class="ulink" href="http://mvel.codehaus.org/" target="_top">mvel</a> in 1.3.x and earlier) as the
+scripting language with some extensions. Groovy is used since it is extremely
+fast and very simple to use.</p><p>Additional <code class="literal">lang</code> plugins are provided to allow to execute scripts in
+different languages. Currently supported plugins are <code class="literal">lang-javascript</code>
+for JavaScript, <code class="literal">lang-mvel</code> for Mvel, and <code class="literal">lang-python</code> for Python.
+All places where a <code class="literal">script</code> parameter can be used, a <code class="literal">lang</code> parameter
+(on the same level) can be provided to define the language of the
+script. The <code class="literal">lang</code> options are <code class="literal">groovy</code>, <code class="literal">js</code>, <code class="literal">mvel</code>, <code class="literal">expression</code>, <code class="literal">python</code>,
+and <code class="literal">native</code>.</p><p>To increase security, Elasticsearch does not allow you to specify scripts for
+non-sandboxed languages with a request. Instead, scripts must be placed in the
+<code class="literal">scripts</code> directory inside the configuration directory (the directory where
+elasticsearch.yml is). Scripts placed into this directory will automatically be
+picked up and be available to be used. Once a script has been placed in this
+directory, it can be referenced by name. For example, a script called
+<code class="literal">calculate-score.groovy</code> can be referenced in a request like this:</p><pre class="programlisting prettyprint lang-sh">$ tree config
+config
+├── elasticsearch.yml
+├── logging.yml
+└── scripts
+    └── calculate-score.groovy</pre><pre class="programlisting prettyprint lang-sh">$ cat config/scripts/calculate-score.groovy
+log(_score * 2) + my_modifier</pre><pre class="programlisting prettyprint lang-js">curl -XPOST localhost:9200/_search -d '{
+  "query": {
+    "function_score": {
+      "query": {
+        "match": {
+          "body": "foo"
+        }
+      },
+      "functions": [
+        {
+          "script_score": {
+            "script": "calculate-score",
+            "params": {
+              "my_modifier": 8
+            }
+          }
+        }
+      ]
+    }
+  }
+}'</pre><p>The name of the script is derived from the hierarchy of directories it
+exists under, and the file name without the lang extension. For example,
+a script placed under <code class="literal">config/scripts/group1/group2/test.py</code> will be
+named <code class="literal">group1_group2_test</code>.</p><h3><a id="_indexed_scripts"></a>Indexed Scripts<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>If dynamic scripting is enabled, Elasticsearch allows you to store scripts
+in an internal index known as <code class="literal">.scripts</code> and reference them by id. There are
+REST endpoints to manage indexed scripts as follows:</p><p>Requests to the scripts endpoint look like :</p><pre class="programlisting prettyprint lang-js">/_scripts/{lang}/{id}</pre><p>Where the <code class="literal">lang</code> part is the language the script is in and the <code class="literal">id</code> part is the id
+of the script. In the <code class="literal">.scripts</code> index the type of the document will be set to the <code class="literal">lang</code>.</p><pre class="programlisting prettyprint lang-js">curl -XPOST localhost:9200/_scripts/groovy/indexedCalculateScore -d '{
+     "script": "log(_score * 2) + my_modifier"
+}'</pre><p>This will create a document with id: <code class="literal">indexedCalculateScore</code> and type: <code class="literal">groovy</code> in the
+<code class="literal">.scripts</code> index. The type of the document is the language used by the script.</p><p>This script can be accessed at query time by appending <code class="literal">_id</code> to
+the script parameter and passing the script id. So <code class="literal">script</code> becomes <code class="literal">script_id</code>.:</p><pre class="programlisting prettyprint lang-js">curl -XPOST localhost:9200/_search -d '{
+  "query": {
+    "function_score": {
+      "query": {
+        "match": {
+          "body": "foo"
+        }
+      },
+      "functions": [
+        {
+          "script_score": {
+            "script_id": "indexedCalculateScore",
+            "lang" : "groovy",
+            "params": {
+              "my_modifier": 8
+            }
+          }
+        }
+      ]
+    }
+  }
+}'</pre><p>Note that you must have dynamic scripting enabled to use indexed scripts
+for non sandboxed languages at query time.</p><p>The script can be viewed by:</p><pre class="programlisting prettyprint lang-js">curl -XGET localhost:9200/_scripts/groovy/indexedCalculateScore</pre><p>This is rendered as:</p><pre class="programlisting prettyprint lang-js">'{
+     "script": "log(_score * 2) + my_modifier"
+}'</pre><p>Indexed scripts can be deleted by:</p><pre class="programlisting prettyprint lang-js">curl -XDELETE localhost:9200/_scripts/groovy/indexedCalculateScore</pre><h3><a id="_enabling_dynamic_scripting"></a>Enabling dynamic scripting<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>We recommend running Elasticsearch behind an application or proxy, which
+protects Elasticsearch from the outside world. If users are allowed to run
+dynamic scripts (even in a search request), then they have the same access to
+your box as the user that Elasticsearch is running as. For this reason dynamic
+scripting is allowed only for sandboxed languages by default.</p><p>First, you should not run Elasticsearch as the <code class="literal">root</code> user, as this would allow
+a script to access or do <span class="strong"><strong>anything</strong></span> on your server, without limitations. Second,
+you should not expose Elasticsearch directly to users, but instead have a proxy
+application inbetween. If you <span class="strong"><strong>do</strong></span> intend to expose Elasticsearch directly to
+your users, then you have to decide whether you trust them enough to run scripts
+on your box or not. If you do, you can enable dynamic scripting by adding the
+following setting to the <code class="literal">config/elasticsearch.yml</code> file on every node:</p><pre class="programlisting prettyprint lang-yaml">script.disable_dynamic: false</pre><p>While this still allows execution of named scripts provided in the config, or
+<span class="emphasis"><em>native</em></span> Java scripts registered through plugins, it also allows users to run
+arbitrary scripts via the API. Instead of sending the name of the file as the
+script, the body of the script can be sent instead.</p><p>There are three possible configuration values for the <code class="literal">script.disable_dynamic</code>
+setting, the default value is <code class="literal">sandbox</code>:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Value </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">true</code></p></td><td align="left" valign="top"><p>all dynamic scripting is disabled, scripts must be placed in the <code class="literal">config/scripts</code> directory.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">false</code></p></td><td align="left" valign="top"><p>all dynamic scripting is enabled, scripts may be sent as strings in requests.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">sandbox</code></p></td><td align="left" valign="top"><p>scripts may be sent as strings for languages that are sandboxed.</p></td></tr></tbody></table></div><h3><a id="_default_scripting_language"></a>Default Scripting Language<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The default scripting language (assuming no <code class="literal">lang</code> parameter is provided) is
+<code class="literal">groovy</code>. In order to change it, set the <code class="literal">script.default_lang</code> to the
+appropriate language.</p><h3><a id="_groovy_sandboxing"></a>Groovy Sandboxing<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Elasticsearch sandboxes Groovy scripts that are compiled and executed in order
+to ensure they don’t perform unwanted actions. There are a number of options
+that can be used for configuring this sandbox:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">script.groovy.sandbox.receiver_whitelist</code>
+</span></dt><dd>
+    Comma-separated list of string classes for objects that may have methods
+    invoked.
+</dd><dt><span class="term">
+<code class="literal">script.groovy.sandbox.package_whitelist</code>
+</span></dt><dd>
+    Comma-separated list of packages under which new objects may be constructed.
+</dd><dt><span class="term">
+<code class="literal">script.groovy.sandbox.class_whitelist</code>
+</span></dt><dd>
+    Comma-separated list of classes that are allowed to be constructed.
+</dd><dt><span class="term">
+<code class="literal">script.groovy.sandbox.method_blacklist</code>
+</span></dt><dd>
+    Comma-separated list of methods that are never allowed to be invoked,
+    regardless of target object.
+</dd><dt><span class="term">
+<code class="literal">script.groovy.sandbox.enabled</code>
+</span></dt><dd>
+    Flag to disable the sandbox (defaults to <code class="literal">true</code> meaning the sandbox is
+    enabled).
+</dd></dl></div><p>When specifying whitelist or blacklist settings for the groovy sandbox, all
+options replace the current whitelist, they are not additive.</p><h3><a id="_automatic_script_reloading"></a>Automatic Script Reloading<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The <code class="literal">config/scripts</code> directory is scanned periodically for changes.
+New and changed scripts are reloaded and deleted script are removed
+from preloaded scripts cache. The reload frequency can be specified
+using <code class="literal">watcher.interval</code> setting, which defaults to <code class="literal">60s</code>.
+To disable script reloading completely set <code class="literal">script.auto_reload_enabled</code>
+to <code class="literal">false</code>.</p><h3><a id="native-java-scripts"></a>Native (Java) Scripts<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Even though <code class="literal">groovy</code> is pretty fast, this allows to register native Java based
+scripts for faster execution.</p><p>In order to allow for scripts, the <code class="literal">NativeScriptFactory</code> needs to be
+implemented that constructs the script that will be executed. There are
+two main types, one that extends <code class="literal">AbstractExecutableScript</code> and one that
+extends <code class="literal">AbstractSearchScript</code> (probably the one most users will extend,
+with additional helper classes in <code class="literal">AbstractLongSearchScript</code>,
+<code class="literal">AbstractDoubleSearchScript</code>, and <code class="literal">AbstractFloatSearchScript</code>).</p><p>Registering them can either be done by settings, for example:
+<code class="literal">script.native.my.type</code> set to <code class="literal">sample.MyNativeScriptFactory</code> will
+register a script named <code class="literal">my</code>. Another option is in a plugin, access
+<code class="literal">ScriptModule</code> and call <code class="literal">registerScript</code> on it.</p><p>Executing the script is done by specifying the <code class="literal">lang</code> as <code class="literal">native</code>, and
+the name of the script as the <code class="literal">script</code>.</p><p>Note, the scripts need to be in the classpath of elasticsearch. One
+simple way to do it is to create a directory under plugins (choose a
+descriptive name), and place the jar / classes files there. They will be
+automatically loaded.</p><h3><a id="_lucene_expressions_scripts"></a>Lucene Expressions Scripts<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>This feature is <span class="strong"><strong>experimental</strong></span> and subject to change in future versions.</p></div></div><p>Lucene’s expressions module provides a mechanism to compile a
+<code class="literal">javascript</code> expression to bytecode.  This allows very fast execution,
+as if you had written a <code class="literal">native</code> script.  Expression scripts can be
+used in <code class="literal">script_score</code>, <code class="literal">script_fields</code>, sort scripts and numeric aggregation scripts.</p><p>See the <a class="ulink" href="http://lucene.apache.org/core/4_9_0/expressions/index.html?org/apache/lucene/expressions/js/package-summary.html" target="_top">expressions module documentation</a>
+for details on what operators and functions are available.</p><p>Variables in <code class="literal">expression</code> scripts are available to access:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Single valued document fields, e.g. <code class="literal">doc['myfield'].value</code>
+</li><li class="listitem">
+Parameters passed into the script, e.g. <code class="literal">mymodifier</code>
+</li><li class="listitem">
+The current document’s score, <code class="literal">_score</code> (only available when used in a <code class="literal">script_score</code>)
+</li></ul></div><p>There are a few limitations relative to other script languages:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Only numeric fields may be accessed
+</li><li class="listitem">
+Stored fields are not available
+</li><li class="listitem">
+If a field is sparse (only some documents contain a value), documents missing the field will have a value of <code class="literal">0</code>
+</li></ul></div><h3><a id="_score"></a>Score<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>In all scripts that can be used in aggregations, the current
+document’s score is accessible in <code class="literal">_score</code>.</p><h3><a id="_computing_scores_based_on_terms_in_scripts"></a>Computing scores based on terms in scripts<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>see <a class="link" href="modules-advanced-scripting.html" title="Text scoring in scripts">advanced scripting documentation</a></p><h3><a id="_document_fields"></a>Document Fields<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Most scripting revolve around the use of specific document fields data.
+The <code class="literal">doc['field_name']</code> can be used to access specific field data within
+a document (the document in question is usually derived by the context
+the script is used). Document fields are very fast to access since they
+end up being loaded into memory (all the relevant field values/tokens
+are loaded to memory). Note, however, that the <code class="literal">doc[...]</code> notation only
+allows for simple valued fields (can’t return a json object from it)
+and makes sense only on non-analyzed or single term based fields.</p><p>The following data can be extracted from a field:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Expression </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].value</code></p></td><td align="left" valign="top"><p>The native value of the field. For example,
+if its a short type, it will be short.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].values</code></p></td><td align="left" valign="top"><p>The native array values of the field. For
+example, if its a short type, it will be short[]. Remember, a field can
+have several values within a single doc. Returns an empty array if the
+field has no values.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].empty</code></p></td><td align="left" valign="top"><p>A boolean indicating if the field has no
+values within the doc.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].multiValued</code></p></td><td align="left" valign="top"><p>A boolean indicating that the field
+has several values within the corpus.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].lat</code></p></td><td align="left" valign="top"><p>The latitude of a geo point type.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].lon</code></p></td><td align="left" valign="top"><p>The longitude of a geo point type.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].lats</code></p></td><td align="left" valign="top"><p>The latitudes of a geo point type.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].lons</code></p></td><td align="left" valign="top"><p>The longitudes of a geo point type.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].distance(lat, lon)</code></p></td><td align="left" valign="top"><p>The <code class="literal">plane</code> distance (in meters)
+of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].distanceWithDefault(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The <code class="literal">plane</code> distance (in meters)
+of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].distanceInMiles(lat, lon)</code></p></td><td align="left" valign="top"><p>The <code class="literal">plane</code> distance (in
+miles) of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].distanceInMilesWithDefault(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The <code class="literal">plane</code> distance (in
+miles) of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].distanceInKm(lat, lon)</code></p></td><td align="left" valign="top"><p>The <code class="literal">plane</code> distance (in
+km) of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].distanceInKmWithDefault(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The <code class="literal">plane</code> distance (in
+km) of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].arcDistance(lat, lon)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+meters) of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].arcDistanceWithDefault(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+meters) of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].arcDistanceInMiles(lat, lon)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+miles) of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].arcDistanceInMilesWithDefault(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+miles) of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].arcDistanceInKm(lat, lon)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+km) of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].arcDistanceInKmWithDefault(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+km) of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].factorDistance(lat, lon)</code></p></td><td align="left" valign="top"><p>The distance factor of this geo point field from the provided lat/lon.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].factorDistance(lat, lon, default)</code></p></td><td align="left" valign="top"><p>The distance factor of this geo point field from the provided lat/lon with a default value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].geohashDistance(geohash)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in meters)
+of this geo point field from the provided geohash.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].geohashDistanceInKm(geohash)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in km)
+of this geo point field from the provided geohash.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">doc['field_name'].geohashDistanceInMiles(geohash)</code></p></td><td align="left" valign="top"><p>The <code class="literal">arc</code> distance (in
+miles) of this geo point field from the provided geohash.</p></td></tr></tbody></table></div><h3><a id="_stored_fields"></a>Stored Fields<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Stored fields can also be accessed when executing a script. Note, they
+are much slower to access compared with document fields, as they are not
+loaded into memory. They can be simply accessed using
+<code class="literal">_fields['my_field_name'].value</code> or <code class="literal">_fields['my_field_name'].values</code>.</p><h3><a id="_accessing_the_score_of_a_document_within_a_script"></a>Accessing the score of a document within a script<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>When using scripting for calculating the score of a document (for instance, with
+the <code class="literal">function_score</code> query), you can access the score using the <code class="literal">_score</code>
+variable inside of a Groovy script.</p><h3><a id="_source_field"></a>Source Field<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The source field can also be accessed when executing a script. The
+source field is loaded per doc, parsed, and then provided to the script
+for evaluation. The <code class="literal">_source</code> forms the context under which the source
+field can be accessed, for example <code class="literal">_source.obj2.obj1.field3</code>.</p><p>Accessing <code class="literal">_source</code> is much slower compared to using <code class="literal">_doc</code>
+but the data is not loaded into memory. For a single field access <code class="literal">_fields</code> may be
+faster than using <code class="literal">_source</code> due to the extra overhead of potentially parsing large documents.
+However, <code class="literal">_source</code> may be faster if you access multiple fields or if the source has already been
+loaded for other purposes.</p><h3><a id="_groovy_built_in_functions"></a>Groovy Built In Functions<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>There are several built in functions that can be used within scripts.
+They include:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Function </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">sin(a)</code></p></td><td align="left" valign="top"><p>Returns the trigonometric sine of an angle.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cos(a)</code></p></td><td align="left" valign="top"><p>Returns the trigonometric cosine of an angle.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">tan(a)</code></p></td><td align="left" valign="top"><p>Returns the trigonometric tangent of an angle.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">asin(a)</code></p></td><td align="left" valign="top"><p>Returns the arc sine of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">acos(a)</code></p></td><td align="left" valign="top"><p>Returns the arc cosine of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">atan(a)</code></p></td><td align="left" valign="top"><p>Returns the arc tangent of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">toRadians(angdeg)</code></p></td><td align="left" valign="top"><p>Converts an angle measured in degrees to an
+approximately equivalent angle measured in radians</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">toDegrees(angrad)</code></p></td><td align="left" valign="top"><p>Converts an angle measured in radians to an
+approximately equivalent angle measured in degrees.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">exp(a)</code></p></td><td align="left" valign="top"><p>Returns Euler’s number <span class="emphasis"><em>e</em></span> raised to the power of value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">log(a)</code></p></td><td align="left" valign="top"><p>Returns the natural logarithm (base <span class="emphasis"><em>e</em></span>) of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">log10(a)</code></p></td><td align="left" valign="top"><p>Returns the base 10 logarithm of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">sqrt(a)</code></p></td><td align="left" valign="top"><p>Returns the correctly rounded positive square root of a
+value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cbrt(a)</code></p></td><td align="left" valign="top"><p>Returns the cube root of a double value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">IEEEremainder(f1, f2)</code></p></td><td align="left" valign="top"><p>Computes the remainder operation on two
+arguments as prescribed by the IEEE 754 standard.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ceil(a)</code></p></td><td align="left" valign="top"><p>Returns the smallest (closest to negative infinity) value
+that is greater than or equal to the argument and is equal to a
+mathematical integer.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">floor(a)</code></p></td><td align="left" valign="top"><p>Returns the largest (closest to positive infinity) value
+that is less than or equal to the argument and is equal to a
+mathematical integer.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">rint(a)</code></p></td><td align="left" valign="top"><p>Returns the value that is closest in value to the argument
+and is equal to a mathematical integer.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">atan2(y, x)</code></p></td><td align="left" valign="top"><p>Returns the angle <span class="emphasis"><em>theta</em></span> from the conversion of
+rectangular coordinates (<span class="emphasis"><em>x</em></span>, <span class="emphasis"><em>y</em></span>) to polar coordinates (r,<span class="emphasis"><em>theta</em></span>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">pow(a, b)</code></p></td><td align="left" valign="top"><p>Returns the value of the first argument raised to the
+power of the second argument.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">round(a)</code></p></td><td align="left" valign="top"><p>Returns the closest <span class="emphasis"><em>int</em></span> to the argument.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">random()</code></p></td><td align="left" valign="top"><p>Returns a random <span class="emphasis"><em>double</em></span> value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">abs(a)</code></p></td><td align="left" valign="top"><p>Returns the absolute value of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">max(a, b)</code></p></td><td align="left" valign="top"><p>Returns the greater of two values.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">min(a, b)</code></p></td><td align="left" valign="top"><p>Returns the smaller of two values.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ulp(d)</code></p></td><td align="left" valign="top"><p>Returns the size of an ulp of the argument.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">signum(d)</code></p></td><td align="left" valign="top"><p>Returns the signum function of the argument.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">sinh(x)</code></p></td><td align="left" valign="top"><p>Returns the hyperbolic sine of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cosh(x)</code></p></td><td align="left" valign="top"><p>Returns the hyperbolic cosine of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">tanh(x)</code></p></td><td align="left" valign="top"><p>Returns the hyperbolic tangent of a value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">hypot(x, y)</code></p></td><td align="left" valign="top"><p>Returns sqrt(<span class="emphasis"><em>x2</em></span> + <span class="emphasis"><em>y2</em></span>) without intermediate overflow
+or underflow.</p></td></tr></tbody></table></div><h3><a id="_arithmetic_precision_in_mvel"></a>Arithmetic precision in MVEL<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>When dividing two numbers using MVEL based scripts, the engine tries to
+be smart and adheres to the default behaviour of java. This means if you
+divide two integers (you might have configured the fields as integer in
+the mapping), the result will also be an integer. This means, if a
+calculation like <code class="literal">1/num</code> is happening in your scripts and <code class="literal">num</code> is an
+integer with the value of <code class="literal">8</code>, the result is <code class="literal">0</code> even though you were
+expecting it to be <code class="literal">0.125</code>. You may need to enforce precision by
+explicitly using a double like <code class="literal">1.0/num</code> in order to get the expected
+result.</p></div><div class="navfooter"><span class="prev"><a href="modules-plugins.html">
+              « 
+              Plugins</a>
+           
+        </span><span class="next">
+           
+          <a href="modules-advanced-scripting.html">Text scoring in scripts
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>

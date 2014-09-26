@@ -33,7 +33,7 @@ search process:</p><div class="section"><div class="titlepage"><div><div><h3 cla
 used to handle the search request. It accepts values like: <code class="literal">_primary</code>,
 <code class="literal">_primary_first</code>, <code class="literal">_local</code>, <code class="literal">_only_node:xyz</code>, <code class="literal">_prefer_node:xyz</code> and
 <code class="literal">_shards:2,3</code>, which are explained in detail on the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current//search-request-preference.html" target="_top">search <code class="literal">preference</code></a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4//search-request-preference.html" target="_top">search <code class="literal">preference</code></a>
 documentation  page.</p><p>However, the most generally useful value is some arbitrary string, to avoid
 the <span class="emphasis"><em>bouncing results</em></span> problem.</p><div class="sidebar"><a id="bouncing-results"></a><div class="titlepage"><div><div><p class="title"><strong>Bouncing results</strong></p></div></div></div><p>Imagine that you are sorting your results by a <code class="literal">timestamp</code> field and there are
 two documents with the same timestamp.  Because search requests are

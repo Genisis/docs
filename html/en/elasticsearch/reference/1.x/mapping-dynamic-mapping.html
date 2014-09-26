@@ -63,7 +63,7 @@ root and inner object types:</p><pre class="programlisting prettyprint lang-js">
     "_default_" : {
         "dynamic_date_formats" : ["yyyy-MM-dd", "dd-MM-yyyy", "date_optional_time"]
     }
-}</pre><h3><a id="_unmapped_fields_in_queries"></a>Unmapped fields in queries<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/dynamic-mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.4.0.</p></div></div><p>Queries and filters can refer to fields which don’t exist in a mapping, except
+}</pre><h3><a id="_unmapped_fields_in_queries"></a>Unmapped fields in queries<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/dynamic-mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.4.0.Beta.</p></div></div><p>Queries and filters can refer to fields which don’t exist in a mapping, except
 when registering a new <a class="link" href="search-percolate.html" title="Percolator">percolator query</a> or when creating
 a <a class="link" href="indices-aliases.html#filtered" title="Filtered Aliasesedit">filtered alias</a>.  In these two cases, any fields referred to in
 the query or filter must already exist in the mapping, otherwise there is a

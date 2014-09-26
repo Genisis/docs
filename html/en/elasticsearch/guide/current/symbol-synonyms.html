@@ -39,7 +39,7 @@ I am thrilled to be at work on Sunday.
 I am thrilled to be at work on Sunday :(
 </li></ul></div><p>The <code class="literal">standard</code> tokenizer would simply strip out the emoticon in the second
 sentence, conflating two sentences that have quite different intent.</p><p>We can use the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-mapping-charfilter.html#analysis-mapping-charfilter" target="_top"><code class="literal">mapping</code> character filter</a>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-mapping-charfilter.html#analysis-mapping-charfilter" target="_top"><code class="literal">mapping</code> character filter</a>
 to replace emoticons with symbol synonyms like <code class="literal">emoticon_happy</code> and
 <code class="literal">emoticon_sad</code> before the text is passed to the tokenizer:</p><pre class="programlisting prettyprint lang-json">PUT /my_index
 {
@@ -78,7 +78,7 @@ be very helpful when doing sentiment analysis.  Of course, we could equally
 have used real words, like <code class="literal">happy</code> and <code class="literal">sad</code>.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The <code class="literal">mapping</code> character filter is useful for simple replacements of exact
 character sequences. For more flexible pattern matching, you can use regular
 expressions with the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html" target="_top"><code class="literal">pattern_replace</code> character filter</a>.</p></div></div></div><div class="navfooter"><span class="prev"><a href="multi-word-synonyms.html">
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-pattern-replace-charfilter.html" target="_top"><code class="literal">pattern_replace</code> character filter</a>.</p></div></div></div><div class="navfooter"><span class="prev"><a href="multi-word-synonyms.html">
               « 
               Multi-word synonyms and phrase queries</a>
            

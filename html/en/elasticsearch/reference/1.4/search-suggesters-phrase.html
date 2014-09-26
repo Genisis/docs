@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Phrase Suggester</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="search-suggesters.html" title="Suggesters" /><link rel="prev" href="search-suggesters-term.html" title="Term suggester" /><link rel="next" href="search-suggesters-completion.html" title="Completion Suggester" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
+      [1.4]
+    </a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs </a></span> » <span class="breadcrumb-link"><a href="search-suggesters.html">Suggesters</a></span> » <span class="breadcrumb-node">Phrase Suggester</span></div><div class="navheader"><span class="prev"><a href="search-suggesters-term.html">
+              « 
+              Term suggester</a>
+           
+        </span><span class="next">
+           
+          <a href="search-suggesters-completion.html">Completion Suggester
+               »
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="search-suggesters-phrase"></a>Phrase Suggester<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="search-suggesters-term.html">Term suggester</a></span></dt><dt><span class="section"><a href="search-suggesters-phrase.html">Phrase Suggester</a></span></dt><dt><span class="section"><a href="search-suggesters-completion.html">Completion Suggester</a></span></dt><dt><span class="section"><a href="suggester-context.html">Context Suggester</a></span></dt></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>In order to understand the format of suggestions, please
+read the <a class="xref" href="search-suggesters.html" title="Suggesters"><em>Suggesters</em></a> page first.</p></div></div><p>The <code class="literal">term</code> suggester provides a very convenient API to access word
+alternatives on a per token basis within a certain string distance. The API
+allows accessing each token in the stream individually while
+suggest-selection is left to the API consumer. Yet, often pre-selected
+suggestions are required in order to present to the end-user. The
+<code class="literal">phrase</code> suggester adds additional logic on top of the <code class="literal">term</code> suggester
+to select entire corrected phrases instead of individual tokens weighted
+based on <code class="literal">ngram-language</code> models. In practice this suggester will be
+able to make better decisions about which tokens to pick based on
+co-occurence and frequencies.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_api_example"></a>API Example<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">phrase</code> request is defined along side the query part in the json
+request:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/_search' -d {
+  "suggest" : {
+    "text" : "Xor the Got-Jewel",
+    "simple_phrase" : {
+      "phrase" : {
+        "analyzer" : "body",
+        "field" : "bigram",
+        "size" : 1,
+        "real_word_error_likelihood" : 0.95,
+        "max_errors" : 0.5,
+        "gram_size" : 2,
+        "direct_generator" : [ {
+          "field" : "body",
+          "suggest_mode" : "always",
+          "min_word_length" : 1
+        } ],
+        "highlight": {
+          "pre_tag": "&lt;em&gt;",
+          "post_tag": "&lt;/em&gt;"
+        }
+      }
+    }
+  }
+}</pre><p>The response contains suggestions scored by the most likely spell
+correction first. In this case we received the expected correction
+<code class="literal">xorr the god jewel</code> first while the second correction is less
+conservative where only one of the errors is corrected. Note, the
+request is executed with <code class="literal">max_errors</code> set to <code class="literal">0.5</code> so 50% of the terms
+can contain misspellings (See parameter descriptions below).</p><pre class="programlisting prettyprint lang-js">  {
+  "took" : 5,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2938,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "suggest" : {
+    "simple_phrase" : [ {
+      "text" : "Xor the Got-Jewel",
+      "offset" : 0,
+      "length" : 17,
+      "options" : [ {
+        "text" : "xorr the god jewel",
+        "highlighted": "&lt;em&gt;xorr&lt;/em&gt; the &lt;em&gt;god&lt;/em&gt; jewel",
+        "score" : 0.17877324
+      }, {
+        "text" : "xor the god jewel",
+        "highlighted": "xor the &lt;em&gt;god&lt;/em&gt; jewel",
+        "score" : 0.14231323
+      } ]
+    } ]
+  }
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_basic_phrase_suggest_api_parameters"></a>Basic Phrase suggest API parameters<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">field</code>
+</p>
+</td><td valign="top">
+<p>
+    the name of the field used to do n-gram lookups for the
+    language model, the suggester will use this field to gain statistics to
+    score corrections. This field is mandatory.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">gram_size</code>
+</p>
+</td><td valign="top">
+<p>
+    sets max size of the n-grams (shingles) in the <code class="literal">field</code>.
+    If the field doesn’t contain n-grams (shingles) this should be omitted
+    or set to <code class="literal">1</code>. Note that Elasticsearch tries to detect the gram size
+    based on the specified <code class="literal">field</code>. If the field uses a <code class="literal">shingle</code> filter the
+    <code class="literal">gram_size</code> is set to the <code class="literal">max_shingle_size</code> if not explicitly set.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">real_word_error_likelihood</code>
+</p>
+</td><td valign="top">
+<p>
+    the likelihood of a term being a
+    misspelled even if the term exists in the dictionary. The default it
+    <code class="literal">0.95</code> corresponding to 5% or the real words are misspelled.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">confidence</code>
+</p>
+</td><td valign="top">
+<p>
+    The confidence level defines a factor applied to the
+    input phrases score which is used as a threshold for other suggest
+    candidates. Only candidates that score higher than the threshold will be
+    included in the result. For instance a confidence level of <code class="literal">1.0</code> will
+    only return suggestions that score higher than the input phrase. If set
+    to <code class="literal">0.0</code> the top N candidates are returned. The default is <code class="literal">1.0</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">max_errors</code>
+</p>
+</td><td valign="top">
+<p>
+    the maximum percentage of the terms that at most
+    considered to be misspellings in order to form a correction. This method
+    accepts a float value in the range <code class="literal">[0..1)</code> as a fraction of the actual
+    query terms a number <code class="literal">&gt;=1</code> as an absolute number of query terms. The
+    default is set to <code class="literal">1.0</code> which corresponds to that only corrections with
+    at most 1 misspelled term are returned.  Note that setting this too high
+    can negativly impact performance. Low values like <code class="literal">1</code> or <code class="literal">2</code> are recommended
+    otherwise the time spend in suggest calls might exceed the time spend in
+    query execution.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">separator</code>
+</p>
+</td><td valign="top">
+<p>
+    the separator that is used to separate terms in the
+    bigram field. If not set the whitespace character is used as a
+    separator.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">size</code>
+</p>
+</td><td valign="top">
+<p>
+    the number of candidates that are generated for each
+    individual query term Low numbers like <code class="literal">3</code> or <code class="literal">5</code> typically produce good
+    results. Raising this can bring up terms with higher edit distances. The
+    default is <code class="literal">5</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">analyzer</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets the analyzer to analyse to suggest text with.
+    Defaults to the search analyzer of the suggest field passed via <code class="literal">field</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">shard_size</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets the maximum number of suggested term to be
+    retrieved from each individual shard. During the reduce phase, only the
+    top N suggestions are returned based on the <code class="literal">size</code> option. Defaults to
+    <code class="literal">5</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">text</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets the text / query to provide suggestions for.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">highlight</code>
+</p>
+</td><td valign="top">
+<p>
+    Sets up suggestion highlighting.  If not provided then
+    no <code class="literal">highlighted</code> field is returned.  If provided must
+    contain exactly <code class="literal">pre_tag</code> and <code class="literal">post_tag</code> which are
+    wrapped around the changed tokens.  If multiple tokens
+    in a row are changed the entire phrase of changed tokens
+    is wrapped rather than each token.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">collate</code>
+</p>
+</td><td valign="top">
+<p>
+    Checks each suggestion against the specified <code class="literal">query</code> or <code class="literal">filter</code> to
+    prune suggestions for which no matching docs exist in the index. Either
+    a <code class="literal">query</code> or a <code class="literal">filter</code> must be specified, and it is run as a
+    <a class="link" href="query-dsl-template-query.html" title="Template Query"><code class="literal">template</code> query</a>. The current suggestion is
+    automatically made available as the <code class="literal">{{suggestion}}</code>  variable, which
+    should be used in your query/filter.  You can still specify  your own
+    template <code class="literal">params</code> — the <code class="literal">suggestion</code> value will be added to the
+    variables you specify. You can specify a <code class="literal">preference</code> to control
+    on which shards the query is executed (see <a class="xref" href="search-request-preference.html" title="Preference">Preference</a>).
+    The default value is <code class="literal">_only_local</code>. Additionally, you can specify
+    a <code class="literal">prune</code> to control if all phrase suggestions will be
+    returned, when set to <code class="literal">true</code> the suggestions will have an additional
+    option <code class="literal">collate_match</code>, which will be <code class="literal">true</code> if matching documents
+    for the phrase was found, <code class="literal">false</code> otherwise. The default value for
+    <code class="literal">prune</code> is <code class="literal">false</code>.
+</p>
+</td></tr></tbody></table></div><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/_search' -d {
+   "suggest" : {
+     "text" : "Xor the Got-Jewel",
+     "simple_phrase" : {
+       "phrase" : {
+         "field" :  "bigram",
+         "size" :   1,
+         "direct_generator" : [ {
+           "field" :            "body",
+           "suggest_mode" :     "always",
+           "min_word_length" :  1
+         } ],
+         "collate": {
+           "query": { <a id="CO36-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+             "match": {
+                 "{{field_name}}" : "{{suggestion}}" <a id="CO36-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+             }
+           },
+           "params": {"field_name" : "title"}, <a id="CO36-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+           "preference": "_primary", <a id="CO36-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>
+           "prune": true <a id="CO36-5"></a><span><img src="images/icons/callouts/5.png" alt="" /></span>
+         }
+       }
+     }
+   }
+ }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO36-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+This query will be run once for every suggestion.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO36-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The <code class="literal">{{suggestion}}</code> variable will be replaced by the text
+    of each suggestion.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO36-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+An additional <code class="literal">field_name</code> variable has been specified in
+    <code class="literal">params</code> and is used by the <code class="literal">match</code> query.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO36-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The default <code class="literal">preference</code> has been changed to <code class="literal">_primary</code>.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO36-5"><span><img src="images/icons/callouts/5.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+All suggestions will be returned with an extra <code class="literal">collate_match</code>
+    option indicating whether the generated phrase matched any
+    document.
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_smoothing_models"></a>Smoothing Models<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">phrase</code> suggester supports multiple smoothing models to balance
+weight between infrequent grams (grams (shingles) are not existing in
+the index) and frequent grams (appear at least once in the index).</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">stupid_backoff</code>
+</p>
+</td><td valign="top">
+<p>
+    a simple backoff model that backs off to lower
+    order n-gram models if the higher order count is <code class="literal">0</code> and discounts the
+    lower order n-gram model by a constant factor. The default <code class="literal">discount</code> is
+    <code class="literal">0.4</code>. Stupid Backoff is the default model.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">laplace</code>
+</p>
+</td><td valign="top">
+<p>
+    a smoothing model that uses an additive smoothing where a
+    constant (typically <code class="literal">1.0</code> or smaller) is added to all counts to balance
+    weights, The default <code class="literal">alpha</code> is <code class="literal">0.5</code>.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">linear_interpolation</code>
+</p>
+</td><td valign="top">
+<p>
+    a smoothing model that takes the weighted
+    mean of the unigrams, bigrams and trigrams based on user supplied
+    weights (lambdas). Linear Interpolation doesn’t have any default values.
+    All parameters (<code class="literal">trigram_lambda</code>, <code class="literal">bigram_lambda</code>, <code class="literal">unigram_lambda</code>)
+    must be supplied.
+</p>
+</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_candidate_generators"></a>Candidate Generators<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">phrase</code> suggester uses candidate generators to produce a list of
+possible terms per term in the given text. A single candidate generator
+is similar to a <code class="literal">term</code> suggester called for each individual term in the
+text. The output of the generators is subsequently scored in combination
+with the candidates from the other terms to for suggestion candidates.</p><p>Currently only one type of candidate generator is supported, the
+<code class="literal">direct_generator</code>. The Phrase suggest API accepts a list of generators
+under the key <code class="literal">direct_generator</code> each of the generators in the list are
+called per term in the original text.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_direct_generators"></a>Direct Generators<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The direct generators support the following parameters:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">field</code>
+</p>
+</td><td valign="top">
+<p>
+    The field to fetch the candidate suggestions from. This is
+    a required option that either needs to be set globally or per
+    suggestion.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">size</code>
+</p>
+</td><td valign="top">
+<p>
+    The maximum corrections to be returned per suggest text token.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">suggest_mode</code>
+</p>
+</td><td valign="top">
+<p>
+    The suggest mode controls what suggestions are
+    included or controls for what suggest text terms, suggestions should be
+    suggested. Three possible values can be specified:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">missing</code>: Only suggest terms in the suggest text that aren’t in the
+                  index. This is the default.
+</li><li class="listitem">
+<code class="literal">popular</code>: Only suggest suggestions that occur in more docs then the
+                  original suggest text term.
+</li><li class="listitem">
+<code class="literal">always</code>: Suggest any matching suggestions based on terms in the
+                 suggest text.
+</li></ul></div>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">max_edits</code>
+</p>
+</td><td valign="top">
+<p>
+    The maximum edit distance candidate suggestions can have
+    in order to be considered as a suggestion. Can only be a value between 1
+    and 2. Any other value result in an bad request error being thrown.
+    Defaults to 2.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">prefix_length</code>
+</p>
+</td><td valign="top">
+<p>
+    The number of minimal prefix characters that must
+    match in order be a candidate suggestions. Defaults to 1. Increasing
+    this number improves spellcheck performance. Usually misspellings don’t
+    occur in the beginning of terms. (Old name "prefix_len" is deprecated)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">min_word_length</code>
+</p>
+</td><td valign="top">
+<p>
+    The minimum length a suggest text term must have in
+    order to be included. Defaults to 4. (Old name "min_word_len" is deprecated)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">max_inspections</code>
+</p>
+</td><td valign="top">
+<p>
+    A factor that is used to multiply with the
+    <code class="literal">shards_size</code> in order to inspect more candidate spell corrections on
+    the shard level. Can improve accuracy at the cost of performance.
+    Defaults to 5.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">min_doc_freq</code>
+</p>
+</td><td valign="top">
+<p>
+    The minimal threshold in number of documents a
+    suggestion should appear in. This can be specified as an absolute number
+    or as a relative percentage of number of documents. This can improve
+    quality by only suggesting high frequency terms. Defaults to 0f and is
+    not enabled. If a value higher than 1 is specified then the number
+    cannot be fractional. The shard level document frequencies are used for
+    this option.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">max_term_freq</code>
+</p>
+</td><td valign="top">
+<p>
+    The maximum threshold in number of documents a
+    suggest text token can exist in order to be included. Can be a relative
+    percentage number (e.g 0.4) or an absolute number to represent document
+    frequencies. If an value higher than 1 is specified then fractional can
+    not be specified. Defaults to 0.01f. This can be used to exclude high
+    frequency terms from being spellchecked. High frequency terms are
+    usually spelled correctly on top of this also improves the spellcheck
+    performance. The shard level document frequencies are used for this
+    option.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">pre_filter</code>
+</p>
+</td><td valign="top">
+<p>
+    a filter (analyzer) that is applied to each of the
+    tokens passed to this candidate generator. This filter is applied to the
+    original token before candidates are generated.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">post_filter</code>
+</p>
+</td><td valign="top">
+<p>
+    a filter (analyzer) that is applied to each of the
+    generated tokens before they are passed to the actual phrase scorer.
+</p>
+</td></tr></tbody></table></div><p>The following example shows a <code class="literal">phrase</code> suggest call with two generators,
+the first one is using a field containing ordinary indexed terms and the
+second one uses a field that uses terms indexed with a <code class="literal">reverse</code> filter
+(tokens are index in reverse order). This is used to overcome the limitation
+of the direct generators to require a constant prefix to provide
+high-performance suggestions. The <code class="literal">pre_filter</code> and <code class="literal">post_filter</code> options
+accept ordinary analyzer names.</p><pre class="programlisting prettyprint lang-js">curl -s -XPOST 'localhost:9200/_search' -d {
+ "suggest" : {
+    "text" : "Xor the Got-Jewel",
+    "simple_phrase" : {
+      "phrase" : {
+        "analyzer" : "body",
+        "field" : "bigram",
+        "size" : 4,
+        "real_word_error_likelihood" : 0.95,
+        "confidence" : 2.0,
+        "gram_size" : 2,
+        "direct_generator" : [ {
+          "field" : "body",
+          "suggest_mode" : "always",
+          "min_word_length" : 1
+        }, {
+          "field" : "reverse",
+          "suggest_mode" : "always",
+          "min_word_length" : 1,
+          "pre_filter" : "reverse",
+          "post_filter" : "reverse"
+        } ]
+      }
+    }
+  }
+}</pre><p><code class="literal">pre_filter</code> and <code class="literal">post_filter</code> can also be used to inject synonyms after
+candidates are generated. For instance for the query <code class="literal">captain usq</code> we
+might generate a candidate <code class="literal">usa</code> for term <code class="literal">usq</code> which is a synonym for
+<code class="literal">america</code> which allows to present <code class="literal">captain america</code> to the user if this
+phrase scores high enough.</p></div></div><div class="navfooter"><span class="prev"><a href="search-suggesters-term.html">
+              « 
+              Term suggester</a>
+           
+        </span><span class="next">
+           
+          <a href="search-suggesters-completion.html">Completion Suggester
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>

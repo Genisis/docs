@@ -67,7 +67,7 @@ PUT /my_index/blogpost/_bulk
 {"index":{"_id":4}}
 {"title":"Relationships are cool","body":"It's not complicated at all...","user":{"id":3,"name":"Alice John"}}</pre><p>Now we can run a query looking for blogposts about “relationships”, by users
 called “John”, and group the results by user, thanks to the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html" target="_top"><code class="literal">top_hits</code> aggregation</a>:</p><pre class="programlisting prettyprint lang-json">GET /my_index/blogpost/_search?search_type=count <a id="CO256-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/search-aggregations-metrics-top-hits-aggregation.html" target="_top"><code class="literal">top_hits</code> aggregation</a>:</p><pre class="programlisting prettyprint lang-json">GET /my_index/blogpost/_search?search_type=count <a id="CO256-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 {
   "query": { <a id="CO256-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
     "bool": {

@@ -212,9 +212,7 @@ size
 Optional. The maximum number of geohash buckets to return
                 (defaults to 10,000). When results are trimmed, buckets are
                 prioritised based on the volumes of documents they contain.
-                <span class="added">
-      [<span class="version">1.1.0</span>]
-      <span class="detail">Added in 1.1.0.</span></span> A value of <code class="literal">0</code> will return all buckets that
+                A value of <code class="literal">0</code> will return all buckets that
                 contain a hit, use with caution as this could use a lot of CPU
                 and network bandwith if there are many buckets.
 </p>
@@ -229,9 +227,7 @@ Optional. To allow for more accurate counting of the top cells
                 returning <code class="literal">max(10,(size x number-of-shards))</code> buckets from each
                 shard. If this heuristic is undesirable, the number considered
                 from each shard can be over-ridden using this parameter.
-                <span class="added">
-      [<span class="version">1.1.0</span>]
-      <span class="detail">Added in 1.1.0.</span></span> A value of <code class="literal">0</code> makes the shard size unlimited.
+                A value of <code class="literal">0</code> makes the shard size unlimited.
 </p>
 </td></tr></tbody></table></div></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-geodistance-aggregation.html">
               « 

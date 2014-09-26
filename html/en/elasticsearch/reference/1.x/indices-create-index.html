@@ -83,7 +83,7 @@ that can be set when creating an index, please check the
             }
         }
     }
-}'</pre><h3><a id="create-index-aliases"></a>Aliases<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/create-index.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.1.0.</p></div></div><p>The create index API allows also to provide a set of <a class="link" href="indices-aliases.html" title="Index Aliases">aliases</a>:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test -d '{
+}'</pre><h3><a id="create-index-aliases"></a>Aliases<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/create-index.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The create index API allows also to provide a set of <a class="link" href="indices-aliases.html" title="Index Aliases">aliases</a>:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test -d '{
     "aliases" : {
         "alias_1" : {},
         "alias_2" : {
@@ -93,7 +93,7 @@ that can be set when creating an index, please check the
             "routing" : "kimchy"
         }
     }
-}'</pre><h3><a id="_creation_date"></a>Creation Date<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/create-index.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.4.0.</p></div></div><p>When an index is created, a timestamp is stored in the index metadata for the creation date.  By
+}'</pre><h3><a id="_creation_date"></a>Creation Date<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/create-index.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.4.0.Beta.</p></div></div><p>When an index is created, a timestamp is stored in the index metadata for the creation date.  By
 default this it is automatically generated but it can also be specified using the
 <code class="literal">creation_date</code> parameter on the create index API:</p><pre class="programlisting prettyprint lang-js">curl -XPUT localhost:9200/test -d '{
     "creation_date" : 1407751337000 <a id="CO39-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>

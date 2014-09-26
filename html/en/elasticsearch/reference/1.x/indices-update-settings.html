@@ -145,7 +145,7 @@ settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span cl
 <code class="literal">index.routing.allocation.disable_replica_allocation</code>
 </span></dt><dd>
     Disable replica allocation. Defaults to <code class="literal">false</code>. Deprecated in favour for <code class="literal">index.routing.allocation.enable</code>.
-</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.0.0.RC1.</p></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd><dt><span class="term">
 <code class="literal">index.routing.allocation.enable</code>
 </span></dt><dd><p class="simpara">
     Enables shard allocation for a specific index. It can be set to:
@@ -234,7 +234,7 @@ curl -XPUT 'localhost:9200/myindex/_settings' -d '{
   }
 }'
 
-curl -XPOST 'localhost:9200/myindex/_open'</pre><h3><a id="codec-bloom-load"></a>Bloom filters<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/update-settings.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Up to version 1.3, Elasticsearch used to generate bloom filters for the <code class="literal">_uid</code>
+curl -XPOST 'localhost:9200/myindex/_open'</pre><h3><a id="codec-bloom-load"></a>Bloom filters<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/update-settings.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><h4>Coming in 1.4.0.Beta.</h4><p>Bloom filters will no longer be loaded into memory at search time by default.</p></div></div><p>Up to version 1.3, Elasticsearch used to generate bloom filters for the <code class="literal">_uid</code>
 field at indexing time and to load them at search time in order to speed-up
 primary-key lookups by savings disk seeks.</p><p>As of 1.4, bloom filters are still generated at indexing time, but they are
 no longer loaded at search time by default: they consume RAM in proportion to

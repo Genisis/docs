@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Client</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Java API [1.4]" /><link rel="up" href="index.html" title="Java API [1.4]" /><link rel="prev" href="_maven_repository.html" title="Maven Repository" /><link rel="next" href="index_.html" title="Index API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Java API
+      [1.4]
+    </a></span> » <span class="breadcrumb-node">Client</span></div><div class="navheader"><span class="prev"><a href="_maven_repository.html">
+              « 
+              Maven Repository</a>
+           
+        </span><span class="next">
+           
+          <a href="index_.html">Index API
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="client"></a>Client<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/java-api/client.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><div class="toc"><dl><dt><span class="preface"><a href="java-api.html">Preface</a></span></dt><dt><span class="chapter"><a href="_maven_repository.html">Maven Repository</a></span></dt><dt><span class="chapter"><a href="client.html">Client</a></span></dt><dt><span class="chapter"><a href="index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="get.html">Get API</a></span></dt><dt><span class="chapter"><a href="delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="search.html">Search API</a></span></dt><dt><span class="chapter"><a href="count.html">Count API</a></span></dt><dt><span class="chapter"><a href="delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="java-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="percolate.html">Percolate API</a></span></dt><dt><span class="chapter"><a href="query-dsl-queries.html">Query DSL - Queries</a></span></dt><dt><span class="chapter"><a href="query-dsl-filters.html">Query DSL - Filters</a></span></dt></dl></div><p>You can use the <span class="strong"><strong>Java client</strong></span> in multiple ways:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Perform standard <a class="link" href="index_.html" title="Index API">index</a>, <a class="link" href="get.html" title="Get API">get</a>,
+  <a class="link" href="delete.html" title="Delete API">delete</a> and <a class="link" href="search.html" title="Search API">search</a> operations on an
+  existing cluster
+</li><li class="listitem">
+Perform administrative tasks on a running cluster
+</li><li class="listitem">
+Start full nodes when you want to run Elasticsearch embedded in your
+  own application  or when you want to launch unit or integration tests
+</li></ul></div><p>Obtaining an elasticsearch <code class="literal">Client</code> is simple. The most common way to
+get a client is by:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Creating an embedded <a class="link" href="client.html#node-client" title="Node Client"><code class="literal">Node</code></a> that acts as a node
+within a cluster.
+</li><li class="listitem">
+Requesting a <code class="literal">Client</code> from your embedded <code class="literal">Node</code>.
+</li></ol></div><p>Another manner is by creating a <a class="link" href="client.html#transport-client" title="Transport Client"><code class="literal">TransportClient</code></a>
+that connects to a cluster.</p><p><span class="strong"><strong>Important:</strong></span></p><div class="blockquote"><blockquote class="blockquote"><p>Please note that you are encouraged to use the same version on client
+and cluster sides. You may hit some incompatibility issues when mixing
+major versions.</p></blockquote></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="node-client"></a>Node Client<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/java-api/client.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Instantiating a node based client is the simplest way to get a <code class="literal">Client</code>
+that can execute operations against elasticsearch.</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.node.NodeBuilder.*;
+
+// on startup
+
+Node node = nodeBuilder().node();
+Client client = node.client();
+
+// on shutdown
+
+node.close();</pre><p>When you start a <code class="literal">Node</code>, it joins an elasticsearch cluster. You can have
+different clusters by simply setting the <code class="literal">cluster.name</code> setting, or
+explicitly using the <code class="literal">clusterName</code> method on the builder.</p><p>You can define <code class="literal">cluster.name</code> in the <code class="literal">/src/main/resources/elasticsearch.yml</code>
+file in your project. As long as <code class="literal">elasticsearch.yml</code> is present in the
+classpath, it will be used when you start your node.</p><pre class="programlisting prettyprint lang-yaml">cluster.name: yourclustername</pre><p>Or in Java:</p><pre class="programlisting prettyprint lang-java">Node node = nodeBuilder().clusterName("yourclustername").node();
+Client client = node.client();</pre><p>The benefit of using the <code class="literal">Client</code> is the fact that operations are
+automatically routed to the node(s) the operations need to be executed
+on, without performing a "double hop". For example, the index operation
+will automatically be executed on the shard that it will end up existing
+at.</p><p>When you start a <code class="literal">Node</code>, the most important decision is whether it
+should hold data or not. In other words, should indices and shards be
+allocated to it. Many times we would like to have the clients just be
+clients, without shards being allocated to them. This is simple to
+configure by setting either <code class="literal">node.data</code> setting to <code class="literal">false</code> or
+<code class="literal">node.client</code> to <code class="literal">true</code> (the <code class="literal">NodeBuilder</code> respective helper methods on
+it):</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.node.NodeBuilder.*;
+
+// on startup
+
+Node node = nodeBuilder().client(true).node();
+Client client = node.client();
+
+// on shutdown
+
+node.close();</pre><p>Another common usage is to start the <code class="literal">Node</code> and use the <code class="literal">Client</code> in
+unit/integration tests. In such a case, we would like to start a "local"
+<code class="literal">Node</code> (with a "local" discovery and transport). Again, this is just a
+matter of a simple setting when starting the <code class="literal">Node</code>. Note, "local" here
+means local on the JVM (well, actually class loader) level, meaning that
+two <span class="strong"><strong>local</strong></span> servers started within the same JVM will discover themselves
+and form a cluster.</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.node.NodeBuilder.*;
+
+// on startup
+
+Node node = nodeBuilder().local(true).node();
+Client client = node.client();
+
+// on shutdown
+
+node.close();</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="transport-client"></a>Transport Client<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/java-api/client.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>The <code class="literal">TransportClient</code> connects remotely to an elasticsearch cluster
+using the transport module. It does not join the cluster, but simply
+gets one or more initial transport addresses and communicates with them
+in round robin fashion on each action (though most actions will probably
+be "two hop" operations).</p><pre class="programlisting prettyprint lang-java">// on startup
+
+Client client = new TransportClient()
+        .addTransportAddress(new InetSocketTransportAddress("host1", 9300))
+        .addTransportAddress(new InetSocketTransportAddress("host2", 9300));
+
+// on shutdown
+
+client.close();</pre><p>Note that you have to set the cluster name if you use one different than
+"elasticsearch":</p><pre class="programlisting prettyprint lang-java">Settings settings = ImmutableSettings.settingsBuilder()
+        .put("cluster.name", "myClusterName").build();
+Client client =    new TransportClient(settings);
+//Add transport addresses and do something with the client...</pre><p>Or using <code class="literal">elasticsearch.yml</code> file as shown in <a class="xref" href="client.html#node-client" title="Node Client">Node Client</a></p><p>The client allows to sniff the rest of the cluster, and add those into
+its list of machines to use. In this case, note that the IP addresses
+used will be the ones that the other nodes were started with (the
+"publish" address). In order to enable it, set the
+<code class="literal">client.transport.sniff</code> to <code class="literal">true</code>:</p><pre class="programlisting prettyprint lang-java">Settings settings = ImmutableSettings.settingsBuilder()
+        .put("client.transport.sniff", true).build();
+TransportClient client = new TransportClient(settings);</pre><p>Other transport client level settings include:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Parameter </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">client.transport.ignore_cluster_name</code></p></td><td align="left" valign="top"><p>Set to <code class="literal">true</code> to ignore cluster
+name validation of connected nodes. (since 0.19.4)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">client.transport.ping_timeout</code></p></td><td align="left" valign="top"><p>The time to wait for a ping response
+from a node. Defaults to <code class="literal">5s</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">client.transport.nodes_sampler_interval</code></p></td><td align="left" valign="top"><p>How often to sample / ping
+the nodes listed and connected. Defaults to <code class="literal">5s</code>.</p></td></tr></tbody></table></div></div></div><div class="navfooter"><span class="prev"><a href="_maven_repository.html">
+              « 
+              Maven Repository</a>
+           
+        </span><span class="next">
+           
+          <a href="index_.html">Index API
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>
