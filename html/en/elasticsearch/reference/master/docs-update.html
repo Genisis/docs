@@ -95,7 +95,7 @@ index the fresh doc:</p><pre class="programlisting prettyprint lang-js">curl -XP
     "upsert" : {
         "counter" : 1
     }
-}'</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.4.0.</p></div></div><p>If the document does not exist you may want your update script to
+}'</pre><p>If the document does not exist you may want your update script to
 run anyway in order to initialize the document contents using
 business logic unknown to the client. In this case pass the
 new <code class="literal">scripted_upsert</code> parameter with the value <code class="literal">true</code>.</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/sessions/session/dh3sgudg8gsrgl/_update' -d '{

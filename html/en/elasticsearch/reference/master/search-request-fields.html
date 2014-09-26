@@ -48,38 +48,7 @@ returned, for example:</p><pre class="programlisting prettyprint lang-js">{
 <code class="literal">_parent</code> fields are never returned as an array.</p><p>Also only leaf fields can be returned via the <code class="literal">field</code> option. So object fields can’t be returned and such requests
 will fail.</p><p>Script fields can also be automatically detected and used as fields, so
 things like <code class="literal">_source.obj1.field1</code> can be used, though not recommended, as
-<code class="literal">obj1.field1</code> will work as well.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="partial"></a>Partial<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/search/request/fields.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Deprecated in 1.0.0Beta1.</h4><p>Replaced by <a class="xref" href="search-request-source-filtering.html" title="Source filtering">Source filtering</a>.</p></div></div><p>When loading data from <code class="literal">_source</code>, partial fields can be used to use
-wildcards to control what part of the <code class="literal">_source</code> will be loaded based on
-<code class="literal">include</code> and <code class="literal">exclude</code> patterns. For example:</p><pre class="programlisting prettyprint lang-js">{
-    "query" : {
-        "match_all" : {}
-    },
-    "partial_fields" : {
-        "partial1" : {
-            "include" : "obj1.obj2.*",
-        }
-    }
-}</pre><p>And one that will also exclude <code class="literal">obj1.obj3</code>:</p><pre class="programlisting prettyprint lang-js">{
-    "query" : {
-        "match_all" : {}
-    },
-    "partial_fields" : {
-        "partial1" : {
-            "include" : "obj1.obj2.*",
-            "exclude" : "obj1.obj3.*"
-        }
-    }
-}</pre><p>Both <code class="literal">include</code> and <code class="literal">exclude</code> support multiple patterns:</p><pre class="programlisting prettyprint lang-js">{
-    "query" : {
-        "match_all" : {}
-    },
-    "partial_fields" : {
-        "partial1" : {
-            "include" : ["obj1.obj2.*", "obj1.obj4.*"],
-            "exclude" : "obj1.obj3.*"
-        }
-    }
-}</pre></div></div><div class="navfooter"><span class="prev"><a href="search-request-source-filtering.html">
+<code class="literal">obj1.field1</code> will work as well.</p></div><div class="navfooter"><span class="prev"><a href="search-request-source-filtering.html">
               « 
               Source filtering</a>
            
