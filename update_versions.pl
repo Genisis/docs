@@ -10,7 +10,7 @@ use ES::Util qw($Opts);
 use Getopt::Long;
 use Path::Class qw(dir file);
 
-GetOptions( $Opts, 'version=s', 'action=s', 'dir=s' );
+GetOptions( $Opts, 'version=s', 'action=s', 'dir=s', "new=s" );
 
 my $dir = $Opts->{dir} or usage("No <dir> specified");
 $dir = dir($dir);
@@ -22,12 +22,17 @@ if ( $action eq 'list' ) {
 }
 
 my $version = $Opts->{version} or usage("No <version> specified");
+my $new;
+if ( $action eq 'replace' ) {
+    $new = $Opts->{new} or usage("No <new> version specified");
+}
 
 my $cb
     = $action eq 'release'   ? release($version)
     : $action eq 'unrelease' ? unrelease($version)
     : $action eq 'strip'     ? strip($version)
-    :                          usage( "Unknown action: " . $action );
+    : $action eq 'replace' ? replace( $version, $new )
+    :                        usage( "Unknown action: " . $action );
 
 update( dir( $Opts->{dir} ), $cb );
 list($dir);
@@ -58,6 +63,7 @@ sub list {
             map { $versions{$version}{$_} || 0 } qw(added coming deprecated);
     }
 }
+
 #===================================
 sub release {
 #===================================
@@ -97,6 +103,19 @@ sub strip {
         //gmx;
         return $text;
         }
+}
+
+#===================================
+sub replace {
+#===================================
+    my ( $old, $new ) = @_;
+    no warnings 'uninitialized';
+    sub {
+        my $text = shift;
+        $text
+            =~ s/(coming|added|deprecated)\[${old}\s*(,[^\]]*)?\]/${1}[$new$2]/g;
+        return $text;
+    };
 }
 
 #===================================
@@ -146,11 +165,14 @@ sub usage {
         $0 --dir path/to/dir --action list
      OR
         $0 --dir path/to/dir --version 0.90.5 --action strip|release|unrelease
+     OR
+        $0 --dir path/to/dir --version 0.90.5 --action replace --new 0.90.5.Beta
 
     Actions:
       strip:     removes added/deprecated/coming notes
       release:   changes coming notes to added notes
       unrelease: changes added notes to coming notes
+      replace:   replace one version with another
 USAGE
 
     exit !!$error;
