@@ -85,9 +85,9 @@ The inverse document frequency (<code class="literal">idf</code>) of term <code 
 </p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="field-norm"></a>Field length norm<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/170_Relevance/10_Scoring_theory.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>How long is the field?  The shorter the field, the <span class="strong"><strong>higher</strong></span> the weight. If a
 term appears in a short field, such as a <code class="literal">title</code> field, it is more likely that
 the content of that field is “about” the term than if the same term appears
-in a much bigger <code class="literal">body</code> field. The field length norm is calculated as:</p><pre class="literallayout">norm(d) = √numTerms <a id="CO105-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span></pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO105-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-The field length norm (<code class="literal">norm</code>) is the square root of the number of terms
-    in the document.
+in a much bigger <code class="literal">body</code> field. The field length norm is calculated as:</p><pre class="literallayout">norm(d) = 1 / √numTerms <a id="CO105-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span></pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO105-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The field length norm (<code class="literal">norm</code>) is the inverse square root of the number of terms
+    in the field.
 </p></td></tr></table></div><p>While the field length norm is important for full text search, many other
 fields don’t need norms. Norms consume approximately one byte per <code class="literal">string</code> field
 per document in the index, whether or not a document contains the field or
