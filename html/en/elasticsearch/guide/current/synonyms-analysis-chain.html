@@ -59,7 +59,7 @@ case-sensitive rules could look like this:</p><pre class="literallayout">"CAT,CA
 "dog                    =&gt; dog,pet"
 "cat scan,cat_scan scan =&gt; cat_scan"
 "pet scan,pet_scan scan =&gt; pet_scan"
-"little,small"</pre><p>The case-insensitive rules would match <code class="literal">CAT scan</code> but would only match the
+"little,small"</pre><p>The case-sensitive rules would match <code class="literal">CAT scan</code> but would only match the
 <code class="literal">CAT</code> in <code class="literal">CAT Scan</code>. For this reason, we have the odd looking rule <code class="literal">cat_scan
 scan</code> in the case-insensitive list to catch bad replacements.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>You can see how quickly it can get complicated. As always, the <code class="literal">analyze</code> API
 is your friend — use it to check that your analyzers are configured

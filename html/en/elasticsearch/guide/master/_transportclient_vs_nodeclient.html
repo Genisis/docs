@@ -32,7 +32,7 @@
 NodeClient.  As discussed at the beginning of the book, the TransportClient
 acts as a communication layer between the cluster and your application.  It knows
 the API and can automatically round-robin between nodes, sniff the cluster for you,
-etc.  But it "external" to the cluster, similar to the REST clients.</p><p>The NodeClient, on the other hand, is actually a node within the cluster (but
+etc.  But it is "external" to the cluster, similar to the REST clients.</p><p>The NodeClient, on the other hand, is actually a node within the cluster (but
 does not hold data, and cannot become master).  Because it is a node, it knows
 the entire cluster state — where all the nodes reside, which shards live in which
 nodes, etc.  This means it can execute APIs with one less network-hop.</p><p>There are uses-cases for both clients:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
@@ -41,7 +41,7 @@ cluster.  For example, if your application quickly creates and destroys
 connections to the cluster, a TransportClient is much "lighter" than a NodeClient,
 since it is not part of a cluster.
 </p><p class="simpara">Similarly, if you need to create thousands of connections, you don’t want to
-have thousands of NodeClients join the cluster.  The TC will be a better choice</p></li><li class="listitem">
+have thousands of NodeClients join the cluster.  The TC will be a better choice.</p></li><li class="listitem">
 On the flipside, if you only need a few long-lived, persistent connection
 objects to the cluster, a NodeClient can be a bit more efficient since it knows
 the cluster layout.  But it ties your application into the cluster, so it may
