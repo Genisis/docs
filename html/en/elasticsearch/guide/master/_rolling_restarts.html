@@ -34,9 +34,9 @@ one at a time.</p><p>The common reason is either an Elasticsearch version upgrad
 maintenance on the server itself (OS update, hardware, etc).  Whatever the case,
 there is a particular method to perform a rolling restart.</p><p>By nature, Elasticsearch wants your data to be fully replicated and evenly balanced.
 If you were to shut down a single node for maintenance, the cluster will
-immediately recognize a loss of a and begin re-balancing.  This can be irritating
+immediately recognize the loss of a node and begin rebalancing.  This can be irritating
 if you know the node maintenance is short term, since the rebalancing of
-very large shards can take some time (think of trying to replicate 1TB…even
+very large shards can take some time (think of trying to replicate 1TB… even
 on fast networks this is non-trivial).</p><p>What we want to do is tell Elasticsearch to hold off on rebalancing, because
 we have more knowledge about the state of the cluster due to external factors.
 The procedure is as follows:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">

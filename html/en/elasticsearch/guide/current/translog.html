@@ -88,7 +88,7 @@ Flush all indices and wait until all flushes have completed before
 </p></td></tr></table></div><p>You seldom need to issue a manual <code class="literal">flush</code> yourself — usually automatic
 flushing is all that is required.</p><p>That said, it is beneficial to flush your indices before restarting a node or
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/indices-open-close.html" target="_top">closing an index</a>. When Elasticsearch tries to
-recover or reopen an index, it has to replays all of the operations in the
+recover or reopen an index, it has to replay all of the operations in the
 translog, so the shorter the log, the faster the recovery.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>How safe is the translog?</strong></p></div></div></div><p>The purpose of the translog is to ensure that operations are not lost.  This
 begs the question: how safe is the translog?</p><p>Writes to a file will not survive a reboot until the file has been
 <code class="literal">fsync</code>'ed to disk.  By default, the translog is <code class="literal">fsync</code>'ed every 5
