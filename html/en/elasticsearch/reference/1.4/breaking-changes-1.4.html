@@ -51,8 +51,7 @@ no warmers.  This ensures that the following two examples are equivalent:</p><pr
 curl -XGET 'http://localhost:9200/_warmers'</pre><p>The <a class="link" href="indices-aliases.html#alias-retrieving" title="Retrieving existing aliasesedit">get alias api</a> will return a section for <code class="literal">aliases</code> even if there are
 no aliases.  This ensures that the following two examples are equivalent:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_all/_aliases'
 
-curl -XGET 'http://localhost:9200/_aliases'</pre><p>In addition, the <a class="link" href="indices-aliases.html#alias-retrieving" title="Retrieving existing aliasesedit">get alias api</a> now supports <a class="xref" href="multi-index.html" title="Multiple Indices"><em>Multiple Indices</em></a> options and, by default, will
-produce an error response if a requested index does not exist.</p><p>The <a class="link" href="indices-get-mapping.html" title="Get Mapping">get mapping api</a> will return a section for <code class="literal">mappings</code> even if there are
+curl -XGET 'http://localhost:9200/_aliases'</pre><p>The <a class="link" href="indices-get-mapping.html" title="Get Mapping">get mapping api</a> will return a section for <code class="literal">mappings</code> even if there are
 no mappings.  This ensures that the following two examples are equivalent:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_all/_mappings'
 
 curl -XGET 'http://localhost:9200/_mappings'</pre><h3><a id="_bulk_udp"></a>Bulk UDP<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/migration/migrate_1_4.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p><a class="link" href="docs-bulk-udp.html" title="Bulk UDP API">Bulk UDP</a> has been deprecated and will be removed in 2.0.
