@@ -55,7 +55,12 @@ curl -XGET 'http://localhost:9200/_aliases'</pre><p>The <a class="link" href="in
 no mappings.  This ensures that the following two examples are equivalent:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_all/_mappings'
 
 curl -XGET 'http://localhost:9200/_mappings'</pre><h3><a id="_bulk_udp"></a>Bulk UDP<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/migration/migrate_1_4.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p><a class="link" href="docs-bulk-udp.html" title="Bulk UDP API">Bulk UDP</a> has been deprecated and will be removed in 2.0.
-You should use <a class="link" href="docs-bulk.html" title="Bulk API">the standard bulk API</a> instead.</p></div><div class="navfooter"><span class="prev"><a href="breaking-changes.html">
+You should use <a class="link" href="docs-bulk.html" title="Bulk API">the standard bulk API</a> instead.
+Each cluster must have an elected master node in order to be fully operational. Once a node loses its elected master
+node it will reject some or all operations.</p><h4><a id="_zen_discovery"></a>Zen discovery<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/migration/migrate_1_4.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>On versions before <code class="literal">1.4.0.Beta1</code> all operations are rejected when a node loses its elected master. From <code class="literal">1.4.0.Beta1</code>
+only write operations will be rejected by default. Read operations will still be served based on the information available
+to the node, which may result in being partial and possibly also stale. If the default is undesired then the
+pre <code class="literal">1.4.0.Beta1</code> behaviour can be enabled, see: <a class="link" href="modules-discovery-zen.html" title="Zen Discovery">no-master-block</a></p></div><div class="navfooter"><span class="prev"><a href="breaking-changes.html">
               « 
               Breaking changes </a>
            

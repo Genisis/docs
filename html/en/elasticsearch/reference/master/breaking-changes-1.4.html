@@ -54,7 +54,11 @@ curl -XGET 'http://localhost:9200/_aliases'</pre><p>In addition, the <a class="l
 produce an error response if a requested index does not exist.</p><p>The <a class="link" href="indices-get-mapping.html" title="Get Mapping">get mapping api</a> will return a section for <code class="literal">mappings</code> even if there are
 no mappings.  This ensures that the following two examples are equivalent:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/_all/_mappings'
 
-curl -XGET 'http://localhost:9200/_mappings'</pre></div></div><div class="navfooter"><span class="prev"><a href="breaking-changes-1.x.html">
+curl -XGET 'http://localhost:9200/_mappings'</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_zen_discovery"></a>Zen discovery<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/migration/migrate_1_x.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Each cluster must have an elected master node in order to be fully operational. Once a node loses its elected master
+node it will reject some or all operations.</p><p>On versions before <code class="literal">1.4.0.Beta1</code> all operations are rejected when a node loses its elected master. From <code class="literal">1.4.0.Beta1</code>
+only write operations will be rejected by default. Read operations will still be served based on the information available
+to the node, which may result in being partial and possibly also stale. If the default is undesired then the
+pre <code class="literal">1.4.0.Beta1</code> behaviour can be enabled, see: <a class="link" href="modules-discovery-zen.html" title="Zen Discovery">no-master-block</a></p></div></div><div class="navfooter"><span class="prev"><a href="breaking-changes-1.x.html">
               « 
               Breaking changes in 1.x</a>
            

@@ -47,21 +47,24 @@ as gossip routers. It provides the following settings with the
 value is either in the form of <code class="literal">host:port</code>, or in the form of
 <code class="literal">host[port1-port2]</code>.</p></td></tr></tbody></table></div><p>The unicast discovery uses the
 <a class="link" href="modules-transport.html" title="Transport">transport</a> module to
-perform the discovery.</p><h4><a id="master-election"></a>Master Election<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/discovery/zen.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>As part of the initial ping process a master of the cluster is either
+perform the discovery.</p><h4><a id="master-election"></a>Master Election<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/discovery/zen.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>As part of the ping process a master of the cluster is either
 elected or joined to. This is done automatically. The
 <code class="literal">discovery.zen.ping_timeout</code> (which defaults to <code class="literal">3s</code>) allows for the
 tweaking of election time to handle cases of slow or congested networks
 (higher values assure less chance of failure). Once a node joins, it
 will send a join request to the master (<code class="literal">discovery.zen.join_timeout</code>)
-with a timeout defaulting at 20 times the ping timeout.
-Nodes can be excluded from becoming a master by setting <code class="literal">node.master</code> to
+with a timeout defaulting at 20 times the ping timeout.</p><p>When the master node stops or has encountered a problem, the cluster nodes
+start pinging again and will elect a new master. This pinging round also
+serves as a protection against (partial) network failures where node may unjustly
+think that the master has failed. In this case the node will simply hear from
+other nodes about the currently active master.</p><p>Nodes can be excluded from becoming a master by setting <code class="literal">node.master</code> to
 <code class="literal">false</code>. Note, once a node is a client node (<code class="literal">node.client</code> set to
 <code class="literal">true</code>), it will not be allowed to become a master (<code class="literal">node.master</code> is
 automatically set to <code class="literal">false</code>).</p><p>The <code class="literal">discovery.zen.minimum_master_nodes</code> sets the minimum
-number of master eligible nodes a node should "see" in order to operate
-within the cluster. Its recommended to set it to (N/2)+1, rounding down to
-the nearest integer, when running more than 2 nodes in the cluster (where N is
-the number of master eligible nodes in the cluster).</p><h4><a id="fault-detection"></a>Fault Detection<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/discovery/zen.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>There are two fault detection processes running. The first is by the
+number of master eligible nodes a node should "see" in order to win a master election.
+It must be set to a quorum of your master eligible nodes. It is recommended to avoid
+having only two master eligible nodes, since a quorum of two is two. Therefore, a loss
+of either master node will result in an inoperable cluster</p><h4><a id="fault-detection"></a>Fault Detection<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/discovery/zen.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>There are two fault detection processes running. The first is by the
 master, to ping all the other nodes in the cluster and verify that they
 are alive. And on the other end, each node pings to master to verify if
 its still alive or an election process needs to be initiated.</p><p>The following settings control the fault detection process using the
@@ -95,7 +98,13 @@ updates its own cluster state and replies to the master node, which waits for
 all nodes to respond, up to a timeout, before going ahead processing the next
 updates in the queue. The <code class="literal">discovery.zen.publish_timeout</code> is set by default
 to 30 seconds and can be changed dynamically through the
-<a class="link" href="cluster-update-settings.html" title="Cluster Update Settings">cluster update settings api</a></p></div><div class="navfooter"><span class="prev"><a href="modules-discovery-gce.html">
+<a class="link" href="cluster-update-settings.html" title="Cluster Update Settings">cluster update settings api</a></p><h4><a id="no-master-block"></a>No master block<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/modules/discovery/zen.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.4.0.Beta1.</p></div></div><p>For a node to be fully operational, it must have an active master. The <code class="literal">discovery.zen.no_master_block</code> settings controls
+what operations should be rejected when there is no active master.</p><p>The <code class="literal">discovery.zen.no_master_block</code> setting has two valid options:
+* <code class="literal">all</code> - All operations on the node. I.e., both read &amp; writes will be rejected. This also applies for api cluster state
+read or write operations, like the get index settings, put mapping and cluster state api.
+* <code class="literal">write</code> - Write operations will be rejected. Read operations will succeed, based on the last known cluster configuration.
+This may result in partial reads or stale data as this node may be isolated from the rest of the cluster. This is the default.</p><p>The <code class="literal">discovery.zen.no_master_block</code> setting doesn’t apply for nodes based apis (for example cluster stats, node info and
+node stats apis) which will not be blocked and try to execute on any node possible.</p></div><div class="navfooter"><span class="prev"><a href="modules-discovery-gce.html">
               « 
               Google Compute Engine Discovery</a>
            
