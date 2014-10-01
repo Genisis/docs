@@ -83,6 +83,16 @@ contents:
             chunk:      1
             toc_level:  2
             abbr:       guide
+          -
+            title:      Resiliency status
+            prefix:     en/elasticsearch/resiliency
+            repo:       elasticsearch
+            index:      docs/resiliency/index.asciidoc
+            toc:        1
+            abbr:       resliency
+            branches:   [master]
+            current:    master
+            single:     1
 
     -
         title:      Marvel management and monitoring
