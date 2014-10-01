@@ -69,13 +69,14 @@ Global ordinals for the <code class="literal">_parent</code> field will be built
 </p></td></tr></table></div><p>With many parents, global ordinals can take several seconds to build.  In this
 case, it makes sense to increase the <code class="literal">refresh_interval</code> so that refreshes
 happen less often and global ordinals remain valid for longer. This will
-greatly reduce the CPU cost of rebuilding global ordinals every second.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_multi_generations"></a>Multi-generations<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/404_Parent_Child/70_Practical_considerations.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The ability to join multiple generations (see <a class="xref" href="grandparents.html" title="Grandparents and grandchildren">Grandparents and grandchildren</a>) sounds very
+greatly reduce the CPU cost of rebuilding global ordinals every second.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_multi_generations_and_concluding_thoughts"></a>Multi-generations and concluding thoughts<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/404_Parent_Child/70_Practical_considerations.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The ability to join multiple generations (see <a class="xref" href="grandparents.html" title="Grandparents and grandchildren">Grandparents and grandchildren</a>) sounds very
 attractive until you think of the costs involved:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 The more joins you have, the worse performance will be.
 </li><li class="listitem">
 Each generation of parents needs to have their string <code class="literal">_id</code> fields stored in
   memory, which can consume a lot of RAM.
-</li></ul></div><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Some advice about parent-child relationships:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</li></ul></div><p>As you consider your relationship schemes and if parent-child is right for you,
+consider this advice about parent-child relationships:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Use parent-child relationships sparingly, where there are many more children than parents.
 </li><li class="listitem">
 Avoid using multiple parent-child joins in a single query.
@@ -85,7 +86,7 @@ Avoid scoring by using the <code class="literal">has_child</code> filter, or the
 </li><li class="listitem">
 Keep the parent IDs short, so that they require less memory.
 </li></ul></div><p><span class="strong"><strong>Above all:</strong></span> think about the other techniques that we have discussed in this
-chapter before reaching for parent-child.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="grandparents.html">
+chapter before reaching for parent-child.</p></div></div><div class="navfooter"><span class="prev"><a href="grandparents.html">
               « 
               Grandparents and grandchildren</a>
            

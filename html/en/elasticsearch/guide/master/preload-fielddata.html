@@ -34,8 +34,14 @@ particular field, it will load that entire field into memory for each segment
 in the index.</p><p>For small segments, this requires a negligible amount of time.  But if you
 have a few 5GB segments and need to load 10GB of fielddata into memory, this
 process could take tens of seconds.  Users accustomed to sub-second response
-times would all of a sudden be hit by an apparently unresponsive website.</p><p>There are three methods to combat this latency spike.  All are variations on
-the same concept: pre-load the fielddata so that there is no latency spike.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="eager-fielddata"></a>Eagerly Loading Fielddata<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/115_eager.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The first tool is called <span class="emphasis"><em>eager loading</em></span> (as opposed to the default lazy
+times would all of a sudden be hit by an apparently unresponsive website.</p><p>There are three methods to combat this latency spike:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Eagerly load fielddata
+</li><li class="listitem">
+Eagerly load global ordinals
+</li><li class="listitem">
+Pre-populate caches with warmers
+</li></ul></div><p>All are variations on the same concept: pre-load the fielddata so that there is
+no latency spike when the user needs to execute a search.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="eager-fielddata"></a>Eagerly Loading Fielddata<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/115_eager.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The first tool is called <span class="emphasis"><em>eager loading</em></span> (as opposed to the default lazy
 loading). As new segments are created (by refreshing, flushing or merging),
 fields with eager loading enabled will have their per-segment fielddata
 pre-loaded <span class="strong"><strong>before</strong></span> the segment becomes visible to search.</p><p>This means that the first query to hit the segment will not need to trigger
