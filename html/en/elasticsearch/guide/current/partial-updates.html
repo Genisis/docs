@@ -109,7 +109,7 @@ another tag:</p><pre class="programlisting prettyprint lang-js">POST /website/bl
 The <code class="literal">search</code> tag has been appended to the <code class="literal">tags</code> array.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">views</code> field has been incremented.
-</p></td></tr></table></div><p>We can even choose to delete a document based on it contents,
+</p></td></tr></table></div><p>We can even choose to delete a document based on its contents,
 by setting <code class="literal">ctx.op</code> to <code class="literal">delete</code>:</p><pre class="programlisting prettyprint lang-js">POST /website/blog/1/_update
 {
    "script" : "ctx.op = ctx._source.views == count ? 'delete' : 'none'",
