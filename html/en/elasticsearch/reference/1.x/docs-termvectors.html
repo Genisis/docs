@@ -34,9 +34,11 @@
 document. The document could be stored in the index or artificially provided
 by the user <span class="added">
       [<span class="version">1.4.0.Beta1</span>]
-      <span class="detail">Added in 1.4.0.Beta1.</span></span>. Note that for documents stored in the index, this
-is a near realtime API as the term vectors are not available until the next
-refresh.</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_termvector?pretty=true'</pre><p>Optionally, you can specify the fields for which the information is
+      <span class="detail">Added in 1.4.0.Beta1.</span></span>. Term vectors are now <a class="link" href="docs-get.html#realtime" title="Realtimeedit">realtime</a>, as opposed to
+previously near realtime <span class="coming">
+      [<span class="version">coming in 1.5.0</span>]
+      <span class="detail">Coming in 1.5.0.</span></span>. The functionality is disabled by setting
+<code class="literal">realtime</code> parameter to <code class="literal">false</code>.</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_termvector?pretty=true'</pre><p>Optionally, you can specify the fields for which the information is
 retrieved either with a parameter in the url</p><pre class="programlisting prettyprint lang-js">curl -XGET 'http://localhost:9200/twitter/tweet/1/_termvector?fields=text,...'</pre><p>or by adding the requested fields in the request body (see
 example below). Fields can also be specified with wildcards
 in similar way to the <a class="link" href="query-dsl-multi-match-query.html" title="Multi Match Query">multi match query</a> <span class="added">
