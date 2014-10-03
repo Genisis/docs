@@ -42,7 +42,14 @@ client not to do
 to <code class="literal">100mb</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.max_initial_line_length</code></p></td><td align="left" valign="top"><p>The max length of an HTTP URL. Defaults
 to <code class="literal">4kb</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.compression</code></p></td><td align="left" valign="top"><p>Support for compression when possible (with
 Accept-Encoding). Defaults to <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.compression_level</code></p></td><td align="left" valign="top"><p>Defines the compression level to use.
-Defaults to <code class="literal">6</code>.</p></td></tr></tbody></table></div><p>It also shares the uses the common
+Defaults to <code class="literal">6</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.cors.enabled</code></p></td><td align="left" valign="top"><p>Enable or disable cross-origin resource sharing,
+i.e. whether a browser on another origin can do requests to
+Elasticsearch. Defaults to <code class="literal">true</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.cors.allow-origin</code></p></td><td align="left" valign="top"><p>Which origins to allow. Defaults to <code class="literal">*</code>,
+i.e. any origin.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.cors.max-age</code></p></td><td align="left" valign="top"><p>Browsers send a "preflight" OPTIONS-request to
+determine CORS settings. <code class="literal">max-age</code> defines how long the result should
+be cached for. Defaults to <code class="literal">1728000</code> (20 days)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.cors.allow-methods</code></p></td><td align="left" valign="top"><p>Which methods to allow. Defaults to
+<code class="literal">OPTIONS, HEAD, GET, POST, PUT, DELETE</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">http.cors.allow-headers</code></p></td><td align="left" valign="top"><p>Which headers to allow. Defaults to
+<code class="literal">X-Requested-With, Content-Type, Content-Length</code>.</p></td></tr></tbody></table></div><p>It also shares the uses the common
 <a class="link" href="modules-network.html" title="Network Settings">network settings</a>.</p><h3><a id="_disable_http"></a>Disable HTTP<a href="https://github.com/elasticsearch/elasticsearch/edit/0.90/docs/reference/modules/http.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The http module can be completely disabled and not started by setting
 <code class="literal">http.enabled</code> to <code class="literal">false</code>. This make sense when creating non
 <a class="link" href="modules-node.html" title="Node">data nodes</a> which accept HTTP
