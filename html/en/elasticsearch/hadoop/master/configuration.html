@@ -145,7 +145,19 @@ The document field/property name containing the document timestamp. To specify a
 es.mapping.id = uuid
 
 # specifying a parent with id '123'
-es.mapping.parent = &lt;123&gt;</pre><h4><a id="_update_settings"></a>Update settings<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>One using the <code class="literal">update</code> or <code class="literal">upsert</code> operation, additional settings (that mirror the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-update.html" target="_top">update</a> API) are available:
+es.mapping.parent = &lt;123&gt;</pre><h4><a id="_metadata"></a>Metadata<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">es.read.metadata</code> (default false)
+</span></dt><dd>
+Whether to include the document metadata (such as id and version) in the results or not (default).
+</dd><dt><span class="term">
+<code class="literal">es.read.metadata.field</code> (default _metadata)
+</span></dt><dd>
+The field under which the metadata information is placed. When <code class="literal">es.read.metadata</code> is set to true, the information is returned as a <code class="literal">Map</code> under the specified field.
+</dd><dt><span class="term">
+<code class="literal">es.read.metadata.version</code> (default false)
+</span></dt><dd>
+Whether to include the document version in the returned metadata. Applicable only if <code class="literal">es.read.metadata</code> is enabled.
+</dd></dl></div><h4><a id="_update_settings"></a>Update settings<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>One using the <code class="literal">update</code> or <code class="literal">upsert</code> operation, additional settings (that mirror the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-update.html" target="_top">update</a> API) are available:
 <code class="literal">es.update.script</code> (default none)::
 Script used for updating the document.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">es.update.script.lang</code> (default none)
