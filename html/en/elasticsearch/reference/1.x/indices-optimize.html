@@ -82,8 +82,9 @@ it might make sense to run it set to <code class="literal">false</code>.
 </p>
 </td><td valign="top">
 <p>
-Force a merge operation, even if there is a single segment in the
-shard with no deletions.
+<span class="deprecated">
+      [<span class="version">1.4.0</span>]
+      <span class="detail">Deprecated in 1.4.0. Use the upgrade API.</span></span>
 </p>
 </td></tr></tbody></table></div><h3><a id="optimize-multi-index"></a>Multi Index<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/optimize.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The optimize API can be applied to more than one index with a single
 call, or even on <code class="literal">_all</code> the indices.</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/kimchy,elasticsearch/_optimize'
