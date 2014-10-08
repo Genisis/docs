@@ -67,17 +67,25 @@ At its core, elasticsearch-hadoop uses the low-level Map/Reduce API to read and 
 </span></dt><dd>
 elasticsearch-hadoop automatically adjusts to your environment; one does not have to change between using the <code class="literal">mapred</code> or <code class="literal">mapreduce</code> APIs - both are supported, by the same classes, at the same time.
 </dd><dt><span class="term">
-Hive support
+Apache Hive support
 </span></dt><dd>
-Run Hive queries against Elasticsearch for advanced analystics and <span class="emphasis"><em>real_time</em></span> reponses. elasticsearch-hadoop exposes Elasticsearch as a Hive table so your scripts can crunch through data faster then ever.
+Run Hive queries against Elasticsearch for advanced analystics and <span class="emphasis"><em>real_time</em></span> responses. elasticsearch-hadoop exposes Elasticsearch as a Hive table so your scripts can crunch through data faster then ever.
 </dd><dt><span class="term">
-Pig support
+Apache Pig support
 </span></dt><dd>
 elasticsearch-hadoop supports Apache Pig exposing Elasticsearch as a <span class="emphasis"><em>native</em></span> Pig <code class="literal">Storage</code>. Run your Pig scripts against Elasticsearch without any modifications to your configuration or the Pig client.
 </dd><dt><span class="term">
 Cascading support
 </span></dt><dd>
 Cascading is an application framework for Java developers to simply develop robust applications on Apache Hadoop. And with elasticsearch-hadoop, Cascading can run its flows directly onto Elasticsearch.
+</dd><dt><span class="term">
+Apache Spark
+</span></dt><dd>
+Run fast transformations directly against Elasticsearch, either by streaming data or indexing <span class="emphasis"><em>arbitrary</em></span> <code class="literal">RDD</code>s. Available in both Java and Scala flavors.
+</dd><dt><span class="term">
+Apache Storm
+</span></dt><dd>
+elasticsearch-hadoop supports Apache Storm exposing Elasticsearch as both a <code class="literal">Spout</code> (source) or a <code class="literal">Bolt</code> (sink).
 </dd></dl></div></div><div class="navfooter"><span class="prev"><a href="setup.html">
               « 
               Setup </a>
