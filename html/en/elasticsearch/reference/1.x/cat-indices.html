@@ -45,7 +45,11 @@ green wiki     2 0  6401 1115 158843725 158843725
 green twitter  5 1 11434    0  67155614  33577857
 green twitter2 2 0  2030    0   6125085   6125085</pre><p>How many merge operations have the shards for the <code class="literal">wiki</code> completed?</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/indices/wiki?pri&amp;v&amp;h=health,index,prirep,docs.count,mt'
 health index docs.count mt pri.mt
-green  wiki        9646 16     16</pre></div><div class="navfooter"><span class="prev"><a href="cat-health.html">
+green  wiki        9646 16     16</pre><p>How much memory is used per index?</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/indices?v&amp;h=i,tm'
+i     tm
+wiki  8.1gb
+test  30.5kb
+user  1.9mb</pre></div><div class="navfooter"><span class="prev"><a href="cat-health.html">
               « 
               cat health</a>
            

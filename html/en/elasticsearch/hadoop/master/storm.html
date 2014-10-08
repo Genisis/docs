@@ -44,7 +44,7 @@ Specify what fields <code class="literal">EsSpout</code> will declare in its top
 <code class="literal">es.storm.spout.reliable.queue.size</code> (default 0)
 </span></dt><dd>
 Applicable only if <code class="literal">es.storm.spout.reliable</code> is <code class="literal">true</code>. Sets the size of the queue which holds documents in memory to be replayed until they are acknowledged. By default, the queue is <span class="emphasis"><em>unbounded</em></span> (<code class="literal">0</code>) however in a production environment
-it is indicated to limit the queue to limit the consumption of memory. If the queue is full, the <code class="literal">Bolt</code> drops any incoming +Tuple+s and throws an exception.
+it is indicated to limit the queue to limit the consumption of memory. If the queue is full, the <code class="literal">Bolt</code> drops any incoming <code class="literal">Tuple</code>s and throws an exception.
 </dd><dt><span class="term">
 <code class="literal">es.storm.spout.reliable.retries.per.tuple</code> (default 5)
 </span></dt><dd>
@@ -82,11 +82,12 @@ conf.put("es.index.auto.create", "true");
 StormSubmitter.submitTopology("myTopology", conf, topology);</pre><p>For this reason, typically, one should use the <span class="emphasis"><em>per-component</em></span> configuration model since it allows different configurations to be used within the same Storm topology:</p><pre class="programlisting prettyprint lang-java">Map conf = new HashMap();
 conf.put("es.index.auto.create", "true");
 TopologyBuilder builder = new TopologyBuilder();
-builder.setSpout("esSpout", new EsSpout("index/type", conf));</pre><h3><a id="storm-write"></a>Writing data to Elasticsearch<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/storm.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Through elasticsearch-hadoop, Elasticsearch is exposed to Storm through a native <code class="literal">Bolt</code>, namely <code class="literal">org.elasticsearch.storm.EsBolt</code> that writes the Storm +Tuple+s to Elasticsearch:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.storm.EsBolt; <a id="CO66-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+builder.setSpout("esSpout", new EsSpout("index/type", conf));</pre><h3><a id="storm-write"></a>Writing data to Elasticsearch<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/storm.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Through elasticsearch-hadoop, Elasticsearch is exposed to Storm through a native <code class="literal">Bolt</code>, namely <code class="literal">org.elasticsearch.storm.EsBolt</code> that writes the Storm <code class="literal">Tuple</code>s to Elasticsearch:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.storm.EsBolt; <a id="CO66-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 
 TopologyBuilder builder = new TopologyBuilder();
 builder.setSpout("spout", new RandomSentenceSpout(), 10);
-builder.setBolt("es-bolt", new EsBolt<a id="CO66-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>("storm/docs"<a id="CO66-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>), 5<a id="CO66-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>).shuffleGrouping("spout");</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+builder.setBolt("es-bolt", new EsBolt<a id="CO66-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>("storm/docs"<a id="CO66-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>), 5<a id="CO66-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>)
+                                    .shuffleGrouping("spout");</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 elasticsearch-hadoop <code class="literal">EsBolt</code> package import
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 <code class="literal">EsBolt</code> declaration
@@ -105,7 +106,8 @@ conf.put("es.input.json", "true"); <a id="CO67-2"></a><span><img src="images/ico
 
 TopologyBuilder builder = new TopologyBuilder();
 builder.setSpout("json-spout", new StringSpout<a id="CO67-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>(Arrays.asList(json1, json2));
-builder.setBolt("es-bolt", new EsBolt("storm/json-trips", conf<a id="CO67-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>)).shuffleGrouping("json-spout");</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+builder.setBolt("es-bolt", new EsBolt("storm/json-trips", conf<a id="CO67-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>))
+                                    .shuffleGrouping("json-spout");</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 JSON document represented as a <code class="literal">String</code>
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Option indicating the input is in JSON format
