@@ -165,7 +165,15 @@ type as <code class="literal">completion</code>.</p><pre class="programlisting p
 appropriately. If you configured a weight for a suggestion, this weight
 is used as <code class="literal">score</code>. Also the <code class="literal">text</code> field uses the <code class="literal">output</code> of your
 indexed suggestion, if configured, otherwise the matched part of the
-<code class="literal">input</code> field.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The completion suggester considers all documents in the index.
+<code class="literal">input</code> field.</p><p>The basic completion suggester query supports the following two parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">field</code>
+</span></dt><dd>
+The name of the field on which to run the query (required).
+</dd><dt><span class="term">
+<code class="literal">size</code>
+</span></dt><dd>
+The number of suggestions to return (defaults to <code class="literal">5</code>).
+</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The completion suggester considers all documents in the index.
 See <a class="xref" href="suggester-context.html" title="Context Suggester">Context Suggester</a> for an explanation of how to query a subset of
 documents instead.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="fuzzy"></a>Fuzzy queries<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/search/suggesters/completion-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The completion suggester also supports fuzzy queries - this means,
 you can actually have a typo in your search and still get results back.</p><pre class="programlisting prettyprint lang-js">curl -X POST 'localhost:9200/music/_suggest?pretty' -d '{
