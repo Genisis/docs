@@ -56,7 +56,7 @@ Columns appear in the order that they are listed below unless a
 different order is specified (e.g., <code class="literal">h=pid,id</code> versus <code class="literal">h=id,pid</code>).</p><p>When specifying headers, the headers are not placed in the output
 by default.  To have the headers appear in the output, use verbose
 mode (<code class="literal">v</code>). The header name will match the supplied value (e.g.,
-<code class="literal">pid</code> versus <code class="literal">p</code>).  For example:</p><pre class="programlisting prettyprint lang-sh">% curl 192.168.56.10:9200/_cat/nodes?v\&amp;h=id,ip,port,v,m
+<code class="literal">pid</code> versus <code class="literal">p</code>).  For example:</p><pre class="programlisting prettyprint lang-sh">% curl 192.168.56.10:9200/_cat/nodes?v&amp;h=id,ip,port,v,m
 id   ip            port version m
 pLSN 192.168.56.30 9300 1.4.0   m
 k0zy 192.168.56.10 9300 1.4.0   m
