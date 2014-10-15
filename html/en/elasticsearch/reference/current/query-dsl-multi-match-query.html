@@ -244,7 +244,7 @@ both use an <code class="literal">edge_ngram</code> analyzer, this query:</p><pr
 treated as a single field, and <code class="literal">first.edge</code> and <code class="literal">last.edge</code> would be
 grouped together and treated as a single field.</p><p>Having multiple groups is fine, but when combined with <code class="literal">operator</code> or
 <code class="literal">minimum_should_match</code>, it can suffer from the <a class="link" href="query-dsl-multi-match-query.html#operator-min" title="operator and minimum_should_match">same problem</a>
-as <code class="literal">most_fields</code> or <code class="literal">best_fields</code>.</p><p>You can easily rewrite this query yourself as two separate <code class="literal">cross_type</code>
+as <code class="literal">most_fields</code> or <code class="literal">best_fields</code>.</p><p>You can easily rewrite this query yourself as two separate <code class="literal">cross_fields</code>
 queries combined with a <code class="literal">bool</code> query, and apply the <code class="literal">minimum_should_match</code>
 parameter to just one of them:</p><pre class="programlisting prettyprint lang-js">{
     "bool": {
