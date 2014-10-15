@@ -48,7 +48,7 @@ by automatically wrapping the filter with a
 is always executed in two iterations whereas the <code class="literal">top_children</code> query
 can be executed in one or more iteration. When using the <code class="literal">has_child</code>
 query the <code class="literal">total_hits</code> is always correct.</p><h4><a id="_scoring_capabilities"></a>Scoring capabilities<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/query-dsl/queries/has-child-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The <code class="literal">has_child</code> also has scoring support. The
-supported score types are <code class="literal">max</code>, <code class="literal">sum</code>, <code class="literal">avg</code> or <code class="literal">none</code>. The default is
+supported score types are <code class="literal">min</code>, <code class="literal">max</code>, <code class="literal">sum</code>, <code class="literal">avg</code> or <code class="literal">none</code>. The default is
 <code class="literal">none</code> and yields the same behaviour as in previous versions. If the
 score type is set to another value than <code class="literal">none</code>, the scores of all the
 matching child documents are aggregated into the associated parent
