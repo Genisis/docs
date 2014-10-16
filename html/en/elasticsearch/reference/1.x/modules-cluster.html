@@ -102,7 +102,7 @@ a shard and its replica will not be allocated in the same <code class="literal">
 value.</p><p>The awareness attributes can hold several values, for example:</p><pre class="screen">cluster.routing.allocation.awareness.attributes: rack_id,zone</pre><p><span class="strong"><strong>NOTE</strong></span>: When using awareness attributes, shards will not be allocated to
 nodes that don’t have values set for those attributes.</p><h3><a id="forced-awareness"></a>Forced Awareness<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/modules/cluster.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Sometimes, we know in advance the number of values an awareness
 attribute can have, and more over, we would like never to have more
-replicas then needed allocated on a specific group of nodes with the
+replicas than needed allocated on a specific group of nodes with the
 same awareness attribute value. For that, we can force awareness on
 specific attributes.</p><p>For example, lets say we have an awareness attribute called <code class="literal">zone</code>, and
 we know we are going to have two zones, <code class="literal">zone1</code> and <code class="literal">zone2</code>. Here is how
