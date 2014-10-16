@@ -42,7 +42,7 @@ Such a context is defined by a set of context mappings which can either be a sim
 <span class="strong"><strong>category</strong></span> or a <span class="strong"><strong>geo location</strong></span>. The information used by the context suggester is
 configured in the type mapping with the <code class="literal">context</code> parameter, which lists all of the
 contexts that need to be specified in each document and in each suggestion request.
-For instance:</p><pre class="programlisting prettyprint lang-js">PUT services/service/_mapping
+For instance:</p><pre class="programlisting prettyprint lang-js">PUT services/_mapping/service
 {
     "service": {
         "properties": {
