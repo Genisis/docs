@@ -46,8 +46,8 @@ representation.</p><h3><a id="date-math"></a>Date Math<a href="https://github.co
 query/filter (mainly makes sense in <code class="literal">range</code> query/filter).</p><p>The expression starts with an "anchor" date, which can be either <code class="literal">now</code>
 or a date string (in the applicable format) ending with <code class="literal">||</code>. It can
 then follow by a math expression, supporting <code class="literal">+</code>, <code class="literal">-</code> and <code class="literal">/</code>
-(rounding). The units supported are <code class="literal">y</code> (year), <code class="literal">M</code> (month), <code class="literal">w</code> (week), <code class="literal">h</code> (hour),
-<code class="literal">m</code> (minute), and <code class="literal">s</code> (second).</p><p>Here are some samples: <code class="literal">now+1h</code>, <code class="literal">now+1h+1m</code>, <code class="literal">now+1h/d</code>,
+(rounding). The units supported are <code class="literal">y</code> (year), <code class="literal">M</code> (month), <code class="literal">w</code> (week),
+<code class="literal">d</code> (day), <code class="literal">h</code> (hour), <code class="literal">m</code> (minute), and <code class="literal">s</code> (second).</p><p>Here are some samples: <code class="literal">now+1h</code>, <code class="literal">now+1h+1m</code>, <code class="literal">now+1h/d</code>,
 <code class="literal">2012-01-01||+1M/d</code>.</p><p>Note, when doing <code class="literal">range</code> type searches, and the upper value is
 inclusive, the rounding will properly be rounded to the ceiling instead
 of flooring it.</p><p>To change this behavior, set
