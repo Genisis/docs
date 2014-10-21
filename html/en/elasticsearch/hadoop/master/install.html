@@ -75,7 +75,13 @@ These are available under the same <code class="literal">groupId</code>, using a
 &lt;/dependency&gt;</pre><p>
 </p><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO5-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 <span class="emphasis"><em>cascading</em></span> artifact
-</p></td></tr></table></div><p><strong>Storm. </strong>
+</p></td></tr></table></div><p>Note that Cascading itself is not available in Maven central but rather in its own repo <a class="ulink" href="http://conjars.org/" target="_top">conjars.org</a>. Make sure to add this repository to your build configuration
+in order for the Cascading dependencies to be properly resolved:</p><pre class="programlisting prettyprint lang-xml">&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;conjars.org&lt;/id&gt;
+    &lt;url&gt;http://conjars.org/repo&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;</pre><p><strong>Storm. </strong>
 </p><pre class="programlisting prettyprint lang-xml">&lt;dependency&gt;
   &lt;groupId&gt;org.elasticsearch&lt;/groupId&gt;
   &lt;artifactId&gt;elasticsearch-storm<a id="CO6-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>&lt;/artifactId&gt;
