@@ -59,14 +59,14 @@ handling nodes being added or removed.</p><p>The following settings may be used:
      Defaults to <code class="literal">2</code>.
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.enable</code>
-</span></dt><dd><p class="simpara">
-    Controls shard allocation for all indices, by allowing specific
-    kinds of shard to be allocated.
-</p><pre class="literallayout">Can be set to:
-* `all` (default) - Allows shard allocation for all kinds of shards.
-* `primaries` - Allows shard allocation only for primary shards.
-* `new_primaries` - Allows shard allocation only for primary shards for new indices.
-* `none` - No shard allocations of any kind are allowed for all indices.</pre></dd><dt><span class="term">
+</span></dt><dd>
+Controls shard allocation for all indices, by allowing specific
+kinds of shard to be allocated.
+</dd></dl></div><p>Can be set to:
+    * <code class="literal">all</code> (default) - Allows shard allocation for all kinds of shards.
+    * <code class="literal">primaries</code> - Allows shard allocation only for primary shards.
+    * <code class="literal">new_primaries</code> - Allows shard allocation only for primary shards for new indices.
+    * <code class="literal">none</code> - No shard allocations of any kind are allowed for all indices.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.same_shard.host</code>
 </span></dt><dd>
       Allows to perform a check to prevent allocation of multiple instances
