@@ -159,6 +159,18 @@ settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span cl
 </li><li class="listitem">
 <code class="literal">none</code> - No shard allocation is allowed.
 </li></ul></div></dd><dt><span class="term">
+<code class="literal">index.routing.rebalance.enable</code>
+</span></dt><dd><p class="simpara">
+    Enables shard rebalancing for a specific index. It can be set to:
+</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">all</code> (default) - Allows shard rebalancing for all shards.
+</li><li class="listitem">
+<code class="literal">primaries</code> - Allows shard rebalancing only for primary shards.
+</li><li class="listitem">
+<code class="literal">replicas</code> - Allows shard rebalancing only for replica shards.
+</li><li class="listitem">
+<code class="literal">none</code> - No shard rebalancing is allowed.
+</li></ul></div></dd><dt><span class="term">
 <code class="literal">index.routing.allocation.total_shards_per_node</code>
 </span></dt><dd>
     Controls the total number of shards (replicas and primaries) allowed to be allocated on a single node. Defaults to unbounded (<code class="literal">-1</code>).

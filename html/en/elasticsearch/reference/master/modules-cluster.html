@@ -67,6 +67,15 @@ kinds of shard to be allocated.
     * <code class="literal">primaries</code> - Allows shard allocation only for primary shards.
     * <code class="literal">new_primaries</code> - Allows shard allocation only for primary shards for new indices.
     * <code class="literal">none</code> - No shard allocations of any kind are allowed for all indices.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">cluster.routing.rebalance.enable</code>
+</span></dt><dd>
+Controls shard rebalance for all indices, by allowing specific
+kinds of shard to be rebalanced.
+</dd></dl></div><p>Can be set to:
+    * <code class="literal">all</code> (default) - Allows shard balancing for all kinds of shards.
+    * <code class="literal">primaries</code> - Allows shard balancing only for primary shards.
+    * <code class="literal">replicas</code> - Allows shard balancing only for replica shards.
+    * <code class="literal">none</code> - No shard balancing of any kind are allowed for all indices.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.same_shard.host</code>
 </span></dt><dd>
       Allows to perform a check to prevent allocation of multiple instances
