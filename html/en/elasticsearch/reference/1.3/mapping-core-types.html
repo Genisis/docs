@@ -127,11 +127,17 @@ even for documents that don’t have this specific field). As a consequence, if
 you don’t need scoring on a specific field, it is highly recommended to disable
 norms on it. In  particular, this is the case for fields that are used solely
 for filtering or aggregations.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 1.2.0.</p></div></div><p>In case you would like to disable norms after the fact, it is possible to do so
-by using the <a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping API</a>. Please however note that
+by using the <a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping API</a> by setting <code class="literal">omit_norms</code> to <code class="literal">true</code>.
+Please however note that
 norms won’t be removed instantly, but as your index will receive new insertions
 or updates, and segments get merged. Any score computation on a field that got
 norms removed might return inconsistent results since some documents won’t have
-norms anymore while other documents might still have norms.</p><h4><a id="number"></a>Number<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/mapping/types/core-types.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A number based type supporting <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">byte</code>, <code class="literal">short</code>,
+norms anymore while other documents might still have norms.</p><pre class="programlisting prettyprint lang-js">"properties": {
+    "field_name": {
+    "type": "string",
+    "omit_norms": true
+    }
+}</pre><h4><a id="number"></a>Number<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/mapping/types/core-types.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A number based type supporting <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">byte</code>, <code class="literal">short</code>,
 <code class="literal">integer</code>, and <code class="literal">long</code>. It uses specific constructs within Lucene in
 order to support numeric values. The number types have the same ranges
 as corresponding
