@@ -73,15 +73,15 @@ Use <code class="literal">rpm</code> or <code class="literal">dpkg</code> to ins
 </li></ul></div></li><li class="listitem">
 Start the now upgraded node.  Confirm that it joins the cluster.
 </li><li class="listitem">
-Repeat this process for all remaining nodes.
-</li><li class="listitem">
-When the process is complete on all nodes, you can re-enable shard reallocation:
+Re-enable shard reallocation:
 </li></ul></div><pre class="programlisting prettyprint lang-sh">        curl -XPUT localhost:9200/_cluster/settings -d '{
                 "transient" : {
                     "cluster.routing.allocation.enable" : "all"
                 }
         }'</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Observe that all shards are properly allocated on all nodes.  Balancing may take some time.
+</li><li class="listitem">
+Repeat this process for all remaining nodes.
 </li></ul></div><p>It may be possible to perform the upgrade by installing the new software while the service is running.  This would reduce downtime by ensuring the service was ready to run on the new version as soon as it is stopped on the node being upgraded.  This can be done by installing the new version in its own directory and using the symbolic link method outlined above.  It is important to test this procedure first to be sure that site-specific configuration data and production indices will not be overwritten during the upgrade process.</p><h3><a id="restart-upgrade"></a>Cluster restart upgrade process<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/setup/upgrade.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Elasticsearch releases prior to 1.0 and releases after 1.0 are not compatible with each other, so a rolling upgrade is not possible.  In order to upgrade a pre-1.0 system to 1.0 or later, a full cluster stop and start is required.  In order to perform this upgrade:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Disable shard reallocation (optional).  This is done to allow for a faster startup after cluster shutdown.  If this step is not performed, the nodes will immediately start trying to replicate shards to each other on startup and will spend a lot of time on wasted I/O.  With shard reallocation disabled, the nodes will join the cluster with their indices intact, without attempting to rebalance.  After startup is complete, reallocation will be turned back on.
 </li></ul></div><p>This syntax is from versions prior to 1.0:</p><pre class="programlisting prettyprint lang-sh">        curl -XPUT localhost:9200/_cluster/settings -d '{
