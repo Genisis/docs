@@ -41,7 +41,9 @@
 
     "aggregations" : {
         "genders" : {
-            "buckets" : [
+            "doc_count_error_upper_bound": 0, <a id="CO26-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "sum_other_doc_count": 0, <a id="CO26-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+            "buckets" : [ <a id="CO26-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
                 {
                     "key" : "male",
                     "doc_count" : 10
@@ -53,13 +55,19 @@
             ]
         }
     }
-}</pre><p>By default, the <code class="literal">terms</code> aggregation will return the buckets for the top ten terms ordered by the <code class="literal">doc_count</code>. One can
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO26-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+an upper bound of the error on the document counts for each term, see <a class="link" href="search-aggregations-bucket-terms-aggregation.html#search-aggregations-bucket-terms-aggregation-approximate-counts" title="Document counts are approximate">below</a>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO26-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+when there are lots of unique terms, elasticsearch only returns the top terms; this number is the sum of the document counts for all buckets that are not part of the response
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO26-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+the list of the top buckets, the meaning of <code class="literal">top</code> being defined by the <a class="link" href="search-aggregations-bucket-terms-aggregation.html#search-aggregations-bucket-terms-aggregation-order" title="Order">order</a>
+</p></td></tr></table></div><p>By default, the <code class="literal">terms</code> aggregation will return the buckets for the top ten terms ordered by the <code class="literal">doc_count</code>. One can
 change this default behaviour by setting the <code class="literal">size</code> parameter.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_size"></a>Size<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/terms-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">size</code> parameter can be set to define how many term buckets should be returned out of the overall terms list. By
 default, the node coordinating the search process will request each shard to provide its own top <code class="literal">size</code> term buckets
 and once all shards respond, it will reduce the results to the final list that will then be returned to the client.
 This means that if the number of unique terms is greater than <code class="literal">size</code>, the returned list is slightly off and not accurate
 (it could be that the term counts are slightly off and it could even be that a term that should have been in the top
-size buckets was not returned). If set to <code class="literal">0</code>, the <code class="literal">size</code> will be set to <code class="literal">Integer.MAX_VALUE</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_document_counts_are_approximate"></a>Document counts are approximate<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/terms-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>As described above, the document counts (and the results of any sub aggregations) in the terms aggregation are not always
+size buckets was not returned). If set to <code class="literal">0</code>, the <code class="literal">size</code> will be set to <code class="literal">Integer.MAX_VALUE</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="search-aggregations-bucket-terms-aggregation-approximate-counts"></a>Document counts are approximate<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/terms-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>As described above, the document counts (and the results of any sub aggregations) in the terms aggregation are not always
 accurate.  This is because each shard provides its own view of what the ordered list of terms should be and these are
 combined to give a final view. Consider the following scenario:</p><p>A request is made to obtain the top 5 terms in the field product, ordered by descending document count from an index with
 3 shards. In this case each shard is asked to give its top 5 terms.</p><pre class="programlisting prettyprint lang-js">{
@@ -142,7 +150,7 @@ returned is accurate.</p><pre class="programlisting prettyprint lang-js">{
 ordered by the terms values themselves (either ascending or descending) there is no error in the document count since if a shard
 does not return a particular term which appears in the results from another shard, it must not have that term in its index. When the
 aggregation is either sorted by a sub aggregation or in order of ascending document count, the error in the document counts cannot be
-determined and is given a value of -1 to indicate this.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_order"></a>Order<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/terms-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The order of the buckets can be customized by setting the <code class="literal">order</code> parameter. By default, the buckets are ordered by
+determined and is given a value of -1 to indicate this.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="search-aggregations-bucket-terms-aggregation-order"></a>Order<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/terms-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The order of the buckets can be customized by setting the <code class="literal">order</code> parameter. By default, the buckets are ordered by
 their <code class="literal">doc_count</code> descending. It is also possible to change this behaviour as follows:</p><p>Ordering the buckets by their <code class="literal">doc_count</code> in an ascending manner:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "genders" : {
@@ -282,7 +290,7 @@ and as such, they it is also possible to pass in flags that will determine how t
                  "field" : "tags",
                  "include" : {
                      "pattern" : ".*sport.*",
-                     "flags" : "CANON_EQ|CASE_INSENSITIVE" <a id="CO26-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                     "flags" : "CANON_EQ|CASE_INSENSITIVE" <a id="CO27-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
                  },
                  "exclude" : {
                      "pattern" : "water_.*",
@@ -291,7 +299,7 @@ and as such, they it is also possible to pass in flags that will determine how t
              }
          }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO26-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO27-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 the flags are concatenated using the <code class="literal">|</code> character as a separator
 </p></td></tr></table></div><p>The possible flags that can be used are:
 <a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CANON_EQ" target="_top"><code class="literal">CANON_EQ</code></a>,
@@ -391,11 +399,11 @@ in inner aggregations.</p><pre class="programlisting prettyprint lang-js">{
         "tags" : {
              "terms" : {
                  "field" : "tags",
-                 "execution_hint": "map" <a id="CO27-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                 "execution_hint": "map" <a id="CO28-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
              }
          }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO27-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO28-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 the possible values are <code class="literal">map</code>, <code class="literal">global_ordinals</code>, <code class="literal">global_ordinals_hash</code> and <code class="literal">global_ordinals_low_cardinality</code>
 </p></td></tr></table></div><p>Please note that Elasticsearch will ignore this execution hint if it is not applicable and that there is no backward compatibility guarantee on these hints.</p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-children-aggregation.html">
               « 
