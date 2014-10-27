@@ -92,7 +92,7 @@ interesting terms extracted from some provided text. The interesting terms are
 selected with respect to their tf-idf scores. These are controlled by
 <code class="literal">min_term_freq</code>, <code class="literal">min_doc_freq</code>, and <code class="literal">max_doc_freq</code>. The number of interesting
 terms is controlled by <code class="literal">max_query_terms</code>. While the minimum number of clauses
-that must be satisfied is controlled by <code class="literal">percent_terms_to_match</code>. The terms
+that must be satisfied is controlled by <code class="literal">minimum_should_match</code>. The terms
 are extracted from the text in <code class="literal">like</code> and analyzed by the analyzer associated
 with the field, unless specified by <code class="literal">analyzer</code>. There are other parameters,
 such as <code class="literal">min_word_length</code>, <code class="literal">max_word_length</code> or <code class="literal">stop_words</code>, to control what
@@ -125,8 +125,14 @@ A list of documents following the same syntax as the
 The text is fetched from <code class="literal">fields</code> unless specified otherwise in each <code class="literal">doc</code>.
 The text is analyzed by the default analyzer at the field, unless specified by the
 <code class="literal">per_field_analyzer</code> parameter of the <a class="link" href="docs-termvectors.html#docs-termvectors-per-field-analyzer" title="Example 4 [coming in 1.5.0] Coming in 1.5.0.edit">Term Vectors API</a>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include</code></p></td><td align="left" valign="top"><p>When using <code class="literal">like</code> with document requests, specifies whether the documents should be
-included from the search. Defaults to <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">minimum_should_match</code></p></td><td align="left" valign="top"><p>From the generated query, the number of terms that
-must match following the <a class="link" href="query-dsl-minimum-should-match.html" title="Minimum Should Match">minimum should syntax</a>. (Defaults to <code class="literal">"30%"</code>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">min_term_freq</code></p></td><td align="left" valign="top"><p>The frequency below which terms will be ignored in the
+included from the search. Defaults to <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">minimum_should_match</code></p></td><td align="left" valign="top"><p><span class="coming">
+      [<span class="version">coming in 1.5.0</span>]
+      <span class="detail">Coming in 1.5.0.</span></span> From the generated query, the number of terms that
+must match following the <a class="link" href="query-dsl-minimum-should-match.html" title="Minimum Should Match">minimum should syntax</a>. (Defaults to <code class="literal">"30%"</code>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">percent_terms_to_match</code></p></td><td align="left" valign="top"><p><span class="deprecated">
+      [<span class="version">1.5.0</span>]
+      <span class="detail">Deprecated in 1.5.0. Replaced by <code class="literal">minimum_should_match</code>.</span></span>
+From the generated query, the percentage of terms that must match (float value
+between 0 and 1). Defaults to <code class="literal">0.3</code> (30 percent).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">min_term_freq</code></p></td><td align="left" valign="top"><p>The frequency below which terms will be ignored in the
 source doc. The default frequency is <code class="literal">2</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">max_query_terms</code></p></td><td align="left" valign="top"><p>The maximum number of query terms that will be
 included in any generated query. Defaults to <code class="literal">25</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">stop_words</code></p></td><td align="left" valign="top"><p>An array of stop words. Any word in this set is
 considered "uninteresting" and ignored. Even if your Analyzer allows

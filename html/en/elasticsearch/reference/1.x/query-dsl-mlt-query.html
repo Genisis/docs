@@ -96,7 +96,7 @@ interesting terms extracted from some provided text. The interesting terms are
 selected with respect to their tf-idf scores. These are controlled by
 <code class="literal">min_term_freq</code>, <code class="literal">min_doc_freq</code>, and <code class="literal">max_doc_freq</code>. The number of interesting
 terms is controlled by <code class="literal">max_query_terms</code>. While the minimum number of clauses
-that must be satisfied is controlled by <code class="literal">percent_terms_to_match</code>. The terms
+that must be satisfied is controlled by <code class="literal">minimum_should_match</code>. The terms
 are extracted from <code class="literal">like_text</code> which is analyzed by the analyzer associated
 with the field, unless specified by <code class="literal">analyzer</code>. There are other parameters,
 such as <code class="literal">min_word_length</code>, <code class="literal">max_word_length</code> or <code class="literal">stop_words</code>, to control what
