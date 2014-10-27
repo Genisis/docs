@@ -65,12 +65,12 @@ memory. You can visualize a <code class="literal">terms</code> aggregation as bu
 The "actors" aggregation will build the first level of the tree, with a bucket
 for every actor.  Then, nested under each node in the first level, the
 "costars" aggregation will build a second level, with a bucket for every co-
-star. That means that a single movie will generate n<sup>2</sup> buckets!</p><p>TODO: graph of tree structures</p><p>To use some real numbers, imagine each movie has 10 actors on average. Each movie
+star. That means that a single movie will generate n<sup>2</sup> buckets!</p><div class="informalfigure"><a id="depth-first-1"></a><div class="mediaobject"><img src="images/300_120_depth_first_1.svg" alt="Step 1: build full depth tree" /></div></div><p>To use some real numbers, imagine each movie has 10 actors on average. Each movie
 will then generate 10<sup>2</sup> == 100 buckets.  If you have 20,000 movies, that’s
 roughly 2,000,000 generated buckets.</p><p>Now, remember… our aggregation is simply asking for the top 10 actors and their
 co-stars, totaling 50 values.  To get the final results, we have to generate
 that tree of 2,000,000 buckets, sort it, and finally prune it such that only the
-top 10 actors are left.</p><p>At this point you should be quite distraught.  Twenty thousand documents is paltry,
+top 10 actors are left.</p><div class="informalfigure"><a id="depth-first-2"></a><div class="mediaobject"><img src="images/300_120_depth_first_2.svg" alt="Step 2: sort tree" /></div></div><div class="informalfigure"><a id="depth-first-3"></a><div class="mediaobject"><img src="images/300_120_depth_first_3.svg" alt="Step 3: prune tree" /></div></div><p>At this point you should be quite distraught.  Twenty thousand documents is paltry,
 and the aggregation is pretty tame.  What if you had 200 million documents, wanted
 the top 100 actors and their top 20 co-stars, as well as the co-stars' co-stars?</p><p>You can appreciate how quickly combinatorial expansion can grow, making this
 strategy untenable.  There is not enough memory in the world to support uncontrolled
@@ -83,9 +83,11 @@ like above.</p><p>For these special cases, you should use an alternative collect
 layer of aggregations, <span class="emphasis"><em>then</em></span> performs a pruning phase before continuing.</p><p>In our example, the "actors" aggregation would be executed first.  At this
 point, we have a single layer in the tree, but we already know who the top 10
 actors are! There is no need to keep the other actors since they won’t be in
-the top 10 anyway.</p><p>TODO: graphs of tree</p><p>Therefore, breadth-first will prune everything except the top 10.  Once pruned,
-it will execute the next layer of aggregations, etc.  This prevents the
-combinatorial explosion of buckets and drastically reduces memory requirements.</p><p>To use breadth-first, simply enable it via the <code class="literal">collect</code> parameter:</p><pre class="programlisting prettyprint lang-js">{
+the top 10 anyway.</p><div class="informalfigure"><a id="breadth-first-1"></a><div class="mediaobject"><img src="images/300_120_breadth_first_1.svg" alt="Step 1: build first level" /></div></div><div class="informalfigure"><a id="breadth-first-2"></a><div class="mediaobject"><img src="images/300_120_breadth_first_2.svg" alt="Step 2: sort first level" /></div></div><div class="informalfigure"><a id="breadth-first-3"></a><div class="mediaobject"><img src="images/300_120_breadth_first_3.svg" alt="Step 2: prune first level" /></div></div><p>Since we already know the top ten actors, we can safely prune away the rest of the
+long tail. After pruning, the next layer is populated based on <span class="emphasis"><em>it’s</em></span> execution mode,
+and the process repeats until the aggregation is done. This prevents the
+combinatorial explosion of buckets and drastically reduces memory requirements
+for classes of queries that are amenable to breadth-first.</p><div class="informalfigure"><a id="breadth-first-4"></a><div class="mediaobject"><img src="images/300_120_breadth_first_4.svg" alt="Step 4: populate full depth for remaining nodes" /></div></div><p>To use breadth-first, simply enable it via the <code class="literal">collect</code> parameter:</p><pre class="programlisting prettyprint lang-js">{
   "aggs" : {
     "actors" : {
       "terms" : {
