@@ -60,7 +60,8 @@ Each cluster must have an elected master node in order to be fully operational. 
 node it will reject some or all operations.</p><h4><a id="_zen_discovery"></a>Zen discovery<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/migration/migrate_1_4.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>On versions before <code class="literal">1.4.0.Beta1</code> all operations are rejected when a node loses its elected master. From <code class="literal">1.4.0.Beta1</code>
 only write operations will be rejected by default. Read operations will still be served based on the information available
 to the node, which may result in being partial and possibly also stale. If the default is undesired then the
-pre <code class="literal">1.4.0.Beta1</code> behaviour can be enabled, see: <a class="link" href="modules-discovery-zen.html" title="Zen Discovery">no-master-block</a></p></div><div class="navfooter"><span class="prev"><a href="breaking-changes.html">
+pre <code class="literal">1.4.0.Beta1</code> behaviour can be enabled, see: <a class="link" href="modules-discovery-zen.html" title="Zen Discovery">no-master-block</a></p><h4><a id="_more_like_this_field"></a>More Like This Field<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/migration/migrate_1_4.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The More Like This Field query has been deprecated in favor of the <a class="link" href="query-dsl-mlt-query.html" title="More Like This Query">More Like This Query</a>
+restrained set to a specific <code class="literal">field</code>. It will be removed in 2.0.</p></div><div class="navfooter"><span class="prev"><a href="breaking-changes.html">
               « 
               Breaking changes </a>
            
