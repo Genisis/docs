@@ -232,6 +232,46 @@ Number of results/items returned by each individual scroll.
 <code class="literal">es.action.heart.beat.lead</code> (default 15s)
 </span></dt><dd>
 The lead to task timeout before elasticsearch-hadoop informs Hadoop the task is still running to prevent task restart.
+</dd></dl></div><h4><a id="_basic_authentication"></a>Basic Authentication<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">es.net.http.auth.user</code>
+</span></dt><dd>
+Basic Authentication user name
+</dd><dt><span class="term">
+<code class="literal">es.net.http.auth.pass</code>
+</span></dt><dd>
+Basic Authentication password
+</dd></dl></div><h4><a id="_ssl"></a>SSL<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">es.net.ssl</code> (default false)
+</span></dt><dd>
+Enable SSL
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.keystore.location</code>
+</span></dt><dd>
+key store (if used) location (typically a URL, without a prefix it is interpreted as a classpath entry)
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.keystore.pass</code>
+</span></dt><dd>
+key store password
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.keystore.type</code> (default JKS)
+</span></dt><dd>
+key store type. PK12 is an common, alternative format
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.truststore.location</code>
+</span></dt><dd>
+trust store location (typically a URL, without a prefix it is interpreted as a classpath entry)
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.truststore.pass</code>
+</span></dt><dd>
+trust store password
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.cert.allow.self.signed</code> (default false)
+</span></dt><dd>
+Whether or not to allow self signed certificates
+</dd><dt><span class="term">
+<code class="literal">es.net.ssl.protocol</code>(default TLS)
+</span></dt><dd>
+SSL protocol to be used
 </dd></dl></div><h4><a id="_proxy"></a>Proxy<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">es.net.proxy.http.host</code>
 </span></dt><dd>
