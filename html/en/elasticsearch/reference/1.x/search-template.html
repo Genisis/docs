@@ -118,6 +118,7 @@ to filter by line numbers, where <code class="literal">start</code> and <code cl
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO6-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO6-2"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO6-3"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO6-4"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 All three of these elements are optional.
 </p></td></tr></table></div><p>We could write the query as:</p><pre class="programlisting prettyprint lang-js">{
+  "query": {
     "filtered": {
       "query": {
         "match": {
@@ -140,6 +141,7 @@ All three of these elements are optional.
         {{/line_no}} <a id="CO7-10"></a><span><img src="images/icons/callouts/10.png" alt="" /></span>
       }
     }
+  }
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Fill in the value of param <code class="literal">text</code>
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO7-10"><span><img src="images/icons/callouts/10.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
@@ -155,9 +157,10 @@ Add a comma after the <code class="literal">gte</code> clause only if <code clas
 Include the <code class="literal">lte</code> clause only if <code class="literal">line_no.end</code> is specified
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-8"><span><img src="images/icons/callouts/8.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Fill in the value of param <code class="literal">line_no.end</code>
-</p></td></tr></table></div><p>As written above, this template is not valid JSON because it includes the
-<span class="emphasis"><em>section</em></span> markers like <code class="literal">{{#line_no}}</code>.  For this reason, the template
-can only be written as a string.</p><h5><a id="_pre_registered_template"></a>Pre-registered template<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/search-template.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h5><p>You can register search templates by storing it in the <code class="literal">config/scripts</code> directory, in a file using the <code class="literal">.mustache</code> extension.
+</p></td></tr></table></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>As written above, this template is not valid JSON because it includes the
+<span class="emphasis"><em>section</em></span> markers like <code class="literal">{{#line_no}}</code>.  For this reason, the template should
+either be stored in a file (see <a class="xref" href="search-template.html#pre-registered-templates" title="Pre-registered templateedit">the section called “Pre-registered template<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/search-template.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a>) or, when used
+via the REST API, should be written as a string:</p><pre class="programlisting prettyprint lang-json">"template": "{\"query\":{\"filtered\":{\"query\":{\"match\":{\"line\":\"{{text}}\"}},\"filter\":{{{#line_no}}\"range\":{\"line_no\":{{{#start}}\"gte\":\"{{start}}\"{{#end}},{{/end}}{{/start}}{{#end}}\"lte\":\"{{end}}\"{{/end}}}}{{/line_no}}}}}}"</pre></div></div><h5><a id="pre-registered-templates"></a>Pre-registered template<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/search-template.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h5><p>You can register search templates by storing it in the <code class="literal">config/scripts</code> directory, in a file using the <code class="literal">.mustache</code> extension.
 In order to execute the stored template, reference it by it’s name under the <code class="literal">template</code> key:</p><pre class="programlisting prettyprint lang-js">GET /_search/template
 {
     "template": {
