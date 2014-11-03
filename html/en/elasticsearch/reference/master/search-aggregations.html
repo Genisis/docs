@@ -56,6 +56,7 @@ of that bucket. This is where the real power of aggregations kicks in: <span cla
         "&lt;aggregation_type&gt;" : {
             &lt;aggregation_body&gt;
         }
+        [,"meta" : {  [&lt;meta_data_body&gt;] } ]?
         [,"aggregations" : { [&lt;sub_aggregation&gt;]+ } ]?
     }
     [,"&lt;aggregation_name_2&gt;" : { ... } ]*
@@ -107,7 +108,31 @@ adding <code class="literal">search_type=count</code> to the request URL paramet
   }
 }
 '</pre><p>Setting <code class="literal">search_type</code> to <code class="literal">count</code> avoids executing the fetch phase of the search making the request more efficient.  See
-<a class="xref" href="search-request-search-type.html" title="Search Type">Search Type</a> for more information on the <code class="literal">search_type</code> parameter.</p></div><div class="navfooter"><span class="prev"><a href="search-shards.html">
+<a class="xref" href="search-request-search-type.html" title="Search Type">Search Type</a> for more information on the <code class="literal">search_type</code> parameter.</p><h3><a id="_metadata"></a>Metadata<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/search/aggregations.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>You can associate a piece of metadata with individual aggregations at request time that will be returned in place
+at response time.</p><p>Consider this example where we want to associate the color blue with our <code class="literal">terms</code> aggregation.</p><pre class="programlisting prettyprint lang-js">{
+    ...
+    aggs": {
+        "titles": {
+            "terms": {
+                "field": "title"
+            },
+            "meta": {
+                "color": "blue"
+            },
+        }
+    }
+}</pre><p>Then that piece of metadata will be returned in place for our <code class="literal">titles</code> terms aggregation</p><pre class="programlisting prettyprint lang-js">{
+    ...
+    "aggregations": {
+        "titles": {
+            "meta": {
+                "color" : "blue"
+            },
+            "buckets": [
+            ]
+        }
+    }
+}</pre></div><div class="navfooter"><span class="prev"><a href="search-shards.html">
               « 
               Search Shards API</a>
            
