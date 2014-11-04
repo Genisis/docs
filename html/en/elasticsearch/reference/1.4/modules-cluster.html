@@ -59,20 +59,19 @@ handling nodes being added or removed.</p><p>The following settings may be used:
      Defaults to <code class="literal">2</code>.
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.enable</code>
-</span></dt><dd><p class="simpara">
+</span></dt><dd>
     Controls shard allocation for all indices, by allowing specific
     kinds of shard to be allocated.
-</p><pre class="literallayout">Can be set to:
-* `all` (default) - Allows shard allocation for all kinds of shards.
-* `primaries` - Allows shard allocation only for primary shards.
-* `new_primaries` - Allows shard allocation only for primary shards for new indices.
-* `none` - No shard allocations of any kind are allowed for all indices.</pre></dd><dt><span class="term">
-<code class="literal">cluster.routing.allocation.disable_new_allocation</code>
-, </span><span class="term">
-<code class="literal">cluster.routing.allocation.disable_allocation</code>
-, </span><span class="term">
-<code class="literal">cluster.routing.allocation.disable_replica_allocation</code>
-, </span><span class="term">
+</dd></dl></div><p>Controls shard allocation for all indices, by allowing specific
+kinds of shard to be allocated.</p><p>+</p><p>Can be set to:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">all</code> - (default) Allows shard allocation for all kinds of shards.
+</li><li class="listitem">
+<code class="literal">primaries</code> -  Allows shard allocation only for primary shards.
+</li><li class="listitem">
+<code class="literal">new_primaries</code> - Allows shard allocation only for primary shards for new indices.
+</li><li class="listitem">
+<code class="literal">none</code> - No shard allocations of any kind are allowed for all indices.
+</li></ul></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">cluster.routing.allocation.same_shard.host</code>
 </span></dt><dd>
       Allows to perform a check to prevent allocation of multiple instances

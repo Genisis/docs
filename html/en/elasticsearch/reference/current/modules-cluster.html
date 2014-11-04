@@ -60,16 +60,12 @@ handling nodes being added or removed.</p><p>The following settings may be used:
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.enable</code>
 </span></dt><dd><p class="simpara">
-    Controls shard allocation for all indices, by allowing specific
-    kinds of shard to be allocated.
-    <span class="added">
-      [<span class="version">1.0.0.RC1</span>]
-      <span class="detail">Added in 1.0.0.RC1. Replaces <code class="literal">cluster.routing.allocation.disable*</code>.</span></span>
-    Can be set to:
-</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<code class="literal">all</code> (default) - Allows shard allocation for all kinds of shards.
+Controls shard allocation for all indices, by allowing specific
+kinds of shard to be allocated.
+</p><p class="simpara">Can be set to:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">all</code> - (default) Allows shard allocation for all kinds of shards.
 </li><li class="listitem">
-<code class="literal">primaries</code> - Allows shard allocation only for primary shards.
+<code class="literal">primaries</code> -  Allows shard allocation only for primary shards.
 </li><li class="listitem">
 <code class="literal">new_primaries</code> - Allows shard allocation only for primary shards for new indices.
 </li><li class="listitem">
