@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Language Analyzers</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.3]" /><link rel="up" href="analysis-analyzers.html" title="Analyzers" /><link rel="prev" href="analysis-pattern-analyzer.html" title="Pattern Analyzer" /><link rel="next" href="analysis-snowball-analyzer.html" title="Snowball Analyzer" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Language Analyzers</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="analysis-analyzers.html" title="Analyzers" /><link rel="prev" href="analysis-pattern-analyzer.html" title="Pattern Analyzer" /><link rel="next" href="analysis-snowball-analyzer.html" title="Snowball Analyzer" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -21,7 +21,7 @@
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
-      [1.3]
+      [1.4]
     </a></span> » <span class="breadcrumb-link"><a href="analysis.html">Analysis </a></span> » <span class="breadcrumb-link"><a href="analysis-analyzers.html">Analyzers</a></span> » <span class="breadcrumb-node">Language Analyzers</span></div><div class="navheader"><span class="prev"><a href="analysis-pattern-analyzer.html">
               « 
               Pattern Analyzer</a>
@@ -30,7 +30,7 @@
            
           <a href="analysis-snowball-analyzer.html">Snowball Analyzer
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="analysis-lang-analyzer"></a>Language Analyzers<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="analysis-standard-analyzer.html">Standard Analyzer</a></span></dt><dt><span class="section"><a href="analysis-simple-analyzer.html">Simple Analyzer</a></span></dt><dt><span class="section"><a href="analysis-whitespace-analyzer.html">Whitespace Analyzer</a></span></dt><dt><span class="section"><a href="analysis-stop-analyzer.html">Stop Analyzer</a></span></dt><dt><span class="section"><a href="analysis-keyword-analyzer.html">Keyword Analyzer</a></span></dt><dt><span class="section"><a href="analysis-pattern-analyzer.html">Pattern Analyzer</a></span></dt><dt><span class="section"><a href="analysis-lang-analyzer.html">Language Analyzers</a></span></dt><dt><span class="section"><a href="analysis-snowball-analyzer.html">Snowball Analyzer</a></span></dt><dt><span class="section"><a href="analysis-custom-analyzer.html">Custom Analyzer</a></span></dt></dl></div><p>A set of analyzers aimed at analyzing specific language text. The
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="analysis-lang-analyzer"></a>Language Analyzers<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="analysis-standard-analyzer.html">Standard Analyzer</a></span></dt><dt><span class="section"><a href="analysis-simple-analyzer.html">Simple Analyzer</a></span></dt><dt><span class="section"><a href="analysis-whitespace-analyzer.html">Whitespace Analyzer</a></span></dt><dt><span class="section"><a href="analysis-stop-analyzer.html">Stop Analyzer</a></span></dt><dt><span class="section"><a href="analysis-keyword-analyzer.html">Keyword Analyzer</a></span></dt><dt><span class="section"><a href="analysis-pattern-analyzer.html">Pattern Analyzer</a></span></dt><dt><span class="section"><a href="analysis-lang-analyzer.html">Language Analyzers</a></span></dt><dt><span class="section"><a href="analysis-snowball-analyzer.html">Snowball Analyzer</a></span></dt><dt><span class="section"><a href="analysis-custom-analyzer.html">Custom Analyzer</a></span></dt></dl></div><p>A set of analyzers aimed at analyzing specific language text. The
 following types are supported:
 <a class="link" href="analysis-lang-analyzer.html#arabic-analyzer" title="arabic analyzer"><code class="literal">arabic</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#armenian-analyzer" title="armenian analyzer"><code class="literal">armenian</code></a>,
@@ -54,6 +54,7 @@ following types are supported:
 <a class="link" href="analysis-lang-analyzer.html#indonesian-analyzer" title="indonesian analyzer"><code class="literal">indonesian</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#irish-analyzer" title="irish analyzer"><code class="literal">irish</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#italian-analyzer" title="italian analyzer"><code class="literal">italian</code></a>,
+<a class="link" href="analysis-lang-analyzer.html#latvian-analyzer" title="latvian analyzer"><code class="literal">latvian</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#norwegian-analyzer" title="norwegian analyzer"><code class="literal">norwegian</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#persian-analyzer" title="persian analyzer"><code class="literal">persian</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#portuguese-analyzer" title="portuguese analyzer"><code class="literal">portuguese</code></a>,
@@ -63,31 +64,31 @@ following types are supported:
 <a class="link" href="analysis-lang-analyzer.html#spanish-analyzer" title="spanish analyzer"><code class="literal">spanish</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#swedish-analyzer" title="swedish analyzer"><code class="literal">swedish</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#turkish-analyzer" title="turkish analyzer"><code class="literal">turkish</code></a>,
-<a class="link" href="analysis-lang-analyzer.html#thai-analyzer" title="thai analyzer"><code class="literal">thai</code></a>.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_configuring_language_analyzers"></a>Configuring language analyzers<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_stopwords_2"></a>Stopwords<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>All analyzers support setting custom <code class="literal">stopwords</code> either internally in
+<a class="link" href="analysis-lang-analyzer.html#thai-analyzer" title="thai analyzer"><code class="literal">thai</code></a>.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_configuring_language_analyzers"></a>Configuring language analyzers<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_stopwords_2"></a>Stopwords<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>All analyzers support setting custom <code class="literal">stopwords</code> either internally in
 the config, or by using an external stopwords file by setting
 <code class="literal">stopwords_path</code>. Check <a class="link" href="analysis-stop-analyzer.html" title="Stop Analyzer">Stop Analyzer</a> for
-more details.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_excluding_words_from_stemming"></a>Excluding words from stemming<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">stem_exclusion</code> parameter allows you to specify an array
+more details.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_excluding_words_from_stemming"></a>Excluding words from stemming<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">stem_exclusion</code> parameter allows you to specify an array
 of lowercase words that should not be stemmed.  Internally, this
 functionality is implemented by adding the
 <a class="link" href="analysis-keyword-marker-tokenfilter.html" title="Keyword Marker Token Filter"><code class="literal">keyword_marker</code> token filter</a>
 with the <code class="literal">keywords</code> set to the value of the <code class="literal">stem_exclusion</code> parameter.</p><p>The following analyzers support setting custom <code class="literal">stem_exclusion</code> list:
 <code class="literal">arabic</code>, <code class="literal">armenian</code>, <code class="literal">basque</code>, <code class="literal">catalan</code>, <code class="literal">bulgarian</code>, <code class="literal">catalan</code>,
 <code class="literal">czech</code>, <code class="literal">finnish</code>, <code class="literal">dutch</code>, <code class="literal">english</code>, <code class="literal">finnish</code>, <code class="literal">french</code>, <code class="literal">galician</code>,
-<code class="literal">german</code>, <code class="literal">irish</code>, <code class="literal">hindi</code>, <code class="literal">hungarian</code>, <code class="literal">indonesian</code>, <code class="literal">italian</code>, <code class="literal">norwegian</code>,
-<code class="literal">portuguese</code>, <code class="literal">romanian</code>, <code class="literal">russian</code>, <code class="literal">sorani</code>, <code class="literal">spanish</code>, <code class="literal">swedish</code>, <code class="literal">turkish</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_reimplementing_language_analyzers"></a>Reimplementing language analyzers<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The built-in language analyzers can be reimplemented as <code class="literal">custom</code> analyzers
+<code class="literal">german</code>, <code class="literal">irish</code>, <code class="literal">hindi</code>, <code class="literal">hungarian</code>, <code class="literal">indonesian</code>, <code class="literal">italian</code>, <code class="literal">latvian</code>, <code class="literal">norwegian</code>,
+<code class="literal">portuguese</code>, <code class="literal">romanian</code>, <code class="literal">russian</code>, <code class="literal">sorani</code>, <code class="literal">spanish</code>, <code class="literal">swedish</code>, <code class="literal">turkish</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_reimplementing_language_analyzers"></a>Reimplementing language analyzers<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The built-in language analyzers can be reimplemented as <code class="literal">custom</code> analyzers
 (as described below) in order to customize their behaviour.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>If you do not intend to exclude words from being stemmed (the
 equivalent of the <code class="literal">stem_exclusion</code> parameter above), then you should remove
-the <code class="literal">keyword_marker</code> token filter from the custom analyzer configuration.</p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="arabic-analyzer"></a><code class="literal">arabic</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">arabic</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+the <code class="literal">keyword_marker</code> token filter from the custom analyzer configuration.</p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="arabic-analyzer"></a><code class="literal">arabic</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">arabic</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "arabic_stop": {
           "type":       "stop",
-          "stopwords":  "_arabic_" <a id="CO53-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_arabic_" <a id="CO59-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "arabic_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO53-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO59-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "arabic_stemmer": {
           "type":       "stemmer",
@@ -108,23 +109,23 @@ the <code class="literal">keyword_marker</code> token filter from the custom ana
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO53-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO59-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO53-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO59-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="armenian-analyzer"></a><code class="literal">armenian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">armenian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="armenian-analyzer"></a><code class="literal">armenian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">armenian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "armenian_stop": {
           "type":       "stop",
-          "stopwords":  "_armenian_" <a id="CO54-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_armenian_" <a id="CO60-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "armenian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO54-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO60-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "armenian_stemmer": {
           "type":       "stemmer",
@@ -144,23 +145,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO54-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO60-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO54-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO60-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="basque-analyzer"></a><code class="literal">basque</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">basque</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="basque-analyzer"></a><code class="literal">basque</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">basque</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "basque_stop": {
           "type":       "stop",
-          "stopwords":  "_basque_" <a id="CO55-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_basque_" <a id="CO61-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "basque_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO55-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO61-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "basque_stemmer": {
           "type":       "stemmer",
@@ -180,23 +181,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO55-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO61-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO55-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO61-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="brazilian-analyzer"></a><code class="literal">brazilian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">brazilian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="brazilian-analyzer"></a><code class="literal">brazilian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">brazilian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "brazilian_stop": {
           "type":       "stop",
-          "stopwords":  "_brazilian_" <a id="CO56-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_brazilian_" <a id="CO62-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "brazilian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO56-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO62-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "brazilian_stemmer": {
           "type":       "stemmer",
@@ -216,23 +217,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO56-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO62-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO56-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO62-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="bulgarian-analyzer"></a><code class="literal">bulgarian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">bulgarian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="bulgarian-analyzer"></a><code class="literal">bulgarian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">bulgarian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "bulgarian_stop": {
           "type":       "stop",
-          "stopwords":  "_bulgarian_" <a id="CO57-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_bulgarian_" <a id="CO63-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "bulgarian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO57-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO63-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "bulgarian_stemmer": {
           "type":       "stemmer",
@@ -252,13 +253,13 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO57-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO63-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO57-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO63-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="catalan-analyzer"></a><code class="literal">catalan</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">catalan</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="catalan-analyzer"></a><code class="literal">catalan</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">catalan</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
@@ -268,11 +269,11 @@ This filter should be removed unless there are words which should
         },
         "catalan_stop": {
           "type":       "stop",
-          "stopwords":  "_catalan_" <a id="CO58-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_catalan_" <a id="CO64-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "catalan_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO58-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO64-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "catalan_stemmer": {
           "type":       "stemmer",
@@ -293,23 +294,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO58-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO64-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO58-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO64-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="chinese-analyzer"></a><code class="literal">chinese</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">chinese</code> analyzer cannot be reimplemented as a <code class="literal">custom</code> analyzer
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="chinese-analyzer"></a><code class="literal">chinese</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">chinese</code> analyzer cannot be reimplemented as a <code class="literal">custom</code> analyzer
 because it depends on the ChineseTokenizer and ChineseFilter classes,
 which are not exposed in Elasticsearch.  These classes are
 deprecated in Lucene 4 and the <code class="literal">chinese</code> analyzer will be replaced
-with the <a class="xref" href="analysis-standard-analyzer.html" title="Standard Analyzer">Standard Analyzer</a> in Lucene 5.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="cjk-analyzer"></a><code class="literal">cjk</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">cjk</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+with the <a class="xref" href="analysis-standard-analyzer.html" title="Standard Analyzer">Standard Analyzer</a> in Lucene 5.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="cjk-analyzer"></a><code class="literal">cjk</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">cjk</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "english_stop": {
           "type":       "stop",
-          "stopwords":  "_english_" <a id="CO59-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_english_" <a id="CO65-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         }
       },
       "analyzer": {
@@ -325,20 +326,20 @@ with the <a class="xref" href="analysis-standard-analyzer.html" title="Standard 
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO59-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO65-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="czech-analyzer"></a><code class="literal">czech</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">czech</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="czech-analyzer"></a><code class="literal">czech</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">czech</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "czech_stop": {
           "type":       "stop",
-          "stopwords":  "_czech_" <a id="CO60-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_czech_" <a id="CO66-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "czech_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO60-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO66-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "czech_stemmer": {
           "type":       "stemmer",
@@ -358,23 +359,23 @@ The default stopwords can be overridden with the <code class="literal">stopwords
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO60-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO60-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="danish-analyzer"></a><code class="literal">danish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">danish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="danish-analyzer"></a><code class="literal">danish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">danish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "danish_stop": {
           "type":       "stop",
-          "stopwords":  "_danish_" <a id="CO61-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_danish_" <a id="CO67-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "danish_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO61-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO67-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "danish_stemmer": {
           "type":       "stemmer",
@@ -394,23 +395,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO61-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO61-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="dutch-analyzer"></a><code class="literal">dutch</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">dutch</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="dutch-analyzer"></a><code class="literal">dutch</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">dutch</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "dutch_stop": {
           "type":       "stop",
-          "stopwords":  "_dutch_" <a id="CO62-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_dutch_" <a id="CO68-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "dutch_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO62-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO68-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "dutch_stemmer": {
           "type":       "stemmer",
@@ -440,23 +441,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO62-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO68-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO62-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO68-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="english-analyzer"></a><code class="literal">english</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">english</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="english-analyzer"></a><code class="literal">english</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">english</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "english_stop": {
           "type":       "stop",
-          "stopwords":  "_english_" <a id="CO63-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_english_" <a id="CO69-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "english_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO63-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO69-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "english_stemmer": {
           "type":       "stemmer",
@@ -481,23 +482,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO63-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO69-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO63-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO69-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="finnish-analyzer"></a><code class="literal">finnish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">finnish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="finnish-analyzer"></a><code class="literal">finnish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">finnish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "finnish_stop": {
           "type":       "stop",
-          "stopwords":  "_finnish_" <a id="CO64-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_finnish_" <a id="CO70-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "finnish_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO64-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO70-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "finnish_stemmer": {
           "type":       "stemmer",
@@ -517,13 +518,13 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO64-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO70-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO64-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO70-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="french-analyzer"></a><code class="literal">french</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">french</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="french-analyzer"></a><code class="literal">french</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">french</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
@@ -536,11 +537,11 @@ This filter should be removed unless there are words which should
         },
         "french_stop": {
           "type":       "stop",
-          "stopwords":  "_french_" <a id="CO65-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_french_" <a id="CO71-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "french_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO65-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO71-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "french_stemmer": {
           "type":       "stemmer",
@@ -561,23 +562,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO65-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO71-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO65-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO71-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="galician-analyzer"></a><code class="literal">galician</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">galician</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="galician-analyzer"></a><code class="literal">galician</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">galician</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "galician_stop": {
           "type":       "stop",
-          "stopwords":  "_galician_" <a id="CO66-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_galician_" <a id="CO72-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "galician_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO66-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO72-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "galician_stemmer": {
           "type":       "stemmer",
@@ -597,23 +598,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO72-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO66-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO72-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="german-analyzer"></a><code class="literal">german</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">german</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="german-analyzer"></a><code class="literal">german</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">german</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "german_stop": {
           "type":       "stop",
-          "stopwords":  "_german_" <a id="CO67-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_german_" <a id="CO73-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "german_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO67-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO73-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "german_stemmer": {
           "type":       "stemmer",
@@ -634,19 +635,19 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO73-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO73-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="greek-analyzer"></a><code class="literal">greek</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">greek</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="greek-analyzer"></a><code class="literal">greek</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">greek</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "greek_stop": {
           "type":       "stop",
-          "stopwords":  "_greek_" <a id="CO68-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_greek_" <a id="CO74-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "greek_lowercase": {
           "type":       "lowercase",
@@ -654,7 +655,7 @@ This filter should be removed unless there are words which should
         },
         "greek_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO68-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO74-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "greek_stemmer": {
           "type":       "stemmer",
@@ -674,23 +675,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO68-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO74-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO68-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO74-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="hindi-analyzer"></a><code class="literal">hindi</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">hindi</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="hindi-analyzer"></a><code class="literal">hindi</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">hindi</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "hindi_stop": {
           "type":       "stop",
-          "stopwords":  "_hindi_" <a id="CO69-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_hindi_" <a id="CO75-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "hindi_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO69-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO75-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "hindi_stemmer": {
           "type":       "stemmer",
@@ -712,23 +713,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO69-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO75-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO69-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO75-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="hungarian-analyzer"></a><code class="literal">hungarian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">hungarian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="hungarian-analyzer"></a><code class="literal">hungarian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">hungarian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "hungarian_stop": {
           "type":       "stop",
-          "stopwords":  "_hungarian_" <a id="CO70-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_hungarian_" <a id="CO76-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "hungarian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO70-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO76-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "hungarian_stemmer": {
           "type":       "stemmer",
@@ -748,23 +749,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO70-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO76-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO70-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO76-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="indonesian-analyzer"></a><code class="literal">indonesian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">indonesian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="indonesian-analyzer"></a><code class="literal">indonesian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">indonesian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "indonesian_stop": {
           "type":       "stop",
-          "stopwords":  "_indonesian_" <a id="CO71-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_indonesian_" <a id="CO77-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "indonesian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO71-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO77-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "indonesian_stemmer": {
           "type":       "stemmer",
@@ -784,13 +785,13 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO71-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO77-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO71-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO77-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="irish-analyzer"></a><code class="literal">irish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">irish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="irish-analyzer"></a><code class="literal">irish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">irish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
@@ -800,7 +801,7 @@ This filter should be removed unless there are words which should
         },
         "irish_stop": {
           "type":       "stop",
-          "stopwords":  "_irish_" <a id="CO72-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_irish_" <a id="CO78-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "irish_lowercase": {
           "type":       "lowercase",
@@ -808,7 +809,7 @@ This filter should be removed unless there are words which should
         },
         "irish_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO72-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO78-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "irish_stemmer": {
           "type":       "stemmer",
@@ -829,13 +830,13 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO72-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO78-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO72-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO78-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="italian-analyzer"></a><code class="literal">italian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">italian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="italian-analyzer"></a><code class="literal">italian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">italian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
@@ -850,11 +851,11 @@ This filter should be removed unless there are words which should
         },
         "italian_stop": {
           "type":       "stop",
-          "stopwords":  "_italian_" <a id="CO73-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_italian_" <a id="CO79-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "italian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO73-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO79-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "italian_stemmer": {
           "type":       "stemmer",
@@ -875,23 +876,59 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO73-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO79-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO73-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO79-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="norwegian-analyzer"></a><code class="literal">norwegian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">norwegian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="latvian-analyzer"></a><code class="literal">latvian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">latvian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "latvian_stop": {
+          "type":       "stop",
+          "stopwords":  "_latvian_" <a id="CO80-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        },
+        "latvian_keywords": {
+          "type":       "keyword_marker",
+          "keywords":   [] <a id="CO80-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+        },
+        "latvian_stemmer": {
+          "type":       "stemmer",
+          "language":   "latvian"
+        }
+      },
+      "analyzer": {
+        "latvian": {
+          "tokenizer":  "standard",
+          "filter": [
+            "lowercase",
+            "latvian_stop",
+            "latvian_keywords",
+            "latvian_stemmer"
+          ]
+        }
+      }
+    }
+  }
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO80-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+The default stopwords can be overridden with the <code class="literal">stopwords</code>
+    or <code class="literal">stopwords_path</code> parameters.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO80-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+This filter should be removed unless there are words which should
+    be excluded from stemming.
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="norwegian-analyzer"></a><code class="literal">norwegian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">norwegian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "norwegian_stop": {
           "type":       "stop",
-          "stopwords":  "_norwegian_" <a id="CO74-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_norwegian_" <a id="CO81-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "norwegian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO74-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO81-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "norwegian_stemmer": {
           "type":       "stemmer",
@@ -911,25 +948,25 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO74-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO81-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO74-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO81-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="persian-analyzer"></a><code class="literal">persian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">persian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="persian-analyzer"></a><code class="literal">persian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">persian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "char_filter": {
         "zero_width_spaces": {
             "type":       "mapping",
-            "mappings": [ "\\u200C=&gt; "] <a id="CO75-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "mappings": [ "\\u200C=&gt; "] <a id="CO82-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         }
       },
       "filter": {
         "persian_stop": {
           "type":       "stop",
-          "stopwords":  "_persian_" <a id="CO75-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "stopwords":  "_persian_" <a id="CO82-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         }
       },
       "analyzer": {
@@ -946,22 +983,22 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO75-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO82-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Replaces zero-width non-joiners with an ASCII space.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO75-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO82-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="portuguese-analyzer"></a><code class="literal">portuguese</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">portuguese</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="portuguese-analyzer"></a><code class="literal">portuguese</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">portuguese</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "portuguese_stop": {
           "type":       "stop",
-          "stopwords":  "_portuguese_" <a id="CO76-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_portuguese_" <a id="CO83-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "portuguese_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO76-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO83-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "portuguese_stemmer": {
           "type":       "stemmer",
@@ -981,23 +1018,23 @@ The default stopwords can be overridden with the <code class="literal">stopwords
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO76-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO83-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO76-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO83-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="romanian-analyzer"></a><code class="literal">romanian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">romanian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="romanian-analyzer"></a><code class="literal">romanian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">romanian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "romanian_stop": {
           "type":       "stop",
-          "stopwords":  "_romanian_" <a id="CO77-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_romanian_" <a id="CO84-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "romanian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO77-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO84-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "romanian_stemmer": {
           "type":       "stemmer",
@@ -1017,23 +1054,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO77-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO84-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO77-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO84-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="russian-analyzer"></a><code class="literal">russian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">russian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="russian-analyzer"></a><code class="literal">russian</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">russian</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "russian_stop": {
           "type":       "stop",
-          "stopwords":  "_russian_" <a id="CO78-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_russian_" <a id="CO85-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "russian_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO78-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO85-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "russian_stemmer": {
           "type":       "stemmer",
@@ -1053,23 +1090,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO78-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO85-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO78-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO85-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sorani-analyzer"></a><code class="literal">sorani</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">sorani</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sorani-analyzer"></a><code class="literal">sorani</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">sorani</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "sorani_stop": {
           "type":       "stop",
-          "stopwords":  "_sorani_" <a id="CO79-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_sorani_" <a id="CO86-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "sorani_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO79-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO86-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "sorani_stemmer": {
           "type":       "stemmer",
@@ -1090,23 +1127,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO79-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO86-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO79-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO86-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="spanish-analyzer"></a><code class="literal">spanish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">spanish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="spanish-analyzer"></a><code class="literal">spanish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">spanish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "spanish_stop": {
           "type":       "stop",
-          "stopwords":  "_spanish_" <a id="CO80-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_spanish_" <a id="CO87-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "spanish_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO80-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO87-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "spanish_stemmer": {
           "type":       "stemmer",
@@ -1126,23 +1163,23 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO80-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO87-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO80-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO87-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="swedish-analyzer"></a><code class="literal">swedish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">swedish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="swedish-analyzer"></a><code class="literal">swedish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">swedish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "swedish_stop": {
           "type":       "stop",
-          "stopwords":  "_swedish_" <a id="CO81-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_swedish_" <a id="CO88-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "swedish_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO81-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO88-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "swedish_stemmer": {
           "type":       "stemmer",
@@ -1162,19 +1199,19 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO81-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO88-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO81-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO88-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="turkish-analyzer"></a><code class="literal">turkish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">turkish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="turkish-analyzer"></a><code class="literal">turkish</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">turkish</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "turkish_stop": {
           "type":       "stop",
-          "stopwords":  "_turkish_" <a id="CO82-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_turkish_" <a id="CO89-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         },
         "turkish_lowercase": {
           "type":       "lowercase",
@@ -1182,7 +1219,7 @@ This filter should be removed unless there are words which should
         },
         "turkish_keywords": {
           "type":       "keyword_marker",
-          "keywords":   [] <a id="CO82-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "keywords":   [] <a id="CO89-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
         },
         "turkish_stemmer": {
           "type":       "stemmer",
@@ -1203,19 +1240,19 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO82-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO89-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO82-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO89-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="thai-analyzer"></a><code class="literal">thai</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">thai</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="thai-analyzer"></a><code class="literal">thai</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">thai</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
         "thai_stop": {
           "type":       "stop",
-          "stopwords":  "_thai_" <a id="CO83-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "stopwords":  "_thai_" <a id="CO90-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         }
       },
       "analyzer": {
@@ -1229,7 +1266,7 @@ This filter should be removed unless there are words which should
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO83-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO90-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The default stopwords can be overridden with the <code class="literal">stopwords</code>
     or <code class="literal">stopwords_path</code> parameters.
 </p></td></tr></table></div></div></div></div><div class="navfooter"><span class="prev"><a href="analysis-pattern-analyzer.html">
