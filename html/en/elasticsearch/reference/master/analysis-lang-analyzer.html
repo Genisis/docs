@@ -38,7 +38,6 @@ following types are supported:
 <a class="link" href="analysis-lang-analyzer.html#brazilian-analyzer" title="brazilian analyzer"><code class="literal">brazilian</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#bulgarian-analyzer" title="bulgarian analyzer"><code class="literal">bulgarian</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#catalan-analyzer" title="catalan analyzer"><code class="literal">catalan</code></a>,
-<a class="link" href="analysis-lang-analyzer.html#chinese-analyzer" title="chinese analyzer"><code class="literal">chinese</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#cjk-analyzer" title="cjk analyzer"><code class="literal">cjk</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#czech-analyzer" title="czech analyzer"><code class="literal">czech</code></a>,
 <a class="link" href="analysis-lang-analyzer.html#danish-analyzer" title="danish analyzer"><code class="literal">danish</code></a>,
@@ -300,11 +299,7 @@ The default stopwords can be overridden with the <code class="literal">stopwords
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO61-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This filter should be removed unless there are words which should
     be excluded from stemming.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="chinese-analyzer"></a><code class="literal">chinese</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">chinese</code> analyzer cannot be reimplemented as a <code class="literal">custom</code> analyzer
-because it depends on the ChineseTokenizer and ChineseFilter classes,
-which are not exposed in Elasticsearch.  These classes are
-deprecated in Lucene 4 and the <code class="literal">chinese</code> analyzer will be replaced
-with the <a class="xref" href="analysis-standard-analyzer.html" title="Standard Analyzer">Standard Analyzer</a> in Lucene 5.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="cjk-analyzer"></a><code class="literal">cjk</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">cjk</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="cjk-analyzer"></a><code class="literal">cjk</code> analyzer<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/analysis/analyzers/lang-analyzer.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">cjk</code> analyzer could be reimplemented as a <code class="literal">custom</code> analyzer as follows:</p><pre class="programlisting prettyprint lang-js">{
   "settings": {
     "analysis": {
       "filter": {
