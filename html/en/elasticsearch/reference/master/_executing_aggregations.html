@@ -117,7 +117,7 @@
       }
     }
   }
-}'</pre><p>This example demonstrates how we can group by age brackets (ages 20-29, 30-29, and 40-49), then by gender, and then finally get the average account balance, per age bracket, per gender:</p><pre class="programlisting prettyprint lang-sh">curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
+}'</pre><p>This example demonstrates how we can group by age brackets (ages 20-29, 30-39, and 40-49), then by gender, and then finally get the average account balance, per age bracket, per gender:</p><pre class="programlisting prettyprint lang-sh">curl -XPOST 'localhost:9200/bank/_search?pretty' -d '
 {
   "size": 0,
   "aggs": {
