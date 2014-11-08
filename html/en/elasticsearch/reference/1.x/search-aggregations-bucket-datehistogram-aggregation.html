@@ -44,7 +44,7 @@ as the normal <a class="link" href="search-aggregations-bucket-histogram-aggrega
             }
         }
     }
-}</pre><p>fractional values are allowed, for example 1.5 hours:</p><pre class="programlisting prettyprint lang-js">{
+}</pre><p>Available expressions for interval: <code class="literal">year</code>, <code class="literal">quarter</code>, <code class="literal">month</code>, <code class="literal">week</code>, <code class="literal">day</code>, <code class="literal">hour</code>, <code class="literal">minute</code>, <code class="literal">second</code></p><p>Fractional values are allowed for seconds, minutes, hours, days and weeks. For example 1.5 hours:</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "articles_over_time" : {
             "date_histogram" : {
@@ -53,7 +53,7 @@ as the normal <a class="link" href="search-aggregations-bucket-histogram-aggrega
             }
         }
     }
-}</pre><p>Available expressions for interval: <code class="literal">year</code>, <code class="literal">quarter</code>, <code class="literal">month</code>, <code class="literal">week</code>, <code class="literal">day</code>, <code class="literal">hour</code>, <code class="literal">minute</code>, <code class="literal">second</code></p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_time_zone"></a>Time Zone<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/datehistogram-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>By default, times are stored as UTC milliseconds since the epoch. Thus, all computation and "bucketing" / "rounding" is
+}</pre><p>See <a class="xref" href="common-options.html#time-units" title="Time unitsedit">the section called “Time units<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a> for accepted abbreviations.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_time_zone"></a>Time Zone<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/aggregations/bucket/datehistogram-aggregation.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>By default, times are stored as UTC milliseconds since the epoch. Thus, all computation and "bucketing" / "rounding" is
 done on UTC. It is possible to provide a time zone (both pre rounding, and post rounding) value, which will cause all
 computations to take the relevant zone into account. The time returned for each bucket/entry is milliseconds since the
 epoch of the provided time zone.</p><p>The parameters are <code class="literal">pre_zone</code> (pre rounding based on interval) and <code class="literal">post_zone</code> (post rounding based on interval). The
