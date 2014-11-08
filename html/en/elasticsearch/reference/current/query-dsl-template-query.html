@@ -45,13 +45,13 @@ template parameters.</p><pre class="programlisting prettyprint lang-js">GET /_se
 {
     "query": {
         "template": {
-            "query": "{\"match_{{template}}\": {}}\"", <a id="CO52-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "query": "{\"match_{{template}}\": {}}\"", <a id="CO53-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             "params" : {
                 "template" : "all"
             }
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO52-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO53-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 New line characters (<code class="literal">\n</code>) should be escaped as <code class="literal">\\n</code> or removed,
     and quotes (<code class="literal">"</code>) should be escaped as <code class="literal">\\"</code>.
 </p></td></tr></table></div><p>You can register a template by storing it in the <code class="literal">config/scripts</code> directory, in a file using the <code class="literal">.mustache</code> extension.
@@ -60,13 +60,13 @@ parameter:</p><pre class="programlisting prettyprint lang-js">GET /_search
 {
     "query": {
         "template": {
-            "query": "storedTemplate", <a id="CO53-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "query": "storedTemplate", <a id="CO54-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             "params" : {
                 "template" : "all"
             }
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO53-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO54-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Name of the the query template in <code class="literal">config/scripts/</code>, i.e., <code class="literal">storedTemplate.mustache</code>.
 </p></td></tr></table></div><p>Templating is based on Mustache. For simple token substitution all you provide
 is a query containing some variable that you want to substitute and the actual
@@ -90,19 +90,19 @@ parameter:</p><pre class="programlisting prettyprint lang-js">GET /_search
 {
     "query": {
         "template": {
-            "query": "templateName", <a id="CO54-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "query": "templateName", <a id="CO55-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             "params" : {
                 "template" : "all"
             }
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO54-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO55-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Name of the the query template stored in the index.
 </p></td></tr></table></div><pre class="programlisting prettyprint lang-js">GET /_search
 {
     "query": {
         "template": {
-            "query": "storedTemplate", <a id="CO55-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "query": "storedTemplate", <a id="CO56-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             "params" : {
                 "template" : "all"
             }

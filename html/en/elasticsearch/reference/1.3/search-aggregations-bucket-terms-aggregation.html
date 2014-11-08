@@ -192,7 +192,7 @@ and as such, they it is also possible to pass in flags that will determine how t
                  "field" : "tags",
                  "include" : {
                      "pattern" : ".*sport.*",
-                     "flags" : "CANON_EQ|CASE_INSENSITIVE" <a id="CO23-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                     "flags" : "CANON_EQ|CASE_INSENSITIVE" <a id="CO24-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
                  },
                  "exclude" : {
                      "pattern" : "water_.*",
@@ -201,7 +201,7 @@ and as such, they it is also possible to pass in flags that will determine how t
              }
          }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO23-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO24-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 the flags are concatenated using the <code class="literal">|</code> character as a separator
 </p></td></tr></table></div><p>The possible flags that can be used are:
 <a class="ulink" href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CANON_EQ" target="_top"><code class="literal">CANON_EQ</code></a>,
@@ -286,11 +286,11 @@ in inner aggregations.</p><pre class="programlisting prettyprint lang-js">{
         "tags" : {
              "terms" : {
                  "field" : "tags",
-                 "execution_hint": "map" <a id="CO24-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                 "execution_hint": "map" <a id="CO25-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
              }
          }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO24-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO25-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 the possible values are <code class="literal">map</code>, <code class="literal">global_ordinals</code>, <code class="literal">global_ordinals_hash</code> and <code class="literal">global_ordinals_low_cardinality</code>
 </p></td></tr></table></div><p>Please note that Elasticsearch will ignore this execution hint if it is not applicable and that there is no backward compatibility guarantee on these hints.</p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-reverse-nested-aggregation.html">
               « 
