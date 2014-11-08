@@ -40,7 +40,7 @@ suggestions are required in order to present to the end-user. The
 to select entire corrected phrases instead of individual tokens weighted
 based on <code class="literal">ngram-language</code> models. In practice this suggester will be
 able to make better decisions about which tokens to pick based on
-co-occurence and frequencies.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_api_example"></a>API Example<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">phrase</code> request is defined along side the query part in the json
+co-occurrence and frequencies.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_api_example"></a>API Example<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/search/suggesters/phrase-suggest.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">phrase</code> request is defined along side the query part in the json
 request:</p><pre class="programlisting prettyprint lang-js">curl -XPOST 'localhost:9200/_search' -d {
   "suggest" : {
     "text" : "Xor the Got-Jewel",

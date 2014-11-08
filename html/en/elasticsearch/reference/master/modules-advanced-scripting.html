@@ -92,7 +92,7 @@ depending on the shard the current document resides in.
 The number of terms in a field cannot be accessed using the <code class="literal">_index</code> variable. See <a class="link" href="mapping-core-types.html" title="Core Types">word count mapping type</a> on how to do that.</p><h3><a id="_term_statistics_2"></a>Term statistics:<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/modules/advanced-scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Term statistics for a field can be accessed with a subscript operator like
 this: <code class="literal">_index['FIELD']['TERM']</code>. This will never return null, even if term or field does not exist.
 If you do not need the term frequency, call <code class="literal">_index['FIELD'].get('TERM', 0)</code>
-to avoid uneccesary initialization of the frequencies. The flag will have only
+to avoid unnecessary initialization of the frequencies. The flag will have only
 affect is your set the <code class="literal">index_options</code> to <code class="literal">docs</code> (see <a class="link" href="mapping-core-types.html" title="Core Types">mapping documentation</a>).</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">_index['FIELD']['TERM'].df()</code>
 </span></dt><dd>
