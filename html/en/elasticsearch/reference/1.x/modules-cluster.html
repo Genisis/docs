@@ -59,11 +59,10 @@ handling nodes being added or removed.</p><p>The following settings may be used:
      Defaults to <code class="literal">2</code>.
 </dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.enable</code>
-</span></dt><dd>
-    Controls shard allocation for all indices, by allowing specific
-    kinds of shard to be allocated.
-</dd></dl></div><p>Controls shard allocation for all indices, by allowing specific
-kinds of shard to be allocated.</p><p>+</p><p>Can be set to:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+</span></dt><dd><p class="simpara">
+Controls shard allocation for all indices, by allowing specific
+kinds of shard to be allocated.
+</p><p class="simpara">Can be set to:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">all</code> - (default) Allows shard allocation for all kinds of shards.
 </li><li class="listitem">
 <code class="literal">primaries</code> -  Allows shard allocation only for primary shards.
@@ -71,7 +70,7 @@ kinds of shard to be allocated.</p><p>+</p><p>Can be set to:</p><div class="item
 <code class="literal">new_primaries</code> - Allows shard allocation only for primary shards for new indices.
 </li><li class="listitem">
 <code class="literal">none</code> - No shard allocations of any kind are allowed for all indices.
-</li></ul></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</li></ul></div></dd><dt><span class="term">
 <code class="literal">cluster.routing.allocation.same_shard.host</code>
 </span></dt><dd>
       Allows to perform a check to prevent allocation of multiple instances
