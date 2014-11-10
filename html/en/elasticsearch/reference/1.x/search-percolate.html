@@ -38,9 +38,6 @@ document and make it available to the percolate api. Since documents are also de
 in a request to the percolate api.</p><p>The percolator and most of its features work in realtime, so once a percolate query is indexed it can immediately be used
 in the percolate api.</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>Field referred to in a percolator query must <span class="strong"><strong>already</strong></span> exist in the mapping
 assocated with the index used for percolation.
-<span class="added">
-      [<span class="version">1.4.0.Beta1</span>]
-      <span class="detail">Added in 1.4.0.Beta1. Applies to indices created in 1.4.0 or later.</span></span>
 There are two ways to make sure that a field mapping exist:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Add or update a mapping via the <a class="link" href="indices-create-index.html" title="Create Index">create index</a> or
   <a class="link" href="indices-put-mapping.html" title="Put Mapping">put mapping</a> apis.
@@ -222,7 +219,7 @@ document.</p><div class="itemizedlist"><p class="title"><strong>Supported option
 </li><li class="listitem">
 <code class="literal">version</code> - Enables a version check. If the fetched document’s version isn’t equal to the specified version then the request fails with a version conflict and the percolation request is aborted.
 </li></ul></div><p>Internally the percolate api will issue a get request for fetching the`_source` of the document to percolate.
-For this feature to work the <code class="literal">_source</code> for documents to be percolated need to be stored.</p><h4><a id="_example_2"></a>Example<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/percolate.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Index response:</p><pre class="programlisting prettyprint lang-js">{
+For this feature to work the <code class="literal">_source</code> for documents to be percolated need to be stored.</p><h4><a id="_example_4"></a>Example<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/percolate.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Index response:</p><pre class="programlisting prettyprint lang-js">{
         "_index" : "my-index",
         "_type" : "message",
         "_id" : "1",
@@ -242,7 +239,7 @@ document actions support different parameters.</p><div class="itemizedlist"><p c
 <code class="literal">GET|POST /[index]/_mpercolate</code>
 </li><li class="listitem">
 <code class="literal">GET|POST /_mpercolate</code>
-</li></ul></div><p>The <code class="literal">index</code> and <code class="literal">type</code> defined in the url path are the default index and type.</p><h4><a id="_example_3"></a>Example<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/percolate.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Request:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/twitter/tweet/_mpercolate' --data-binary @requests.txt; echo</pre><p>The index twitter is the default index and the type tweet is the default type and will be used in the case a header
+</li></ul></div><p>The <code class="literal">index</code> and <code class="literal">type</code> defined in the url path are the default index and type.</p><h4><a id="_example_5"></a>Example<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/search/percolate.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Request:</p><pre class="programlisting prettyprint lang-js">curl -XGET 'localhost:9200/twitter/tweet/_mpercolate' --data-binary @requests.txt; echo</pre><p>The index twitter is the default index and the type tweet is the default type and will be used in the case a header
 doesn’t specify an index or type.</p><p>requests.txt:</p><pre class="programlisting prettyprint lang-js">{"percolate" : {"index" : "twitter", "type" : "tweet"}}
 {"doc" : {"message" : "some text"}}
 {"percolate" : {"index" : "twitter", "type" : "tweet", "id" : "1"}}
