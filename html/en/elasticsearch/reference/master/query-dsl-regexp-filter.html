@@ -45,7 +45,12 @@ this filter in your queries.</p><p>See <a class="xref" href="query-dsl-regexp-qu
         }
     }
 }</pre><p>You can also select the cache name and use the same regexp flags in the
-filter as in the query.</p><p><span class="strong"><strong>Note</strong></span>: You have to enable caching explicitly in order to have the
+filter as in the query.</p><p>Regular expressions are dangerous because it’s easy to accidentally
+create an innocuous looking one that requires an exponential number of
+internal determinized automaton states (and corresponding RAM and CPU)
+for Lucene to execute.  Lucene prevents these using the
+<code class="literal">max_determinized_states</code> setting (defaults to 10000).  You can raise
+this limit to allow more complex regular expressions to execute.</p><p>You have to enable caching explicitly in order to have the
 <code class="literal">regexp</code> filter cached.</p><pre class="programlisting prettyprint lang-js">{
     "filtered": {
         "query": {
@@ -55,7 +60,8 @@ filter as in the query.</p><p><span class="strong"><strong>Note</strong></span>:
             "regexp":{
                 "name.first" : {
                     "value" : "s.*y",
-                    "flags" : "INTERSECTION|COMPLEMENT|EMPTY"
+                    "flags" : "INTERSECTION|COMPLEMENT|EMPTY",
+                    "max_determinized_states": 20000
                 },
                 "_name":"test",
                 "_cache" : true,
