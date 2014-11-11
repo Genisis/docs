@@ -63,13 +63,12 @@ root and inner object types:</p><pre class="programlisting prettyprint lang-js">
     "_default_" : {
         "dynamic_date_formats" : ["yyyy-MM-dd", "dd-MM-yyyy", "date_optional_time"]
     }
-}</pre><h3><a id="_unmapped_fields_in_queries"></a>Unmapped fields in queries<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/dynamic-mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Queries and filters can refer to fields which don’t exist in a mapping, except
-when registering a new <a class="link" href="search-percolate.html" title="Percolator">percolator query</a> or when creating
-a <a class="link" href="indices-aliases.html#filtered" title="Filtered Aliasesedit">filtered alias</a>.  In these two cases, any fields referred to in
-the query or filter must already exist in the mapping, otherwise there is a
-chance that the wrong field type will be used.</p><p>This requirement can be disabled by setting
-<code class="literal">index.query.parse.allow_unmapped_fields</code> to <code class="literal">true</code>, in which case you run the
-risk that your query or filter might not work correctly.</p></div><div class="navfooter"><span class="prev"><a href="mapping-date-format.html">
+}</pre><h3><a id="_unmapped_fields_in_queries"></a>Unmapped fields in queries<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/dynamic-mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Queries and filters can refer to fields that don’t exist in a mapping. Whether this
+is allowed is controlled by the <code class="literal">index.query.parse.allow_unmapped_fields</code> setting.
+This setting defaults to <code class="literal">true</code>. Setting it to <code class="literal">false</code> will disallow the usage of
+unmapped fields in queries.</p><p>When registering a new <a class="link" href="search-percolate.html" title="Percolator">percolator query</a> or creating
+a <a class="link" href="indices-aliases.html#filtered" title="Filtered Aliasesedit">filtered alias</a> then the <code class="literal">index.query.parse.allow_unmapped_fields</code> setting
+is forcefully overwritten to disallowed unmapped fields.</p></div><div class="navfooter"><span class="prev"><a href="mapping-date-format.html">
               « 
               Date Format</a>
            
