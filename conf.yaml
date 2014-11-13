@@ -100,7 +100,6 @@ contents:
         repo:       marvel
         index:      docs/index.asciidoc
         abbr:       marvel
-        single:     1
 
     -
         title:      Kibana
