@@ -74,6 +74,12 @@
         <li>
         <a href="http://www.elasticsearch.org/guide/en/marvel/current/index.html#_simple_install" target="other">Install Marvel</a>.
         </li>
+        <li>
+        Enable cross-domain requests by adding the following to the <code>config/elasticsearch.yml</code> config file:
+        <pre>
+http.cors.enabled:      true
+http.cors.allow-origin: /http:\/\/www.elasticsearch.(org|com)/</pre>
+        </li>
         <li>Restart your Elasticsearch node.</li>
         <li><a href="#" id="retry">Click here to retry</a></li>
     </ol>
