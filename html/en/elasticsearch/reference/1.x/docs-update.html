@@ -205,7 +205,9 @@ retry if there is a version conflict between getting the document and
 indexing / deleting it. Defaults to <code class="literal">0</code>.</p><p>It also allows to update the <code class="literal">ttl</code> of a document using <code class="literal">ctx._ttl</code> and
 timestamp using <code class="literal">ctx._timestamp</code>. Note that if the timestamp is not
 updated and not extracted from the <code class="literal">_source</code> it will be set to the
-update date.</p></div><div class="navfooter"><span class="prev"><a href="docs-delete.html">
+update date.</p><p>In addition to <code class="literal">_source</code>, the following variables are available through
+the <code class="literal">ctx</code> map: <code class="literal">_index</code>, <code class="literal">_type</code>, <code class="literal">_id</code>, <code class="literal">_version</code>, <code class="literal">_routing</code>,
+<code class="literal">_parent</code>, <code class="literal">_timestamp</code>, <code class="literal">_ttl</code>.</p></div><div class="navfooter"><span class="prev"><a href="docs-delete.html">
               « 
               Delete API</a>
            
