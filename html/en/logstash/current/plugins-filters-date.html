@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>date</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="filter-plugins.html" title="Filter plugins" /><link rel="prev" href="plugins-filters-checksum.html" title="checksum" /><link rel="next" href="plugins-filters-dns.html" title="dns" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" /><script type="text/javascript">
+        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12395217-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    }</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> » <span class="breadcrumb-link"><a href="filter-plugins.html">Filter plugins</a></span> » <span class="breadcrumb-node">date</span></div><div class="navheader"><span class="prev"><a href="plugins-filters-checksum.html">
+              « 
+              checksum</a>
+           
+        </span><span class="next">
+           
+          <a href="plugins-filters-dns.html">dns
+               »
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="plugins-filters-date"></a>date<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="plugins-filters-anonymize.html">anonymize</a></span></dt><dt><span class="section"><a href="plugins-filters-alter.html">alter</a></span></dt><dt><span class="section"><a href="plugins-filters-csv.html">csv</a></span></dt><dt><span class="section"><a href="plugins-filters-collate.html">collate</a></span></dt><dt><span class="section"><a href="plugins-filters-clone.html">clone</a></span></dt><dt><span class="section"><a href="plugins-filters-cidr.html">cidr</a></span></dt><dt><span class="section"><a href="plugins-filters-cipher.html">cipher</a></span></dt><dt><span class="section"><a href="plugins-filters-checksum.html">checksum</a></span></dt><dt><span class="section"><a href="plugins-filters-date.html">date</a></span></dt><dt><span class="section"><a href="plugins-filters-dns.html">dns</a></span></dt><dt><span class="section"><a href="plugins-filters-drop.html">drop</a></span></dt><dt><span class="section"><a href="plugins-filters-environment.html">environment</a></span></dt><dt><span class="section"><a href="plugins-filters-extractnumbers.html">extractnumbers</a></span></dt><dt><span class="section"><a href="plugins-filters-elasticsearch.html">elasticsearch</a></span></dt><dt><span class="section"><a href="plugins-filters-elapsed.html">elapsed</a></span></dt><dt><span class="section"><a href="plugins-filters-fingerprint.html">fingerprint</a></span></dt><dt><span class="section"><a href="plugins-filters-grok.html">grok</a></span></dt><dt><span class="section"><a href="plugins-filters-geoip.html">geoip</a></span></dt><dt><span class="section"><a href="plugins-filters-i18n.html">i18n</a></span></dt><dt><span class="section"><a href="plugins-filters-json.html">json</a></span></dt><dt><span class="section"><a href="plugins-filters-json_encode.html">json_encode</a></span></dt><dt><span class="section"><a href="plugins-filters-kv.html">kv</a></span></dt><dt><span class="section"><a href="plugins-filters-metrics.html">metrics</a></span></dt><dt><span class="section"><a href="plugins-filters-mutate.html">mutate</a></span></dt><dt><span class="section"><a href="plugins-filters-multiline.html">multiline</a></span></dt><dt><span class="section"><a href="plugins-filters-metaevent.html">metaevent</a></span></dt><dt><span class="section"><a href="plugins-filters-prune.html">prune</a></span></dt><dt><span class="section"><a href="plugins-filters-punct.html">punct</a></span></dt><dt><span class="section"><a href="plugins-filters-ruby.html">ruby</a></span></dt><dt><span class="section"><a href="plugins-filters-range.html">range</a></span></dt><dt><span class="section"><a href="plugins-filters-split.html">split</a></span></dt><dt><span class="section"><a href="plugins-filters-sleep.html">sleep</a></span></dt><dt><span class="section"><a href="plugins-filters-syslog_pri.html">syslog_pri</a></span></dt><dt><span class="section"><a href="plugins-filters-translate.html">translate</a></span></dt><dt><span class="section"><a href="plugins-filters-throttle.html">throttle</a></span></dt><dt><span class="section"><a href="plugins-filters-uuid.html">uuid</a></span></dt><dt><span class="section"><a href="plugins-filters-useragent.html">useragent</a></span></dt><dt><span class="section"><a href="plugins-filters-urldecode.html">urldecode</a></span></dt><dt><span class="section"><a href="plugins-filters-xml.html">xml</a></span></dt><dt><span class="section"><a href="plugins-filters-zeromq.html">zeromq</a></span></dt></dl></div><p>The date filter is used for parsing dates from fields, and then using that
+date or timestamp as the logstash timestamp for the event.</p><p>For example, syslog events usually have timestamps like this:</p><pre class="programlisting prettyprint lang-ruby">"Apr 17 09:32:01"</pre><p>You would use the date format <code class="literal">MMM dd HH:mm:ss</code> to parse this.</p><p>The date filter is especially important for sorting events and for
+backfilling old data. If you don’t get the date correct in your
+event, then searching for them later will likely sort out of order.</p><p>In the absence of this filter, logstash will choose a timestamp based on the
+first time it sees the event (at input time), if the timestamp is not already
+set in the event. For example, with file input, the timestamp is set to the
+time of each read.</p><p> </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_synopsis_102"></a>Synopsis<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>This plugin supports the following configuration options:</p><p>Required configuration options:</p><pre class="programlisting prettyprint lang-json">date {
+}</pre><p>Available configuration options:</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /><col class="col_4" /></colgroup><thead><tr><th align="left" valign="top">Setting </th><th align="left" valign="top">Input type</th><th align="left" valign="top">Required</th><th align="left" valign="top">Default value</th></tr></thead><tbody><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-add_field" title="add_field"><code class="literal">add_field</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#hash" title="Hashedit">hash</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">{}</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-add_tag" title="add_tag"><code class="literal">add_tag</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">[]</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-locale" title="locale"><code class="literal">locale</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-match" title="match"><code class="literal">match</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">[]</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-periodic_flush" title="periodic_flush"><code class="literal">periodic_flush</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#boolean" title="Booleanedit">boolean</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">false</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-remove_field" title="remove_field"><code class="literal">remove_field</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">[]</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-remove_tag" title="remove_tag"><code class="literal">remove_tag</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">[]</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-target" title="target"><code class="literal">target</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"><code class="literal">"@timestamp"</code></code></p></td></tr><tr><td align="left" valign="top"><p><a class="xref" href="plugins-filters-date.html#plugins-filters-date-timezone" title="timezone"><code class="literal">timezone</code></a></p></td><td align="left" valign="top"><p><a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a></p></td><td align="left" valign="top"><p>No</p></td><td align="left" valign="top"><p><code class="literal"></code></p></td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_details_102"></a>Details<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p> </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-add_field"></a><code class="literal">add_field</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#hash" title="Hashedit">hash</a>
+</li><li class="listitem">
+Default value is <code class="literal">{}</code>
+</li></ul></div><p>If this filter is successful, add any arbitrary fields to this event.
+Field names can be dynamic and include parts of the event using the <code class="literal">%{field}</code>.</p><p>Example:</p><pre class="programlisting prettyprint lang-ruby">filter {
+  date {
+    add_field =&gt; { "foo_%{somefield}" =&gt; "Hello world, from %{host}" }
+  }
+}</pre><pre class="programlisting prettyprint lang-ruby"># You can also add multiple fields at once:
+filter {
+  date {
+    add_field =&gt; {
+      "foo_%{somefield}" =&gt; "Hello world, from %{host}"
+      "new_field" =&gt; "new_static_value"
+    }
+  }
+}</pre><p>If the event has field <code class="literal">"somefield" == "hello"</code> this filter, on success,
+would add field <code class="literal">foo_hello</code> if it is present, with the
+value above and the <code class="literal">%{host}</code> piece replaced with that value from the
+event. The second example would also add a hardcoded field.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-add_tag"></a><code class="literal">add_tag</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a>
+</li><li class="listitem">
+Default value is <code class="literal">[]</code>
+</li></ul></div><p>If this filter is successful, add arbitrary tags to the event.
+Tags can be dynamic and include parts of the event using the <code class="literal">%{field}</code>
+syntax.</p><p>Example:</p><pre class="programlisting prettyprint lang-ruby">filter {
+  date {
+    add_tag =&gt; [ "foo_%{somefield}" ]
+  }
+}</pre><pre class="programlisting prettyprint lang-ruby"># You can also add multiple tags at once:
+filter {
+  date {
+    add_tag =&gt; [ "foo_%{somefield}", "taggedy_tag"]
+  }
+}</pre><p>If the event has field <code class="literal">"somefield" == "hello"</code> this filter, on success,
+would add a tag <code class="literal">foo_hello</code> (and the second example would of course add a <code class="literal">taggedy_tag</code> tag).</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-exclude_tags"></a><code class="literal">exclude_tags</code>  (DEPRECATED)<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+DEPRECATED WARNING: This configuration item is deprecated and may not be available in future versions.
+</li><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a>
+</li><li class="listitem">
+Default value is <code class="literal">[]</code>
+</li></ul></div><p>Only handle events without all/any (controlled by <code class="literal">exclude_any</code> config
+option) of these tags.
+Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-locale"></a><code class="literal">locale</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a>
+</li><li class="listitem">
+There is no default value for this setting.
+</li></ul></div><p>Specify a locale to be used for date parsing using either IETF-BCP47 or POSIX language tag.
+Simple examples are <code class="literal">en</code>,<code class="literal">en-US</code> for BCP47 or <code class="literal">en_US</code> for POSIX.
+If not specified, the platform default will be used.</p><p>The locale is mostly necessary to be set for parsing month names (pattern with <code class="literal">MMM</code>) and
+weekday names (pattern with <code class="literal">EEE</code>).</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-match"></a><code class="literal">match</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a>
+</li><li class="listitem">
+Default value is <code class="literal">[]</code>
+</li></ul></div><p>The date formats allowed are anything allowed by Joda-Time (java time
+library). You can see the docs for this format here:</p><p><a class="ulink" href="http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html" target="_top">joda.time.format.DateTimeFormat</a></p><p>An array with field name first, and format patterns following, <code class="literal">[ field,
+formats... ]</code></p><p>If your time field has multiple possible formats, you can do this:</p><pre class="programlisting prettyprint lang-ruby">match =&gt; [ "logdate", "MMM dd YYY HH:mm:ss",
+          "MMM  d YYY HH:mm:ss", "ISO8601" ]</pre><p>The above will match a syslog (rfc3164) or <code class="literal">iso8601</code> timestamp.</p><p>There are a few special exceptions. The following format literals exist
+to help you save time and ensure correctness of date parsing.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">ISO8601</code> - should parse any valid ISO8601 timestamp, such as
+  <code class="literal">2011-04-19T03:44:01.103Z</code>
+</li><li class="listitem">
+<code class="literal">UNIX</code> - will parse unix time in seconds since epoch
+</li><li class="listitem">
+<code class="literal">UNIX_MS</code> - will parse unix time in milliseconds since epoch
+</li><li class="listitem">
+<code class="literal">TAI64N</code> - will parse tai64n time values
+</li></ul></div><p>For example, if you have a field <code class="literal">logdate</code>, with a value that looks like
+<code class="literal">Aug 13 2010 00:03:44</code>, you would use this configuration:</p><pre class="programlisting prettyprint lang-ruby">filter {
+  date {
+    match =&gt; [ "logdate", "MMM dd YYYY HH:mm:ss" ]
+  }
+}</pre><p>If your field is nested in your structure, you can use the nested
+syntax <code class="literal">[foo][bar]</code> to match its value. For more information, please refer to
+<a class="ulink" href="http://logstash.net/docs/latest/configuration#fieldreferences" target="_top">http://logstash.net/docs/latest/configuration#fieldreferences</a></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-periodic_flush"></a><code class="literal">periodic_flush</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#boolean" title="Booleanedit">boolean</a>
+</li><li class="listitem">
+Default value is <code class="literal">false</code>
+</li></ul></div><p>Call the filter flush method at regular interval.
+Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-remove_field"></a><code class="literal">remove_field</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a>
+</li><li class="listitem">
+Default value is <code class="literal">[]</code>
+</li></ul></div><p>If this filter is successful, remove arbitrary fields from this event.
+Example:</p><pre class="programlisting prettyprint lang-ruby">filter {
+  date {
+    remove_field =&gt; [ "foo_%{somefield}" ]
+  }
+}</pre><pre class="programlisting prettyprint lang-ruby"># You can also remove multiple fields at once:
+filter {
+  date {
+    remove_field =&gt; [ "foo_%{somefield}", "my_extraneous_field" ]
+  }
+}</pre><p>If the event has field <code class="literal">"somefield" == "hello"</code> this filter, on success,
+would remove the field with name <code class="literal">foo_hello</code> if it is present. The second
+example would remove an additional, non-dynamic field.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-remove_tag"></a><code class="literal">remove_tag</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a>
+</li><li class="listitem">
+Default value is <code class="literal">[]</code>
+</li></ul></div><p>If this filter is successful, remove arbitrary tags from the event.
+Tags can be dynamic and include parts of the event using the <code class="literal">%{field}</code>
+syntax.</p><p>Example:</p><pre class="programlisting prettyprint lang-ruby">filter {
+  date {
+    remove_tag =&gt; [ "foo_%{somefield}" ]
+  }
+}</pre><pre class="programlisting prettyprint lang-ruby"># You can also remove multiple tags at once:
+filter {
+  date {
+    remove_tag =&gt; [ "foo_%{somefield}", "sad_unwanted_tag"]
+  }
+}</pre><p>If the event has field <code class="literal">"somefield" == "hello"</code> this filter, on success,
+would remove the tag <code class="literal">foo_hello</code> if it is present. The second example
+would remove a sad, unwanted tag as well.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-tags"></a><code class="literal">tags</code>  (DEPRECATED)<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+DEPRECATED WARNING: This configuration item is deprecated and may not be available in future versions.
+</li><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#array" title="Arrayedit">array</a>
+</li><li class="listitem">
+Default value is <code class="literal">[]</code>
+</li></ul></div><p>Only handle events with all/any (controlled by <code class="literal">include_any</code> config option) of these tags.
+Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-target"></a><code class="literal">target</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a>
+</li><li class="listitem">
+Default value is <code class="literal">"@timestamp"</code>
+</li></ul></div><p>Store the matching timestamp into the given target field.  If not provided,
+default to updating the <code class="literal">@timestamp</code> field of the event.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-timezone"></a><code class="literal">timezone</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a>
+</li><li class="listitem">
+There is no default value for this setting.
+</li></ul></div><p>Specify a time zone canonical ID to be used for date parsing.
+The valid IDs are listed on the <a class="ulink" href="http://joda-time.sourceforge.net/timezones.html" target="_top">Joda.org available time zones page</a>.
+This is useful in case the time zone cannot be extracted from the value,
+and is not the platform default.
+If this is not specified the platform default will be used.
+Canonical ID is good as it takes care of daylight saving time for you
+For example, <code class="literal">America/Los_Angeles</code> or <code class="literal">Europe/France</code> are valid IDs.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-type"></a><code class="literal">type</code>  (DEPRECATED)<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+DEPRECATED WARNING: This configuration item is deprecated and may not be available in future versions.
+</li><li class="listitem">
+Value type is <a class="link" href="_logstash_config_language.html#string" title="Stringedit">string</a>
+</li><li class="listitem">
+Default value is <code class="literal">""</code>
+</li></ul></div><p>Note that all of the specified routing options (<code class="literal">type</code>,<code class="literal">tags</code>,<code class="literal">exclude_tags</code>,<code class="literal">include_fields</code>,
+<code class="literal">exclude_fields</code>) must be met in order for the event to be handled by the filter.
+The type to act on. If a type is given, then this filter will only
+act on messages with the same type. See any input plugin’s "type"
+attribute for more.
+Optional.</p></div></div></div><div class="navfooter"><span class="prev"><a href="plugins-filters-checksum.html">
+              « 
+              checksum</a>
+           
+        </span><span class="next">
+           
+          <a href="plugins-filters-dns.html">dns
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script><script type="text/javascript">
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    document.write(unescape("%3Cscript src='" + document.location.protocol +
+    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+}
+</script><script>
+if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    Munchkin.init('813-MAM-392');
+
+    // crazyegg
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+}
+</script></body></html>
