@@ -51,6 +51,11 @@ repos:
         current:    develop
         branches:   [develop]
 
+    logstash:
+        url:        https://github.com/elasticsearch/logstash-docs.git
+        current:    master
+        branches:   [master]
+
     marvel:
         url:        https://github.com/elasticsearch/elasticsearch-marvel.git
         current:    1.2
@@ -107,6 +112,14 @@ contents:
         repo:       kibana
         index:      docs/index.asciidoc
         abbr:       kibana
+
+    -
+        title:      Logstash
+        prefix:     en/logstash
+        repo:       logstash
+        index:      docs/index.asciidoc
+        abbr:       logstash
+        chunk:      1
 
     -
         title:      Elasticsearch for Apache Hadoop
