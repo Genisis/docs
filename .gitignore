@@ -13,5 +13,6 @@ bin
 *.log
 *.xml
 !html/sitemap.xml
+!.run
 metastore_db
 html_docs/

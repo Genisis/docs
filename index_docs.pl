@@ -16,6 +16,10 @@ use Getopt::Long;
 
 chdir($FindBin::RealBin) or die $!;
 
+use Proc::PID::File;
+die "$0 already running\n"
+    if Proc::PID::File->running( dir => $FindBin::RealBin . '/.run' );
+
 our $URL_Base = '/guide';
 our $Conf     = LoadFile('conf.yaml');
 our $e = Search::Elasticsearch->new( nodes => $ENV{ES_HOST}, timeout => 60 );

@@ -17,14 +17,18 @@ use ES::Book();
 use ES::Toc();
 use ES::LinkCheck();
 
+use Proc::PID::File;
+die "$0 already running\n"
+    if Proc::PID::File->running( dir => $FindBin::RealBin . '/.run' );
+
 our $Old_Pwd = dir()->absolute;
 init_env();
 
 our $Conf = LoadFile('conf.yaml');
 
 GetOptions(
-    $Opts,    #
-    'all', 'push',    #
+    $Opts,                                                             #
+    'all', 'push',                                                     #
     'single',  'doc=s', 'out=s', 'toc', 'chunk=i', 'toc_level=i', 'comments',
     'open',    'web',
     'lenient', 'verbose'
@@ -70,7 +74,7 @@ sub build_local {
             };
             if ( $Opts->{open} ) {
                 sleep 1;
-                open_browser('http://localhost:8000/'.$html->basename);
+                open_browser( 'http://localhost:8000/' . $html->basename );
             }
 
             wait;
@@ -80,7 +84,7 @@ sub build_local {
         else {
             my $http = dir( 'resources', 'http.py' )->absolute;
             close STDIN;
-            open( STDIN,  "</dev/null" );
+            open( STDIN, "</dev/null" );
             chdir $dir;
             exec( $http '8000' );
         }
@@ -181,8 +185,8 @@ SITEMAP_START
             }
             return unless $item->basename =~ /\.html$/;
             return $item->PRUNE unless $item->parent->basename eq 'current';
-            my $url = 'http://www.elasticsearch.org/guide/'
-                . $item->relative($dir);
+            my $url
+                = 'http://www.elasticsearch.org/guide/' . $item->relative($dir);
             say $fh <<ENTRY;
 <url>
     <loc>$url</loc>
