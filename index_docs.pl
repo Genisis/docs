@@ -154,8 +154,12 @@ sub load_file {
             $page_title = $title;
             $page       = $body;
         }
-        next unless $id;
-        push @sections, [ $id, $title, $body ];
+        if ($id) {
+            push @sections, [ $id, $title, $body ];
+        }
+        elsif (@sections) {
+            $sections[-1][2] .= " $title $body";
+        }
     }
 
     #    $sections[0][0] = '';
