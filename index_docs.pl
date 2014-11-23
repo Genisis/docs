@@ -145,6 +145,7 @@ sub load_file {
     while (@parts) {
         my ( $id, $title ) = _parse_title( shift @parts );
         my $body = shift @parts;
+        next unless defined $body;
         if ($page_title) {
             $title .= ' » ' . $page_title;
             $page  .= "\n\n$body";
