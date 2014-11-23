@@ -58,7 +58,7 @@ Percolate a document before registering a query. Percolating a document can
       }
     }
   }
-}</pre><p>Register a query in the percolator:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
+}'</pre><p>Register a query in the percolator:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
     "query" : {
         "match" : {
             "message" : "bonsai tree"
