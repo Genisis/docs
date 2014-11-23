@@ -35,13 +35,14 @@
 of the request includes the updated settings, for example:</p><pre class="programlisting prettyprint lang-js">{
     "index" : {
         "number_of_replicas" : 4
-    } }</pre><p>The above will change the number of replicas to 4 from the current
+    }
+}</pre><p>The above will change the number of replicas to 4 from the current
 number of replicas. Here is a curl example:</p><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my_index/_settings' -d '
 {
     "index" : {
         "number_of_replicas" : 4
-    } }
-'</pre><p>Below is the list of settings that can be changed using the update
+    }
+}'</pre><p>Below is the list of settings that can be changed using the update
 settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">index.number_of_replicas</code>
 </span></dt><dd>
