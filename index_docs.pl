@@ -240,9 +240,8 @@ sub index_settings {
                     only_on_same_position => 1,
                 },
                 code => {
-                    type => "pattern_capture",
-                    patterns =>
-                        [ '(\p{Ll}+|\p{Lu}\p{Ll}+|\p{Lu}+)', '(\d+)' ],
+                    type     => "pattern_capture",
+                    patterns => [ '(\p{Ll}+|\p{Lu}\p{Ll}+|\p{Lu}+)', '(\d+)' ],
                 }
             }
         }
@@ -264,8 +263,7 @@ sub mappings {
                 title => {
                     type   => 'string',
                     fields => {
-                        content =>
-                            { type => 'string', analyzer => 'content' },
+                        content  => { type => 'string', analyzer => 'content' },
                         shingles => {
                             type     => 'string',
                             analyzer => 'shingles',
@@ -280,8 +278,7 @@ sub mappings {
                 text => {
                     type   => 'string',
                     fields => {
-                        content =>
-                            { type => 'string', analyzer => 'content' },
+                        content  => { type => 'string', analyzer => 'content' },
                         shingles => {
                             type     => 'string',
                             analyzer => 'shingles'
