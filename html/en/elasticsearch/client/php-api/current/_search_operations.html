@@ -71,8 +71,10 @@ $doc   = $results['hits']['hits'][0]['_source'];</pre><p>​</p></div><div class
     }
 }'</pre><p>​</p><p>Would be structured like this (Note the position of the square brackets):</p><pre class="programlisting prettyprint lang-php">$params['index'] = 'my_index';
 $params['type']  = 'my_type';
-$params['body']['query']['bool']['must'][]['match']['testField'] = 'abc';
-$params['body']['query']['bool']['must'][]['match']['anotherTestField'] = 'xyz';
+$params['body']['query']['bool']['must'] = array(
+    array('match' =&gt; array('testField' =&gt; 'abc')),
+    array('match' =&gt; array('anotherTestField' =&gt; 'xyz')),
+);
 
 $results = $client-&gt;search($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_a_more_complicated_example"></a>A more complicated example<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/search-operations.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Let’s construct a slightly more complicated example: a filtered query that contains both a filter and a query.  This is a very common activity in elasticsearch queries, so it will be a good demonstration.</p><p>The curl version of the query:</p><pre class="programlisting prettyprint lang-shell">curl -XGET 'localhost:9200/my_index/my_type/_search' -d '{
     "query" : {
