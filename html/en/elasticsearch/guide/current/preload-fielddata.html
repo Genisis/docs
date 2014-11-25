@@ -52,10 +52,10 @@ are pre-loaded:</p><pre class="programlisting prettyprint lang-js">PUT /music/_m
   "price_usd": {
     "type": "integer",
     "fielddata": {
-      "loading" : "eager" <a id="CO222-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+      "loading" : "eager" <a id="CO223-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO222-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO223-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 By setting <code class="literal">fielddata.loading: eager</code>, we tell Elasticsearch to pre-load
 this field’s contents into memory.
 </p></td></tr></table></div><p>Fielddata loading can be set to <code class="literal">lazy</code> or <code class="literal">eager</code> on existing fields, using
@@ -106,10 +106,10 @@ change: after a refresh, a flush, or a merge.</p></div><div class="section"><div
   "price_usd": {
     "type": "integer",
     "fielddata": {
-      "loading" : "eager_global_ordinals" <a id="CO223-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+      "loading" : "eager_global_ordinals" <a id="CO224-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO223-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO224-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Setting <code class="literal">eager_global_ordinals</code> also implies loading fielddata eagerly.
 </p></td></tr></table></div><p>Just like the eager pre-loading of fielddata, eager global ordinals are built
 before a new segment becomes visible to search.  Doc values can also have
@@ -119,10 +119,10 @@ their global ordinals built eagerly:</p><pre class="programlisting prettyprint l
     "type":       "integer",
     "doc_values": true,
     "fielddata": {
-      "loading" : "eager_global_ordinals" <a id="CO224-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+      "loading" : "eager_global_ordinals" <a id="CO225-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO224-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO225-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 In this case, fielddata is not loaded into memory but doc values are
     loaded into the filesystem cache.
 </p></td></tr></table></div><p>Unlike fielddata pre-loading, eager building of global ordinals can have an
@@ -141,13 +141,13 @@ caches so that your users never see a spike in latency.</p><p>Originally, the mo
 was pre-loaded, as this is usually the most costly step.  This is now better
 controlled with the techniques we have discussed above.  However, warmers can
 be used to pre-build filter caches, and can still be used to preload fielddata
-should you so choose.</p><p>Let’s register a warmer, then talk about what’s happening:</p><pre class="programlisting prettyprint lang-js">PUT /music/_warmer/warmer_1 <a id="CO225-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+should you so choose.</p><p>Let’s register a warmer, then talk about what’s happening:</p><pre class="programlisting prettyprint lang-js">PUT /music/_warmer/warmer_1 <a id="CO226-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 {
   "query" : {
     "filtered" : {
       "filter" : {
         "bool": {
-          "should": [ <a id="CO225-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "should": [ <a id="CO226-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
             { "term": { "tag": "rock"        }},
             { "term": { "tag": "hiphop"      }},
             { "term": { "tag": "electronics" }}
@@ -159,17 +159,17 @@ should you so choose.</p><p>Let’s register a warmer, then talk about what’s 
   "aggs" : {
     "price" : {
       "histogram" : {
-        "field" : "price", <a id="CO225-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+        "field" : "price", <a id="CO226-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
         "interval" : 10
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO225-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO226-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Warmers are associated with an index (<code class="literal">music</code>) and are registered using
 the <code class="literal">_warmer</code> endpoint and a unique ID (<code class="literal">warmer_1</code>).
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO225-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO226-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The three most popular music genres have their filter caches pre-built.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO225-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO226-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The fielddata and global ordinals for the <code class="literal">price</code> field will be preloaded.
 </p></td></tr></table></div><p>Warmers are registered against a specific index.  Each warmer is given a
 unique ID because you can have multiple warmers per index.</p><p>Then you just specify a query, any query.  It can include queries, filters,

@@ -35,8 +35,8 @@ finds all documents that have a geo-point within that circle:</p><pre class="pro
     "filtered": {
       "filter": {
         "geo_distance": {
-          "distance": "1km", <a id="CO231-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
-          "location": { <a id="CO231-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "distance": "1km", <a id="CO232-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "location": { <a id="CO232-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
             "lat":  40.715,
             "lon": -73.988
           }
@@ -44,11 +44,11 @@ finds all documents that have a geo-point within that circle:</p><pre class="pro
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO231-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO232-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Find all <code class="literal">location</code> fields within <code class="literal">1km</code> of the specified point.
     See <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/common-options.html#distance-units" target="_top">Distance Units</a> for
     a list of the accepted units.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO231-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO232-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The central point can be specified as a string, an array, or (as in this
     example) as an object. See <a class="xref" href="geopoints.html#lat-lon-formats" title="Lat/Lon formatsedit">the section called “Lat/Lon formats<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/310_Geopoints/20_Geopoints.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a>.
 </p></td></tr></table></div><p>A geo-distance calculation is expensive.  To optimize performance,
@@ -85,7 +85,7 @@ This is the default calculation.
       "filter": {
         "geo_distance": {
           "distance":      "1km",
-          "distance_type": "plane", <a id="CO232-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "distance_type": "plane", <a id="CO233-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
           "location": {
             "lat":  40.715,
             "lon": -73.988
@@ -94,7 +94,7 @@ This is the default calculation.
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO232-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO233-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Use the faster but less accurate <code class="literal">plane</code> calculation.
 </p></td></tr></table></div><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Will your users really care if a restaurant is a few metres outside of
 their specified radius? While some geo applications require great accuracy,
@@ -109,8 +109,8 @@ minimum distance (with <code class="literal">gt</code> or <code class="literal">
     "filtered": {
       "filter": {
         "geo_distance_range": {
-          "gte":    "1km", <a id="CO233-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
-          "lt":     "2km", <a id="CO233-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+          "gte":    "1km", <a id="CO234-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "lt":     "2km", <a id="CO234-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
           "location": {
             "lat":  40.715,
             "lon": -73.988
@@ -119,7 +119,7 @@ minimum distance (with <code class="literal">gt</code> or <code class="literal">
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO233-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO233-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO234-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO234-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Matches locations which are at least <code class="literal">1km</code> from the centre, and less than
     <code class="literal">2km</code> from the centre.
 </p></td></tr></table></div></div></div><div class="navfooter"><span class="prev"><a href="geo-bounding-box.html">

@@ -30,21 +30,21 @@
                »
             </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="application-joins"></a>Application-side joins<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/400_Relationships/15_Application_joins.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="application-joins.html">Application-side joins</a></span></dt><dt><span class="section"><a href="denormalization.html">Denormalizing your data</a></span></dt><dt><span class="section"><a href="top-hits.html">Field collapsing</a></span></dt><dt><span class="section"><a href="denormalization-concurrency.html">Denormalization and concurrency</a></span></dt><dt><span class="section"><a href="concurrency-solutions.html">Solving concurrency issues</a></span></dt></dl></div><p>We can (partly) emulate a relational database by implementing joins in our
 application. For instance, let’s say we are indexing users and their
-blogposts.  In the relational world, we would do something like this:</p><pre class="programlisting prettyprint lang-json">PUT /my_index/user/1 <a id="CO252-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+blogposts.  In the relational world, we would do something like this:</p><pre class="programlisting prettyprint lang-json">PUT /my_index/user/1 <a id="CO253-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 {
   "name":     "John Smith",
   "email":    "john@smith.com",
   "dob":      "1970/10/24"
 }
 
-PUT /my_index/blogpost/2 <a id="CO252-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+PUT /my_index/blogpost/2 <a id="CO253-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
 {
   "title":    "Relationships",
   "body":     "It's complicated...",
-  "user":     1 <a id="CO252-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO252-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO252-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+  "user":     1 <a id="CO253-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO253-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO253-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">index</code>, <code class="literal">type</code>, and <code class="literal">id</code> of each document together function as a primary key.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO252-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO253-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">blogpost</code> links to the user by storing the user’s <code class="literal">id</code>.  The <code class="literal">index</code>
     and <code class="literal">type</code> aren’t required as they are hard-coded in our application.
 </p></td></tr></table></div><p>Finding blogposts by user with ID <code class="literal">1</code> is easy:</p><pre class="programlisting prettyprint lang-json">GET /my_index/blogpost/_search
@@ -72,11 +72,11 @@ GET /my_index/blogpost/_search
   "query": {
     "filtered": {
       "filter": {
-        "terms": { "user": [1] }  <a id="CO253-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        "terms": { "user": [1] }  <a id="CO254-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO253-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO254-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The values in the <code class="literal">terms</code> filter would be populated with the results from
     the first query.
 </p></td></tr></table></div><p>The main advantage of application-side joins is that the data is normalized.
