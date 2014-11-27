@@ -227,6 +227,28 @@ decay function is specified as</p><pre class="programlisting prettyprint lang-js
         }
     }</pre><p>The format of the origin depends on the <a class="xref" href="mapping-date-format.html" title="Date Format"><em>Date Format</em></a> defined in your mapping. If you do not define the origin, the current time is used.</p><p>The <code class="literal">offset</code> and <code class="literal">decay</code> parameters are optional.</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
+<code class="literal">origin</code>
+</p>
+</td><td valign="top">
+<p>
+    The point of origin used for calculating distance. Must be given as a
+    number for numeric field, date for date fields and geo point for geo fields.
+    Required for geo and numeric field. For date fields the default is <code class="literal">now</code>. Date
+    math (for example <code class="literal">now-1h</code>) is supported for origin.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">scale</code>
+</p>
+</td><td valign="top">
+<p>
+    Required for all types. Defines the distance from origin at which the computed
+    score will equal <code class="literal">decay</code> parameter. For geo fields: Can be defined as number+unit (1km, 12m,…).
+    Default unit is meters. For date fields: Can to be defined as a number+unit ("1h", "10d",…).
+    Default unit is milliseconds. For numeric field: Any number.
+</p>
+</td></tr><tr><td valign="top">
+<p>
 <code class="literal">offset</code>
 </p>
 </td><td valign="top">
