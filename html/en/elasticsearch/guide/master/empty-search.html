@@ -79,11 +79,11 @@ to search requests. In this case, Elasticsearch would report the shard as
 default, search requests do not timeout.  If low response times are more
 important to you than complete results, you can specify a <code class="literal">timeout</code> as <code class="literal">10</code>
 or <code class="literal">"10ms"</code> (10 milliseconds), or <code class="literal">"1s"</code> (1 second):</p><pre class="programlisting prettyprint lang-js">GET /_search?timeout=10ms</pre><p>Elasticsearch will return any results that it has managed to gather from
-shards which responded before the request timed out.</p><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Timeout is not a circuit breaker</h4><p>It should be noted that this <code class="literal">timeout</code> does not halt the execution of the
-query, it merely tells the coordinating node to return the results collected
-<span class="emphasis"><em>so far</em></span> and to close the connection.  In the background, other shards may
-still be processing the query even though results have been sent.</p><p>Use the timeout because it is important to your SLA, not because you want
-to abort the execution of long running queries.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="search.html">
+each shard before the requests timed out on the shards.</p><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><h4>Timeout is not a circuit breaker</h4><p>The <code class="literal">timeout</code> parameter is only checked during collection of documents.
+Operations that execute before document collection or during the fetch phase are
+not affected by the timeout. This also means that the timeout is only checked if documents actually match.
+Queries with few matching documents might not respect the timeout at all.
+The current time from which the elapsed time is computed is only sampled every 200ms so a request will never timeout before 200ms.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="search.html">
               « 
               Searching – the basic tools</a>
            
