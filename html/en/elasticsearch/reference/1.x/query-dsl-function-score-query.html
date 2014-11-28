@@ -64,7 +64,8 @@ given filter:</p><pre class="programlisting prettyprint lang-js">"function_score
     ],
     "max_boost": number,
     "score_mode": "(multiply|max|...)",
-    "boost_mode": "(multiply|replace|...)"
+    "boost_mode": "(multiply|replace|...)",
+    "min_score" : number
 }</pre><p>If no filter is given with a function this is equivalent to specifying
 <code class="literal">"match_all": {}</code></p><p>First, each document is scored by the defined functions. The parameter
 <code class="literal">score_mode</code> specifies how the computed scores are combined:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
@@ -118,7 +119,7 @@ minimum score is used
 </p>
 </td></tr></tbody></table></div><p>Because scores can be on different scales (for example, between 0 and 1 for decay functions but arbitrary for <code class="literal">field_value_factor</code>) and also because sometimes a different impact of functions on the score is desirable, the score of each function can be adjusted with a user defined <code class="literal">weight</code> (). The <code class="literal">weight</code> can be defined per function in the <code class="literal">functions</code> array (example above) and is multiplied with the score computed by the respective function.
 If weight is given without any other function declaration, <code class="literal">weight</code> acts as a function that simply returns the <code class="literal">weight</code>.</p><p>The new score can be restricted to not exceed a certain limit by setting
-the <code class="literal">max_boost</code> parameter. The default for <code class="literal">max_boost</code> is FLT_MAX.</p><p>Finally, the newly computed score is combined with the score of the
+the <code class="literal">max_boost</code> parameter. The default for <code class="literal">max_boost</code> is FLT_MAX.</p><p>The newly computed score is combined with the score of the
 query. The parameter <code class="literal">boost_mode</code> defines how:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">multiply</code>
@@ -167,7 +168,8 @@ max of query score and function score
 <p>
 min of query score and function score
 </p>
-</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_score_functions"></a>Score functions<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/query-dsl/queries/function-score-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">function_score</code> query provides several types of score functions.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_script_score"></a>Script score<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/query-dsl/queries/function-score-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">script_score</code> function allows you to wrap another query and customize
+</td></tr></tbody></table></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Coming in 1.5.0.</p></div></div><p>By default, modifying the score does not change which documents match. To exclude
+documents that do not meet a certain score threshold the <code class="literal">min_score</code> parameter can be set to the desired score threshold.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_score_functions"></a>Score functions<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/query-dsl/queries/function-score-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">function_score</code> query provides several types of score functions.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_script_score"></a>Script score<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/query-dsl/queries/function-score-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">script_score</code> function allows you to wrap another query and customize
 the scoring of it optionally with a computation derived from other numeric
 field values in the doc using a script expression. Here is a
 simple sample:</p><pre class="programlisting prettyprint lang-js">"script_score" : {
