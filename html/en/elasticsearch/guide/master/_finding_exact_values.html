@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Finding exact values</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="structured-search.html" title="Structured search" /><link rel="prev" href="structured-search.html" title="Structured search" /><link rel="next" href="combining-filters.html" title="Combining filters" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Finding Exact Values</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="structured-search.html" title="Structured Search" /><link rel="prev" href="structured-search.html" title="Structured Search" /><link rel="next" href="combining-filters.html" title="Combining Filters" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,21 +20,26 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="search-in-depth.html">Search in depth </a></span> » <span class="breadcrumb-link"><a href="structured-search.html">Structured search</a></span> » <span class="breadcrumb-node">Finding exact values</span></div><div class="navheader"><span class="prev"><a href="structured-search.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="search-in-depth.html">Search in Depth </a></span> » <span class="breadcrumb-link"><a href="structured-search.html">Structured Search</a></span> » <span class="breadcrumb-node">Finding Exact Values</span></div><div class="navheader"><span class="prev"><a href="structured-search.html">
               « 
-              Structured search</a>
+              Structured Search</a>
            
         </span><span class="next">
            
-          <a href="combining-filters.html">Combining filters
+          <a href="combining-filters.html">Combining Filters
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_finding_exact_values"></a>Finding exact values<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_finding_exact_values.html">Finding exact values</a></span></dt><dt><span class="section"><a href="combining-filters.html">Combining filters</a></span></dt><dt><span class="section"><a href="_finding_multiple_exact_values.html">Finding multiple exact values</a></span></dt><dt><span class="section"><a href="_ranges.html">Ranges</a></span></dt><dt><span class="section"><a href="_dealing_with_null_values.html">Dealing with null values</a></span></dt><dt><span class="section"><a href="filter-caching.html">All about caching</a></span></dt><dt><span class="section"><a href="_filter_order.html">Filter order</a></span></dt></dl></div><p>When working with exact values, you will be working with filters. Filters are
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_finding_exact_values"></a>Finding Exact Values<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_finding_exact_values.html">Finding Exact Values</a></span></dt><dt><span class="section"><a href="combining-filters.html">Combining Filters</a></span></dt><dt><span class="section"><a href="_finding_multiple_exact_values.html">Finding Multiple Exact Values</a></span></dt><dt><span class="section"><a href="_ranges.html">Ranges</a></span></dt><dt><span class="section"><a href="_dealing_with_null_values.html">Dealing with Null Values</a></span></dt><dt><span class="section"><a href="filter-caching.html">All About Caching</a></span></dt><dt><span class="section"><a href="_filter_order.html">Filter Order</a></span></dt></dl></div><p>When working with exact values,<a id="id-1.4.3.6.2.1" class="indexterm"></a>
+<a id="id-1.4.3.6.2.2" class="indexterm"></a><a id="id-1.4.3.6.2.3" class="indexterm"></a>
+<a id="id-1.4.3.6.2.4" class="indexterm"></a> you will be working with filters. Filters are
 important because they are very, very fast.  Filters do not calculate
 relevance (avoiding the entire scoring phase) and are easily cached. We’ll
-talk about the performance benefits of filters later in <a class="xref" href="filter-caching.html" title="All about caching">All about caching</a>,
+talk about the performance benefits of filters later in <a class="xref" href="filter-caching.html" title="All About Caching">All About Caching</a>,
 but for now, just keep in mind that you should use filters as often as you
-can.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_filter_with_numbers"></a>Term Filter with Numbers<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>We are going to explore the <code class="literal">term</code> filter first because you will use it often.
-This filter is capable of handling numbers, booleans, dates and text.</p><p>Let’s look at an example using numbers first by indexing some products.  These
+can.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_filter_with_numbers"></a>term Filter with Numbers<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>We are going to explore the <code class="literal">term</code> filter <a id="id-1.4.3.6.3.2.2" class="indexterm"></a>
+<a id="id-1.4.3.6.3.2.3" class="indexterm"></a><a id="id-1.4.3.6.3.2.4" class="indexterm"></a>
+<a id="id-1.4.3.6.3.2.5" class="indexterm"></a>
+<a id="id-1.4.3.6.3.2.6" class="indexterm"></a>first because you will use it often.
+This filter is capable of handling numbers, Booleans, dates, and text.</p><p>Let’s look at an example using numbers first by indexing some products.  These
 documents have a <code class="literal">price</code> and a <code class="literal">productID</code>:</p><pre class="programlisting prettyprint lang-js">POST /my_store/products/_bulk
 { "index": { "_id": 1 }}
 { "price" : 10, "productID" : "XHDK-A-1293-#fJ3" }
@@ -49,15 +54,15 @@ expressed this query as an SQL query, it would look like this:</p><pre class="pr
 FROM   products
 WHERE  price = 20</pre><p>In the Elasticsearch query DSL, we use a <code class="literal">term</code> filter to accomplish the same
 thing.  The <code class="literal">term</code> filter will look for the exact value that we specify.  By
-itself, a <code class="literal">term</code> filter is very simple. It accepts a field name and the value
+itself, a <code class="literal">term</code> filter is simple. It accepts a field name and the value
 that we wish to find:</p><pre class="programlisting prettyprint lang-js">{
     "term" : {
         "price" : 20
     }
-}</pre><p>The <code class="literal">term</code> filter isn’t very useful on its own though.  As discussed in
+}</pre><p>The <code class="literal">term</code> filter isn’t very useful on its own, though.  As discussed in
 <a class="xref" href="query-dsl-intro.html" title="Query DSL">Query DSL</a>, the <code class="literal">search</code> API expects a <code class="literal">query</code>, not a <code class="literal">filter</code>. To
-use our <code class="literal">term</code> filter, we need to wrap it with a
-<a class="link" href="_combining_queries_with_filters.html#filtered-query" title="Filtering a query"><code class="literal">filtered</code> query</a>:</p><pre class="programlisting prettyprint lang-js">GET /my_store/products/_search
+use our <code class="literal">term</code> filter, <a id="id-1.4.3.6.3.10.7" class="indexterm"></a>we need to wrap it with a
+<a class="link" href="_combining_queries_with_filters.html#filtered-query" title="Filtering a Query"><code class="literal">filtered</code> query</a>:</p><pre class="programlisting prettyprint lang-js">GET /my_store/products/_search
 {
     "query" : {
         "filtered" : { <a id="CO42-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
@@ -72,16 +77,16 @@ use our <code class="literal">term</code> filter, we need to wrap it with a
         }
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/05_Term_number.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO42-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-The <code class="literal">filtered</code> query accepts both a <code class="literal">query</code> and a <code class="literal">filter</code>
+The <code class="literal">filtered</code> query accepts both a <code class="literal">query</code> and a <code class="literal">filter</code>.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO42-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-A <code class="literal">match_all</code> is used to return all matching documents.  This is the default
-behavior, so in future examples we will simply omit the <code class="literal">query</code> section
+A <code class="literal">match_all</code> is used to return all matching documents.<a id="id-1.4.3.6.3.13.2.1.2" class="indexterm"></a>  This is the default
+behavior, so in future examples we will simply omit the <code class="literal">query</code> section.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO42-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">term</code> filter that we saw previously.  Notice how it is placed inside
 the <code class="literal">filter</code> clause.
 </p></td></tr></table></div><p>Once executed, the search results from this query are exactly what you would
-expect: only document <code class="literal">2</code> is returned as a hit (because only <code class="literal">2</code> had a price
-of 20):</p><pre class="programlisting prettyprint lang-json">"hits" : [
+expect: only document 2 is returned as a hit (because only <code class="literal">2</code> had a price
+of <code class="literal">20</code>):</p><pre class="programlisting prettyprint lang-json">"hits" : [
     {
         "_index" : "my_store",
         "_type" :  "products",
@@ -94,15 +99,18 @@ of 20):</p><pre class="programlisting prettyprint lang-json">"hits" : [
     }
 ]</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO43-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Filters do not perform scoring or relevance. The score comes from the
-    <code class="literal">match_all</code> query which treats all docs as equal, so all results receive
+    <code class="literal">match_all</code> query, which treats all docs as equal, so all results receive
     a neutral score of <code class="literal">1</code>.
-</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_filter_with_text"></a>Term Filter with Text<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>As mentioned at the top of this section, the <code class="literal">term</code> filter can match strings
+</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_filter_with_text"></a>term Filter with Text<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>As mentioned at the top of <a id="id-1.4.3.6.4.2.1" class="indexterm"></a>
+<a id="id-1.4.3.6.4.2.2" class="indexterm"></a>
+<a id="id-1.4.3.6.4.2.3" class="indexterm"></a><a id="id-1.4.3.6.4.2.4" class="indexterm"></a>
+<a id="id-1.4.3.6.4.2.5" class="indexterm"></a>this section, the <code class="literal">term</code> filter can match strings
 just as easily as numbers.  Instead of price, let’s try to find products that
 have a certain UPC identification code. To do this with SQL, we might use a
 query like this:</p><pre class="programlisting prettyprint lang-sql">SELECT product
 FROM   products
 WHERE  productID = "XHDK-A-1293-#fJ3"</pre><p>Translated into the query DSL, we can try a similar query with the <code class="literal">term</code>
-filter like so:</p><pre class="programlisting prettyprint lang-js">GET /my_store/products/_search
+filter, like so:</p><pre class="programlisting prettyprint lang-js">GET /my_store/products/_search
 {
     "query" : {
         "filtered" : {
@@ -113,9 +121,10 @@ filter like so:</p><pre class="programlisting prettyprint lang-js">GET /my_store
             }
         }
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/05_Term_text.json" target="sense">View in Sense</a><p>Except there is a little hiccup… we don’t get any results back!  Why is
-that? The problem isn’t actually with the the <code class="literal">term</code> query, it is with the way
-the data has been indexed.  If we use the Analyze API (<a class="xref" href="analysis-intro.html#analyze-api" title="Testing analyzers">Testing analyzers</a>), we
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/05_Term_text.json" target="sense">View in Sense</a><p>Except there is a little hiccup: we don’t get any results back!  Why is
+that? The problem isn’t with the the <code class="literal">term</code> query; it is with the way
+the data has been indexed. <a id="id-1.4.3.6.4.7.2" class="indexterm"></a>
+<a id="id-1.4.3.6.4.7.3" class="indexterm"></a> If we use the <code class="literal">analyze</code> API (<a class="xref" href="analysis-intro.html#analyze-api" title="Testing Analyzers">Testing Analyzers</a>), we
 can see that our UPC has been tokenized into smaller tokens:</p><pre class="programlisting prettyprint lang-js">GET /my_store/_analyze?field=productID
 XHDK-A-1293-#fJ3</pre><pre class="programlisting prettyprint lang-js">{
   "tokens" : [ {
@@ -143,18 +152,18 @@ XHDK-A-1293-#fJ3</pre><pre class="programlisting prettyprint lang-js">{
     "type" :         "&lt;ALPHANUM&gt;",
     "position" :     4
   } ]
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/05_Term_text.json" target="sense">View in Sense</a><p>There are a couple of important points here:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/05_Term_text.json" target="sense">View in Sense</a><p>There are a few important points here:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 We have four distinct tokens instead of a single token representing the UPC.
 </li><li class="listitem">
 All letters have been lowercased.
 </li><li class="listitem">
-We lost the hyphen and the hash (#) sign.
+We lost the hyphen and the hash (<code class="literal">#</code>) sign.
 </li></ul></div><p>So when our <code class="literal">term</code> filter looks for the exact value <code class="literal">XHDK-A-1293-#fJ3</code>, it
-doesn’t find anything because that token does not exist in our inverted index.
-Instead, there are the four tokens listed above.</p><p>Obviously, this is not what we want to happen when dealing with identification
+doesn’t find anything, because that token does not exist in our inverted index.
+Instead, there are the four tokens listed previously.</p><p>Obviously, this is not what we want to happen when dealing with identification
 codes, or any kind of precise enumeration.</p><p>To prevent this from happening, we need to tell Elasticsearch that this field
-contains an exact value by  setting it to be <code class="literal">not_analyzed</code>. We saw this
-originally in <a class="xref" href="mapping-intro.html#custom-field-mappings" title="Customizing field mappings">Customizing field mappings</a>.  To do this, we need to first delete
+contains an exact value by  setting it to be <code class="literal">not_analyzed</code>.<a id="id-1.4.3.6.4.15.2" class="indexterm"></a> We saw this
+originally in <a class="xref" href="mapping-intro.html#custom-field-mappings" title="Customizing Field Mappings">Customizing Field Mappings</a>.  To do this, we need to first delete
 our old index (because it has the incorrect mapping) and create a new one with
 the correct mappings:</p><pre class="programlisting prettyprint lang-js">DELETE /my_store <a id="CO44-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 
@@ -175,7 +184,7 @@ PUT /my_store <a id="CO44-2"></a><span><img src="images/icons/callouts/2.png" al
 Deleting the index first is required, since we cannot change mappings that
     already exist.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO44-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-With the index deleted, we can recreate it with our custom mapping.
+With the index deleted, we can re-create it with our custom mapping.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO44-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Here we explicitly say that we don’t want <code class="literal">productID</code> to be analyzed.
 </p></td></tr></table></div><p>Now we can go ahead and reindex our documents:</p><pre class="programlisting prettyprint lang-js">POST /my_store/products/_bulk
@@ -200,31 +209,34 @@ how the data is mapped):</p><pre class="programlisting prettyprint lang-js">GET 
         }
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/05_Term_text.json" target="sense">View in Sense</a><p>Since the <code class="literal">productID</code> field is not analyzed, and the <code class="literal">term</code> filter performs no
-analysis, the query finds the exact match and returns document <code class="literal">1</code> as a hit.
-Success!</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_internal_filter_operation"></a>Internal Filter Operation<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Internally, Elasticsearch is performing several operations when executing a
+analysis, the query finds the exact match and returns document 1 as a hit.
+Success!</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_internal_filter_operation"></a>Internal Filter Operation<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/05_term.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Internally, Elasticsearch is<a id="id-1.4.3.6.5.2.1" class="indexterm"></a>
+<a id="id-1.4.3.6.5.2.2" class="indexterm"></a>
+<a id="id-1.4.3.6.5.2.3" class="indexterm"></a><a id="id-1.4.3.6.5.2.4" class="indexterm"></a>
+<a id="id-1.4.3.6.5.2.5" class="indexterm"></a> performing several operations when executing a
 filter:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
-<span class="strong"><strong>Find Matching Docs</strong></span>
-</p><p class="simpara">The <code class="literal">term</code> filter looks up the term <code class="literal">"XHDK-A-1293-#fJ3"</code> in the inverted index
+<span class="emphasis"><em>Find matching docs</em></span>.
+</p><p class="simpara">The <code class="literal">term</code> filter looks up the term <code class="literal">XHDK-A-1293-#fJ3</code> in the inverted index
 and retrieves the list of documents that contain that term.  In this case,
-only document <code class="literal">1</code> has the term we are looking for</p></li><li class="listitem"><p class="simpara">
-<span class="strong"><strong>Build a Bitset</strong></span>
-</p><p class="simpara">The filter then builds a <span class="emphasis"><em>bitset</em></span> — an array of 1’s and 0’s — which
+only document 1 has the term we are looking for.</p></li><li class="listitem"><p class="simpara">
+<span class="emphasis"><em>Build a bitset</em></span>.
+</p><p class="simpara">The filter then builds a <span class="emphasis"><em>bitset</em></span>--an array of 1s and 0s—that
 describes which documents contain the term.  Matching documents receive a  <code class="literal">1</code>
-bit.  In our example, the bitset would be: <code class="literal">[1,0,0,0]</code></p></li><li class="listitem"><p class="simpara">
-<span class="strong"><strong>Cache the Bitset</strong></span>
-</p><p class="simpara">Lastly, the bitset is stored in memory, since we can use this in the future
-and skip steps 1. and 2.  This adds a lot of performance and makes filters very
+bit.  In our example, the bitset would be <code class="literal">[1,0,0,0]</code>.</p></li><li class="listitem"><p class="simpara">
+<span class="emphasis"><em>Cache the bitset</em></span>.
+</p><p class="simpara">Last, the bitset is stored in memory, since we can use this in the future
+and skip steps 1 and 2.  This adds a lot of performance and makes filters very
 fast.</p></li></ol></div><p>When executing a <code class="literal">filtered</code> query, the <code class="literal">filter</code> is executed before the
-<code class="literal">query</code>. The resulting bitset is given to the <code class="literal">query</code> which uses it to simply
+<code class="literal">query</code>. The resulting bitset is given to the <code class="literal">query</code>, which uses it to simply
 skip over any documents that have already been excluded by the filter. This is
 one of the ways that filters can improve performance.  Fewer documents
 evaluated by the query  means faster response times.</p></div></div><div class="navfooter"><span class="prev"><a href="structured-search.html">
               « 
-              Structured search</a>
+              Structured Search</a>
            
         </span><span class="next">
            
-          <a href="combining-filters.html">Combining filters
+          <a href="combining-filters.html">Combining Filters
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Mapping</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="mapping-analysis.html" title="Mapping and analysis" /><link rel="prev" href="analysis-intro.html" title="Analysis and analyzers" /><link rel="next" href="complex-core-fields.html" title="Complex core field types" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Mapping</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="mapping-analysis.html" title="Mapping and Analysis" /><link rel="prev" href="analysis-intro.html" title="Analysis and Analyzers" /><link rel="next" href="complex-core-fields.html" title="Complex Core Field Types" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,72 +20,48 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="getting-started.html">Getting started </a></span> » <span class="breadcrumb-link"><a href="mapping-analysis.html">Mapping and analysis</a></span> » <span class="breadcrumb-node">Mapping</span></div><div class="navheader"><span class="prev"><a href="analysis-intro.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="getting-started.html">Getting Started </a></span> » <span class="breadcrumb-link"><a href="mapping-analysis.html">Mapping and Analysis</a></span> » <span class="breadcrumb-node">Mapping</span></div><div class="navheader"><span class="prev"><a href="analysis-intro.html">
               « 
-              Analysis and analyzers</a>
+              Analysis and Analyzers</a>
            
         </span><span class="next">
            
-          <a href="complex-core-fields.html">Complex core field types
+          <a href="complex-core-fields.html">Complex Core Field Types
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-intro"></a>Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_exact_values_vs_full_text.html">Exact values vs. Full text</a></span></dt><dt><span class="section"><a href="inverted-index.html">Inverted index</a></span></dt><dt><span class="section"><a href="analysis-intro.html">Analysis and analyzers</a></span></dt><dt><span class="section"><a href="mapping-intro.html">Mapping</a></span></dt><dt><span class="section"><a href="complex-core-fields.html">Complex core field types</a></span></dt></dl></div><p>In order to be able to treat date fields as dates, numberic fields as numbers,
-and string fields as full text or exact value strings, Elasticsearch needs to
-know what type of data each field contains.  This information is contained in
-the <span class="emphasis"><em>mapping</em></span>.</p><p>As explained in <a class="xref" href="data-in-data-out.html" title="Data in, data out"><em>Data in, data out</em></a>, each document in an index has a <span class="emphasis"><em>type</em></span>.
-Every type has its own <span class="emphasis"><em>mapping</em></span> or <span class="emphasis"><em>schema definition</em></span>. A mapping
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="mapping-intro"></a>Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_exact_values_versus_full_text.html">Exact Values Versus Full Text</a></span></dt><dt><span class="section"><a href="inverted-index.html">Inverted Index</a></span></dt><dt><span class="section"><a href="analysis-intro.html">Analysis and Analyzers</a></span></dt><dt><span class="section"><a href="mapping-intro.html">Mapping</a></span></dt><dt><span class="section"><a href="complex-core-fields.html">Complex Core Field Types</a></span></dt></dl></div><p>In order to be able to treat date fields as dates, numeric fields as numbers,
+and string fields as full-text or exact-value strings, Elasticsearch needs to
+know what type of data each field contains. <a id="id-1.3.8.17.2.1" class="indexterm"></a> This information is contained in
+the mapping.</p><p>As explained in <a class="xref" href="data-in-data-out.html" title="Data in, Data out"><em>Data in, Data out</em></a>, each document in an index <a id="id-1.3.8.17.3.2" class="indexterm"></a>
+<a id="id-1.3.8.17.3.3" class="indexterm"></a>has a <span class="emphasis"><em>type</em></span>.
+Every type has its own <span class="emphasis"><em>mapping</em></span>, or <span class="emphasis"><em>schema definition</em></span>.<a id="id-1.3.8.17.3.7" class="indexterm"></a> A mapping
 defines the fields within a type, the datatype for each field,
 and how the field should be handled by Elasticsearch. A mapping is also used
-to configure metadata associated with the type.</p><p>We discuss mappings in detail in <a class="xref" href="mapping.html" title="Types and Mappings">Types and Mappings</a>. In this section we’re going
-to look at just enough to get you started.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="core-fields"></a>Core simple field types<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Elasticsearch supports the following simple field types:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-String:         
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">string</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-Whole number:   
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">byte</code>, <code class="literal">short</code>, <code class="literal">integer</code>, <code class="literal">long</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-Floating point: 
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">float</code>, <code class="literal">double</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-Boolean:        
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">boolean</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-Date:           
-</p>
-</td><td valign="top">
-<p>
-<code class="literal">date</code>
-</p>
-</td></tr></tbody></table></div><p>When you index a document which contains a new field — one previously not
-seen — Elasticsearch will use <a class="link" href="dynamic-mapping.html" title="Dynamic mapping"><span class="emphasis"><em>dynamic mapping</em></span></a> to try
+to configure metadata associated with the type.</p><p>We discuss mappings in detail in <a class="xref" href="mapping.html" title="Types and Mappings">Types and Mappings</a>. In this section, we’re going
+to look at just enough to get you started.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="core-fields"></a>Core Simple Field Types<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Elasticsearch supports the <a id="id-1.3.8.17.5.2.1" class="indexterm"></a>
+<a id="id-1.3.8.17.5.2.2" class="indexterm"></a>following simple field types:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+String: <code class="literal">string</code>
+</li><li class="listitem">
+Whole number: <code class="literal">byte</code>, <code class="literal">short</code>, <code class="literal">integer</code>, <code class="literal">long</code>
+</li><li class="listitem">
+Floating-point: <code class="literal">float</code>, <code class="literal">double</code>
+</li><li class="listitem">
+Boolean: <code class="literal">boolean</code>
+</li><li class="listitem">
+Date: <code class="literal">date</code>
+</li></ul></div><p>When you index a document that contains a new field—one previously not
+seen—Elasticsearch <a id="id-1.3.8.17.5.4.1" class="indexterm"></a>
+<a id="id-1.3.8.17.5.4.2" class="indexterm"></a>
+<a id="id-1.3.8.17.5.4.3" class="indexterm"></a><a id="id-1.3.8.17.5.4.4" class="indexterm"></a>
+<a id="id-1.3.8.17.5.4.5" class="indexterm"></a>
+<a id="id-1.3.8.17.5.4.6" class="indexterm"></a><a id="id-1.3.8.17.5.4.7" class="indexterm"></a><a id="id-1.3.8.17.5.4.8" class="indexterm"></a><a id="id-1.3.8.17.5.4.9" class="indexterm"></a><a id="id-1.3.8.17.5.4.10" class="indexterm"></a><a id="id-1.3.8.17.5.4.11" class="indexterm"></a><a id="id-1.3.8.17.5.4.12" class="indexterm"></a>will use <a class="link" href="dynamic-mapping.html" title="Dynamic Mapping"><span class="emphasis"><em>dynamic mapping</em></span></a> to try
 to guess the field type from the basic datatypes available in JSON,
 using the following rules:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
-<span class="strong"><strong>JSON type:</strong></span>                       
+<span class="strong"><strong>JSON type</strong></span>                       
 </p>
 </td><td valign="top">
 <p>
-<span class="strong"><strong>Field type:</strong></span>
+<span class="strong"><strong>Field type</strong></span>
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -93,7 +69,7 @@ Boolean: <code class="literal">true</code> or <code class="literal">false</code>
 </p>
 </td><td valign="top">
 <p>
-<code class="literal">"boolean"</code>
+<code class="literal">boolean</code>
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -101,7 +77,7 @@ Whole number: <code class="literal">123</code>
 </p>
 </td><td valign="top">
 <p>
-<code class="literal">"long"</code>
+<code class="literal">long</code>
 </p>
 </td></tr><tr><td valign="top">
 <p>
@@ -109,30 +85,31 @@ Floating point: <code class="literal">123.45</code>
 </p>
 </td><td valign="top">
 <p>
-<code class="literal">"double"</code>
+<code class="literal">double</code>
 </p>
 </td></tr><tr><td valign="top">
 <p>
-String, valid date: <code class="literal">"2014-09-15"</code> 
+String, valid date: <code class="literal">2014-09-15</code> 
 </p>
 </td><td valign="top">
 <p>
-<code class="literal">"date"</code>
+<code class="literal">date</code>
 </p>
 </td></tr><tr><td valign="top">
 <p>
-String: <code class="literal">"foo bar"</code>                
+String: <code class="literal">foo bar</code>                
 </p>
 </td><td valign="top">
 <p>
-<code class="literal">"string"</code>
+<code class="literal">string</code>
 </p>
-</td></tr></tbody></table></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>This means that, if you index a number in quotes — <code class="literal">"123"</code> it will be
-mapped as type <code class="literal">"string"</code>, not type <code class="literal">"long"</code>. However, if the field is
-already mapped as type <code class="literal">"long"</code>, then Elasticsearch will try to convert
-the string into a long, and throw an exception if it can’t.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_viewing_the_mapping"></a>Viewing the mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>We can view the mapping that Elasticsearch has for one or more types in one or
-more indices using the <code class="literal">/_mapping</code> endpoint. At the <a class="link" href="mapping-analysis.html" title="Mapping and analysis">start of this chapter</a> we already retrieved the mapping for type <code class="literal">tweet</code> in index
-<code class="literal">gb</code>:</p><pre class="programlisting prettyprint lang-js">GET /gb/_mapping/tweet</pre><p>This shows us the mapping for the fields (called <span class="emphasis"><em>properties</em></span>) that
+</td></tr></tbody></table></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>This means that if you index a number in quotes (<code class="literal">"123"</code>), it will be
+mapped as type <code class="literal">string</code>, not type <code class="literal">long</code>. However, if the field is
+already mapped as type <code class="literal">long</code>, then Elasticsearch will try to convert
+the string into a long, and throw an exception if it can’t.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_viewing_the_mapping"></a>Viewing the Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>We can view the mapping that Elasticsearch has<a id="id-1.3.8.17.6.2.1" class="indexterm"></a>
+<a id="id-1.3.8.17.6.2.2" class="indexterm"></a> for one or more types in one or
+more indices by using the <code class="literal">/_mapping</code> endpoint. At the <a class="link" href="mapping-analysis.html" title="Mapping and Analysis">start of this chapter</a>, we already retrieved the mapping for type <code class="literal">tweet</code> in index
+<code class="literal">gb</code>:</p><pre class="programlisting prettyprint lang-js">GET /gb/_mapping/tweet</pre><p>This shows us the mapping for the <a id="id-1.3.8.17.6.4.1" class="indexterm"></a>fields (called <span class="emphasis"><em>properties</em></span>) that
 Elasticsearch generated dynamically from the documents that we indexed:</p><pre class="programlisting prettyprint lang-js">{
    "gb": {
       "mappings": {
@@ -155,82 +132,75 @@ Elasticsearch generated dynamically from the documents that we indexed:</p><pre 
          }
       }
    }
-}</pre><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Incorrect mappings, such as having an <code class="literal">age</code> field mapped as type <code class="literal">string</code>
-instead of <code class="literal">integer</code>, can produce confusing results to your queries.</p><p>Instead of assuming that your mapping is correct, check it!</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="custom-field-mappings"></a>Customizing field mappings<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While the basic field datatypes are sufficient for many cases, you will often
+}</pre><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Incorrect mappings, such as <a id="id-1.3.8.17.6.6.1.1" class="indexterm"></a>
+<a id="id-1.3.8.17.6.6.1.2" class="indexterm"></a>having an <code class="literal">age</code> field mapped as type <code class="literal">string</code>
+instead of <code class="literal">integer</code>, can produce confusing results to your queries.</p><p>Instead of assuming that your mapping is correct, check it!</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="custom-field-mappings"></a>Customizing Field Mappings<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While the basic field datatypes are <a id="id-1.3.8.17.7.2.1" class="indexterm"></a>
+<a id="id-1.3.8.17.7.2.2" class="indexterm"></a>sufficient for many cases, you will often
 need to customize the mapping for individual fields, especially string fields.
-Custom mappings allow you to:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-distinguish between full text string fields and exact value string fields,
+Custom mappings allow you to do the following:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Distinguish between full-text string fields and exact value string fields
 </li><li class="listitem">
-use language-specific analyzers,
+Use language-specific analyzers
 </li><li class="listitem">
-optimize a field for partial matching,
+Optimize a field for partial matching
 </li><li class="listitem">
-specify custom date formats,
+Specify custom date formats
 </li><li class="listitem">
-and much more.
+And much more
 </li></ul></div><p>The most important attribute of a field is the <code class="literal">type</code>. For fields
 other than <code class="literal">string</code> fields, you will seldom need to map anything other
 than <code class="literal">type</code>:</p><pre class="programlisting prettyprint lang-js">{
     "number_of_clicks": {
         "type": "integer"
     }
-}</pre><p>Fields of type <code class="literal">"string"</code> are, by default, considered to contain full text.
-That is, their value will be passed through an analyzer before being indexed
-and a full text query on the field will pass the query string through an
-analyzer before searching.</p><p>The two most important mapping attributes for <code class="literal">string</code> fields are
-<code class="literal">index</code> and <code class="literal">analyzer</code>.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_literal_index_literal"></a><code class="literal">index</code><a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">index</code> attribute controls how the string will be indexed. It
-can contain one of three values:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
+}</pre><p>Fields of type <code class="literal">string</code> are, by default, considered to contain full text.
+That is, their value will be passed through<a id="id-1.3.8.17.7.6.2" class="indexterm"></a>
+<a id="id-1.3.8.17.7.6.3" class="indexterm"></a> an analyzer before being indexed,
+and a full-text query on the field will pass the query string through an
+analyzer before searching.</p><p>The two most important mapping<a id="id-1.3.8.17.7.7.1" class="indexterm"></a>
+<a id="id-1.3.8.17.7.7.2" class="indexterm"></a> attributes for <code class="literal">string</code> fields are
+<code class="literal">index</code> and <code class="literal">analyzer</code>.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_index_2"></a>index<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>The <code class="literal">index</code> attribute controls<a id="id-1.3.8.17.7.8.2.2" class="indexterm"></a> how the string will be indexed. It
+can contain one of three values:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">analyzed</code>
-</p>
-</td><td valign="top">
-<p>
-First analyze the string, then index it.  In other words,
-                    index this field as full text.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+   First analyze the string and then index it.  In other words, index this field as full text.
+</dd><dt><span class="term">
 <code class="literal">not_analyzed</code>
-</p>
-</td><td valign="top">
-<p>
-Index this field, so it is searchable, but index the
-                    value exactly as specified. Do not analyze it.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+   Index this field, so it is searchable, but index the value exactly as specified. Do not analyze it.
+</dd><dt><span class="term">
 <code class="literal">no</code>
-</p>
-</td><td valign="top">
-<p>
-Don’t index this field at all. This field
-                    will not be searchable.
-</p>
-</td></tr></tbody></table></div><p>The default value of <code class="literal">index</code> for a <code class="literal">string</code> field is <code class="literal">analyzed</code>.  If we
-want to map the field as an exact value, then we need to set it to
+</span></dt><dd>
+   Don’t index this field at all. This field will not be searchable.
+</dd></dl></div><p>The default value of <code class="literal">index</code> for a <code class="literal">string</code> field is <code class="literal">analyzed</code>.  If we
+want to map the field as an exact value, we need to set it to
 <code class="literal">not_analyzed</code>:</p><pre class="programlisting prettyprint lang-js">{
     "tag": {
         "type":     "string",
         "index":    "not_analyzed"
     }
-}</pre><div class="sidebar"><div class="titlepage"></div><p>The other simple types — <code class="literal">long</code>, <code class="literal">double</code>, <code class="literal">date</code> etc — also accept the
+}</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The other simple types (such as <code class="literal">long</code>, <code class="literal">double</code>, <code class="literal">date</code> etc) also accept the
 <code class="literal">index</code> parameter, but the only relevant values are <code class="literal">no</code> and <code class="literal">not_analyzed</code>,
-as their values are never analyzed.</p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_literal_analyzer_literal"></a><code class="literal">analyzer</code><a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>For <code class="literal">analyzed</code> string fields, use the <code class="literal">analyzer</code> attribute to
+as their values are never analyzed.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_analyzer"></a>analyzer<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>For <code class="literal">analyzed</code> string fields, use <a id="id-1.3.8.17.7.9.2.2" class="indexterm"></a>
+<a id="id-1.3.8.17.7.9.2.3" class="indexterm"></a>the <code class="literal">analyzer</code> attribute to
 specify which analyzer to apply both at search time and at index time. By
-default, Elasticsearch uses the <code class="literal">standard</code> analyzer, but you can change this
-by specifying one of the built-in analyzers, such as
+default, Elasticsearch uses the <code class="literal">standard</code> analyzer,<a id="id-1.3.8.17.7.9.2.6" class="indexterm"></a>
+<a id="id-1.3.8.17.7.9.2.7" class="indexterm"></a> but you can change this
+by specifying one of the built-in analyzers, such<a id="id-1.3.8.17.7.9.2.8" class="indexterm"></a> as
 <code class="literal">whitespace</code>, <code class="literal">simple</code>, or <code class="literal">english</code>:</p><pre class="programlisting prettyprint lang-js">{
     "tweet": {
         "type":     "string",
         "analyzer": "english"
     }
-}</pre><p>In <a class="xref" href="custom-analyzers.html" title="Custom analyzers">Custom analyzers</a> we will show you how to define and use custom analyzers
-as well.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="updating-a-mapping"></a>Updating a mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>You can specify the mapping for a type when you first create an index.
+}</pre><p>In <a class="xref" href="custom-analyzers.html" title="Custom Analyzers">Custom Analyzers</a>, we show you how to define and use custom analyzers
+as well.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="updating-a-mapping"></a>Updating a Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>You can specify the mapping for a type when you first <a id="id-1.3.8.17.8.2.1" class="indexterm"></a>
+<a id="id-1.3.8.17.8.2.2" class="indexterm"></a>
+<a id="id-1.3.8.17.8.2.3" class="indexterm"></a><a id="id-1.3.8.17.8.2.4" class="indexterm"></a>
+<a id="id-1.3.8.17.8.2.5" class="indexterm"></a>create an index.
 Alternatively, you can add the mapping for a new type (or update the mapping
-for an existing type) later, using the <code class="literal">/_mapping</code> endpoint.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>While you can <span class="strong"><strong>add</strong></span> to an existing mapping, you can’t <span class="strong"><strong>change</strong></span> it.  If a field
-already exists in the mapping, then it probably means that data from that
-field has already been indexed.  If you were to change the field mapping, then
-the already indexed data would be wrong and would not be properly searchable.</p></div></div><p>We can update a mapping to add a new field, but we can’t change an existing
+for an existing type) later, using the <code class="literal">/_mapping</code> endpoint.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Although you can <span class="emphasis"><em>add</em></span> to an existing mapping, you can’t <span class="emphasis"><em>change</em></span> it.  If a field
+already exists in the mapping, the data from that
+field probably has already been indexed.  If you were to change the field mapping, the already indexed data would be wrong and would not be properly searchable.</p></div></div><p>We can update a mapping to add a new field, but we can’t change an existing
 field from <code class="literal">analyzed</code> to <code class="literal">not_analyzed</code>.</p><p>To demonstrate both ways of specifying mappings, let’s first delete the <code class="literal">gb</code>
 index:</p><pre class="programlisting prettyprint lang-sh">DELETE /gb</pre><a class="sense_widget" href="sense_widget.html?snippets/052_Mapping_Analysis/45_Mapping.json" target="sense">View in Sense</a><p>Then create a new index, specifying that the <code class="literal">tweet</code> field should use
 the <code class="literal">english</code> analyzer:</p><pre class="programlisting prettyprint lang-js">PUT /gb <a id="CO18-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
@@ -266,22 +236,23 @@ This creates the index with the <code class="literal">mappings</code> specified 
     }
   }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/052_Mapping_Analysis/45_Mapping.json" target="sense">View in Sense</a><p>Note that we didn’t need to list all of the existing fields again, as we can’t
-change them anyway.  Our new field has been merged into the existing mapping.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_testing_the_mapping"></a>Testing the mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>You can use the <code class="literal">analyze</code> API to test the mapping for string fields by
+change them anyway.  Our new field has been merged into the existing mapping.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_testing_the_mapping"></a>Testing the Mapping<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/052_Mapping_Analysis/45_Mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>You can use the <code class="literal">analyze</code> API to<a id="id-1.3.8.17.9.2.2" class="indexterm"></a>
+<a id="id-1.3.8.17.9.2.3" class="indexterm"></a> test the mapping for string fields by
 name. Compare the output of these two requests:</p><pre class="programlisting prettyprint lang-js">GET /gb/_analyze?field=tweet
 Black-cats <a id="CO19-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 
 GET /gb/_analyze?field=tag
 Black-cats <a id="CO19-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span></pre><a class="sense_widget" href="sense_widget.html?snippets/052_Mapping_Analysis/45_Mapping.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO19-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO19-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The text we want to analyze is passed in the body.
-</p></td></tr></table></div><p>The <code class="literal">tweet</code> field produces the two terms <code class="literal">"black"</code> and <code class="literal">"cat"</code>, while the
-<code class="literal">tag</code> field produces the single term <code class="literal">"Black-cats"</code>. In other words, our
+</p></td></tr></table></div><p>The <code class="literal">tweet</code> field produces the two terms <code class="literal">black</code> and <code class="literal">cat</code>, while the
+<code class="literal">tag</code> field produces the single term <code class="literal">Black-cats</code>. In other words, our
 mapping is working correctly.</p></div></div><div class="navfooter"><span class="prev"><a href="analysis-intro.html">
               « 
-              Analysis and analyzers</a>
+              Analysis and Analyzers</a>
            
         </span><span class="next">
            
-          <a href="complex-core-fields.html">Complex core field types
+          <a href="complex-core-fields.html">Complex Core Field Types
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

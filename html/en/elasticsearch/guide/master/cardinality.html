@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Finding Distinct Counts</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="_approximate_aggregations.html" title="Approximate Aggregations" /><link rel="prev" href="_approximate_aggregations.html" title="Approximate Aggregations" /><link rel="next" href="percentiles.html" title="Calculating Percentiles" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Finding Distinct Counts</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="_approximate_aggregations.html" title="Approximate Aggregations" /><link rel="prev" href="_approximate_aggregations.html" title="Approximate Aggregations" /><link rel="next" href="percentiles.html" title="Calculating Percentiles" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,7 +20,7 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="aggregations.html">Aggregations </a></span> » <span class="breadcrumb-link"><a href="_approximate_aggregations.html">Approximate Aggregations</a></span> » <span class="breadcrumb-node">Finding Distinct Counts</span></div><div class="navheader"><span class="prev"><a href="_approximate_aggregations.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="aggregations.html">Aggregations </a></span> » <span class="breadcrumb-link"><a href="_approximate_aggregations.html">Approximate Aggregations</a></span> » <span class="breadcrumb-node">Finding Distinct Counts</span></div><div class="navheader"><span class="prev"><a href="_approximate_aggregations.html">
               « 
               Approximate Aggregations</a>
            
@@ -29,8 +29,12 @@
           <a href="percentiles.html">Calculating Percentiles
                »
             </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="cardinality"></a>Finding Distinct Counts<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/60_cardinality.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="cardinality.html">Finding Distinct Counts</a></span></dt><dt><span class="section"><a href="percentiles.html">Calculating Percentiles</a></span></dt></dl></div><p>The first approximate aggregation provided by Elasticsearch is the <code class="literal">cardinality</code>
-metric.  This provides the cardinality of a field, also called "distinct" or
-"unique" count.  You may be familiar with the SQL version:</p><pre class="programlisting prettyprint lang-sql">SELECT DISTINCT(color)
+metric.<a id="id-1.6.11.13.2.2" class="indexterm"></a>
+<a id="id-1.6.11.13.2.3" class="indexterm"></a><a id="id-1.6.11.13.2.4" class="indexterm"></a>
+<a id="id-1.6.11.13.2.5" class="indexterm"></a>
+<a id="id-1.6.11.13.2.6" class="indexterm"></a><a id="id-1.6.11.13.2.7" class="indexterm"></a>
+<a id="id-1.6.11.13.2.8" class="indexterm"></a><a id="id-1.6.11.13.2.9" class="indexterm"></a>  This provides the cardinality of a field, also called a <span class="emphasis"><em>distinct</em></span> or
+<span class="emphasis"><em>unique</em></span> count. <a id="id-1.6.11.13.2.12" class="indexterm"></a> You may be familiar with the SQL version:</p><pre class="programlisting prettyprint lang-sql">SELECT DISTINCT(color)
 FROM cars</pre><p>Distinct counts are a common operation, and answer many fundamental business questions:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 How many unique visitors have come to my website?
 </li><li class="listitem">
@@ -47,7 +51,7 @@ sold at our dealership:</p><pre class="programlisting prettyprint lang-js">GET /
             }
         }
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><p>Which returns a minimal response show that we have sold three different colored
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><p>This returns a minimal response showing that we have sold three different-colored
 cars:</p><pre class="programlisting prettyprint lang-js">...
 "aggregations": {
   "distinct_colors": {
@@ -55,7 +59,8 @@ cars:</p><pre class="programlisting prettyprint lang-js">...
   }
 }
 ...</pre><p>We can make our example more useful:  how many colors were sold each month?  For
-that metric, we just nest the <code class="literal">cardinality</code> metric under a <code class="literal">date_histogram</code>:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
+that metric, we just nest the <code class="literal">cardinality</code> metric under <a id="id-1.6.11.13.11.2" class="indexterm"></a>
+<a id="id-1.6.11.13.11.3" class="indexterm"></a>a <code class="literal">date_histogram</code>:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
 {
   "aggs" : {
       "months" : {
@@ -72,22 +77,24 @@ that metric, we just nest the <code class="literal">cardinality</code> metric un
         }
       }
   }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_understanding_the_tradeoffs"></a>Understanding the Tradeoffs<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/60_cardinality.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>As mentioned at the top of this chapter, the <code class="literal">cardinality</code> metric is an approximate
-algorithm.  It is based on the <a class="ulink" href="http://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/40671.pdf" target="_top">HyperLogLog++</a> (HLL) algorithm.  HLL works by
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_understanding_the_trade_offs"></a>Understanding the Trade-offs<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/60_cardinality.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>As mentioned at the top of this chapter, the <code class="literal">cardinality</code> metric is an approximate
+algorithm. <a id="id-1.6.11.13.14.2.2" class="indexterm"></a>
+<a id="id-1.6.11.13.14.2.3" class="indexterm"></a> It is based on the <a class="ulink" href="http://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/40671.pdf" target="_top">HyperLogLog++</a> (HLL) algorithm.<a id="id-1.6.11.13.14.2.5" class="indexterm"></a>  HLL works by
 hashing your input and using the bits from the hash to make probabilistic estimations
 on the cardinality.</p><p>You don’t need to understand the technical details (although if you’re interested,
-the paper is a great read!), but you should be aware of the <span class="strong"><strong>properties</strong></span> of the
+the paper is a great read!), but you <a id="id-1.6.11.13.14.3.1" class="indexterm"></a>
+<a id="id-1.6.11.13.14.3.2" class="indexterm"></a>should be aware of the <span class="emphasis"><em>properties</em></span> of the
 algorithm:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-Configurable precision, which decides controls memory usage (more precise
-== more memory)
+Configurable precision, which controls memory usage (more precise
+== more memory).
 </li><li class="listitem">
-Excellent accuracy on low-cardinality sets
+Excellent accuracy on low-cardinality sets.
 </li><li class="listitem">
-Fixed memory usage. No matter if there are thousands or billions of unique
-values, memory usage only depends on the configured precision.
-</li></ul></div><p>To configure the precision, you must specify the <code class="literal">precision_threshold</code> parameter.
+Fixed memory usage. Whether there are thousands or billions of unique
+values, memory usage depends on only the configured precision.
+</li></ul></div><p>To configure the precision, you must specify the <code class="literal">precision_threshold</code> parameter.<a id="id-1.6.11.13.14.5.2" class="indexterm"></a>
 This threshold defines the point under which cardinalities are expected to be very
-close to accurate.  So for example:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
+close to accurate. Consider this example:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
 {
     "aggs" : {
         "distinct_colors" : {
@@ -98,28 +105,30 @@ close to accurate.  So for example:</p><pre class="programlisting prettyprint la
         }
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO206-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-<code class="literal">precision_threshold</code> accepts a number from 0 - 40,000.  Larger values
-are treated equivalent to 40,000.
-</p></td></tr></table></div><p>Will ensure that fields with 100 or fewer distinct values will be extremely accurate.
-Although not guaranteed by the algorithm, if a cardinality is under the threshold
+<code class="literal">precision_threshold</code> accepts a number from 0–40,000.  Larger values
+are treated as equivalent to 40,000.
+</p></td></tr></table></div><p>This example will ensure that fields with 100 or fewer distinct values will be extremely accurate.
+Although not guaranteed by the algorithm, if a cardinality is under the threshold,
 it is almost always 100% accurate.  Cardinalities above this will begin to trade
-accuracy for memory savings and a little error will creep into the metric.</p><p>For a given threshold, the HLL data-structure will use about
+accuracy for memory savings, and a little error will creep into the metric.</p><p>For a given threshold, the HLL data-structure will use about
 <code class="literal">precision_threshold * 8</code> bytes of memory.  So you must balance how much memory
 you are willing to sacrifice for additional accuracy.</p><p>Practically speaking, a threshold of <code class="literal">100</code> maintains an error under 5% even when
-counting millions of unique values.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_optimizing_for_speed"></a>Optimizing for speed<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/60_cardinality.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>If you want a distinct count, you <span class="emphasis"><em>usually</em></span> want to query your entire data-set
-(or nearly all of it).  Any operation on all your data needs to execute quickly,
-for obvious reasons. HyperLogLog is very fast already — it simply
-hashes your data and does some bit-twiddling.</p><p>But if speed is very important to you, we can optimize it a little bit further.
-Since HLL simply needs the hash of the field, we can pre-compute that hash at
-index time.  When the query executes, we can skip the hash computation and load
-the value directly out of fielddata.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Pre-computing hashes is only useful on very large and/or high-cardinality
-fields. Calculating the hash on these fields is non-negligible at query-time.</p><p>However, numeric fields hash very quickly and storing the original numeric often
+counting millions of unique values.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_optimizing_for_speed"></a>Optimizing for Speed<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/60_cardinality.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>If you want a distinct count, you <span class="emphasis"><em>usually</em></span> want to query your entire dataset
+(or nearly all of it). <a id="id-1.6.11.13.15.2.2" class="indexterm"></a>
+<a id="id-1.6.11.13.15.2.3" class="indexterm"></a><a id="id-1.6.11.13.15.2.4" class="indexterm"></a>
+<a id="id-1.6.11.13.15.2.5" class="indexterm"></a> Any operation on all your data needs to execute quickly,
+for obvious reasons. HyperLogLog is very fast already—it simply
+hashes your data and does some bit-twiddling.<a id="id-1.6.11.13.15.2.6" class="indexterm"></a></p><p>But if speed is important to you, we can optimize it a little bit further.
+Since HLL simply needs the hash of the field, we can precompute that hash at
+index time.<a id="id-1.6.11.13.15.3.1" class="indexterm"></a>  When the query executes, we can skip the hash computation and load
+the value directly out of fielddata.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Precomputing hashes is useful only on very large and/or high-cardinality
+fields. Calculating the hash on these fields is non-negligible at query time.</p><p>However, numeric fields hash very quickly, and storing the original numeric often
 requires the same (or less) memory. This is also true on low-cardinality string
-fields — there are internal optimizations which guarantee that hashes are
-calculated only once per unique value.</p><p>Basically, pre-computing hashes is not guaranteed to make all fields faster — only those that have high cardinality and/or large strings.  And remember,
-pre-computing simply shifts the cost to index-time.  You still pay the price,
-you just choose <span class="emphasis"><em>when</em></span> to pay it.</p></div></div><p>To do this, we need to add a new multi-field to our data.  We’ll delete our index,
-add a new mapping which includes the hashed field, then reindex:</p><pre class="programlisting prettyprint lang-js">DELETE /cars/
+fields; there are internal optimizations that guarantee that hashes are
+calculated only once per unique value.</p><p>Basically, precomputing hashes is not guaranteed to make all fields faster — only those that have high cardinality and/or large strings.  And remember,
+precomputing simply shifts the cost to index time.  You still pay the price;
+you just choose <span class="emphasis"><em>when</em></span> to pay it.</p></div></div><p>To do this, we need to add a new multifield to our data.  We’ll delete our index,
+add a new mapping that includes the hashed field, and then reindex:</p><pre class="programlisting prettyprint lang-js">DELETE /cars/
 
 PUT /cars/
 {
@@ -152,9 +161,9 @@ POST /cars/transactions/_bulk
 { "price" : 80000, "color" : "red", "make" : "bmw", "sold" : "2014-01-01" }
 { "index": {}}
 { "price" : 25000, "color" : "blue", "make" : "ford", "sold" : "2014-02-12" }</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO207-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-This multi-field is of type <code class="literal">murmur3</code>, which is a hashing function
-</p></td></tr></table></div><p>Now when we run an aggregation, we use the <code class="literal">"color.hash"</code> field instead of the
-<code class="literal">"color"</code> field:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
+This multifield is of type <code class="literal">murmur3</code>, which is a hashing function.
+</p></td></tr></table></div><p>Now when we run an aggregation, we use the <code class="literal">color.hash</code> field instead of the
+<code class="literal">color</code> field:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
 {
     "aggs" : {
         "distinct_colors" : {
@@ -164,13 +173,12 @@ This multi-field is of type <code class="literal">murmur3</code>, which is a has
         }
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/60_cardinality.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO208-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-Notice that we specify the hashed multi-field, rather than the original
-</p></td></tr></table></div><p>Now the <code class="literal">cardinality</code> metric will load the values (e.g. the pre-computed hashes)
+Notice that we specify the hashed multifield, rather than the original.
+</p></td></tr></table></div><p>Now the <code class="literal">cardinality</code> metric will load the values (the precomputed hashes)
 from <code class="literal">"color.hash"</code> and use those in place of dynamically hashing the original
-value.</p><p>The savings per document is small, but if hashing each field adds an additional
-10ns and your aggregation touches 100m documents…that adds an additional 1s per
+value.</p><p>The savings per document is small, but if hashing each field adds 10 nanoseconds and your aggregation touches 100 million documents, that adds 1 second per
 query.  If you find yourself using <code class="literal">cardinality</code> across many documents,
-perform some profiling to see if pre-computing hashes makes sense for your
+perform some profiling to see if precomputing hashes makes sense for your
 deployment.</p></div></div><div class="navfooter"><span class="prev"><a href="_approximate_aggregations.html">
               « 
               Approximate Aggregations</a>

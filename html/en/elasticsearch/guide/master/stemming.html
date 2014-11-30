@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Reducing words to their root form</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="languages.html" title="Dealing with human language" /><link rel="prev" href="sorting-collations.html" title="Sorting and collations" /><link rel="next" href="algorithmic-stemmers.html" title="Algorithmic stemmers" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Reducing Words to Their Root Form</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="languages.html" title="Dealing with Human Language" /><link rel="prev" href="sorting-collations.html" title="Sorting and Collations" /><link rel="next" href="algorithmic-stemmers.html" title="Algorithmic Stemmers" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,110 +20,73 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="languages.html">Dealing with human language </a></span> » <span class="breadcrumb-node">Reducing words to their root form</span></div><div class="navheader"><span class="prev"><a href="sorting-collations.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="languages.html">Dealing with Human Language </a></span> » <span class="breadcrumb-node">Reducing Words to Their Root Form</span></div><div class="navheader"><span class="prev"><a href="sorting-collations.html">
               « 
-              Sorting and collations</a>
+              Sorting and Collations</a>
            
         </span><span class="next">
            
-          <a href="algorithmic-stemmers.html">Algorithmic stemmers
+          <a href="algorithmic-stemmers.html">Algorithmic Stemmers
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="stemming"></a>Reducing words to their root form<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/230_Stemming/00_Intro.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="algorithmic-stemmers.html">Algorithmic stemmers</a></span></dt><dt><span class="section"><a href="dictionary-stemmers.html">Dictionary stemmers</a></span></dt><dt><span class="section"><a href="hunspell.html">Hunspell stemmer</a></span></dt><dt><span class="section"><a href="choosing-a-stemmer.html">Choosing a stemmer</a></span></dt><dt><span class="section"><a href="controlling-stemming.html">Controlling stemming</a></span></dt><dt><span class="section"><a href="stemming-in-situ.html">Stemming in situ</a></span></dt></dl></div><p>Most languages of the world are <span class="strong"><strong>inflected</strong></span>, meaning that words can change
-their form to express differences in:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-<span class="emphasis"><em>number</em></span>
-</p>
-</td><td valign="top">
-<p>
-fox, foxes
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<span class="emphasis"><em>tense</em></span>
-</p>
-</td><td valign="top">
-<p>
-pay, paid, paying
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<span class="emphasis"><em>gender</em></span>
-</p>
-</td><td valign="top">
-<p>
-waiter, waitress
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<span class="emphasis"><em>person</em></span>
-</p>
-</td><td valign="top">
-<p>
-hear, hears
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<span class="emphasis"><em>case</em></span>
-</p>
-</td><td valign="top">
-<p>
-I, me, my
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<span class="emphasis"><em>aspect</em></span>
-</p>
-</td><td valign="top">
-<p>
-ate, eaten
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<span class="emphasis"><em>mood</em></span>
-</p>
-</td><td valign="top">
-<p>
-so <span class="strong"><strong>be</strong></span> it, <span class="strong"><strong>were</strong></span> it so
-</p>
-</td></tr></tbody></table></div><p>While inflection aids expressivity, it interferes with retrievability as a
-single root <span class="emphasis"><em>word sense</em></span> or meaning may be represented by many different
-sequences of letters. English is a weakly inflected language — you could
-ignore inflections and still get reasonable search results — but some other
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="stemming"></a>Reducing Words to Their Root Form<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/230_Stemming/00_Intro.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="algorithmic-stemmers.html">Algorithmic Stemmers</a></span></dt><dt><span class="section"><a href="dictionary-stemmers.html">Dictionary Stemmers</a></span></dt><dt><span class="section"><a href="hunspell.html">Hunspell Stemmer</a></span></dt><dt><span class="section"><a href="choosing-a-stemmer.html">Choosing a Stemmer</a></span></dt><dt><span class="section"><a href="controlling-stemming.html">Controlling Stemming</a></span></dt><dt><span class="section"><a href="stemming-in-situ.html">Stemming in situ</a></span></dt></dl></div><p>Most languages of the world are <span class="emphasis"><em>inflected</em></span>, meaning <a id="id-1.5.6.2.2" class="indexterm"></a>
+<a id="id-1.5.6.2.3" class="indexterm"></a><a id="id-1.5.6.2.4" class="indexterm"></a>
+<a id="id-1.5.6.2.5" class="indexterm"></a><a id="id-1.5.6.2.6" class="indexterm"></a>that words can change
+their form to express differences in the following:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<span class="emphasis"><em>Number</em></span>:      fox, foxes
+</li><li class="listitem">
+<span class="emphasis"><em>Tense</em></span>:       pay, paid, paying
+</li><li class="listitem">
+<span class="emphasis"><em>Gender</em></span>:      waiter, waitress
+</li><li class="listitem">
+<span class="emphasis"><em>Person</em></span>:      hear, hears
+</li><li class="listitem">
+<span class="emphasis"><em>Case</em></span>:        I, me, my
+</li><li class="listitem">
+<span class="emphasis"><em>Aspect</em></span>:      ate, eaten
+</li><li class="listitem">
+<span class="emphasis"><em>Mood</em></span>:        so be it, were it so
+</li></ul></div><p>While inflection aids expressivity, it interferes<a id="id-1.5.6.4.1" class="indexterm"></a> with retrievability, as a
+single root <span class="emphasis"><em>word sense</em></span> (or meaning) may be represented by many different
+sequences of letters.<a id="id-1.5.6.4.3" class="indexterm"></a>
+<a id="id-1.5.6.4.4" class="indexterm"></a> English is a weakly inflected language (you could
+ignore inflections and still get reasonable search results), but some other
 languages are highly inflected and need extra work in order to achieve
-high quality search results.</p><p><span class="emphasis"><em>Stemming</em></span> attempts to remove the difference between inflected forms of a
+high-quality search results.</p><p><span class="emphasis"><em>Stemming</em></span> attempts to remove the differences between inflected forms of a
 word, in order to reduce each word to its root form. For instance <code class="literal">foxes</code> may
 be reduced to the root <code class="literal">fox</code>, to remove the difference between singular and
-plural in the same way that we removed the difference between lower case and
-upper case.</p><p>The root form of a word may not even be a real word. The words <code class="literal">jumping</code> and
-<code class="literal">jumpiness</code> may both be stemmed to <code class="literal">jumpi</code>. It doesn’t matter — as long as
+plural in the same way that we removed the difference between lowercase and
+uppercase.</p><p>The root form of a word may not even be a real word. The words <code class="literal">jumping</code> and
+<code class="literal">jumpiness</code> may both be stemmed to <code class="literal">jumpi</code>. It doesn’t matter—as long as
 the same terms are produced at index time and at search time, search will just
 work.</p><p>If stemming were easy, there would be only one implementation. Unfortunately,
-stemming is an inexact science which suffers from two issues: <span class="emphasis"><em>understemming</em></span>
-and <span class="emphasis"><em>overstemming</em></span>.</p><p>Understemming is the failure to reduce words with the same meaning to the same
-root. For example, <code class="literal">jumped</code>, and <code class="literal">jumps</code> may be reduced to <code class="literal">jump</code>, while
-<code class="literal">jumping</code> may be reduced to <code class="literal">jumpi</code>.  Understemming reduces retrieval — relevant documents are not returned.</p><p>Overstemming is the failure to keep two words with distinct meaning separate.
-For instance <code class="literal">general</code> and <code class="literal">generate</code> may both be stemmed to <code class="literal">gener</code>.
-Overstemming reduces precision — irrelevant documents are returned when they
-shouldn’t be.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Lemmatisation</strong></p></div></div></div><p>A <span class="emphasis"><em>lemma</em></span> is the canonical or dictionary form of a set of related words — the
-lemma of <code class="literal">paying</code>, <code class="literal">paid</code> and <code class="literal">pays</code> is <code class="literal">pay</code>.  Usually the lemma resembles
+stemming is an inexact science that <a id="id-1.5.6.7.1" class="indexterm"></a>
+<a id="id-1.5.6.7.2" class="indexterm"></a>suffers from two issues: understemming
+and overstemming.</p><p><span class="emphasis"><em>Understemming</em></span> is the failure to reduce words with the same meaning to the same
+root. For example, <code class="literal">jumped</code> and <code class="literal">jumps</code> may be reduced to <code class="literal">jump</code>, while
+<code class="literal">jumping</code> may be reduced to <code class="literal">jumpi</code>.  Understemming reduces retrieval
+relevant documents are not returned.</p><p><span class="emphasis"><em>Overstemming</em></span> is the failure to keep two words with distinct meanings separate.
+For instance, <code class="literal">general</code> and <code class="literal">generate</code> may both be stemmed to <code class="literal">gener</code>.
+Overstemming reduces precision: irrelevant documents are returned when they
+shouldn’t be.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Lemmatization</strong></p></div></div></div><p>A <span class="emphasis"><em>lemma</em></span> is the canonical, or dictionary, form <a id="id-1.5.6.10.2.2" class="indexterm"></a>of a set of related words—the
+lemma of <code class="literal">paying</code>, <code class="literal">paid</code>, and <code class="literal">pays</code> is <code class="literal">pay</code>.  Usually the lemma resembles
 the words it is related to but sometimes it doesn’t — the lemma of <code class="literal">is</code>,
-<code class="literal">was</code>, <code class="literal">am</code> and <code class="literal">being</code> is <code class="literal">be</code>.</p><p>Lemmatisation, like stemming, tries to group related words, but it goes one
+<code class="literal">was</code>, <code class="literal">am</code>, and <code class="literal">being</code> is <code class="literal">be</code>.</p><p>Lemmatization, like stemming, tries to group related words,<a id="id-1.5.6.10.3.1" class="indexterm"></a> but it goes one
 step further than stemming in that it tries to group words by their <span class="emphasis"><em>word
-sense</em></span> or meaning.  The same word may represent two different meanings — “wake” can mean “to wake up” or “a funeral”.  While lemmatisation would
+sense</em></span>, or meaning.  The same word may represent two  meanings—for example,<span class="emphasis"><em>wake</em></span> can mean <span class="emphasis"><em>to wake up</em></span> or <span class="emphasis"><em>a funeral</em></span>.  While lemmatization would
 try to distinguish these two word senses, stemming would incorrectly conflate
-them.</p><p>Lemmatisation is a much more complicated and expensive process that needs to
+them.</p><p>Lemmatization is a much more complicated and expensive process that needs to
 understand the context in which words appear in order to make decisions
 about what they mean. In practice, stemming appears to be just as effective
-as lemmatisation, but with a much lower cost.</p></div><p>First we will discuss the two classes of stemmers available in Elasticsearch — <a class="xref" href="algorithmic-stemmers.html" title="Algorithmic stemmers">Algorithmic stemmers</a> and <a class="xref" href="dictionary-stemmers.html" title="Dictionary stemmers">Dictionary stemmers</a> — then look at how to
-choose the right stemmer for your needs in <a class="xref" href="choosing-a-stemmer.html" title="Choosing a stemmer">Choosing a stemmer</a>.  Finally,
-we will discuss options for tailoring stemming in <a class="xref" href="controlling-stemming.html" title="Controlling stemming">Controlling stemming</a> and
+as lemmatization, but with a much lower cost.</p></div><p>First we will discuss the two classes of stemmers available in Elasticsearch—<a class="xref" href="algorithmic-stemmers.html" title="Algorithmic Stemmers">Algorithmic Stemmers</a> and <a class="xref" href="dictionary-stemmers.html" title="Dictionary Stemmers">Dictionary Stemmers</a>—and then look at how to
+choose the right stemmer for your needs in <a class="xref" href="choosing-a-stemmer.html" title="Choosing a Stemmer">Choosing a Stemmer</a>.  Finally,
+we will discuss options for tailoring stemming in <a class="xref" href="controlling-stemming.html" title="Controlling Stemming">Controlling Stemming</a> and
 <a class="xref" href="stemming-in-situ.html" title="Stemming in situ">Stemming in situ</a>.</p></div><div class="navfooter"><span class="prev"><a href="sorting-collations.html">
               « 
-              Sorting and collations</a>
+              Sorting and Collations</a>
            
         </span><span class="next">
            
-          <a href="algorithmic-stemmers.html">Algorithmic stemmers
+          <a href="algorithmic-stemmers.html">Algorithmic Stemmers
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

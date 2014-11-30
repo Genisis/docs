@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Most important queries and filters</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="full-body-search.html" title="Full body search" /><link rel="prev" href="_queries_and_filters.html" title="Queries and Filters" /><link rel="next" href="_combining_queries_with_filters.html" title="Combining queries with filters" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Most Important Queries and Filters</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="full-body-search.html" title="Full-Body Search" /><link rel="prev" href="_queries_and_filters.html" title="Queries and Filters" /><link rel="next" href="_combining_queries_with_filters.html" title="Combining Queries with Filters" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,64 +20,49 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="getting-started.html">Getting started </a></span> » <span class="breadcrumb-link"><a href="full-body-search.html">Full body search</a></span> » <span class="breadcrumb-node">Most important queries and filters</span></div><div class="navheader"><span class="prev"><a href="_queries_and_filters.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="getting-started.html">Getting Started </a></span> » <span class="breadcrumb-link"><a href="full-body-search.html">Full-Body Search</a></span> » <span class="breadcrumb-node">Most Important Queries and Filters</span></div><div class="navheader"><span class="prev"><a href="_queries_and_filters.html">
               « 
               Queries and Filters</a>
            
         </span><span class="next">
            
-          <a href="_combining_queries_with_filters.html">Combining queries with filters
+          <a href="_combining_queries_with_filters.html">Combining Queries with Filters
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_most_important_queries_and_filters"></a>Most important queries and filters<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_empty_search.html">Empty search</a></span></dt><dt><span class="section"><a href="query-dsl-intro.html">Query DSL</a></span></dt><dt><span class="section"><a href="_queries_and_filters.html">Queries and Filters</a></span></dt><dt><span class="section"><a href="_most_important_queries_and_filters.html">Most important queries and filters</a></span></dt><dt><span class="section"><a href="_combining_queries_with_filters.html">Combining queries with filters</a></span></dt><dt><span class="section"><a href="_validating_queries.html">Validating queries</a></span></dt><dt><span class="section"><a href="_conclusion_3.html">Conclusion</a></span></dt></dl></div><p>While Elasticsearch comes with many different queries and filters, there are
-just a few which you will use frequently. We will discuss them in much greater
-detail in <a class="xref" href="search-in-depth.html" title="Search in depth">Search in depth </a> but below we give you a quick introduction to
-the most important queries and filters.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_term_literal_filter"></a><code class="literal">term</code> filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">term</code> filter is used to filter by exact values, be they numbers, dates,
-booleans, or <code class="literal">not_analyzed</code> exact value string fields:</p><pre class="programlisting prettyprint lang-js">{ "term": { "age":    26           }}
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_most_important_queries_and_filters"></a>Most Important Queries and Filters<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_empty_search.html">Empty Search</a></span></dt><dt><span class="section"><a href="query-dsl-intro.html">Query DSL</a></span></dt><dt><span class="section"><a href="_queries_and_filters.html">Queries and Filters</a></span></dt><dt><span class="section"><a href="_most_important_queries_and_filters.html">Most Important Queries and Filters</a></span></dt><dt><span class="section"><a href="_combining_queries_with_filters.html">Combining Queries with Filters</a></span></dt><dt><span class="section"><a href="_validating_queries.html">Validating Queries</a></span></dt></dl></div><p>While Elasticsearch comes with many queries and filters, you will use
+just a few frequently. We discuss them in much greater
+detail in <a class="xref" href="search-in-depth.html" title="Search in Depth">Search in Depth </a> but next we give you a quick introduction to
+the most important queries and filters.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_term_filter"></a>term Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">term</code> filter is used to filter by<a id="id-1.3.9.7.3.2.2" class="indexterm"></a>
+<a id="id-1.3.9.7.3.2.3" class="indexterm"></a><a id="id-1.3.9.7.3.2.4" class="indexterm"></a> exact values, be they numbers, dates,
+Booleans, or <code class="literal">not_analyzed</code> exact-value string fields:</p><pre class="programlisting prettyprint lang-js">{ "term": { "age":    26           }}
 { "term": { "date":   "2014-09-01" }}
 { "term": { "public": true         }}
-{ "term": { "tag":    "full_text"  }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Term_filter.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_terms_literal_filter"></a><code class="literal">terms</code> filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">terms</code> filter is the same as the <code class="literal">term</code> filter, but allows you
+{ "term": { "tag":    "full_text"  }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Term_filter.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_terms_filter"></a>terms Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">terms</code> filter is<a id="id-1.3.9.7.4.2.2" class="indexterm"></a> the same as the <code class="literal">term</code> filter, but allows you
 to specify multiple values to match. If the field contains any of
-the specified values, then the document matches:</p><pre class="programlisting prettyprint lang-js">{ "terms": { "tag": [ "search", "full_text", "nosql" ] }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Terms_filter.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_range_literal_filter"></a><code class="literal">range</code> filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">range</code> filter allows you to find numbers or dates which fall into
-the specified range:</p><pre class="programlisting prettyprint lang-js">{
+the specified values, the document matches:</p><pre class="programlisting prettyprint lang-js">{ "terms": { "tag": [ "search", "full_text", "nosql" ] }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Terms_filter.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_range_filter"></a>range Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">range</code> filter allows you to find<a id="id-1.3.9.7.5.2.2" class="indexterm"></a> numbers or dates that fall into
+a specified range:</p><pre class="programlisting prettyprint lang-js">{
     "range": {
         "age": {
             "gte":  20,
             "lt":   30
         }
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Range_filter.json" target="sense">View in Sense</a><p>The operators that it accepts are:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-<code class="literal">gt</code> 
-</p>
-</td><td valign="top">
-<p>
-greater than
-</p>
-</td></tr><tr><td valign="top">
-<p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Range_filter.json" target="sense">View in Sense</a><p>The operators that it accepts are as follows:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">gt</code>
+</span></dt><dd>
+   Greater than
+</dd><dt><span class="term">
 <code class="literal">gte</code>
-</p>
-</td><td valign="top">
-<p>
-greater than or equal to
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">lt</code> 
-</p>
-</td><td valign="top">
-<p>
-less than
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+   Greater than or equal to
+</dd><dt><span class="term">
+<code class="literal">lt</code>
+</span></dt><dd>
+   Less than
+</dd><dt><span class="term">
 <code class="literal">lte</code>
-</p>
-</td><td valign="top">
-<p>
-less than or equal to
-</p>
-</td></tr></tbody></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_exists_literal_and_literal_missing_literal_filters"></a><code class="literal">exists</code> and <code class="literal">missing</code> filters<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">exists</code> and <code class="literal">missing</code> filters are used to find documents where the
+</span></dt><dd>
+   Less than or equal to
+</dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_exists_and_missing_filters"></a>exists and missing Filters<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">exists</code> and <code class="literal">missing</code> filters are <a id="id-1.3.9.7.6.2.3" class="indexterm"></a><a id="id-1.3.9.7.6.2.4" class="indexterm"></a>used to find documents in which the
 specified field either has one or more values (<code class="literal">exists</code>) or doesn’t have any
 values (<code class="literal">missing</code>). It is similar in nature to <code class="literal">IS_NULL</code> (<code class="literal">missing</code>) and <code class="literal">NOT
 IS_NULL</code> (<code class="literal">exists</code>)in SQL:</p><pre class="programlisting prettyprint lang-js">{
@@ -85,32 +70,23 @@ IS_NULL</code> (<code class="literal">exists</code>)in SQL:</p><pre class="progr
         "field":    "title"
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Exists_filter.json" target="sense">View in Sense</a><p>These filters are frequently used to apply a condition only if a field is
-present, and to apply a different condition if it is missing.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_bool_literal_filter"></a><code class="literal">bool</code> filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">bool</code> filter is used to combine multiple filter clauses using
-Boolean logic.  It accepts three parameters:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-<code class="literal">must</code>      
-</p>
-</td><td valign="top">
-<p>
-These clauses <span class="strong"><strong>must</strong></span> match, like <code class="literal">and</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">must_not</code>  
-</p>
-</td><td valign="top">
-<p>
-These clauses <span class="strong"><strong>must not</strong></span> match, like <code class="literal">not</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">should</code>    
-</p>
-</td><td valign="top">
-<p>
-At least one of these clauses must match, like <code class="literal">or</code>
-</p>
-</td></tr></tbody></table></div><p>Each of these parameters can accept a single filter clause or an array
+present, and to apply a different condition if it is missing.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_bool_filter"></a>bool Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">bool</code> filter is used <a id="id-1.3.9.7.7.2.2" class="indexterm"></a><a id="id-1.3.9.7.7.2.3" class="indexterm"></a>
+<a id="id-1.3.9.7.7.2.4" class="indexterm"></a><a id="id-1.3.9.7.7.2.5" class="indexterm"></a>
+<a id="id-1.3.9.7.7.2.6" class="indexterm"></a><a id="id-1.3.9.7.7.2.7" class="indexterm"></a>
+<a id="id-1.3.9.7.7.2.8" class="indexterm"></a>to combine multiple filter clauses using
+Boolean logic.  It accepts three parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">must</code>
+</span></dt><dd>
+   These clauses <span class="emphasis"><em>must</em></span> match, like <code class="literal">and</code>.
+</dd><dt><span class="term">
+<code class="literal">must_not</code>
+</span></dt><dd>
+   These clauses <span class="emphasis"><em>must not</em></span> match, like <code class="literal">not</code>.
+</dd><dt><span class="term">
+<code class="literal">should</code>
+</span></dt><dd>
+   At least one of these clauses must match, like <code class="literal">or</code>.
+</dd></dl></div><p>Each of these parameters can accept a single filter clause or an array
 of filter clauses:</p><pre class="programlisting prettyprint lang-js">{
     "bool": {
         "must":     { "term": { "folder": "inbox" }},
@@ -120,63 +96,55 @@ of filter clauses:</p><pre class="programlisting prettyprint lang-js">{
                     { "term": { "unread":  true   }}
         ]
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Bool_filter.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_match_all_literal_query"></a><code class="literal">match_all</code> query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">match_all</code> query simply matches all documents. It is the default
-query which is used if no query has been specified.</p><pre class="programlisting prettyprint lang-js">{ "match_all": {}}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Match_all_query.json" target="sense">View in Sense</a><p>This query is frequently used in combination with a filter, for instance to
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Bool_filter.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_match_all_query"></a>match_all Query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">match_all</code> query simply<a id="id-1.3.9.7.8.2.2" class="indexterm"></a><a id="id-1.3.9.7.8.2.3" class="indexterm"></a>
+<a id="id-1.3.9.7.8.2.4" class="indexterm"></a> matches all documents. It is the default
+query that is used if no query has been specified:</p><pre class="programlisting prettyprint lang-js">{ "match_all": {}}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Match_all_query.json" target="sense">View in Sense</a><p>This query is frequently used in combination with a filter—for instance, to
 retrieve all emails in the inbox folder. All documents are considered to be
-equally relevant, so they all receive a neutral <code class="literal">_score</code> of <code class="literal">1</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_match_literal_query"></a><code class="literal">match</code> query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">match</code> query should be the standard query that you reach for whenever
-you want to query for a full text or exact value in almost any field.</p><p>If you run a <code class="literal">match</code> query against a full text field, it will analyze
-the query string using the correct analyzer for that field before executing
+equally relevant, so they all receive a neutral <code class="literal">_score</code> of <code class="literal">1</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_match_query"></a>match Query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">match</code> query should be the standard<a id="id-1.3.9.7.9.2.2" class="indexterm"></a> query that you reach for whenever
+you want to query for a full-text or exact value in almost any field.</p><p>If you run a <code class="literal">match</code> query against a full-text field, it will analyze
+the query string by using the correct analyzer for that field before executing
 the search:</p><pre class="programlisting prettyprint lang-js">{ "match": { "tweet": "About Search" }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Match_query.json" target="sense">View in Sense</a><p>If you use it on a field containing an exact value, such as a number, a date,
-a boolean, or a <code class="literal">not_analyzed</code> string field, then it will search for that
+a Boolean, or a <code class="literal">not_analyzed</code> string field, then it will search for that
 exact value:</p><pre class="programlisting prettyprint lang-js">{ "match": { "age":    26           }}
 { "match": { "date":   "2014-09-01" }}
 { "match": { "public": true         }}
-{ "match": { "tag":    "full_text"  }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Match_query.json" target="sense">View in Sense</a><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>For exact value searches, you probably want to use a filter instead of a
-query, as a filter will be cached.</p></div></div><p>Unlike the query string search that we showed in <a class="xref" href="search-lite.html" title="Search Lite">Search <span class="emphasis"><em>Lite</em></span></a>, the <code class="literal">match</code>
-query does not use a query syntax like <code class="literal">"+user_id:2 +tweet:search"</code>. It just
+{ "match": { "tag":    "full_text"  }}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Match_query.json" target="sense">View in Sense</a><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>For exact-value searches, you probably want to use a filter instead of a
+query, as a filter will be cached.</p></div></div><p>Unlike the query-string search that we showed in <a class="xref" href="search-lite.html" title="Search Lite">Search <span class="emphasis"><em>Lite</em></span></a>, the <code class="literal">match</code>
+query does not use a query syntax like <code class="literal">+user_id:2 +tweet:search</code>. It just
 looks for the words that are specified. This means that it is safe to expose
-to your users via a search field — you control what fields they can query and
-it is not prone to throwing syntax errors.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_multi_match_literal_query"></a><code class="literal">multi_match</code> query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">multi_match</code> query allows to run the same <code class="literal">match</code> query on multiple
+to your users via a search field; you control what fields they can query, and
+it is not prone to throwing syntax errors.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_multi_match_query"></a>multi_match Query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">multi_match</code> query allows<a id="id-1.3.9.7.10.2.2" class="indexterm"></a> to run the same <code class="literal">match</code> query on multiple
 fields:</p><pre class="programlisting prettyprint lang-js">{
     "multi_match": {
         "query":    "full text search",
         "fields":   [ "title", "body" ]
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Multi_match_query.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_literal_bool_literal_query"></a><code class="literal">bool</code> query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">bool</code> query, like the <code class="literal">bool</code> filter, is used to combine multiple
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Multi_match_query.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_bool_query"></a>bool Query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/70_Important_clauses.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">bool</code> query, like the <code class="literal">bool</code> filter,<a id="id-1.3.9.7.11.2.3" class="indexterm"></a> is used to combine multiple
 query clauses. However, there are some differences. Remember that while
-filters give binary <code class="literal">yes|no</code> answers, queries calculate a relevance score
+filters give binary yes/no answers, queries calculate a relevance score
 instead. The <code class="literal">bool</code> query combines the <code class="literal">_score</code> from each <code class="literal">must</code> or
-<code class="literal">should</code> clause which matches.</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
+<code class="literal">should</code> clause that matches.<a id="id-1.3.9.7.11.2.8" class="indexterm"></a>
+<a id="id-1.3.9.7.11.2.9" class="indexterm"></a><a id="id-1.3.9.7.11.2.10" class="indexterm"></a>
+<a id="id-1.3.9.7.11.2.11" class="indexterm"></a><a id="id-1.3.9.7.11.2.12" class="indexterm"></a>
+<a id="id-1.3.9.7.11.2.13" class="indexterm"></a> This query accepts the following parameters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">must</code>
-</p>
-</td><td valign="top">
-<p>
-Clauses which <span class="strong"><strong>must</strong></span> match for the document to be included.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+   Clauses that <span class="emphasis"><em>must</em></span> match for the document to be included.
+</dd><dt><span class="term">
 <code class="literal">must_not</code>
-</p>
-</td><td valign="top">
-<p>
-Clauses which <span class="strong"><strong>must not</strong></span> match for the document to be included.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+   Clauses that <span class="emphasis"><em>must not</em></span> match for the document to be included.
+</dd><dt><span class="term">
 <code class="literal">should</code>
-</p>
-</td><td valign="top">
-<p>
-If these clauses match, then they increase the <code class="literal">_score</code>,
-                otherwise they have no effect. They are simply used to refine
+</span></dt><dd>
+   If these clauses match, they increase the <code class="literal">_score</code>;
+                otherwise, they have no effect. They are simply used to refine
                 the relevance score for each document.
-</p>
-</td></tr></tbody></table></div><p>The following query finds documents whose <code class="literal">title</code> field matches
-the query string <code class="literal">"how to make millions"</code> and which are not marked
-as <code class="literal">spam</code>.  If any documents are <code class="literal">"starred"</code> or are from 2014 onwards,
-then they will rank higher than they would have otherwise. Documents which
-match <span class="strong"><strong>both</strong></span> conditions will rank even higher:</p><pre class="programlisting prettyprint lang-js">{
+</dd></dl></div><p>The following query finds documents whose <code class="literal">title</code> field matches
+the query string <code class="literal">how to make millions</code> and that are not marked
+as <code class="literal">spam</code>.  If any documents are <code class="literal">starred</code> or are from 2014 onward,
+they will rank higher than they would have otherwise. Documents that
+match <span class="emphasis"><em>both</em></span> conditions will rank even higher:</p><pre class="programlisting prettyprint lang-js">{
     "bool": {
         "must":     { "match": { "title": "how to make millions" }},
         "must_not": { "match": { "tag":   "spam" }},
@@ -185,15 +153,15 @@ match <span class="strong"><strong>both</strong></span> conditions will rank eve
             { "range": { "date": { "gte": "2014-01-01" }}}
         ]
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Bool_query.json" target="sense">View in Sense</a><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>If there are no <code class="literal">must</code> clauses, then at least one <code class="literal">should</code> clause has to
-match, but if there is at least one <code class="literal">must</code> clause, then no <code class="literal">should</code> clauses
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/70_Bool_query.json" target="sense">View in Sense</a><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>If there are no <code class="literal">must</code> clauses, at least one <code class="literal">should</code> clause has to
+match. However, if there is at least one <code class="literal">must</code> clause, no <code class="literal">should</code> clauses
 are required to match.</p></div></div></div></div><div class="navfooter"><span class="prev"><a href="_queries_and_filters.html">
               « 
               Queries and Filters</a>
            
         </span><span class="next">
            
-          <a href="_combining_queries_with_filters.html">Combining queries with filters
+          <a href="_combining_queries_with_filters.html">Combining Queries with Filters
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

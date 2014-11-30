@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tidying up input text</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="identifying-words.html" title="Identifying words" /><link rel="prev" href="icu-tokenizer.html" title="icu_tokenizer" /><link rel="next" href="token-normalization.html" title="Normalizing tokens" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tidying Up Input Text</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="identifying-words.html" title="Identifying Words" /><link rel="prev" href="icu-tokenizer.html" title="icu_tokenizer" /><link rel="next" href="token-normalization.html" title="Normalizing Tokens" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,28 +20,34 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="languages.html">Dealing with human language </a></span> » <span class="breadcrumb-link"><a href="identifying-words.html">Identifying words</a></span> » <span class="breadcrumb-node">Tidying up input text</span></div><div class="navheader"><span class="prev"><a href="icu-tokenizer.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="languages.html">Dealing with Human Language </a></span> » <span class="breadcrumb-link"><a href="identifying-words.html">Identifying Words</a></span> » <span class="breadcrumb-node">Tidying Up Input Text</span></div><div class="navheader"><span class="prev"><a href="icu-tokenizer.html">
               « 
-              <code class="literal">icu_tokenizer</code></a>
+              icu_tokenizer</a>
            
         </span><span class="next">
            
-          <a href="token-normalization.html">Normalizing tokens
+          <a href="token-normalization.html">Normalizing Tokens
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="char-filters"></a>Tidying up input text<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/210_Identifying_words/50_Tidying_text.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="standard-analyzer.html"><code class="literal">standard</code> analyzer</a></span></dt><dt><span class="section"><a href="standard-tokenizer.html"><code class="literal">standard</code> tokenizer</a></span></dt><dt><span class="section"><a href="icu-plugin.html">Installing the ICU plugin</a></span></dt><dt><span class="section"><a href="icu-tokenizer.html"><code class="literal">icu_tokenizer</code></a></span></dt><dt><span class="section"><a href="char-filters.html">Tidying up input text</a></span></dt></dl></div><p>Tokenizers produce the best results when the input text is clean, “valid”
-text, where “valid” means that it follows the punctuation rules that the
-Unicode algorithm expects.  Quite often, though, the text we need to process
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="char-filters"></a>Tidying Up Input Text<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/210_Identifying_words/50_Tidying_text.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="standard-analyzer.html">standard Analyzer</a></span></dt><dt><span class="section"><a href="standard-tokenizer.html">standard Tokenizer</a></span></dt><dt><span class="section"><a href="icu-plugin.html">Installing the ICU Plug-in</a></span></dt><dt><span class="section"><a href="icu-tokenizer.html">icu_tokenizer</a></span></dt><dt><span class="section"><a href="char-filters.html">Tidying Up Input Text</a></span></dt></dl></div><p>Tokenizers produce the best results when the input text is clean, valid
+text, where <span class="emphasis"><em>valid</em></span> means that it follows the punctuation rules that the
+Unicode algorithm expects.<a id="id-1.5.4.11.2.2" class="indexterm"></a>
+<a id="id-1.5.4.11.2.3" class="indexterm"></a><a id="id-1.5.4.11.2.4" class="indexterm"></a>
+<a id="id-1.5.4.11.2.5" class="indexterm"></a>
+<a id="id-1.5.4.11.2.6" class="indexterm"></a>  Quite often, though, the text we need to process
 is anything but clean. Cleaning it up before tokenization improves the quality
 of the output.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_tokenizing_html"></a>Tokenizing HTML<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/210_Identifying_words/50_Tidying_text.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Passing HTML through the <code class="literal">standard</code> tokenizer or the <code class="literal">icu_tokenizer</code> produces
-poor results.  These tokenizers just don’t know what to do with the HTML tags.
+poor results.<a id="id-1.5.4.11.3.2.3" class="indexterm"></a>
+<a id="id-1.5.4.11.3.2.4" class="indexterm"></a>  These tokenizers just don’t know what to do with the HTML tags.
 For example:</p><pre class="programlisting prettyprint lang-js">GET /_analyzer?tokenizer=standard
-&lt;p&gt;Some d&amp;eacute;j&amp;agrave; vu &lt;a href="http://somedomain.com&gt;"&gt;website&lt;/a&gt;</pre><p>The <code class="literal">standard</code> tokenizer confuses HTML tags and entities, and emits the
+&lt;p&gt;Some d&amp;eacute;j&amp;agrave; vu &lt;a href="http://somedomain.com&gt;"&gt;website&lt;/a&gt;</pre><p>The <code class="literal">standard</code> tokenizer<a id="id-1.5.4.11.3.4.2" class="indexterm"></a>
+<a id="id-1.5.4.11.3.4.3" class="indexterm"></a> confuses HTML tags and entities, and emits the
 following tokens: <code class="literal">p</code>, <code class="literal">Some</code>, <code class="literal">d</code>, <code class="literal">eacute</code>, <code class="literal">j</code>, <code class="literal">agrave</code>, <code class="literal">vu</code>, <code class="literal">a</code>,
 <code class="literal">href</code>, <code class="literal">http</code>, <code class="literal">somedomain.com</code>, <code class="literal">website</code>, <code class="literal">a</code>.  Clearly not what was
-intended!</p><p><span class="emphasis"><em>Character filters</em></span> can be added to an analyzer to preprocess the text
-<span class="strong"><strong>before</strong></span> it is passed to the tokenizer.  In this case, we can use the
-<code class="literal">html_strip</code> character filter to remove HTML tags and to decode HTML entities
-like <code class="literal">&amp;eacute;</code> into the corresponding Unicode characters.</p><p>Character filters can be tested out via the <code class="literal">analyze</code> API by specifying them
+intended!</p><p><span class="emphasis"><em>Character filters</em></span> can be added to an analyzer to <a id="id-1.5.4.11.3.5.2" class="indexterm"></a>preprocess the text
+<span class="emphasis"><em>before</em></span> it is passed to the tokenizer.  In this case, we can use the
+<code class="literal">html_strip</code> character filter<a id="id-1.5.4.11.3.5.5" class="indexterm"></a>
+<a id="id-1.5.4.11.3.5.6" class="indexterm"></a><a id="id-1.5.4.11.3.5.7" class="indexterm"></a> to remove HTML tags and to decode HTML entities
+such as <code class="literal">&amp;eacute;</code> into the corresponding Unicode characters.</p><p>Character filters can be tested out via the <code class="literal">analyze</code> API by specifying them
 in the query string:</p><pre class="programlisting prettyprint lang-js">GET /_analyzer?tokenizer=standard&amp;char_filters=html_strip
 &lt;p&gt;Some d&amp;eacute;j&amp;agrave; vu &lt;a href="http://somedomain.com&gt;"&gt;website&lt;/a&gt;</pre><p>To use them as part of the analyzer, they should be added to a <code class="literal">custom</code>
 analyzer definition:</p><pre class="programlisting prettyprint lang-js">PUT /my_index
@@ -57,70 +63,47 @@ analyzer definition:</p><pre class="programlisting prettyprint lang-js">PUT /my_
         }
     }
 }</pre><p>Once created, our new <code class="literal">my_html_analyzer</code> can be tested with the <code class="literal">analyze</code> API:</p><pre class="programlisting prettyprint lang-js">GET /my_index/_analyzer?analyzer=my_html_analyzer
-&lt;p&gt;Some d&amp;eacute;j&amp;agrave; vu &lt;a href="http://somedomain.com&gt;"&gt;website&lt;/a&gt;</pre><p>This emits the tokens that we expect: <code class="literal">Some</code>, <code class="literal">déjà</code>, <code class="literal">vu</code>, <code class="literal">website</code></p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_tidying_up_punctuation"></a>Tidying up punctuation<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/210_Identifying_words/50_Tidying_text.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">standard</code> tokenizer and <code class="literal">icu_tokenizer</code> both understand that an
-apostrophe <span class="strong"><strong>within</strong></span> a word should be treated as part of the word, while single
-quotes which <span class="strong"><strong>surround</strong></span> a word should not. Tokenizing the text <code class="literal">You're my
-'favourite'.</code> would correctly emit the tokens: <code class="literal">You're</code>, <code class="literal">my</code>, <code class="literal">favourite</code>.</p><p>Unfortunately, Unicode lists a number of characters which are sometimes used
-as apostrophes:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
+&lt;p&gt;Some d&amp;eacute;j&amp;agrave; vu &lt;a href="http://somedomain.com&gt;"&gt;website&lt;/a&gt;</pre><p>This emits the tokens that we expect: <code class="literal">Some</code>, <code class="literal">déjà</code>, <code class="literal">vu</code>, <code class="literal">website</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_tidying_up_punctuation"></a>Tidying Up Punctuation<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/210_Identifying_words/50_Tidying_text.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">standard</code> tokenizer and <code class="literal">icu_tokenizer</code> both understand that an
+apostrophe <span class="emphasis"><em>within</em></span> a word should be treated as part of the word, while single
+quotes that <span class="emphasis"><em>surround</em></span> a word should not.<a id="id-1.5.4.11.4.2.5" class="indexterm"></a>
+<a id="id-1.5.4.11.4.2.6" class="indexterm"></a><a id="id-1.5.4.11.4.2.7" class="indexterm"></a>
+<a id="id-1.5.4.11.4.2.8" class="indexterm"></a><a id="id-1.5.4.11.4.2.9" class="indexterm"></a>
+<a id="id-1.5.4.11.4.2.10" class="indexterm"></a> Tokenizing the text <code class="literal">You're my 'favorite'</code>. would correctly emit the tokens <code class="literal">You're, my, favorite</code>.</p><p>Unfortunately,<a id="id-1.5.4.11.4.3.1" class="indexterm"></a> Unicode lists a few characters that are sometimes used
+as apostrophes:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">U+0027</code>
-</p>
-</td><td valign="top">
-<p>
-Apostrophe (<code class="literal">'</code>) — the original ASCII character.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+      Apostrophe (<code class="literal">'</code>)—the original ASCII character
+</dd><dt><span class="term">
 <code class="literal">U+2018</code>
-</p>
-</td><td valign="top">
-<p>
-Left single quotation mark (<code class="literal">‘</code>) — opening quote when single quoting.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+      Left single-quotation mark (<code class="literal">‘</code>)—opening quote when single-quoting
+</dd><dt><span class="term">
 <code class="literal">U+2019</code>
-</p>
-</td><td valign="top">
-<p>
-Right single quotation mark (<code class="literal">’</code>) — closing quote when single
-           quoting, but also the  preferred character to use as an apostrophe.
-</p>
-</td></tr></tbody></table></div><p>Both tokenizers treat these three characters as an apostrophe (and thus as
+</span></dt><dd>
+      Right single-quotation mark (<code class="literal">’</code>)—closing quote when single-quoting, but also the  preferred character to use as an apostrophe
+</dd></dl></div><p>Both tokenizers treat these three characters as an apostrophe (and thus as
 part of the word) when they appear within a word. Then there are another three
-apostrophe-like characters:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
+apostrophe-like characters:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">U+201B</code>
-</p>
-</td><td valign="top">
-<p>
-Single high-reversed-9 quotation mark (<code class="literal">‛</code>) — same as <code class="literal">U+2018</code> but
-           differs in appearance.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+      Single high-reversed-9 quotation mark (<code class="literal">‛</code>)—same as <code class="literal">U+2018</code> but differs in appearance
+</dd><dt><span class="term">
 <code class="literal">U+0091</code>
-</p>
-</td><td valign="top">
-<p>
-Left single quotation mark in ISO-8859-1 — should not be used in Unicode.
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+      Left single-quotation mark in ISO-8859-1—should not be used in Unicode
+</dd><dt><span class="term">
 <code class="literal">U+0092</code>
-</p>
-</td><td valign="top">
-<p>
-Right single quotation mark in ISO-8859-1 — should not be used in Unicode.
-</p>
-</td></tr></tbody></table></div><p>Both tokenizers treat these three characters as word boundaries — a place to
-break up text into tokens. Unfortunately, some publishers use <code class="literal">U+201B</code> as a
-stylised way to write names like <code class="literal">M‛coy</code>, and the second two characters may well
+</span></dt><dd>
+      Right single-quotation mark in ISO-8859-1—should not be used in Unicode
+</dd></dl></div><p>Both tokenizers treat these three characters as word boundaries—a place to
+break text into tokens.<a id="id-1.5.4.11.4.7.1" class="indexterm"></a> Unfortunately, some publishers use <code class="literal">U+201B</code> as a
+stylized way to write names like <code class="literal">M‛coy</code>, and the second two characters may well
 be produced by your word processor, depending on its age.</p><p>Even when using the “acceptable” quotation marks, a word written with a
-single right quotation mark — <code class="literal">You’re</code> — is not the same as the word written
-with an apostrophe — <code class="literal">You're</code> — which means that a query for one variant
+single right quotation mark—<code class="literal">You’re</code>—is not the same as the word written
+with an apostrophe—<code class="literal">You're</code>—which means that a query for one variant
 will not find the other.</p><p>Fortunately, it is possible to sort out this mess with the <code class="literal">mapping</code> character
-filter, which allows us to replace all instances of one character with
+filter,<a id="id-1.5.4.11.4.9.2" class="indexterm"></a>
+<a id="id-1.5.4.11.4.9.3" class="indexterm"></a><a id="id-1.5.4.11.4.9.4" class="indexterm"></a> which allows us to replace all instances of one character with
 another.  In this case, we will replace all apostrophe variants with the
 simple <code class="literal">U+0027</code> apostrophe:</p><pre class="programlisting prettyprint lang-js">PUT /my_index
 {
@@ -147,7 +130,7 @@ simple <code class="literal">U+0027</code> apostrophe:</p><pre class="programlis
     }
   }
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO138-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-We define a custom <code class="literal">char_filter</code> called <code class="literal">quotes</code> which
+We define a custom <code class="literal">char_filter</code> called <code class="literal">quotes</code> that
     maps all apostrophe variants to a simple apostrophe.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO138-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 For clarity, we have used the JSON Unicode escape syntax
@@ -157,15 +140,14 @@ For clarity, we have used the JSON Unicode escape syntax
 We use our custom <code class="literal">quotes</code> character filter to create
     a new analyzer called <code class="literal">quotes_analyzer</code>.
 </p></td></tr></table></div><p>As always, we test the analyzer after creating it:</p><pre class="programlisting prettyprint lang-js">GET /my_index/_analyze?analyzer=quotes_analyzer
-You’re my ‘favourite’ M‛Coy</pre><p>The above example returns the following tokens, with all of the in-word
-quotation marks replaced by apostrophes: <code class="literal">You're</code>, <code class="literal">my</code>, <code class="literal">favourite</code>, <code class="literal">M'Coy</code>.</p><p>The more effort that you put into ensuring that the tokenizer receives good
-quality input, the better your search results will be.</p></div></div><div class="navfooter"><span class="prev"><a href="icu-tokenizer.html">
+You’re my ‘favorite’ M‛Coy</pre><p>This example returns the following tokens, with all of the in-word
+quotation marks replaced by apostrophes: <code class="literal">You're</code>, <code class="literal">my</code>, <code class="literal">favorite</code>, <code class="literal">M'Coy</code>.</p><p>The more effort that you put into ensuring that the tokenizer receives good-quality input, the better your search results will be.</p></div></div><div class="navfooter"><span class="prev"><a href="icu-tokenizer.html">
               « 
-              <code class="literal">icu_tokenizer</code></a>
+              icu_tokenizer</a>
            
         </span><span class="next">
            
-          <a href="token-normalization.html">Normalizing tokens
+          <a href="token-normalization.html">Normalizing Tokens
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

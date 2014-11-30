@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi-index, multi-type</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch" /><link rel="up" href="search.html" title="Searching – the basic tools" /><link rel="prev" href="empty-search.html" title="The empty search" /><link rel="next" href="pagination.html" title="Pagination" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Multi-index, Multitype</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="search.html" title="Searching—the Basic Tools" /><link rel="prev" href="empty-search.html" title="The Empty Search" /><link rel="next" href="pagination.html" title="Pagination" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -20,85 +20,60 @@
         })();
     }</script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch</a></span> » <span class="breadcrumb-link"><a href="getting-started.html">Getting started </a></span> » <span class="breadcrumb-link"><a href="search.html">Searching – the basic tools</a></span> » <span class="breadcrumb-node">Multi-index, multi-type</span></div><div class="navheader"><span class="prev"><a href="empty-search.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="getting-started.html">Getting Started </a></span> » <span class="breadcrumb-link"><a href="search.html">Searching—the Basic Tools</a></span> » <span class="breadcrumb-node">Multi-index, Multitype</span></div><div class="navheader"><span class="prev"><a href="empty-search.html">
               « 
-              The empty search</a>
+              The Empty Search</a>
            
         </span><span class="next">
            
           <a href="pagination.html">Pagination
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="multi-index-multi-type"></a>Multi-index, multi-type<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/050_Search/10_Multi_index_multi_type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="empty-search.html">The empty search</a></span></dt><dt><span class="section"><a href="multi-index-multi-type.html">Multi-index, multi-type</a></span></dt><dt><span class="section"><a href="pagination.html">Pagination</a></span></dt><dt><span class="section"><a href="search-lite.html">Search <span class="emphasis"><em>Lite</em></span></a></span></dt></dl></div><p>Did you notice that the results from the <a class="link" href="empty-search.html" title="The empty search">empty search</a> above
-contained documents of different types — <code class="literal">user</code> and <code class="literal">tweet</code> — from two
-different indices — <code class="literal">us</code> and <code class="literal">gb</code>?</p><p>By not limiting our search to a particular index or type, we have searched
-across <span class="strong"><strong>all</strong></span> documents in the cluster. Elasticsearch forwarded the search
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="multi-index-multi-type"></a>Multi-index, Multitype<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/050_Search/10_Multi_index_multi_type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="empty-search.html">The Empty Search</a></span></dt><dt><span class="section"><a href="multi-index-multi-type.html">Multi-index, Multitype</a></span></dt><dt><span class="section"><a href="pagination.html">Pagination</a></span></dt><dt><span class="section"><a href="search-lite.html">Search <span class="emphasis"><em>Lite</em></span></a></span></dt></dl></div><p>Did you notice that the results from the preceding <a class="link" href="empty-search.html" title="The Empty Search">empty search</a>
+contained documents <a id="id-1.3.7.13.2.2" class="indexterm"></a>
+<a id="id-1.3.7.13.2.3" class="indexterm"></a>of different types--<code class="literal">user</code> and <code class="literal">tweet</code>--from two
+different indices--<code class="literal">us</code> and <code class="literal">gb</code>?</p><p>By not limiting our search to a particular index or type, we have searched
+across <span class="emphasis"><em>all</em></span> documents in the cluster. Elasticsearch forwarded the search
 request in parallel to a primary or replica of every shard in the cluster,
-gathered the results to select the overall top ten, and returned them to us.</p><p>Usually, however, you will want to search within one or more specific indices,
+gathered the results to select the overall top 10, and returned them to us.</p><p>Usually, however, you will<a id="id-1.3.7.13.4.1" class="indexterm"></a>
+<a id="id-1.3.7.13.4.2" class="indexterm"></a><a id="id-1.3.7.13.4.3" class="indexterm"></a>
+<a id="id-1.3.7.13.4.4" class="indexterm"></a> want to search within one or more specific indices,
 and probably one or more specific types. We can do this by specifying the
-index and type in the URL, as follows:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
+index and type in the URL, as follows:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search all types in all indices
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+    Search all types in all indices
+</dd><dt><span class="term">
 <code class="literal">/gb/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search all types in the <code class="literal">gb</code> index
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+    Search all types in the <code class="literal">gb</code> index
+</dd><dt><span class="term">
 <code class="literal">/gb,us/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search all types in the <code class="literal">gb</code> and <code class="literal">us</code> indices
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+    Search all types in the <code class="literal">gb</code> and <code class="literal">us</code> indices
+</dd><dt><span class="term">
 <code class="literal">/g*,u*/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search all types in any indices beginning with <code class="literal">g</code> or beginning with <code class="literal">u</code>
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+    Search all types in any indices beginning with <code class="literal">g</code> or beginning with <code class="literal">u</code>
+</dd><dt><span class="term">
 <code class="literal">/gb/user/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search type <code class="literal">user</code> in the <code class="literal">gb</code> index
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+    Search type <code class="literal">user</code> in the <code class="literal">gb</code> index
+</dd><dt><span class="term">
 <code class="literal">/gb,us/user,tweet/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search types <code class="literal">user</code> and <code class="literal">tweet</code> in the <code class="literal">gb</code> and <code class="literal">us</code> indices
-</p>
-</td></tr><tr><td valign="top">
-<p>
+</span></dt><dd>
+    Search types <code class="literal">user</code> and <code class="literal">tweet</code> in the <code class="literal">gb</code> and <code class="literal">us</code> indices
+</dd><dt><span class="term">
 <code class="literal">/_all/user,tweet/_search</code>
-</p>
-</td><td valign="top">
-<p>
-    search types <code class="literal">user</code> and <code class="literal">tweet</code> in all indices
-</p>
-</td></tr></tbody></table></div><p>When you search within a single index, Elasticsearch forwards the search
-request to a primary or replica of every shard in that index, then gathers the
+</span></dt><dd>
+    Search types <code class="literal">user</code> and <code class="literal">tweet</code> in all indices
+</dd></dl></div><p>When you search within a single index, Elasticsearch forwards the search
+request to a primary or replica of every shard in that index, and then gathers the
 results from each shard. Searching within multiple indices works in exactly
-the same way — there are just more shards involved.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Searching one index which has 5 primary shards is <span class="strong"><strong>exactly equivalent</strong></span> to
-searching 5 indices which have one primary shard each.</p></div></div><p>Later, you will see how this simple fact makes it easy to scale flexibly
+the same way—there are just more shards involved.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Searching one index that has five primary shards is <span class="emphasis"><em>exactly equivalent</em></span> to
+searching five indices that have one primary shard each.</p></div></div><p>Later, you will see how this simple fact makes it easy to scale flexibly
 as your requirements change.</p></div><div class="navfooter"><span class="prev"><a href="empty-search.html">
               « 
-              The empty search</a>
+              The Empty Search</a>
            
         </span><span class="next">
            
