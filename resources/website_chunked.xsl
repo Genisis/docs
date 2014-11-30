@@ -10,7 +10,7 @@
   <xsl:param name="use.id.as.filename"       select="1"/>
   <xsl:param name="chunk.quietly"            select="1"/>
   <xsl:param name="chunker.output.encoding"  select="'UTF-8'"/>
-  <xsl:param name="chunker.output.omit-xml-declaration">yes</xsl:param>
+  <xsl:param name="chunker.output.omit-xml-declaration">no</xsl:param>
 
   <!-- toc -->
   <xsl:param name="generate.section.toc.level"  select="$chunk.section.depth"/>
