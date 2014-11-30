@@ -71,6 +71,8 @@ sub main {
             if $result->{errors};
     }
 
+    $e->indices->optimize( index => $index, max_num_segments => 1 );
+
     my @actions = { add => { alias => 'docs', index => $index } };
     my $aliases = $e->indices->get_aliases( index => 'docs', ignore => 404 )
         || {};
