@@ -30,7 +30,7 @@
            
           <a href="count.html">Count API
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search API<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/search.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><div class="toc"><dl><dt><span class="preface"><a href="java-api.html">Preface</a></span></dt><dt><span class="chapter"><a href="_maven_repository.html">Maven Repository</a></span></dt><dt><span class="chapter"><a href="client.html">Client</a></span></dt><dt><span class="chapter"><a href="index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="get.html">Get API</a></span></dt><dt><span class="chapter"><a href="delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="search.html">Search API</a></span></dt><dt><span class="chapter"><a href="count.html">Count API</a></span></dt><dt><span class="chapter"><a href="delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="java-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="percolate.html">Percolate API</a></span></dt><dt><span class="chapter"><a href="query-dsl-queries.html">Query DSL - Queries</a></span></dt><dt><span class="chapter"><a href="query-dsl-filters.html">Query DSL - Filters</a></span></dt></dl></div><p>The search API allows one to execute a search query and get back search hits
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="search"></a>Search API<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/search.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><div class="toc"><dl><dt><span class="preface"><a href="java-api.html">Preface</a></span></dt><dt><span class="chapter"><a href="_maven_repository.html">Maven Repository</a></span></dt><dt><span class="chapter"><a href="client.html">Client</a></span></dt><dt><span class="chapter"><a href="index_.html">Index API</a></span></dt><dt><span class="chapter"><a href="get.html">Get API</a></span></dt><dt><span class="chapter"><a href="delete.html">Delete API</a></span></dt><dt><span class="chapter"><a href="bulk.html">Bulk API</a></span></dt><dt><span class="chapter"><a href="search.html">Search API</a></span></dt><dt><span class="chapter"><a href="count.html">Count API</a></span></dt><dt><span class="chapter"><a href="delete-by-query.html">Delete By Query API</a></span></dt><dt><span class="chapter"><a href="java-facets.html">Facets</a></span></dt><dt><span class="chapter"><a href="java-aggs.html">Aggregations</a></span></dt><dt><span class="chapter"><a href="percolate.html">Percolate API</a></span></dt><dt><span class="chapter"><a href="query-dsl-queries.html">Query DSL - Queries</a></span></dt><dt><span class="chapter"><a href="query-dsl-filters.html">Query DSL - Filters</a></span></dt></dl></div><p>The search API allows one to execute a search query and get back search hits
 that match the query. It can be executed across one or more indices and
 across one or more types. The query can either be provided using the
 <a class="link" href="query-dsl-queries.html" title="Query DSL - Queries">query Java API</a> or
@@ -95,15 +95,21 @@ long nbHits = 0;
 for (MultiSearchResponse.Item item : sr.getResponses()) {
     SearchResponse response = item.getResponse();
     nbHits += response.getHits().getTotalHits();
-}</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="java-search-facets"></a>Using Facets<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/search.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>The following code shows how to add two facets within your search:</p><pre class="programlisting prettyprint lang-java">SearchResponse sr = node.client().prepareSearch()
+}</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="java-search-aggs"></a>Using Aggregations<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/search.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>The following code shows how to add two aggregations within your search:</p><pre class="programlisting prettyprint lang-java">SearchResponse sr = node.client().prepareSearch()
     .setQuery(QueryBuilders.matchAllQuery())
-    .addFacet(FacetBuilders.termsFacet("f1").field("field"))
-    .addFacet(FacetBuilders.dateHistogramFacet("f2").field("birth").interval("year"))
+    .addAggregation(
+            AggregationBuilders.terms("agg1").field("field")
+    )
+    .addAggregation(
+            AggregationBuilders.dateHistogram("agg2")
+                    .field("birth")
+                    .interval(DateHistogram.Interval.YEAR)
+    )
     .execute().actionGet();
 
 // Get your facet results
-TermsFacet f1 = (TermsFacet) sr.getFacets().facetsAsMap().get("f1");
-DateHistogramFacet f2 = (DateHistogramFacet) sr.getFacets().facetsAsMap().get("f2");</pre><p>See <a class="link" href="java-facets.html" title="Facets">Facets Java API</a>
+Terms agg1 = sr.getAggregations().get("agg1");
+DateHistogram agg2 = sr.getAggregations().get("agg2");</pre><p>See <a class="link" href="java-aggs.html" title="Aggregations">Aggregations Java API</a>
 documentation for details.</p></div></div><div class="navfooter"><span class="prev"><a href="bulk.html">
               « 
               Bulk API</a>
