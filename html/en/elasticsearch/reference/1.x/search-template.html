@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Search Template</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-request-named-queries-and-filters.html" title="Named Queries and Filters" /><link rel="next" href="search-shards.html" title="Search Shards API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Search Template</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="search.html" title="Search APIs" /><link rel="prev" href="search-request-inner-hits.html" title="Inner hits" /><link rel="next" href="search-shards.html" title="Search Shards API" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,9 +19,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
       [1.x]
-    </a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs </a></span> » <span class="breadcrumb-node">Search Template</span></div><div class="navheader"><span class="prev"><a href="search-request-named-queries-and-filters.html">
+    </a></span> » <span class="breadcrumb-link"><a href="search.html">Search APIs </a></span> » <span class="breadcrumb-node">Search Template</span></div><div class="navheader"><span class="prev"><a href="search-request-inner-hits.html">
               « 
-              Named Queries and Filters</a>
+              Inner hits</a>
            
         </span><span class="next">
            
@@ -107,52 +107,52 @@ we wanted to run a <code class="literal">match</code> query on the <code class="
 to filter by line numbers, where <code class="literal">start</code> and <code class="literal">end</code> are optional.</p><p>The <code class="literal">params</code> would look like:</p><pre class="programlisting prettyprint lang-js">{
     "params": {
         "text":      "words to search for",
-        "line_no": { <a id="CO7-2"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
-            "start": 10, <a id="CO7-3"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
-            "end":   20  <a id="CO7-4"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+        "line_no": { <a id="CO9-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "start": 10, <a id="CO9-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+            "end":   20  <a id="CO9-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
         }
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO7-2"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO7-3"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO7-4"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO9-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO9-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 All three of these elements are optional.
 </p></td></tr></table></div><p>We could write the query as:</p><pre class="programlisting prettyprint lang-js">{
   "query": {
     "filtered": {
       "query": {
         "match": {
-          "line": "{{text}}" <a id="CO8-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+          "line": "{{text}}" <a id="CO10-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
         }
       },
       "filter": {
-        {{#line_no}} <a id="CO8-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+        {{#line_no}} <a id="CO10-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
           "range": {
             "line_no": {
-              {{#start}} <a id="CO8-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
-                "gte": "{{start}}" <a id="CO8-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>
-                {{#end}},{{/end}} <a id="CO8-5"></a><span><img src="images/icons/callouts/5.png" alt="" /></span>
-              {{/start}} <a id="CO8-6"></a><span><img src="images/icons/callouts/6.png" alt="" /></span>
-              {{#end}} <a id="CO8-7"></a><span><img src="images/icons/callouts/7.png" alt="" /></span>
-                "lte": "{{end}}" <a id="CO8-8"></a><span><img src="images/icons/callouts/8.png" alt="" /></span>
-              {{/end}} <a id="CO8-9"></a><span><img src="images/icons/callouts/9.png" alt="" /></span>
+              {{#start}} <a id="CO10-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+                "gte": "{{start}}" <a id="CO10-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>
+                {{#end}},{{/end}} <a id="CO10-5"></a><span><img src="images/icons/callouts/5.png" alt="" /></span>
+              {{/start}} <a id="CO10-6"></a><span><img src="images/icons/callouts/6.png" alt="" /></span>
+              {{#end}} <a id="CO10-7"></a><span><img src="images/icons/callouts/7.png" alt="" /></span>
+                "lte": "{{end}}" <a id="CO10-8"></a><span><img src="images/icons/callouts/8.png" alt="" /></span>
+              {{/end}} <a id="CO10-9"></a><span><img src="images/icons/callouts/9.png" alt="" /></span>
             }
           }
-        {{/line_no}} <a id="CO8-10"></a><span><img src="images/icons/callouts/10.png" alt="" /></span>
+        {{/line_no}} <a id="CO10-10"></a><span><img src="images/icons/callouts/10.png" alt="" /></span>
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Fill in the value of param <code class="literal">text</code>
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO8-10"><span><img src="images/icons/callouts/10.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO10-10"><span><img src="images/icons/callouts/10.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Include the <code class="literal">range</code> filter only if <code class="literal">line_no</code> is specified
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> <a href="#CO8-6"><span><img src="images/icons/callouts/6.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> <a href="#CO10-6"><span><img src="images/icons/callouts/6.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Include the <code class="literal">gte</code> clause only if <code class="literal">line_no.start</code> is specified
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Fill in the value of param <code class="literal">line_no.start</code>
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-5"><span><img src="images/icons/callouts/5.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-5"><span><img src="images/icons/callouts/5.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Add a comma after the <code class="literal">gte</code> clause only if <code class="literal">line_no.start</code>
     AND <code class="literal">line_no.end</code> are specified
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-7"><span><img src="images/icons/callouts/7.png" alt="" /></span></a> <a href="#CO8-9"><span><img src="images/icons/callouts/9.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-7"><span><img src="images/icons/callouts/7.png" alt="" /></span></a> <a href="#CO10-9"><span><img src="images/icons/callouts/9.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Include the <code class="literal">lte</code> clause only if <code class="literal">line_no.end</code> is specified
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-8"><span><img src="images/icons/callouts/8.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-8"><span><img src="images/icons/callouts/8.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Fill in the value of param <code class="literal">line_no.end</code>
 </p></td></tr></table></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>As written above, this template is not valid JSON because it includes the
 <span class="emphasis"><em>section</em></span> markers like <code class="literal">{{#line_no}}</code>.  For this reason, the template should
@@ -161,12 +161,12 @@ via the REST API, should be written as a string:</p><pre class="programlisting p
 In order to execute the stored template, reference it by it’s name under the <code class="literal">template</code> key:</p><pre class="programlisting prettyprint lang-js">GET /_search/template
 {
     "template": {
-        "file": "storedTemplate" <a id="CO9-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        "file": "storedTemplate" <a id="CO11-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
     },
     "params": {
         "query_string": "search for these words"
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Name of the the query template in <code class="literal">config/scripts/</code>, i.e., <code class="literal">storedTemplate.mustache</code>.
 </p></td></tr></table></div><p>You can also register search templates by storing it in the elasticsearch cluster in a special index named <code class="literal">.scripts</code>.
 There are REST APIs to manage these indexed templates.</p><pre class="programlisting prettyprint lang-js">POST /_search/template/&lt;templatename&gt;
@@ -189,16 +189,16 @@ There are REST APIs to manage these indexed templates.</p><pre class="programlis
 }</pre><p>This template can be deleted by</p><pre class="programlisting prettyprint lang-js">DELETE /_search/template/&lt;templatename&gt;</pre><p>To use an indexed template at search time use:</p><pre class="programlisting prettyprint lang-js">GET /_search/template
 {
     "template": {
-        "id": "templateName" <a id="CO10-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        "id": "templateName" <a id="CO12-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
     },
     "params": {
         "query_string": "search for these words"
     }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Name of the the query template stored in the .scripts index.
-</p></td></tr></table></div></div><div class="navfooter"><span class="prev"><a href="search-request-named-queries-and-filters.html">
+</p></td></tr></table></div></div><div class="navfooter"><span class="prev"><a href="search-request-inner-hits.html">
               « 
-              Named Queries and Filters</a>
+              Inner hits</a>
            
         </span><span class="next">
            
