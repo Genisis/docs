@@ -34,18 +34,20 @@
     <xsl:apply-templates select="." mode="class.attribute">
       <xsl:with-param name="class" select="'single single-guide'" />
     </xsl:apply-templates>
-    <img src="http://ad.retargeter.com/seg?add=1235131&amp;t=2" width="1" height="1" style="position:absolute; visibility:hidden;" />
-    <script type="text/javascript"><![CDATA[
-        if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-12395217-2']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    }]]></script>
+    <xsl:comment>Google Tag Manager</xsl:comment>
+    <script><![CDATA[ dataLayer = []; ]]></script>
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script><![CDATA[
+    if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5FTL28');}
+]]></script>
+
+
     <xsl:comment>[if lt IE 8]&gt;<![CDATA[
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]]]></xsl:comment>
@@ -227,23 +229,6 @@
 <script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413'></script>
 <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598'></script>
 <script type='text/javascript' src='http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1'></script>
-<script type="text/javascript">
-if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-    document.write(unescape("%3Cscript src='" + document.location.protocol +
-    "//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
-}
-</script>
-<script>
-if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
-    Munchkin.init('813-MAM-392');
-
-    // crazyegg
-    setTimeout(function(){var a=document.createElement("script");
-    var b=document.getElementsByTagName("script")[0];
-    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/4686.js?"+Math.floor(new Date().getTime()/3600000);
-    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-}
-</script>
    </xsl:template>
 
 </xsl:stylesheet>
