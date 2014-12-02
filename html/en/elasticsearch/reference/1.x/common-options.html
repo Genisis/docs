@@ -29,16 +29,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
                »
             </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="common-options"></a>Common options<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="multi-index.html">Multiple Indices</a></span></dt><dt><span class="chapter"><a href="common-options.html">Common options</a></span></dt><dt><span class="chapter"><a href="url-access-control.html">URL-based access control</a></span></dt></dl></div><p>The following options can be applied to all of the REST APIs.</p><h3><a id="_pretty_results"></a>Pretty Results<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>When appending <code class="literal">?pretty=true</code> to any request made, the JSON returned
 will be pretty formatted (use it for debugging only!). Another option is
-to set <code class="literal">format=yaml</code> which will cause the result to be returned in the
+to set <code class="literal">?format=yaml</code> which will cause the result to be returned in the
 (sometimes) more readable yaml format.</p><h3><a id="_human_readable_output"></a>Human readable output<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Statistics are returned in a format suitable for humans
 (eg <code class="literal">"exists_time": "1h"</code> or <code class="literal">"size": "1kb"</code>) and for computers
-(eg <code class="literal">"exists_time_in_millis": 3600000`</code> or <code class="literal">"size_in_bytes": 1024</code>).
+(eg <code class="literal">"exists_time_in_millis": 3600000</code> or <code class="literal">"size_in_bytes": 1024</code>).
 The human readable values can be turned off by adding <code class="literal">?human=false</code>
 to the query string. This makes sense when the stats results are
 being consumed by a monitoring tool, rather than intended for human
 consumption.  The default for the <code class="literal">human</code> flag is
 <code class="literal">false</code>.</p><h3><a id="_flat_settings"></a>Flat Settings<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The <code class="literal">flat_settings</code> flag affects rendering of the lists of settings. When
-flat_settings` flag is <code class="literal">true</code> settings are returned in a flat format:</p><pre class="programlisting prettyprint lang-js">{
+<code class="literal">flat_settings</code> flag is <code class="literal">true</code> settings are returned in a flat format:</p><pre class="programlisting prettyprint lang-js">{
   "persistent" : { },
   "transient" : {
     "discovery.zen.minimum_master_nodes" : "1"
@@ -116,8 +116,7 @@ Minute
 Second
 </p>
 </td></tr></tbody></table></div><h3><a id="distance-units"></a>Distance Units<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Wherever distances need to be specified, such as the <code class="literal">distance</code> parameter in
-the <a class="xref" href="query-dsl-geo-distance-filter.html" title="Geo Distance Filter">Geo Distance Filter</a>) or the <code class="literal">precision</code> parameter in the
-<a class="xref" href="query-dsl-geohash-cell-filter.html" title="Geohash Cell Filter">Geohash Cell Filter</a>, the default unit if none is specified is
+the <a class="xref" href="query-dsl-geo-distance-filter.html" title="Geo Distance Filter">Geo Distance Filter</a>), the default unit if none is specified is
 the meter. Distances can be specified in other units, such as <code class="literal">"1km"</code> or
 <code class="literal">"2mi"</code> (2 miles).</p><p>The full list of units is listed below:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
@@ -191,7 +190,9 @@ Nautical mile
 <p>
 <code class="literal">NM</code>, <code class="literal">nmi</code> or <code class="literal">nauticalmiles</code>
 </p>
-</td></tr></tbody></table></div><h3><a id="fuzziness"></a>Fuzziness<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Some queries and APIs support parameters to allow inexact <span class="emphasis"><em>fuzzy</em></span> matching,
+</td></tr></tbody></table></div><p>The <code class="literal">precision</code> parameter in the <a class="xref" href="query-dsl-geohash-cell-filter.html" title="Geohash Cell Filter">Geohash Cell Filter</a> accepts
+distances with the above units, but if no unit is specified, then the
+precision is interpreted as the length of the geohash.</p><h3><a id="fuzziness"></a>Fuzziness<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Some queries and APIs support parameters to allow inexact <span class="emphasis"><em>fuzzy</em></span> matching,
 using the <code class="literal">fuzziness</code> parameter. The <code class="literal">fuzziness</code> parameter is context
 sensitive which means that it depends on the type of the field being queried:</p><h4><a id="_numeric_date_and_ipv4_fields"></a>Numeric, date and IPv4 fields<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/api-conventions.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>When querying numeric, date and IPv4 fields, <code class="literal">fuzziness</code> is interpreted as a
 <code class="literal">+/-</code> margin. It behaves like a <a class="xref" href="query-dsl-range-query.html" title="Range Query">Range Query</a> where:</p><pre class="literallayout">-fuzziness &lt;= field value &lt;= +fuzziness</pre><p>The <code class="literal">fuzziness</code> parameter should be set to a numeric value, eg <code class="literal">2</code> or <code class="literal">2.0</code>. A
