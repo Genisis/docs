@@ -6,7 +6,8 @@ use v5.10;
 
 use FindBin;
 use lib "$FindBin::RealBin/lib";
-use ES::Util qw(run $Opts build_chunked build_single sha_for timestamp);
+use ES::Util
+    qw(run $Opts build_chunked build_single sha_for timestamp write_html_redirect);
 use Getopt::Long;
 use YAML qw(LoadFile);
 use Path::Class qw(dir file);
@@ -27,8 +28,8 @@ init_env();
 our $Conf = LoadFile('conf.yaml');
 
 GetOptions(
-    $Opts,                                                             #
-    'all', 'push',                                                     #
+    $Opts,    #
+    'all', 'push',    #
     'single',  'doc=s', 'out=s', 'toc', 'chunk=i', 'toc_level=i', 'comments',
     'open',    'web',
     'lenient', 'verbose'
@@ -117,6 +118,12 @@ sub build_all {
 
     say "Writing main TOC";
     $toc->write($build_dir);
+
+    say "Writing extra HTML redirects";
+    for ( @{ $Conf->{redirects} } ) {
+        write_html_redirect( $build_dir->subdir( $_->{prefix} ),
+            $_->{redirect} );
+    }
 
     my $links = ES::LinkCheck->new($build_dir);
 

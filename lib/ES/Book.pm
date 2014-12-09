@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use v5.10;
 use Data::Dumper qw(Dumper);
-use ES::Util qw(run build_chunked build_single);
+use ES::Util qw(run build_chunked build_single write_html_redirect);
 use Path::Class();
 use ES::Repo();
 use File::Copy::Recursive qw(fcopy rcopy);
@@ -64,16 +64,17 @@ sub build {
 
     say "Book: " . $self->title;
 
-    my $repo      = $self->repo;
-    my $branches  = $self->branches;
-    my $current   = $self->current;
-    my $index     = $self->index;
-    my $src_path  = $index->parent;
-    my $toc       = ES::Toc->new( $self->title );
-    my $dir       = $self->dir;
-    my $chunk     = $self->chunk;
-    my $toc_level = $self->toc_level;
-    my $add_toc   = $self->toc;
+    my $repo        = $self->repo;
+    my $branches    = $self->branches;
+    my $current     = $self->current;
+    my $current_url = 'current/index.html';
+    my $index       = $self->index;
+    my $src_path    = $index->parent;
+    my $toc         = ES::Toc->new( $self->title );
+    my $dir         = $self->dir;
+    my $chunk       = $self->chunk;
+    my $toc_level   = $self->toc_level;
+    my $add_toc     = $self->toc;
 
     $dir->mkpath;
 
@@ -125,7 +126,7 @@ sub build {
 
         if ( $branch eq $current ) {
             say "   - Copying to current";
-            $url = 'current/index.html';
+            $url = $current_url;
             $title .= ' (current)';
             my $current_dir = $dir->subdir('current');
             $current_dir->rmtree;
@@ -141,7 +142,8 @@ sub build {
         $toc->write($dir);
     }
     else {
-        $dir->file($versions)->remove;
+        say " - Writing redirect to current branch";
+        write_html_redirect( $dir, $current_url );
         undef $versions;
     }
 

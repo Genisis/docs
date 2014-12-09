@@ -8,9 +8,10 @@ use File::Copy::Recursive qw(fcopy rcopy);
 use Capture::Tiny qw(capture_merged tee_merged);
 
 require Exporter;
-our @ISA       = qw(Exporter);
-our @EXPORT_OK = qw(run $Opts build_chunked build_single sha_for timestamp);
-our $Opts      = {};
+our @ISA = qw(Exporter);
+our @EXPORT_OK
+    = qw(run $Opts build_chunked build_single sha_for timestamp write_html_redirect);
+our $Opts = {};
 
 our $HTML_Header = <<'HTML';
 <!DOCTYPE html>
@@ -186,6 +187,25 @@ sub to_html5 {
     }
 }
 
+#===================================
+sub write_html_redirect {
+#===================================
+    my ( $dir, $url ) = @_;
+    my $html = <<"HTML";
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=$url">
+    <meta name="robots" content="noindex">
+  </head>
+  <body>
+    Redirecting to <a href="$url">$url</a>.
+  </body>
+</html>
+HTML
+
+    $dir->file('index.html')->spew( iomode => '>:utf8', $html );
+
+}
 #===================================
 sub run (@) {
 #===================================
