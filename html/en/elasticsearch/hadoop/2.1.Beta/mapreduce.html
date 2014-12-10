@@ -96,7 +96,7 @@ conf.setBoolean("mapred.reduce.tasks.speculative.execution", false); <a id="CO14
 conf.set("es.nodes", "es-server:9200");
 conf.set("es.resource", "radio/artists");                            <a id="CO14-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
 Job job = new Job(conf);
-job.setOutputFormat(EsOutputFormat.class);
+job.setOutputFormatClass(EsOutputFormat.class);
 job.setMapOutputValueClass(MapWritable.class);                       <a id="CO14-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>
 ...
 job.waitForCompletion(true);</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO14-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
@@ -168,7 +168,7 @@ do not include generics.</p></div></div><h4><a id="_emphasis_new_emphasis_litera
 conf.set("es.resource", "radio/artists/");            <a id="CO18-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 conf.set("es.query", "?q=me*");                       <a id="CO18-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
 Job job = new Job(conf);
-job.setInputFormat(EsInputFormat.class);
+job.setInputFormatClass(EsInputFormat.class);
 job.setMapOutputKeyClass(Text.class);
 job.setMapOutputValueClass(MapWritable.class);        <a id="CO18-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
 ...
