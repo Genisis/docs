@@ -75,10 +75,10 @@ heap using compressed oops.</p><p>The moral of the story is this: even when you 
 crossing the 32gb Heap boundary.  It wastes memory, reduces CPU performance and
 makes the GC struggle with large heaps.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>I have a machine with 1TB RAM!</strong></p></div></div></div><p>The 32gb line is fairly important.  So what do you do when your machine has a lot
 of memory?  It is becoming increasingly common to see super-servers with 300-500gb
-of RAM.</p><p>First, we would recommend to avoid such large machines (see <a class="xref" href="hardware.html" title="Hardware">Hardware</a>).</p><p>But if you already have the machines, you have to practical options:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+of RAM.</p><p>First, we would recommend to avoid such large machines (see <a class="xref" href="hardware.html" title="Hardware">Hardware</a>).</p><p>But if you already have the machines, you have two practical options:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 Are you doing most full-text search?  Consider giving 32gb to Elasticsearch
 and just let Lucene use the rest of memory via the OS file system cache.  All that
-memory will cache segments and lead to blisteringly fast full-text search
+memory will cache segments and lead to blisteringly fast full-text search.
 </li><li class="listitem"><p class="simpara">
 Are you doing a lot of sorting/aggregations?  You’ll likely want that memory
 in the heap then.  Instead of one node with 32gb+ of RAM, consider running two or
@@ -87,7 +87,7 @@ machine has 128gb of RAM, run two nodes each with 32gb.  This means 64gb will be
 used for heaps, and 64 will be leftover for Lucene.
 </p><p class="simpara">If you choose this option, set <code class="literal">cluster.routing.allocation.same_shard.host: true</code>
 in your config.  This will prevent a primary and a replica shard from co-locating
-to the same physical machine (since this would remove the benefits of replica HA)</p></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_swapping_is_the_death_of_performance"></a>Swapping is the death of performance<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/510_Deployment/50_heap.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>It should be obvious,<a id="id-1.9.4.11.11.2.1" class="indexterm"></a>
+to the same physical machine (since this would remove the benefits of replica HA).</p></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_swapping_is_the_death_of_performance"></a>Swapping is the death of performance<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/510_Deployment/50_heap.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>It should be obvious,<a id="id-1.9.4.11.11.2.1" class="indexterm"></a>
 <a id="id-1.9.4.11.11.2.2" class="indexterm"></a>
 <a id="id-1.9.4.11.11.2.3" class="indexterm"></a><a id="id-1.9.4.11.11.2.4" class="indexterm"></a>
 <a id="id-1.9.4.11.11.2.5" class="indexterm"></a><a id="id-1.9.4.11.11.2.6" class="indexterm"></a> but it bears spelling out clearly: swapping main memory
