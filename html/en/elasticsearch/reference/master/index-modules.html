@@ -57,6 +57,12 @@ otherwise it is written in non-compound format.</p></dd><dt><span class="term">
         refresh operation will be executed. Defaults to <code class="literal">1s</code>. Can be set to <code class="literal">-1</code>
         in order to disable it.
 </dd><dt><span class="term">
+<code class="literal">index.codec</code>
+</span></dt><dd>
+        The <code class="literal">default</code> value compresses stored data with LZ4 compression, but
+        this can be set to <code class="literal">best_compression</code> for a higher compression ratio,
+        at the expense of slower stored fields performance.
+</dd><dt><span class="term">
 <code class="literal">index.shard.check_on_startup</code>
 </span></dt><dd>
         Should shard consistency be checked upon opening.
