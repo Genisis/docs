@@ -67,13 +67,13 @@ change that the <code class="literal">zero_terms_query</code> option can be used
     }
 }</pre><p><strong>cutoff_frequency. </strong>The match query supports a <code class="literal">cutoff_frequency</code> that allows
 specifying an absolute or relative document frequency where high
-frequent terms are moved into an optional subquery and are only scored
-if one of the low frequent (below the cutoff) terms in the case of an
-<code class="literal">or</code> operator or all of the low frequent terms in the case of an <code class="literal">and</code>
+frequency terms are moved into an optional subquery and are only scored
+if one of the low frequency (below the cutoff) terms in the case of an
+<code class="literal">or</code> operator or all of the low frequency terms in the case of an <code class="literal">and</code>
 operator match.</p><p>This query allows handling <code class="literal">stopwords</code> dynamically at runtime, is domain
 independent and doesn’t require on a stopword file. It prevent scoring /
-iterating high frequent terms and only takes the terms into account if a
-more significant / lower frequent terms match a document. Yet, if all of
+iterating high frequency terms and only takes the terms into account if a
+more significant / lower frequency terms match a document. Yet, if all of
 the query terms are above the given <code class="literal">cutoff_frequency</code> the query is
 automatically transformed into a pure conjunction (<code class="literal">and</code>) query to
 ensure fast execution.</p><p>The <code class="literal">cutoff_frequency</code> can either be relative to the number of documents
