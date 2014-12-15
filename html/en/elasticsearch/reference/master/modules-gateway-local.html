@@ -49,7 +49,7 @@ An old index can be added to an existing cluster by copying it to the
    the cluster. Once the index has been replicated to other nodes in the
    cluster, the new node can be shut down and removed.
 </li></ol></div><p>The import of dangling indices can be controlled with the
-<code class="literal">gateway.local.auto_import_dangled</code> which accepts:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<code class="literal">gateway.auto_import_dangled</code> which accepts:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">yes</code>
 </p>
@@ -71,7 +71,7 @@ An old index can be added to an existing cluster by copying it to the
 </p>
 </td><td valign="top">
 <p>
-    Delete dangling indices after <code class="literal">gateway.local.dangling_timeout</code>, which
+    Delete dangling indices after <code class="literal">gateway.dangling_timeout</code>, which
     defaults to 2 hours.
 </p>
 </td></tr></tbody></table></div></div><div class="navfooter"><span class="prev"><a href="modules-gateway.html">
