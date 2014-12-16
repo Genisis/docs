@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>The Connection Pool</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [1.0]" /><link rel="prev" href="_namespaces.html" title="Namespaces" /><link rel="next" href="_selectors.html" title="Selectors" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Connections</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch-PHP [master]" /><link rel="up" href="index.html" title="Elasticsearch-PHP [master]" /><link rel="prev" href="_selectors.html" title="Selectors" /><link rel="next" href="_serializers.html" title="Serializers" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -18,29 +18,143 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 </script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch-PHP
-      [1.0]
-    </a></span> » <span class="breadcrumb-node">The Connection Pool</span></div><div class="navheader"><span class="prev"><a href="_namespaces.html">
+      [master]
+    </a></span> » <span class="breadcrumb-node">Connections</span></div><div class="navheader"><span class="prev"><a href="_selectors.html">
               « 
-              Namespaces</a>
+              Selectors</a>
            
         </span><span class="next">
            
-          <a href="_selectors.html">Selectors
+          <a href="_serializers.html">Serializers
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_the_connection_pool"></a>The Connection Pool<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/connection-pool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_dealing_with_json_arrays_and_objects_in_php.html">Dealing with JSON Arrays and Objects in PHP</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_namespaces.html">Namespaces</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt><dt><span class="chapter"><a href="_selectors.html">Selectors</a></span></dt><dt><span class="chapter"><a href="_connections.html">Connections</a></span></dt><dt><span class="chapter"><a href="_serializers.html">Serializers</a></span></dt><dt><span class="chapter"><a href="_php_version_requirement.html">PHP Version Requirement</a></span></dt></dl></div><p>The connection pool is an object inside the client that is responsible for maintaining the current list of nodes.  Theoretically, nodes are either dead or alive.</p><p>However, in the real world, things are never so clear.  Nodes are sometimes in a gray-zone of <span class="emphasis"><em>"probably dead but not confirmed"</em></span>, <span class="emphasis"><em>"timed-out but unclear why"</em></span> or <span class="emphasis"><em>"recently dead but now alive"</em></span>.</p><p>The connection pool’s job is to manage this set of unruly connections and try to provide the best behavior to the client.  There are several
-connection pool implementations that you can choose from:</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_staticnopingconnectionpool_default"></a>staticNoPingConnectionPool (default)<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/connection-pool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>This connection pool maintains a static list of hosts, which are assumed to be alive when the client initializes.  If
-a node fails a request, it is marked as <code class="literal">dead</code> for 60 seconds and the next node is tried.  After 60 seconds, the node
-is revived and put back into rotation.  Each additional failed request will cause the dead timeout to increase exponentially.</p><p>A successful request will reset the "failed ping timeout" counter.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_staticconnectionpool"></a>staticConnectionPool<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/connection-pool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Identical to the <code class="literal">staticNoPingConnectionPool</code>, except it pings nodes before they are used to determine if they are alive.
-This may be useful for long-running scripts, but tends to be additional overhead that is unescessary for average PHP scripts.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_sniffingconnectionpool"></a>sniffingConnectionPool<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/connection-pool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Unlike the two previous static connection pools, this one is dynamic.  The user provides a seed list of hosts, which the
-client uses to "sniff" and discover the rest of the cluster.  It achieves this through the Cluster State API.  As new
-nodes are added or removed from the cluster, the client will update it’s pool of active connections.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_which_connection_pool_to_choose_php_and_connection_pooling"></a>Which connection pool to choose? PHP and connection pooling<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/connection-pool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>At first blush, the <code class="literal">sniffingConnectionPool</code> implementation seems superior.  For many languages, it is.  In PHP, the conversation is a bit more nuanced.</p><p>Because PHP is a share-nothing architecture, there is no way to maintain a connection pool across script instances.  This means that every script is responsible for creating, maintaining, and destroying connections on every instantiation.</p><p>Sniffing is a relatively lightweight operation but it may be considered a non-negligible overhead for certain PHP applications.</p><p>The average PHP script will likely load the client, execute a few queries and then close.  Imagine this script being called 1000 times per second: the sniffing connection pool will perform the sniffing and pinging process 1000 times per second.</p><p>In reality, if your script only executes a few queries, the sniffing concept is <span class="emphasis"><em>too</em></span> robust.  It tends to be more useful in long-lived processes which potentially "out-live" a static list.</p><p>For this reason the default connection pool is currently the <code class="literal">staticConnectionPool</code>.  You can, of course, change this default - but we strongly recommend you load test and verify that it does not negatively impact your performance.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_changing_the_connection_pool"></a>Changing the Connection Pool<a href="https://github.com/elasticsearch/elasticsearch-php/edit/1.0/docs/connection-pool.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Changing the connection pool is very simple: instantiate the client with your chosen connection pool implementation:</p><pre class="programlisting prettyprint lang-php">$params['connectionPoolClass'] = '\Elasticsearch\ConnectionPool\SniffingConnectionPool';
-$client = new Elasticsearch\Client($params);</pre><p>​</p></div></div><div class="navfooter"><span class="prev"><a href="_namespaces.html">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="_connections"></a>Connections<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="_overview.html">Overview</a></span></dt><dt><span class="chapter"><a href="_quickstart.html">Quickstart</a></span></dt><dt><span class="chapter"><a href="_installation_2.html">Installation</a></span></dt><dt><span class="chapter"><a href="_configuration.html">Configuration</a></span></dt><dt><span class="chapter"><a href="_dealing_with_json_arrays_and_objects_in_php.html">Dealing with JSON Arrays and Objects in PHP</a></span></dt><dt><span class="chapter"><a href="_index_operations.html">Index Operations</a></span></dt><dt><span class="chapter"><a href="_indexing_operations.html">Indexing Operations</a></span></dt><dt><span class="chapter"><a href="_search_operations.html">Search Operations</a></span></dt><dt><span class="chapter"><a href="_namespaces.html">Namespaces</a></span></dt><dt><span class="chapter"><a href="_the_connection_pool.html">The Connection Pool</a></span></dt><dt><span class="chapter"><a href="_selectors.html">Selectors</a></span></dt><dt><span class="chapter"><a href="_connections.html">Connections</a></span></dt><dt><span class="chapter"><a href="_serializers.html">Serializers</a></span></dt><dt><span class="chapter"><a href="_php_version_requirement.html">PHP Version Requirement</a></span></dt></dl></div><p>Each node in your cluster is represented by a Connection object inside the client.  These objects are responsible
+for communicating to the node, logging success or failure and reporting the results back to the Transport.</p><p>There are two Connection classes in the client which you can choose from:</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_guzzleconnection_default"></a>GuzzleConnection (default)<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>The connection class uses the third party Guzzle HTTP library for communication.  Guzzle is an excellent library which
+wraps PHP’s cURL functionality.  This object is default because Guzzle has much experience fighting the oddities
+and quirks of PHP cURL.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_curlmulticonnection"></a>CurlMultiConnection<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>This is a lightweight connection class that also utilizes PHP’s cURL functionality (it uses the same set of curl-multiselect
+functionality that Guzzle does).  This class is entirely self-contained, however, so it can offer real advantages in speed
+when it comes to autoloading costs (since Guzzle requires several classes to be autoloaded).  It has not been as
+rigorously tested as Guzzle, which is why it is not default.</p><p>Once the relevant files have been autoloaded, performance between Guzzle and CurlMultiConnection is identical since
+they both leverage the same underlying cURL calls.  It is recommended to only use CurlMultiConnection when you need
+very fast autoloading, such as autocompletion.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_changing_your_connectionclass"></a>Changing your ConnectionClass<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Changing the connection class is very simple: instantiate the client with your chosen connection implementation:</p><pre class="programlisting prettyprint lang-php">$params['connectionPoolClass'] = '\Elasticsearch\Connections\CurlMultiConnection';
+$client = new Elasticsearch\Client($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_extending_an_existing_connection_class"></a>Extending an existing Connection Class<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Like many other components, you can completely replace the Connection object with your own.
+The easiest way to do this is to over-ride one of the existing connection classes:</p><pre class="programlisting prettyprint lang-php">namespace MyProject;
+
+class MyConnection extends \Elasticsearch\Connections\GuzzleConnection {
+
+    /**
+     * Perform an HTTP request on the cluster
+     *
+     * @param string      $method HTTP method to use for request
+     * @param string      $uri    HTTP URI to use for request
+     * @param null|string $params Optional URI parameters
+     * @param null|string $body   Optional request body
+     * @param array       $options
+     *
+     * @return array
+     */
+    public function performRequest($method, $uri, $params = null, $body = null, $options = array())
+    {
+        // do pre-request stuff
+        $response = parent::performRequest($method, $uri, $params, $body, $options);
+        // do post-request stuff
+        return $response;
+    }
+}</pre><p>​</p><p>This allows you to leverage the existing boilerplate and just over-ride the methods that you wish to tinker with.  You
+can then use your new class by specifying it at instantiation.</p><pre class="programlisting prettyprint lang-php">$params['connectionPoolClass'] = '\MyProject\MyConnection';
+$client = new Elasticsearch\Client($params);</pre><p>​</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_writing_your_own_connection_class"></a>Writing your own Connection Class<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>If you wish to completely write your own connection class, you just need to implement the <code class="literal">ConnectionInterface</code>.</p><pre class="programlisting prettyprint lang-php">namespace Elasticsearch\Connections;
+
+use Psr\Log\LoggerInterface;
+
+interface ConnectionInterface
+{
+    public function __construct($hostDetails, $connectionParams, LoggerInterface $log, LoggerInterface $trace);
+
+    public function getTransportSchema();
+
+    public function isAlive();
+
+    public function markAlive();
+
+    public function markDead();
+
+    public function getLastRequestInfo();
+
+    public function performRequest($method, $uri, $params = null, $body = null);
+}</pre><p>The abstract <code class="literal">AbstractConnection</code> class provides useful boilerplate which you may wish to extend, such as various
+utility logging methods.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_getting_information_about_the_last_request"></a>Getting information about the last request<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/connections.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>Logging is useful, but it is difficult to dial the verobisity to exactly what you want.  Sometimes you just want a
+method that returns details about the last request and response.</p><p>For example, here we execute a search and then request details about that search:</p><pre class="programlisting prettyprint lang-php">$client = new Elasticsearch\Client();
+
+$results = $client-&gt;search([
+    'index' =&gt; 'test',
+    'type' =&gt; 'test',
+    'body' =&gt; [
+        'query' =&gt; [
+            'filtered' =&gt; [
+                'filter' =&gt; [
+                    'term' =&gt; [
+                        'first_name' =&gt; 'zach'
+                    ]
+                ]
+            ]
+        ]
+    ]
+]);
+
+$info = $client-&gt;transport-&gt;getLastConnection()-&gt;getLastRequestInfo();
+print_r($info);</pre><p>This will yield an output such as:</p><pre class="programlisting prettyprint lang-php">Array
+(
+    [request] =&gt; Array
+        (
+            [uri] =&gt; http://localhost:9200/test/test/_search?
+            [body] =&gt; {"query":{"filtered":{"filter":{"term":{"first_name":"zach"}}}}}
+            [options] =&gt; Array
+                (
+                )
+            [method] =&gt; POST
+        )
+    [response] =&gt; Array
+        (
+            [body] =&gt; {"took":45,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":0,"max_score":null,"hits":[]}}
+            [info] =&gt; Array
+                (
+                    [url] =&gt; http://localhost:9200/test/test/_search
+                    [content_type] =&gt; application/json; charset=UTF-8
+                    [http_code] =&gt; 200
+                    [header_size] =&gt; 87
+                    [request_size] =&gt; 191
+                    [filetime] =&gt; -1
+                    [ssl_verify_result] =&gt; 0
+                    [redirect_count] =&gt; 0
+                    [total_time] =&gt; 0.053979
+                    [namelookup_time] =&gt; 0.001221
+                    [connect_time] =&gt; 0.001941
+                    [pretransfer_time] =&gt; 0.002086
+                    [size_upload] =&gt; 64
+                    [size_download] =&gt; 123
+                    [speed_download] =&gt; 2278
+                    [speed_upload] =&gt; 1185
+                    [download_content_length] =&gt; 123
+                    [upload_content_length] =&gt; 64
+                    [starttransfer_time] =&gt; 0.053467
+                    [redirect_time] =&gt; 0
+                    [certinfo] =&gt; Array
+                        (
+                        )
+                    [primary_ip] =&gt; ::1
+                    [primary_port] =&gt; 9200
+                    [local_ip] =&gt; ::1
+                    [local_port] =&gt; 51168
+                    [redirect_url] =&gt;
+                )
+            [status] =&gt; 200
+        )
+)</pre></div></div><div class="navfooter"><span class="prev"><a href="_selectors.html">
               « 
-              Namespaces</a>
+              Selectors</a>
            
         </span><span class="next">
            
-          <a href="_selectors.html">Selectors
+          <a href="_serializers.html">Serializers
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){
