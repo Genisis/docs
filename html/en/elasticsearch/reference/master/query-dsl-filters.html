@@ -55,7 +55,10 @@ are not cached by default.</p><p>The last type of filters are those working with
 <a class="link" href="query-dsl-not-filter.html" title="Not Filter">not</a> and
 <a class="link" href="query-dsl-or-filter.html" title="Or Filter">or</a> filters are not
 cached as they basically just manipulate the internal filters.</p><p>All filters allow to set <code class="literal">_cache</code> element on them to explicitly control
-caching. They also allow to set <code class="literal">_cache_key</code> which will be used as the
+caching. It accepts 3 values: <code class="literal">true</code> in order to cache the filter, <code class="literal">false</code>
+to make sure that the filter will not be cached, and <code class="literal">auto</code>, which is the
+default and will decide on whether to cache the filter based on the cost
+to cache the filter and how often the filter has been used.</p><p>Filters also allow to set <code class="literal">_cache_key</code> which will be used as the
 caching key for that filter. This can be handy when using very large
 filters (like a terms filter with many elements in it).</p></div><div class="navfooter"><span class="prev"><a href="query-dsl-template-query.html">
               « 

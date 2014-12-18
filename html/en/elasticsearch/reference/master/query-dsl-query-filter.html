@@ -38,7 +38,7 @@ that accept a filter.</p><pre class="programlisting prettyprint lang-js">{
             }
         }
     }
-}</pre><h4><a id="_caching_15"></a>Caching<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/query-dsl/filters/query-filter.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The result of the filter is not cached by default. The <code class="literal">_cache</code> can be
+}</pre><h4><a id="_caching_12"></a>Caching<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/query-dsl/filters/query-filter.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The result of the filter is only cached by default if there is evidence of reuse.</p><p>The <code class="literal">_cache</code> can be
 set to <code class="literal">true</code> to cache the <span class="strong"><strong>result</strong></span> of the filter. This is handy when
 the same query is used on several (many) other queries. Note, the
 process of caching the first execution is higher when not caching (since

@@ -36,8 +36,8 @@ accept a filter, for example:</p><pre class="programlisting prettyprint lang-js"
             "term" : { "user" : "kimchy"}
         }
     }
-}</pre><h4><a id="_caching_18"></a>Caching<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/query-dsl/filters/term-filter.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The result of the filter is automatically cached by default. The
-<code class="literal">_cache</code> can be set to <code class="literal">false</code> to turn it off. Here is an example:</p><pre class="programlisting prettyprint lang-js">{
+}</pre><h4><a id="_caching_15"></a>Caching<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/query-dsl/filters/term-filter.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The result of the filter is only cached by default if there is evidence of reuse.
+The <code class="literal">_cache</code> can be set to <code class="literal">false</code> to turn it off. Here is an example:</p><pre class="programlisting prettyprint lang-js">{
     "constant_score" : {
         "filter" : {
             "term" : {
