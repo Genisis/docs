@@ -32,7 +32,7 @@ with arbitrary geo shapes such as rectangles and polygons. It should be
 used when either the data being indexed or the queries being executed
 contain shapes other than just points.</p><p>You can query documents using this type using
 <a class="link" href="query-dsl-geo-shape-filter.html" title="GeoShape Filter">geo_shape Filter</a>
-or <a class="link" href="query-dsl-geo-shape-query.html" title="GeoShape Query">geo_shape Query</a>.</p><h4><a id="_mapping_options_2"></a>Mapping Options<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/types/geo-shape-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The geo_shape mapping maps geo_json geometry objects to the geo_shape
+or <a class="link" href="query-dsl-geo-shape-query.html" title="GeoShape Query">geo_shape Query</a>.</p><h4><a id="geo-shape-mapping-options"></a>Mapping Options<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/types/geo-shape-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The geo_shape mapping maps geo_json geometry objects to the geo_shape
 type. To enable it, users must explicitly map fields to the geo_shape
 type.</p><div class="informaltable"><table cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><thead><tr><th align="left" valign="top">Option </th><th align="left" valign="top">Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">tree</code></p></td><td align="left" valign="top"><p>Name of the PrefixTree implementation to be used: <code class="literal">geohash</code> for
 GeohashPrefixTree and <code class="literal">quadtree</code> for QuadPrefixTree. Defaults to
@@ -51,7 +51,16 @@ may use the <code class="literal">precision</code> parameter instead. However, E
 uses the tree_levels parameter internally and this is what is returned
 via the mapping API even if you use the precision parameter.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">distance_error_pct</code></p></td><td align="left" valign="top"><p>Used as a hint to the PrefixTree about how
 precise it should be. Defaults to 0.025 (2.5%) with 0.5 as the maximum
-supported value.</p></td></tr></tbody></table></div><h4><a id="_prefix_trees"></a>Prefix trees<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/types/geo-shape-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>To efficiently represent shapes in the index, Shapes are converted into
+supported value.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">orientation</code></p></td><td align="left" valign="top"><p>Optionally define how to interpret vertex order for
+polygons / multipolygons.  This parameter defines one of two coordinate
+system rules (Right-hand or Left-hand) each of which can be specified in three
+different ways. 1. Right-hand rule (default): <code class="literal">right</code>, <code class="literal">ccw</code>, <code class="literal">counterclockwise</code>,
+2. Left-hand rule: <code class="literal">left</code>, <code class="literal">cw</code>, <code class="literal">clockwise</code>. The default orientation
+(<code class="literal">counterclockwise</code>) complies with the OGC standard which defines
+outer ring vertices in counterclockwise order with inner ring(s) vertices (holes)
+in clockwise order. Setting this parameter in the geo_shape mapping explicitly
+sets vertex order for the coordinate list of a geo_shape field but can be
+overridden in each individual GeoJSON document.</p></td></tr></tbody></table></div><h4><a id="_prefix_trees"></a>Prefix trees<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/types/geo-shape-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>To efficiently represent shapes in the index, Shapes are converted into
 a series of hashes representing grid squares using implementations of a
 PrefixTree. The tree notion comes from the fact that the PrefixTree uses
 multiple grid layers, each with an increasing level of precision to
@@ -154,11 +163,22 @@ Outer Ring - Counterclockwise
 Inner Ring(s) / Holes - Clockwise
 </li></ul></div><p>For polygons that do not cross the dateline, vertex order will not matter in
 Elasticsearch. For polygons that do cross the dateline, Elasticsearch requires
-vertex orderinging comply with the OGC specification. Otherwise, an unintended polygon
+vertex ordering to comply with the OGC specification. Otherwise, an unintended polygon
 may be created and unexpected query/filter results will be returned.</p><p>The following provides an example of an ambiguous polygon.  Elasticsearch will apply
 OGC standards to eliminate ambiguity resulting in a polygon that crosses the dateline.</p><pre class="programlisting prettyprint lang-js">{
     "location" : {
         "type" : "polygon",
+        "coordinates" : [
+            [ [-177.0, 10.0], [176.0, 15.0], [172.0, 0.0], [176.0, -15.0], [-177.0, -10.0], [-177.0, 10.0] ],
+            [ [178.2, 8.2], [-178.8, 8.2], [-180.8, -8.8], [178.2, 8.8] ]
+        ]
+    }
+}</pre><p>An <code class="literal">orientation</code> parameter can be defined when setting the geo_shape mapping (see <a class="xref" href="mapping-geo-shape-type.html#geo-shape-mapping-options" title="Mapping Optionsedit">the section called “Mapping Options<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/mapping/types/geo-shape-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a>). This will define vertex
+order for the coordinate list on the mapped geo_shape field. It can also be overridden on each document.  The following is an example for
+overriding the orientation on a document:</p><pre class="programlisting prettyprint lang-js">{
+    "location" : {
+        "type" : "polygon",
+        "orientation" : "clockwise",
         "coordinates" : [
             [ [-177.0, 10.0], [176.0, 15.0], [172.0, 0.0], [176.0, -15.0], [-177.0, -10.0], [-177.0, 10.0] ],
             [ [178.2, 8.2], [-178.8, 8.2], [-180.8, -8.8], [178.2, 8.8] ]
