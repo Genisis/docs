@@ -43,7 +43,7 @@ If possible, stop indexing new data.  This is not always possible, but will
 help speed up recovery time
 </li><li class="listitem"><p class="simpara">
 Disable shard allocation.  This prevents Elasticsearch from re-balancing
-missing shards until you tell it otherwise.  If you know the maintenance will be
+missing shards until you tell it otherwise.  If you know the maintenance window will be
 short, this is a good idea.  You can disable allocation with:
 </p><pre class="programlisting prettyprint lang-js">PUT /_cluster/settings
 {
@@ -57,8 +57,6 @@ machine:
 Perform maintenance/upgrade
 </li><li class="listitem">
 Restart node, confirm that it joins the cluster
-</li><li class="listitem">
-Repeat 3-5 for the rest of your nodes
 </li><li class="listitem"><p class="simpara">
 Re-enable shard allocation using:
 </p><pre class="programlisting prettyprint lang-js">PUT /_cluster/settings
@@ -66,9 +64,13 @@ Re-enable shard allocation using:
     "transient" : {
         "cluster.routing.allocation.enable" : "all"
     }
-}</pre><p class="simpara">Shard re-balancing may take some time.  At this point you are safe to resume
-indexing (if you had previously stopped), but waiting until the cluster is fully
-balanced before resuming indexing will help speed up the process</p></li></ol></div></div><div class="navfooter"><span class="prev"><a href="indexing-performance.html">
+}</pre><p class="simpara">Shard re-balancing may take some time. Wait until the cluster has <span class="emphasis"><em>green</em></span> status.</p></li><li class="listitem">
+Repeat 2-6 for the rest of your nodes
+</li><li class="listitem">
+At this point you are safe to resume indexing (if you had previously stopped),
+but waiting until the cluster is fully balanced before resuming indexing will help
+to speed up the process.
+</li></ol></div></div><div class="navfooter"><span class="prev"><a href="indexing-performance.html">
               « 
               Indexing Performance Tips</a>
            
