@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 only be applied on date values. Since dates are represented in elasticsearch internally as long values, it is possible
 to use the normal <code class="literal">histogram</code> on dates as well, though accuracy will be compromised. The reason for this is in the fact
 that time based intervals are not fixed (think of leap years and on the number of days in a month). For this reason,
-we need a special support for time based data. From a functionality perspective, this histogram supports the same features
+we need special support for time based data. From a functionality perspective, this histogram supports the same features
 as the normal <a class="link" href="search-aggregations-bucket-histogram-aggregation.html" title="Histogram Aggregation">histogram</a>. The main difference is that the interval can be specified by date/time expressions.</p><p>Requesting bucket intervals of a month.</p><pre class="programlisting prettyprint lang-js">{
     "aggs" : {
         "articles_over_time" : {
@@ -98,10 +98,10 @@ Supports expressive date <a class="link" href="search-aggregations-bucket-datera
     }
 }</pre><p>Like with the normal <a class="link" href="search-aggregations-bucket-histogram-aggregation.html" title="Histogram Aggregation">histogram</a>, both document level scripts and
 value level scripts are supported. It is also possible to control the order of the returned buckets using the <code class="literal">order</code>
-settings and filter the returned buckets based on a <code class="literal">min_doc_count</code> setting (by defaults to all buckets with
-<code class="literal">min_doc_count &gt; 0</code> will be returned). This histogram also supports the <code class="literal">extended_bounds</code> settings, that enables extending
+settings and filter the returned buckets based on a <code class="literal">min_doc_count</code> setting (by default all buckets with
+<code class="literal">min_doc_count &gt; 0</code> will be returned). This histogram also supports the <code class="literal">extended_bounds</code> setting, which enables extending
 the bounds of the histogram beyond the data itself (to read more on why you’d want to do that please refer to the
-explanation <a class="link" href="search-aggregations-bucket-histogram-aggregation.html#search-aggregations-bucket-histogram-aggregation-extended-bounds">here</a>.</p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-histogram-aggregation.html">
+explanation <a class="link" href="search-aggregations-bucket-histogram-aggregation.html#search-aggregations-bucket-histogram-aggregation-extended-bounds">here</a>).</p></div></div><div class="navfooter"><span class="prev"><a href="search-aggregations-bucket-histogram-aggregation.html">
               « 
               Histogram Aggregation</a>
            
