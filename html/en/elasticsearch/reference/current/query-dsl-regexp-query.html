@@ -53,7 +53,7 @@ matchers like <code class="literal">.*?+</code> will mostly lower performance.</
             "flags" : "INTERSECTION|COMPLEMENT|EMPTY"
         }
     }
-}</pre><p>Possible flags are <code class="literal">ALL</code>, <code class="literal">ANYSTRING</code>, <code class="literal">AUTOMATON</code>, <code class="literal">COMPLEMENT</code>,
+}</pre><p>Possible flags are <code class="literal">ALL</code> (default), <code class="literal">ANYSTRING</code>, <code class="literal">COMPLEMENT</code>,
 <code class="literal">EMPTY</code>, <code class="literal">INTERSECTION</code>, <code class="literal">INTERVAL</code>, or <code class="literal">NONE</code>. Please check the
 <a class="ulink" href="http://lucene.apache.org/core/4_9_0/core/org/apache/lucene/util/automaton/RegExp.html" target="_top">Lucene
 documentation</a> for their meaning</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="regexp-syntax"></a>Regular expression syntax<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/query-dsl/queries/regexp-syntax.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Regular expression queries are supported by the <code class="literal">regexp</code> and the <code class="literal">query_string</code>
@@ -141,9 +141,9 @@ negates the character class. The allowed forms are:</p><pre class="literallayout
 [^abc\-] # any character except '-' or 'a' or 'b' or 'c'</pre><p class="simpara">Note that the dash <code class="literal">"-"</code> indicates a range of characeters, unless it is
 the first character or if it is escaped with a backslash.</p><p class="simpara">For string <code class="literal">"abcd"</code>:</p><pre class="literallayout">ab[cd]+     # match
 [a-d]+      # match
-[^a-d]+     # no match</pre></dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_optional_operators"></a>Optional operators<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/query-dsl/queries/regexp-syntax.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>These operators are only available when they are explicitly enabled, by
-passing <code class="literal">flags</code> to the query.</p><p>Multiple flags can be enabled either using the <code class="literal">ALL</code> flag, or by
-concatenating flags with a pipe <code class="literal">"|"</code>:</p><pre class="literallayout">{
+[^a-d]+     # no match</pre></dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_optional_operators"></a>Optional operators<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/query-dsl/queries/regexp-syntax.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>These operators are available by default as the <code class="literal">flags</code> parameter defaults to <code class="literal">ALL</code>.
+Different flag combinations (concatened with <code class="literal">"\"</code>) can be used to enable/disable
+specific operators:</p><pre class="literallayout">{
     "regexp": {
         "username": {
             "value": "john~athon&lt;1-5&gt;",
