@@ -128,14 +128,19 @@ curl -XGET 'http://localhost:9200/_nodes/stats/os,process'
 curl -XGET 'http://localhost:9200/_nodes/stats/process'
 curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/stats/process'</pre><p>The <code class="literal">all</code> flag can be set to return all the stats.</p><h3><a id="field-data"></a>Field data statistics<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/cluster/nodes-stats.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>You can get information about field data memory usage on node
 level or on index level.</p><pre class="programlisting prettyprint lang-js"># Node Stats
-curl localhost:9200/_nodes/stats/indices/?fields=field1,field2&amp;pretty
+curl -XGET 'http://localhost:9200/_nodes/stats/indices/?fields=field1,field2&amp;pretty'
 
 # Indices Stat
-curl localhost:9200/_stats/fielddata/?fields=field1,field2&amp;pretty
+curl -XGET 'http://localhost:9200/_stats/fielddata/?fields=field1,field2&amp;pretty'
 
 # You can use wildcards for field names
-curl localhost:9200/_stats/fielddata/?fields=field*&amp;pretty
-curl localhost:9200/_nodes/stats/indices/?fields=field*&amp;pretty</pre></div><div class="navfooter"><span class="prev"><a href="cluster-update-settings.html">
+curl -XGET 'http://localhost:9200/_stats/fielddata/?fields=field*&amp;pretty'
+curl -XGET 'http://localhost:9200/_nodes/stats/indices/?fields=field*&amp;pretty'</pre><h3><a id="search-groups"></a>Search groups<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/cluster/nodes-stats.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>You can get statistics about search groups for searches executed
+on this node.</p><pre class="programlisting prettyprint lang-js"># All groups with all stats
+curl -XGET 'http://localhost:9200/_nodes/stats?pretty&amp;groups=_all'
+
+# Some groups from just the indices stats
+curl -XGET 'http://localhost:9200/_nodes/stats/indices?pretty&amp;groups=foo,bar'</pre></div><div class="navfooter"><span class="prev"><a href="cluster-update-settings.html">
               « 
               Cluster Update Settings</a>
            
