@@ -115,7 +115,7 @@ HEAD requests for a single document
 </li><li class="listitem"><p class="simpara">
 <code class="literal">search</code> describes the number of active searches (<code class="literal">open_contexts</code>), number of
 queries total and how much time has been spent on queries since the node was
-started.  The ratio between <code class="literal">query_total / query_time_in_milis</code> can be used as a
+started.  The ratio between <code class="literal">query_time_in_millis / query_total</code> can be used as a
 rough indicator for how efficient your queries are.  The larger the ratio,
 the more time each query is taking and you should consider tuning or optimization.
 </p><p class="simpara">The fetch statistics details the second half of the query process (the "fetch" in
