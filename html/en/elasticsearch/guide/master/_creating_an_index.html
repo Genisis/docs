@@ -38,7 +38,7 @@ type mappings in the request body, as follows:</p><pre class="programlisting pre
 }</pre><p>In fact, if you want to, you <a id="id-1.3.12.3.5.1" class="indexterm"></a>
 <a id="id-1.3.12.3.5.2" class="indexterm"></a>can prevent the automatic creation of indices by
 adding the following setting to the <code class="literal">config/elasticsearch.yml</code> file on each
-node:</p><pre class="programlisting prettyprint lang-js">action.auto_create_index: false</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Later, we discuss how you can use <a class="xref" href="index-templates.html" title="Index templates">Index templates</a> to preconfigure
+node:</p><pre class="programlisting prettyprint lang-js">action.auto_create_index: false</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Later, we discuss how you can use <a class="xref" href="index-templates.html" title="Index Templates">Index Templates</a> to preconfigure
 automatically created indices. This is particularly useful when indexing log
 data: you log into an index whose name includes the date and, as midnight
 rolls over, a new properly configured index automatically springs into

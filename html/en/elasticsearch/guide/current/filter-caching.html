@@ -71,7 +71,7 @@ a second time, the inbox filter is already cached and so both clauses will use
 the cached bitset.</p><p>This ties in nicely with the composability of the query DSL.  It is easy to
 move filters around, or reuse the same filter in multiple places within the
 same query.  This isn’t just convenient to the developer—it has direct
-performance benefits.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_controlling_caching"></a>Controlling Caching<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/40_bitsets.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Most <span class="emphasis"><em>leaf filters</em></span>--those dealing directly with fields like the <code class="literal">term</code>
+performance benefits.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_controlling_caching"></a>Controlling Caching<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/40_bitsets.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Most <span class="emphasis"><em>leaf filters</em></span>—those dealing directly with fields like the <code class="literal">term</code>
 filter—are cached, while<a id="id-1.4.3.11.5.2.3" class="indexterm"></a>
 <a id="id-1.4.3.11.5.2.4" class="indexterm"></a><a id="id-1.4.3.11.5.2.5" class="indexterm"></a>
 <a id="id-1.4.3.11.5.2.6" class="indexterm"></a><a id="id-1.4.3.11.5.2.7" class="indexterm"></a>

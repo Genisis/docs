@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Cluster Health</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="cluster-admin.html" title="Monitoring" /><link rel="prev" href="_marvel_for_monitoring.html" title="Marvel for Monitoring" /><link rel="next" href="_monitoring_individual_nodes.html" title="Monitoring individual nodes" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Cluster Health</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="cluster-admin.html" title="Monitoring" /><link rel="prev" href="_marvel_for_monitoring.html" title="Marvel for Monitoring" /><link rel="next" href="_monitoring_individual_nodes.html" title="Monitoring Individual Nodes" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -17,22 +17,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5FTL28');}
 </script><!--[if lt IE 8]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="administration.html">Administration, Monitoring and Deployment </a></span> » <span class="breadcrumb-link"><a href="cluster-admin.html">Monitoring</a></span> » <span class="breadcrumb-node">Cluster Health</span></div><div class="navheader"><span class="prev"><a href="_marvel_for_monitoring.html">
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch: The Definitive Guide</a></span> » <span class="breadcrumb-link"><a href="administration.html">Administration, Monitoring, and Deployment </a></span> » <span class="breadcrumb-link"><a href="cluster-admin.html">Monitoring</a></span> » <span class="breadcrumb-node">Cluster Health</span></div><div class="navheader"><span class="prev"><a href="_marvel_for_monitoring.html">
               « 
               Marvel for Monitoring</a>
            
         </span><span class="next">
            
-          <a href="_monitoring_individual_nodes.html">Monitoring individual nodes
+          <a href="_monitoring_individual_nodes.html">Monitoring Individual Nodes
                »
-            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_cluster_health"></a>Cluster Health<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/20_health.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_marvel_for_monitoring.html">Marvel for Monitoring</a></span></dt><dt><span class="section"><a href="_cluster_health.html">Cluster Health</a></span></dt><dt><span class="section"><a href="_monitoring_individual_nodes.html">Monitoring individual nodes</a></span></dt><dt><span class="section"><a href="_cluster_stats.html">Cluster Stats</a></span></dt><dt><span class="section"><a href="_index_stats.html">Index Stats</a></span></dt><dt><span class="section"><a href="_pending_tasks.html">Pending Tasks</a></span></dt><dt><span class="section"><a href="_cat_api.html">Cat API</a></span></dt></dl></div><p>An Elasticsearch cluster may consist of a single node with a single index.  Or it<a id="id-1.9.3.6.2.1" class="indexterm"></a><a id="id-1.9.3.6.2.2" class="indexterm"></a>
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_cluster_health"></a>Cluster Health<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/20_health.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_marvel_for_monitoring.html">Marvel for Monitoring</a></span></dt><dt><span class="section"><a href="_cluster_health.html">Cluster Health</a></span></dt><dt><span class="section"><a href="_monitoring_individual_nodes.html">Monitoring Individual Nodes</a></span></dt><dt><span class="section"><a href="_cluster_stats.html">Cluster Stats</a></span></dt><dt><span class="section"><a href="_index_stats.html">Index Stats</a></span></dt><dt><span class="section"><a href="_pending_tasks.html">Pending Tasks</a></span></dt><dt><span class="section"><a href="_cat_api.html">cat API</a></span></dt></dl></div><p>An Elasticsearch cluster may consist of a single node with a single index.  Or it<a id="id-1.9.3.6.2.1" class="indexterm"></a><a id="id-1.9.3.6.2.2" class="indexterm"></a>
 <a id="id-1.9.3.6.2.3" class="indexterm"></a>
 <a id="id-1.9.3.6.2.4" class="indexterm"></a>
-may have a hundred data nodes, three dedicated masters, a few dozen clients nodes
-…all operating on a thousand indices (and tends of thousands of shards).</p><p>No matter the scale of the cluster, you’ll want a quick way to assess the status
-of your cluster.  The <span class="emphasis"><em>Cluster Health</em></span> API fills that role.  You can think of it
-as a ten-thousand foot view of your cluster.  It can reassure you that everything
-is alright, or alert you to a problem somewhere in your cluster.</p><p>Let’s execute a Health API and see what the response looks like:</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health</pre><p>Like other APIs in Elasticsearch, Cluster Health will return a JSON response.
+may have a hundred data nodes, three dedicated masters, a few dozen client nodes—all operating on a thousand indices (and tens of thousands of shards).</p><p>No matter the scale of the cluster, you’ll want a quick way to assess the status
+of your cluster.  The <code class="literal">Cluster Health</code> API fills that role.  You can think of it
+as a 10,000-foot view of your cluster.  It can reassure you that everything
+is all right, or alert you to a problem somewhere in your cluster.</p><p>Let’s execute a <code class="literal">cluster-health</code> API and see what the response looks like:</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health</pre><p>Like other APIs in Elasticsearch, <code class="literal">cluster-health</code> will return a JSON response.
 This makes it convenient to parse for automation and alerting.  The response
 contains some critical information about your cluster:</p><pre class="programlisting prettyprint lang-js">{
    "cluster_name": "elasticsearch_zach",
@@ -45,46 +44,52 @@ contains some critical information about your cluster:</p><pre class="programlis
    "relocating_shards": 0,
    "initializing_shards": 0,
    "unassigned_shards": 0
-}</pre><p>The most important piece of information in the response is the <code class="literal">"status"</code> field.
-The status may be one of three values:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<span class="strong"><strong>Green:</strong></span> all primary and replica shards are allocated. Your cluster is 100%
-operational
-</li><li class="listitem">
-<span class="strong"><strong>Yellow:</strong></span> all primary shards are allocated, but at least one replica is missing.
-No data is missing so search results will still be complete. However,  your
-high-availability is compromised to some degree.  If <span class="emphasis"><em>more</em></span> shards disappear, you
-might lose data.  Think of Yellow as a warning which should prompt investigation.
-</li><li class="listitem">
-<span class="strong"><strong>Red:</strong></span> at least one primary shard (and all of it’s replicas) are missing. This means
-that you are missing data: searches will return partial results and indexing
+}</pre><p>The most important piece of information in the response is the <code class="literal">status</code> field.
+The status may be one of three values:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">green</code>
+</span></dt><dd>
+    All primary and replica shards are allocated. Your cluster is 100%
+operational.
+</dd><dt><span class="term">
+<code class="literal">yellow</code>
+</span></dt><dd>
+    All primary shards are allocated, but at least one replica is missing.
+No data is missing, so search results will still be complete. However,  your
+high availability is compromised to some degree.  If <span class="emphasis"><em>more</em></span> shards disappear, you
+might lose data.  Think of <code class="literal">yellow</code> as a warning that should prompt investigation.
+</dd><dt><span class="term">
+<code class="literal">red</code>
+</span></dt><dd>
+    At least one primary shard (and all of its replicas) are missing. This means
+that you are missing data: searches will return partial results, and indexing
 into that shard will return an exception.
-</li></ul></div><p>The Green/Yellow/Red status is a great way to glance at your cluster and understand
+</dd></dl></div><p>The <code class="literal">green</code>/<code class="literal">yellow</code>/<code class="literal">red</code> status is a great way to glance at your cluster and understand
 what’s going on.  The rest of the metrics give you a general summary of your cluster:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">number_of_nodes</code> and <code class="literal">number_of_data_nodes</code> are fairly self-descriptive.
 </li><li class="listitem">
-<code class="literal">active_primary_shards</code> are the number of primary shards in your cluster. This
+<code class="literal">active_primary_shards</code> indicates the number of primary shards in your cluster. This
 is an aggregate total across all indices.
 </li><li class="listitem">
 <code class="literal">active_shards</code> is an aggregate total of <span class="emphasis"><em>all</em></span> shards across all indices, which
-includes replica shards
+includes replica shards.
 </li><li class="listitem">
 <code class="literal">relocating_shards</code> shows the number of shards that are currently moving from
 one node to another node.  This number is often zero, but can increase when
 Elasticsearch decides a cluster is not properly balanced, a new node is added,
-a node is taken down, etc.
+or a node is taken down, for example.
 </li><li class="listitem">
 <code class="literal">initializing_shards</code> is a count of shards that are being freshly created. For
 example, when you first create an index, the shards will all briefly reside in
-"initializing" state.  This is typically a transient event and shards shouldn’t
-linger in "initializing" too long.  You may also see initializing shards when a
-node is first restarted…as shards are loaded from disk they start as "initializing"
+<code class="literal">initializing</code> state.  This is typically a transient event, and shards shouldn’t
+linger in <code class="literal">initializing</code> too long.  You may also see initializing shards when a
+node is first restarted: as shards are loaded from disk, they start as <code class="literal">initializing</code>.
 </li><li class="listitem">
 <code class="literal">unassigned_shards</code> are shards that exist in the cluster state, but cannot be
 found in the cluster itself.  A common source of unassigned shards are unassigned
-replicas.  For example, an index with 5 shards and 1 replica will have 5 unassigned
+replicas.  For example, an index with five shards and one replica will have five unassigned
 replicas in a single-node cluster.  Unassigned shards will also be present if your
-cluster is red (since primaries are missing)
-</li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_drilling_deeper_finding_problematic_indices"></a>Drilling deeper: finding problematic indices<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/20_health.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Imagine something goes wrong one day, and you notice that your cluster health
+cluster is <code class="literal">red</code> (since primaries are missing).
+</li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_drilling_deeper_finding_problematic_indices"></a>Drilling Deeper: Finding Problematic Indices<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/20_health.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Imagine something goes wrong one day, and you notice that your cluster health
 looks like this:</p><pre class="programlisting prettyprint lang-js">{
    "cluster_name": "elasticsearch_zach",
    "status": "red",
@@ -96,16 +101,16 @@ looks like this:</p><pre class="programlisting prettyprint lang-js">{
    "relocating_shards": 0,
    "initializing_shards": 0,
    "unassigned_shards": 20
-}</pre><p>Ok, so what can we deduce from this health status?  Well, our cluster is Red,
+}</pre><p>OK, so what can we deduce from this health status?  Well, our cluster is <code class="literal">red</code>,
 which means we are missing data (primary + replicas).  We know our cluster has
-ten nodes, but only see 8 data nodes listed in the health.  Two of our nodes
+10 nodes, but see only 8 data nodes listed in the health.  Two of our nodes
 have gone missing.  We see that there are 20 unassigned shards.</p><p>That’s about all the information we can glean.  The nature of those missing
-shards are still a mystery.  Are we missing 20 indices with one primary shard each?
-One index with 20 primary shards? Ten indices with one primary + one replica?
-Which index?</p><p>To answer these questions, we need to ask the Cluster Health for a little more
-information by using the <code class="literal">level</code> parameter.</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health?level=indices</pre><p>This parameter will make the Cluster Health API to add a list of indices in our
+shards are still a mystery.  Are we missing 20 indices with 1 primary shard each?
+Or 1 index with 20 primary shards? Or 10 indices with 1 primary + 1 replica?
+Which index?</p><p>To answer these questions, we need to ask <code class="literal">cluster-health</code> for a little more
+information by using the <code class="literal">level</code> parameter:</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health?level=indices</pre><p>This parameter will make the <code class="literal">cluster-health</code> API add a list of indices in our
 cluster and details about each of those indices (status, number of shards,
-unassigned shards, etc):</p><pre class="programlisting prettyprint lang-js">{
+unassigned shards, and so forth):</p><pre class="programlisting prettyprint lang-js">{
    "cluster_name": "elasticsearch_zach",
    "status": "red",
    "timed_out": false,
@@ -128,14 +133,14 @@ unassigned shards, etc):</p><pre class="programlisting prettyprint lang-js">{
          "unassigned_shards": 0
       },
       "v2": {
-         "status": "red", <a id="CO306-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+         "status": "red", <a id="CO307-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
          "number_of_shards": 10,
          "number_of_replicas": 1,
          "active_primary_shards": 0,
          "active_shards": 0,
          "relocating_shards": 0,
          "initializing_shards": 0,
-         "unassigned_shards": 20 <a id="CO306-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+         "unassigned_shards": 20 <a id="CO307-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
       },
       "v3": {
          "status": "green",
@@ -149,40 +154,36 @@ unassigned shards, etc):</p><pre class="programlisting prettyprint lang-js">{
       },
       ....
    }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO306-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-We can now see that the <code class="literal">v2</code> index is the index which has made the cluster Red
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO306-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-And it becomes clear that all 20 missing shards are from this index
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO307-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+We can now see that the <code class="literal">v2</code> index is the index that has made the cluster <code class="literal">red</code>.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO307-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+And it becomes clear that all 20 missing shards are from this index.
 </p></td></tr></table></div><p>Once we ask for the indices output, it becomes immediately clear which index is
 having problems: the <code class="literal">v2</code> index.  We also see that the index has 10 primary shards
 and one replica, and that all 20 shards are missing.  Presumably these 20 shards
 were on the two nodes that are missing from our cluster.</p><p>The <code class="literal">level</code> parameter accepts one more option:</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health?level=shards</pre><p>The <code class="literal">shards</code> option will provide a very verbose output, which lists the status
 and location of every shard inside every index.  This output is sometimes useful,
-but due to the verbosity can difficult to work with.  Once you know the index
+but because of the verbosity can be difficult to work with.  Once you know the index
 that is having problems, other APIs that we discuss in this chapter will tend
-to be more helpful.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_blocking_for_status_changes"></a>Blocking for status changes<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/20_health.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The Cluster Health API has another neat trick which is very useful when building
+to be more helpful.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_blocking_for_status_changes"></a>Blocking for Status Changes<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/500_Cluster_Admin/20_health.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">cluster-health</code> API has another neat trick that is useful when building
 unit and integration tests, or automated scripts that work with Elasticsearch.
-You can specify a <code class="literal">wait_for_status</code> parameter, which will make the call block
-until the status is satisfied.  For example:</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health?wait_for_status=green</pre><p>This call will block (e.g. not return control to your program) until the cluster
-health has turned green, meaning all primary + replica shards have been allocated.
-This is very important for automated scripts and tests.</p><p>If you create an index, Elasticsearch must broadcast the change in cluster state
-to all nodes.  Those nodes must initialize those new shards, then respond to the
-master that the shards are Started.  This process is very fast, but due to network
-latency may take 10-20ms.</p><p>If you have an automated script that A) creates an index and then B) immediately
-attempts to index a document, this operation may fail since the index has not
-been fully initialized yet.  The time between A) and B) will likely be &lt;1ms…
-not nearly enough time to account for network latency.</p><p>Rather than sleeping, just have your script/test call the cluster health with
-a <code class="literal">wait_for_status</code> parameter.  As soon as the index is fully created, the cluster
-health will change to Green, the call returns control to your script, and you may
-begin indexing.</p><p>Valid options are <code class="literal">green</code>, <code class="literal">yellow</code> and <code class="literal">red</code>.  The call will return when the
-requested status (or one "higher") is reached.  E.g. if you request <code class="literal">yellow</code>,
+You can specify a <code class="literal">wait_for_status</code> parameter, which will only return after the status is satisfied.  For example:</p><pre class="programlisting prettyprint lang-bash">GET _cluster/health?wait_for_status=green</pre><p>This call will <span class="emphasis"><em>block</em></span> (not return control to your program) until the <code class="literal">cluster-health</code> has turned <code class="literal">green</code>, meaning all primary and replica shards have been allocated.
+This is important for automated scripts and tests.</p><p>If you create an index, Elasticsearch must broadcast the change in cluster state
+to all nodes.  Those nodes must initialize those new shards, and then respond to the
+master that the shards are <code class="literal">Started</code>.  This process is fast, but because network
+latency may take 10–20ms.</p><p>If you have an automated script that (a) creates an index and then (b) immediately
+attempts to index a document, this operation may fail, because the index has not
+been fully initialized yet.  The time between (a) and (b) will likely be less than 1ms—not nearly enough time to account for network latency.</p><p>Rather than sleeping, just have your script/test call <code class="literal">cluster-health</code> with
+a <code class="literal">wait_for_status</code> parameter.  As soon as the index is fully created, the <code class="literal">cluster-health</code> will change to <code class="literal">green</code>, the call will return control to your script, and you may
+begin indexing.</p><p>Valid options are <code class="literal">green</code>, <code class="literal">yellow</code>, and <code class="literal">red</code>.  The call will return when the
+requested status (or one "higher") is reached. For example, if you request <code class="literal">yellow</code>,
 a status change to <code class="literal">yellow</code> or <code class="literal">green</code> will unblock the call.</p></div></div><div class="navfooter"><span class="prev"><a href="_marvel_for_monitoring.html">
               « 
               Marvel for Monitoring</a>
            
         </span><span class="next">
            
-          <a href="_monitoring_individual_nodes.html">Monitoring individual nodes
+          <a href="_monitoring_individual_nodes.html">Monitoring Individual Nodes
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

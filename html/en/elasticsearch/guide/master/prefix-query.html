@@ -42,7 +42,7 @@ like a filter than a query.  The only practical difference between the
 <code class="literal">prefix</code> query and the <code class="literal">prefix</code> filter is that the filter can be cached.</p></div></div><p>Previously, we said that “you can find only terms that exist in the inverted
 index,” but we haven’t done anything special to index these postcodes; each
 postcode is simply indexed as the exact value specified in each document.  So
-how does the <code class="literal">prefix</code> query work?</p><p>Remember that the inverted index consists<a id="id-1.4.7.12.8.1" class="indexterm"></a>
+how does the <code class="literal">prefix</code> query work?</p><p class="pagebreak-after">Remember that the inverted index consists<a id="id-1.4.7.12.8.1" class="indexterm"></a>
 <a id="id-1.4.7.12.8.2" class="indexterm"></a> of a sorted list of unique terms (in
 this case, postcodes).  For each term, it lists the IDs of the documents
 containing that term in the <span class="emphasis"><em>postings list</em></span>.  The inverted index for our

@@ -110,7 +110,7 @@ string ranges use this order.</p></div></div><p>If we want a range from <code cl
 to calculate.<a id="id-1.4.3.9.15.7.2.1" class="indexterm"></a>  This is not the case for string fields, however.  To perform
 a range on a string field, Elasticsearch is effectively performing a <code class="literal">term</code>
 filter for every term that falls in the range.  This is much slower than
-a date or numeric range.</p><p>String ranges are fine on a field with <span class="emphasis"><em>low cardinality</em></span>--a small number of
+a date or numeric range.</p><p>String ranges are fine on a field with <span class="emphasis"><em>low cardinality</em></span>—a small number of
 unique terms.  But the more unique terms you have, the slower the string range
 will be.</p></div></div></div><div class="navfooter"><span class="prev"><a href="_finding_multiple_exact_values.html">
               « 

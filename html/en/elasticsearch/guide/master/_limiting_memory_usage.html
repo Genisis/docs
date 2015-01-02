@@ -45,10 +45,10 @@ No more than 50% of available RAM
 </span></dt><dd>
 Lucene makes good use of the filesystem caches, which are managed by the
 kernel.  Without enough filesystem cache space, performance will suffer.
-</dd></dl></div><p>No more than 32GB:
-If the heap is less than 32GB, the JVM can use compressed pointers, which
+</dd></dl></div><p>No more than 32 GB:
+If the heap is less than 32 GB, the JVM can use compressed pointers, which
 saves a lot of memory: 4 bytes per pointer instead of 8 bytes.</p><p>+
-Increasing the heap from 32GB to 34GB would mean that you have much <span class="emphasis"><em>less</em></span>
+Increasing the heap from 32 GB to 34 GB would mean that you have much <span class="emphasis"><em>less</em></span>
 memory available, because all pointers are taking double the space.  Also,
 with bigger heaps, garbage collection becomes more costly and can result in
 node instability.</p><p>This limit has a direct impact on the amount of memory that can be devoted to fielddata.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="fielddata-size"></a>Fielddata Size<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/100_circuit_breaker_fd_settings.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">indices.fielddata.cache.size</code> controls how much heap space is allocated

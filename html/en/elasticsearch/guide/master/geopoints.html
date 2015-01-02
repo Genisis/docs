@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Geo-Points</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="geoloc.html" title="Geolocation" /><link rel="prev" href="geoloc.html" title="Geolocation" /><link rel="next" href="filter-by-geopoint.html" title="Filtering by Geo-Point" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Geo-Points</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="geoloc.html" title="Geolocation" /><link rel="prev" href="geoloc.html" title="Geolocation" /><link rel="next" href="lat-lon-formats.html" title="Lat/Lon Formats" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -23,9 +23,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
            
         </span><span class="next">
            
-          <a href="filter-by-geopoint.html">Filtering by Geo-Point
+          <a href="lat-lon-formats.html">Lat/Lon Formats
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="geopoints"></a>Geo-Points<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/310_Geopoints/20_Geopoints.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="filter-by-geopoint.html">Filtering by Geo-Point</a></span></dt><dt><span class="section"><a href="geo-bounding-box.html">geo_bounding_box Filter</a></span></dt><dt><span class="section"><a href="geo-distance.html">geo_distance Filter</a></span></dt><dt><span class="section"><a href="geo-caching.html">Caching geo-filters</a></span></dt><dt><span class="section"><a href="geo-memory.html">Reducing Memory Usage</a></span></dt><dt><span class="section"><a href="sorting-by-distance.html">Sorting by Distance</a></span></dt></dl></div><p>A <span class="emphasis"><em>geo-point</em></span> is a single latitude/longitude point on the Earth’s surface.<a id="id-1.7.3.2.2" class="indexterm"></a> Geo-points
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="geopoints"></a>Geo-Points<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/310_Geopoints/20_Geopoints.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="lat-lon-formats.html">Lat/Lon Formats</a></span></dt><dt><span class="section"><a href="filter-by-geopoint.html">Filtering by Geo-Point</a></span></dt><dt><span class="section"><a href="geo-bounding-box.html">geo_bounding_box Filter</a></span></dt><dt><span class="section"><a href="geo-distance.html">geo_distance Filter</a></span></dt><dt><span class="section"><a href="geo-caching.html">Caching geo-filters</a></span></dt><dt><span class="section"><a href="geo-memory.html">Reducing Memory Usage</a></span></dt><dt><span class="section"><a href="sorting-by-distance.html">Sorting by Distance</a></span></dt></dl></div><p>A <span class="emphasis"><em>geo-point</em></span> is a single latitude/longitude point on the Earth’s surface.<a id="id-1.7.3.2.2" class="indexterm"></a> Geo-points
 can be used to calculate distance from a point, to determine whether a point
 falls within a bounding box, or in aggregations.</p><p>Geo-points cannot be automatically detected<a id="id-1.7.3.3.1" class="indexterm"></a>
 <a id="id-1.7.3.3.2" class="indexterm"></a> with
@@ -45,50 +45,13 @@ mapped <a id="id-1.7.3.3.5" class="indexterm"></a>
       }
     }
   }
-}</pre><h3><a id="lat-lon-formats"></a>Lat/Lon Formats<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/310_Geopoints/20_Geopoints.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>With the <code class="literal">location</code> field defined as a <code class="literal">geo_point</code>, we can proceed to index
-documents containing latitude/longitude pairs,<a id="id-1.7.3.6.3" class="indexterm"></a>
-<a id="id-1.7.3.6.4" class="indexterm"></a><a id="id-1.7.3.6.5" class="indexterm"></a>
-<a id="id-1.7.3.6.6" class="indexterm"></a><a id="id-1.7.3.6.7" class="indexterm"></a>
-<a id="id-1.7.3.6.8" class="indexterm"></a><a id="id-1.7.3.6.9" class="indexterm"></a>
-<a id="id-1.7.3.6.10" class="indexterm"></a><a id="id-1.7.3.6.11" class="indexterm"></a>
-<a id="id-1.7.3.6.12" class="indexterm"></a><a id="id-1.7.3.6.13" class="indexterm"></a>
-<a id="id-1.7.3.6.14" class="indexterm"></a> which can be formatted as
-strings, arrays, or objects:</p><pre class="programlisting prettyprint lang-json">PUT /attractions/restaurant/1
-{
-  "name":     "Chipotle Mexican Grill",
-  "location": "40.715, -74.011" <a id="CO228-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
-}
-
-PUT /attractions/restaurant/2
-{
-  "name":     "Pala Pizza",
-  "location": { <a id="CO228-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
-    "lat":     40.722,
-    "lon":    -73.989
-  }
-}
-
-PUT /attractions/restaurant/3
-{
-  "name":     "Mini Munchies Pizza",
-  "location": [ -73.983, 40.719 ] <a id="CO228-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO228-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-A string representation, with <code class="literal">"lat,lon"</code>.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO228-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-An object representation with <code class="literal">lat</code> and <code class="literal">lon</code> explicitly named.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO228-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-An array representation with <code class="literal">[lon,lat]</code>.
-</p></td></tr></table></div><div class="caution admon"><div class="icon"><img alt="Caution" src="images/icons/caution.png" /></div><div class="admon_content"><p>Everybody gets caught at least once: string geo-points are
-<code class="literal">"latitude,longitude"</code>, while array geo-points are <code class="literal">[longitude,latitude]</code>—the opposite order!</p><p>Originally, both strings and arrays in Elasticsearch used latitude followed by
-longitude. However, it was decided early on to switch the order for arrays in
-order to conform with GeoJSON.</p><p>The result is a bear trap that captures all unsuspecting users on their
-journey to full geolocation nirvana.</p></div></div></div><div class="navfooter"><span class="prev"><a href="geoloc.html">
+}</pre></div><div class="navfooter"><span class="prev"><a href="geoloc.html">
               « 
               Geolocation </a>
            
         </span><span class="next">
            
-          <a href="filter-by-geopoint.html">Filtering by Geo-Point
+          <a href="lat-lon-formats.html">Lat/Lon Formats
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){

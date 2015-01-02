@@ -75,7 +75,7 @@ Documents 2 and 3 both contain <code class="literal">brown</code> and <code clas
     field is the same length in both docs, so they have the same score.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO60-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Document 1 matches even though it contains only <code class="literal">brown</code>, not <code class="literal">dog</code>.
-</p></td></tr></table></div><p>Because the <code class="literal">match</code> query has to look for two terms--<code class="literal">["brown","dog"]</code>--internally it has to execute two <code class="literal">term</code> queries and combine their individual
+</p></td></tr></table></div><p>Because the <code class="literal">match</code> query has to look for two terms—<code class="literal">["brown","dog"]</code>—internally it has to execute two <code class="literal">term</code> queries and combine their individual
 results into the overall result. To do this, it wraps the two <code class="literal">term</code> queries
 in a <code class="literal">bool</code> query, which we examine in detail in <a class="xref" href="bool-query.html" title="Combining Queries">Combining Queries</a>.</p><p>The important thing to take away from this is that any document whose
 <code class="literal">title</code> field contains <span class="emphasis"><em>at least one of the specified terms</em></span> will match the

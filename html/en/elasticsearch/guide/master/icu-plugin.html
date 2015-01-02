@@ -42,7 +42,7 @@ versions of the ICU plug-in may not be compatible with previous versions.  When
 upgrading, you may need to reindex your data.</p></div></div><p>To install the plug-in, first shut down your Elasticsearch node  and then run the
 following command from the Elasticsearch home directory:</p><pre class="programlisting prettyprint lang-sh">./bin/plugin -install elasticsearch/elasticsearch-analysis-icu/$VERSION <a id="CO137-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span></pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO137-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The current <code class="literal">$VERSION</code> can be found at
-    <a class="ulink" href="https://github.com/elasticsearch/elasticsearch-analysis-icu" target="_top"><span class="emphasis"><em>github.com/elasticsearch/elasticsearch-analysis-icu</em></span></a>.
+    <span class="emphasis"><em>https://github.com/elasticsearch/elasticsearch-analysis-icu</em></span>.
 </p></td></tr></table></div><p>Once installed, restart Elasticsearch, and you should see a line similar to the
 following in the startup logs:</p><pre class="literallayout">[INFO][plugins] [Mysterio] loaded [marvel, analysis-icu], sites [marvel]</pre><p>If you are running a cluster with multiple nodes, you will need to install the
 plug-in on every node in the cluster.</p></div><div class="navfooter"><span class="prev"><a href="standard-tokenizer.html">

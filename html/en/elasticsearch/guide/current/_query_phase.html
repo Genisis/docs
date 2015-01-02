@@ -58,7 +58,7 @@ can be handled by a primary shard or by any of its replicas.<a id="id-1.3.11.7.9
 replicas (when combined with more hardware) can increase search throughput.
 A coordinating node will round-robin through all shard copies on subsequent
 requests in order to spread the load.</p><p>Each shard executes the query locally and builds a sorted priority queue of
-length <code class="literal">from + size</code>--in other words, enough results to satisfy the global
+length <code class="literal">from + size</code>—in other words, enough results to satisfy the global
 search request all by itself. It returns a lightweight list of results to the
 coordinating node, which contains just the doc IDs and any values required for
 sorting, such as the <code class="literal">_score</code>.</p><p>The coordinating node merges these shard-level results into its own sorted

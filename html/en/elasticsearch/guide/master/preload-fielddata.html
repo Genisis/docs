@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 The first time Elasticsearch encounters a query that needs fielddata for a
 particular field, it will load that entire field into memory for each segment
 in the index.</p><p>For small segments, this requires a negligible amount of time.  But if you
-have a few 5GB segments and need to load 10GB of fielddata into memory, this
+have a few 5 GB segments and need to load 10 GB of fielddata into memory, this
 process could take tens of seconds.  Users accustomed to subsecond response
 times would all of a sudden be hit by an apparently unresponsive website.</p><p>There are three methods to combat this latency spike:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Eagerly load fielddata
@@ -65,7 +65,7 @@ visible to search, so the slower refresh time is not important.</p></div></div><
 fielddata is <a id="id-1.6.13.7.8.2.1" class="indexterm"></a>called <span class="emphasis"><em>ordinals</em></span>.</p><p>Imagine that we have a billion documents, each of which has a <code class="literal">status</code> field.
 There are only three statuses: <code class="literal">status_pending</code>, <code class="literal">status_published</code>,
 <code class="literal">status_deleted</code>. If we were to hold the full string status in memory for
-every document, we would use 14 to 16 bytes per document, or about 15GB.</p><p>Instead, we can identify the three unique strings, sort them, and number them: 0, 1, 2.</p><pre class="literallayout">Ordinal | Term
+every document, we would use 14 to 16 bytes per document, or about 15 GB.</p><p>Instead, we can identify the three unique strings, sort them, and number them: 0, 1, 2.</p><pre class="literallayout">Ordinal | Term
 -------------------
 0       | status_deleted
 1       | status_pending
@@ -76,7 +76,7 @@ contains.</p><pre class="literallayout">Doc     | Ordinal
 0       | 1  # pending
 1       | 1  # pending
 2       | 2  # published
-3       | 0  # deleted</pre><p>This reduces memory usage from 15GB to less than 1GB!</p><p>But there is a problem. Remember that fielddata caches are <span class="emphasis"><em>per segment</em></span>.  If
+3       | 0  # deleted</pre><p>This reduces memory usage from 15 GB to less than 1 GB!</p><p>But there is a problem. Remember that fielddata caches are <span class="emphasis"><em>per segment</em></span>.  If
 one segment contains only two statuses—<code class="literal">status_deleted</code> and
 <code class="literal">status_published</code>—then the resulting ordinals (0 and 1) will not be the
 same as the ordinals for a segment that contains all three statuses.</p><p>If we try to run a <code class="literal">terms</code> aggregation on the <code class="literal">status</code> field, we need to
