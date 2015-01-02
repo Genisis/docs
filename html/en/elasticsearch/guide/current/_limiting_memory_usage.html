@@ -131,7 +131,7 @@ that memory limits are not exceeded:</p><div class="variablelist"><dl class="var
 file, or can be updated dynamically on a live cluster:</p><pre class="programlisting prettyprint lang-js">PUT /_cluster/settings
 {
   "persistent" : {
-    "indices.breaker.fielddata.limit" : 40% <a id="CO220-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+    "indices.breaker.fielddata.limit" : "40%" <a id="CO220-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
   }
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO220-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The limit is a percentage of the heap.
