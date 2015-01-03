@@ -45,24 +45,24 @@ using a <code class="literal">terms</code> bucket <a id="id-1.6.6.6.2" class="in
    "aggs":{
       "price":{
          "histogram":{
-            "field":"price",    <a id="CO194-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
-            "interval":20000    <a id="CO194-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+            "field":"price",    <a id="CO193-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "interval":20000    <a id="CO193-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
          },
          "aggs":{
             "make":{
                "terms":{
-                  "field":"make",   <a id="CO194-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+                  "field":"make",   <a id="CO193-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
                   "size":1
                }
             }
          }
       }
    }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/30_histogram.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO194-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO194-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/30_histogram.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO193-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO193-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">histogram</code> bucket requires two parameters: a numeric field, and an
 interval that defines the bucket size.
 
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO194-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO193-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 A <code class="literal">terms</code> bucket is nested inside each price range, which will show us the
 top make per price range.
 </p></td></tr></table></div><p>As you can see, our query is built around the <code class="literal">price</code> aggregation, which contains

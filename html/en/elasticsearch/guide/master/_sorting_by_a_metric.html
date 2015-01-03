@@ -40,19 +40,19 @@ metric from the <code class="literal">order</code> parameter:</p><pre class="pro
             "terms" : {
               "field" : "color",
               "order": {
-                "avg_price" : "asc" <a id="CO203-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                "avg_price" : "asc" <a id="CO202-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
               }
             },
             "aggs": {
                 "avg_price": {
-                    "avg": {"field": "price"} <a id="CO203-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+                    "avg": {"field": "price"} <a id="CO202-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
                 }
             }
         }
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/50_sorting_ordering.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO203-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/50_sorting_ordering.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO202-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The average price is calculated for each bucket.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO203-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO202-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Then the buckets are ordered by the calculated average in ascending order.
 </p></td></tr></table></div><p>This lets you override the sort order with any metric, simply by referencing
 the name of the metric.  Some metrics, however, emit multiple values.  The
@@ -67,7 +67,7 @@ dot-path to the metric of interest:</p><pre class="programlisting prettyprint la
             "terms" : {
               "field" : "color",
               "order": {
-                "stats.variance" : "asc" <a id="CO204-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+                "stats.variance" : "asc" <a id="CO203-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
               }
             },
             "aggs": {
@@ -77,7 +77,7 @@ dot-path to the metric of interest:</p><pre class="programlisting prettyprint la
             }
         }
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/50_sorting_ordering.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO204-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/300_Aggregations/50_sorting_ordering.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO203-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Using dot notation, we can sort on the metric we are interested in.
 </p></td></tr></table></div><p>In this example we are sorting on the variance of each bucket, so that colors
 with the least variance in price will appear before those that have more variance.</p></div><div class="navfooter"><span class="prev"><a href="_intrinsic_sorts.html">

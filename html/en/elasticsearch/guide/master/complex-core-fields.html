@@ -74,16 +74,16 @@ and <code class="literal">user_id</code> inside our <code class="literal">tweet<
 <a id="id-1.3.8.18.6.2.4" class="indexterm"></a> dynamically and map them as
 type <code class="literal">object</code>, with each inner field listed under <code class="literal">properties</code>:</p><pre class="programlisting prettyprint lang-js">{
   "gb": {
-    "tweet": { <a id="CO20-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+    "tweet": { <a id="CO19-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
       "properties": {
         "tweet":            { "type": "string" },
-        "user": { <a id="CO20-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+        "user": { <a id="CO19-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
           "type":             "object",
           "properties": {
             "id":           { "type": "string" },
             "gender":       { "type": "string" },
             "age":          { "type": "long"   },
-            "name":   { <a id="CO20-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+            "name":   { <a id="CO19-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
               "type":         "object",
               "properties": {
                 "full":     { "type": "string" },
@@ -96,9 +96,9 @@ type <code class="literal">object</code>, with each inner field listed under <co
       }
     }
   }
-}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO20-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO19-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Root object
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO20-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO20-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO19-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> <a href="#CO19-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Inner objects
 </p></td></tr></table></div><p>The mapping for the <code class="literal">user</code> and <code class="literal">name</code> fields has a similar structure
 to the mapping for the <code class="literal">tweet</code> type itself.  In fact, the <code class="literal">type</code> mapping

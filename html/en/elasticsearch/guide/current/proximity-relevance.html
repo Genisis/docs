@@ -44,7 +44,7 @@ increase the relevance of the matching docs.</p><pre class="programlisting prett
   "query": {
     "bool": {
       "must": {
-        "match": { <a id="CO87-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        "match": { <a id="CO86-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
           "title": {
             "query":                "quick brown fox",
             "minimum_should_match": "30%"
@@ -52,7 +52,7 @@ increase the relevance of the matching docs.</p><pre class="programlisting prett
         }
       },
       "should": {
-        "match_phrase": { <a id="CO87-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+        "match_phrase": { <a id="CO86-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
           "title": {
             "query": "quick brown fox",
             "slop":  50
@@ -61,9 +61,9 @@ increase the relevance of the matching docs.</p><pre class="programlisting prett
       }
     }
   }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/120_Proximity_Matching/25_Relevance.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO87-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/120_Proximity_Matching/25_Relevance.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO86-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">must</code> clause includes or excludes documents from the result set.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO87-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO86-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">should</code> clause increases the relevance score of those documents that
     match.
 </p></td></tr></table></div><p>We could, of course, include other queries in the <code class="literal">should</code> clause, where each

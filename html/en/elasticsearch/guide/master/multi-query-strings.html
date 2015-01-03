@@ -88,17 +88,17 @@ value higher than <code class="literal">1</code>:</p><pre class="programlisting 
   "query": {
     "bool": {
       "should": [
-        { "match": { <a id="CO68-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        { "match": { <a id="CO67-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             "title":  {
               "query": "War and Peace",
               "boost": 2
         }}},
-        { "match": { <a id="CO68-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+        { "match": { <a id="CO67-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
             "author":  {
               "query": "Leo Tolstoy",
               "boost": 2
         }}},
-        { "bool":  { <a id="CO68-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
+        { "bool":  { <a id="CO67-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
             "should": [
               { "match": { "translator": "Constance Garnett" }},
               { "match": { "translator": "Louise Maude"      }}
@@ -107,9 +107,9 @@ value higher than <code class="literal">1</code>:</p><pre class="programlisting 
       ]
     }
   }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/110_Multi_Field_Search/05_Multiple_query_strings.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO68-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO68-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/110_Multi_Field_Search/05_Multiple_query_strings.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO67-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">title</code> and <code class="literal">author</code> clauses have a <code class="literal">boost</code> value of <code class="literal">2</code>.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO68-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO67-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The nested <code class="literal">bool</code> clause has the default <code class="literal">boost</code> of <code class="literal">1</code>.
 </p></td></tr></table></div><p>The “best” value for the <code class="literal">boost</code> parameter is most easily determined by
 trial and error: set a <code class="literal">boost</code> value, run test queries, repeat. A reasonable

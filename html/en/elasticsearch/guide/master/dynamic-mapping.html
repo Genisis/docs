@@ -52,20 +52,20 @@ but enable it just for a specific inner object:</p><pre class="programlisting pr
 {
     "mappings": {
         "my_type": {
-            "dynamic":      "strict", <a id="CO34-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+            "dynamic":      "strict", <a id="CO33-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
             "properties": {
                 "title":  { "type": "string"},
                 "stash":  {
                     "type":     "object",
-                    "dynamic":  true <a id="CO34-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
+                    "dynamic":  true <a id="CO33-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
                 }
             }
         }
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/070_Index_Mgmt/35_Dynamic_mapping.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO34-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/070_Index_Mgmt/35_Dynamic_mapping.json" target="sense">View in Sense</a><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO33-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">my_type</code> object will throw an exception if an unknown field
     is encountered.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO34-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO33-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">stash</code> object will create new fields dynamically.
 </p></td></tr></table></div><p>With this mapping, you can add new searchable fields into the <code class="literal">stash</code> object:</p><pre class="programlisting prettyprint lang-js">PUT /my_index/my_type/1
 {

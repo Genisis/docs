@@ -75,11 +75,11 @@ the document, in real-time.</p><div class="section"><div class="titlepage"><div>
 Elasticsearch as a <span class="emphasis"><em>flush</em></span>.  Shards are flushed automatically every 30
 minutes, or when the translog becomes too big. See the
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/index-modules-translog.html" target="_top"><code class="literal">translog</code> documentation</a> for settings
-that can be used to control these thresholds:</p><p>The <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-flush.html" target="_top"><code class="literal">flush</code> API</a> can be used to perform a manual flush:</p><pre class="programlisting prettyprint lang-json">POST /blogs/_flush <a id="CO40-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+that can be used to control these thresholds:</p><p>The <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-flush.html" target="_top"><code class="literal">flush</code> API</a> can be used to perform a manual flush:</p><pre class="programlisting prettyprint lang-json">POST /blogs/_flush <a id="CO39-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 
-POST /_flush?wait_for_ongoing <a id="CO40-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span></pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO40-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+POST /_flush?wait_for_ongoing <a id="CO39-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span></pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO39-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Flush the <code class="literal">blogs</code> index.
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO40-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO39-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Flush all indices and wait until all flushes have completed before
     returning.
 </p></td></tr></table></div><p>You seldom need to issue a manual <code class="literal">flush</code> yourself; usually, automatic
