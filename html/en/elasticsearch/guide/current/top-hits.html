@@ -54,17 +54,39 @@ The <code class="literal">user.name</code> field will be used for full-text sear
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO256-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The <code class="literal">user.name.raw</code> field will be used for grouping with the <code class="literal">terms</code>
     aggregation.
-</p></td></tr></table></div><p>Then add some data:</p><pre class="programlisting prettyprint lang-json">PUT /my_index/user/_bulk
-{"index":{"_id":1}}
-{"name":"John Smith","email":"john@smith.com","dob":"1970/10/24"}
-{"index":{"_id":3}}
-{"name":"Alice John","email":"alice@john.com","dob":"1979/01/04"}
+</p></td></tr></table></div><p>Then add some data:</p><pre class="programlisting prettyprint lang-json">PUT /my_index/user/1
+{
+  "name": "John Smith",
+  "email": "john@smith.com",
+  "dob": "1970/10/24"
+}
 
-PUT /my_index/blogpost/_bulk
-{"index":{"_id":2}}
-{"title":"Relationships","body":"It's complicated...","user":{"id":1,"name":"John Smith"}}
-{"index":{"_id":4}}
-{"title":"Relationships are cool","body":"It's not complicated at all...","user":{"id":3,"name":"Alice John"}}</pre><p>Now we can run a query looking for blog posts about <code class="literal">relationships</code>, by users
+PUT /my_index/blogpost/2
+{
+  "title": "Relationships",
+  "body": "It's complicated...",
+  "user": {
+    "id": 1,
+    "name": "John Smith"
+  }
+}
+
+PUT /my_index/user/3
+{
+  "name": "Alice John",
+  "email": "alice@john.com",
+  "dob": "1979/01/04"
+}
+
+PUT /my_index/blogpost/4
+{
+  "title": "Relationships are cool",
+  "body": "It's not complicated at all...",
+  "user": {
+    "id": 3,
+    "name": "Alice John"
+  }
+}</pre><p>Now we can run a query looking for blog posts about <code class="literal">relationships</code>, by users
 called <code class="literal">John</code>, and group the results by user, thanks to the
 <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html" target="_top"><code class="literal">top_hits</code> aggregation</a>:</p><pre class="programlisting prettyprint lang-json">GET /my_index/blogpost/_search?search_type=count <a id="CO257-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
 {

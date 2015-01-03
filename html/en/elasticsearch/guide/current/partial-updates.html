@@ -81,7 +81,7 @@ index, or loaded from disk.</p><p>The default scripting language <a id="id-1.3.5
 fast and expressive scripting language, similar in syntax to JavaScript.  It
 runs in a <span class="emphasis"><em>sandbox</em></span> to prevent malicious users from breaking out of
 Elasticsearch and attacking the server.</p><p>You can read more about scripting in the
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/partial-updates.html#_using_scripts_to_make_partial_updates" target="_top">scripting reference documentation</a>.</p></div><p>Scripts can be used in the <code class="literal">update</code> API to change the contents of the <code class="literal">_source</code>
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-scripting.html" target="_top">scripting reference documentation</a>.</p></div><p>Scripts can be used in the <code class="literal">update</code> API to change the contents of the <code class="literal">_source</code>
 field, which <a id="id-1.3.5.22.13.3.3" class="indexterm"></a>
 <a id="id-1.3.5.22.13.3.4" class="indexterm"></a>is referred to inside an update script as <code class="literal">ctx._source</code>. For
 instance, we could use a script to increment the number of <code class="literal">views</code> that our
