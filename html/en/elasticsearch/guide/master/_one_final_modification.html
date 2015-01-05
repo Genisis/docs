@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>One Final Modification</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="_aggregation_test_drive.html" title="Aggregation Test-Drive" /><link rel="prev" href="_buckets_inside_buckets.html" title="Buckets Inside Buckets" /><link rel="next" href="_available_buckets_and_metrics.html" title="Available Buckets and Metrics" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>One Final Modification</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Elasticsearch: The Definitive Guide" /><link rel="up" href="_aggregation_test_drive.html" title="Aggregation Test-Drive" /><link rel="prev" href="_buckets_inside_buckets.html" title="Buckets Inside Buckets" /><link rel="next" href="_building_bar_charts.html" title="Building Bar Charts" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -23,13 +23,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
            
         </span><span class="next">
            
-          <a href="_available_buckets_and_metrics.html">Available Buckets and Metrics
+          <a href="_building_bar_charts.html">Building Bar Charts
                »
             </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_one_final_modification"></a>One Final Modification<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/23_extra_metrics.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="_adding_a_metric_to_the_mix.html">Adding a Metric to the Mix</a></span></dt><dt><span class="section"><a href="_buckets_inside_buckets.html">Buckets Inside Buckets</a></span></dt><dt><span class="section"><a href="_one_final_modification.html">One Final Modification</a></span></dt></dl></div><p>Just to drive the point home, let’s make one final modification to our example
-before moving on to new topics.<a id="id-1.6.4.23.2.1" class="indexterm"></a>
-<a id="id-1.6.4.23.2.2" class="indexterm"></a>
-<a id="id-1.6.4.23.2.3" class="indexterm"></a><a id="id-1.6.4.23.2.4" class="indexterm"></a>
-<a id="id-1.6.4.23.2.5" class="indexterm"></a>  Let’s add two metrics to calculate the min and
+before moving on to new topics.<a id="id-1.6.4.24.2.1" class="indexterm"></a>
+<a id="id-1.6.4.24.2.2" class="indexterm"></a>
+<a id="id-1.6.4.24.2.3" class="indexterm"></a><a id="id-1.6.4.24.2.4" class="indexterm"></a>
+<a id="id-1.6.4.24.2.5" class="indexterm"></a>  Let’s add two metrics to calculate the min and
 max price for each make:</p><pre class="programlisting prettyprint lang-js">GET /cars/transactions/_search?search_type=count
 {
    "aggs": {
@@ -58,7 +58,7 @@ We need to add another <code class="literal">aggs</code> level for nesting.
 Then we include a <code class="literal">min</code> metric.
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO191-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 And a <code class="literal">max</code> metric.
-</p></td></tr></table></div><p>Which gives <a id="id-1.6.4.23.6.1" class="indexterm"></a>us the following output (again, truncated):</p><pre class="programlisting prettyprint lang-js">{
+</p></td></tr></table></div><p>Which gives <a id="id-1.6.4.24.6.1" class="indexterm"></a>us the following output (again, truncated):</p><pre class="programlisting prettyprint lang-js">{
 ...
    "aggregations": {
       "colors": {
@@ -113,7 +113,7 @@ The most expensive red Honda is $20,000.
            
         </span><span class="next">
            
-          <a href="_available_buckets_and_metrics.html">Available Buckets and Metrics
+          <a href="_building_bar_charts.html">Building Bar Charts
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){
