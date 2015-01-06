@@ -245,6 +245,60 @@ jQuery Build: <code class="literal">"jquery"</code>
 </li></ul></div></dd></dl></div>
 </td></tr><tr><td valign="top">
 <p>
+<code class="literal">ssl</code><a id="config-ssl"></a>
+</p>
+</td><td valign="top">
+<p>
+<code class="literal">Object</code> — An object defining HTTPS/SSL configuration to use for all nodes. The properties of this mimic the options accepted by <a class="ulink" href="http://nodejs.org/docs/latest/api/tls.html#tls_tls_connect_port_host_options_callback" target="_top"><code class="literal">tls.connect()</code></a> with the exception of <code class="literal">rejectUnauthorized</code>, which defaults to <code class="literal">false</code> allowing self-signed certificates to work out-of-the-box.
+</p>
+<p>Additional information available in <a class="xref" href="auth-reference.html" title="SSL and Authentication"><em>SSL and Authentication</em></a>.</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">ssl.pfx</code>
+</span></dt><dd>
+<code class="literal">String,Array[String]</code> — Certificate, Private key and CA certificates to use for SSL. Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+<code class="literal">ssl.key</code>
+</span></dt><dd>
+<code class="literal">String</code> — Private key to use for SSL. Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+<code class="literal">ssl.passphrase</code>
+</span></dt><dd>
+<code class="literal">String</code> — A string of passphrase for the private key or pfx. Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+<code class="literal">ssl.cert</code>
+</span></dt><dd>
+<code class="literal">String</code> — Public x509 certificate to use. Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+<code class="literal">ssl.ca</code>
+</span></dt><dd>
+<code class="literal">String,Array[String]</code> — An authority certificate or array of authority certificates to check the remote host against. Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+<code class="literal">ssl.ciphers</code>
+</span></dt><dd>
+<code class="literal">String</code> — A string describing the ciphers to use or exclude. Consult <a class="ulink" href="http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT" target="_top">http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT</a> for details on the format.  Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+<code class="literal">ssl.rejectUnauthorized</code>
+</span></dt><dd>
+<code class="literal">Boolean</code> — If true, the server certificate is verified against the list of supplied CAs. An <span class="emphasis"><em>error</em></span> event is emitted if verification fails. Verification happens at the connection level, before the HTTP request is sent. Default <code class="literal">false</code>
+</dd><dt><span class="term">
+<code class="literal">ssl.secureProtocol</code>
+</span></dt><dd>
+<code class="literal">String</code> — The SSL method to use, e.g. TLSv1_method to force TLS version 1. The possible values depend on your installation of OpenSSL and are defined in the constant SSL_METHODS. Default <code class="literal">null</code>.
+</dd><dt><span class="term">
+Example
+</span></dt><dd><pre class="programlisting prettyprint lang-js">var client = new elasticsearch.Client({
+  hosts: [
+    'https://box1.internal.org',
+    'https://box2.internal.org',
+    'https://box3.internal.org'
+  ],
+  ssl: {
+    ca: fs.readFileSync('./cacert.pem'),
+    rejectUnauthorized: true
+  }
+});</pre></dd></dl></div>
+</td></tr><tr><td valign="top">
+<p>
 <code class="literal">selector</code><a id="config-selector"></a>
 </p>
 </td><td valign="top">
