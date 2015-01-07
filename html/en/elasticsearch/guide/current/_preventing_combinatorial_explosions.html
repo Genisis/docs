@@ -58,7 +58,9 @@ with an aggregation:</p><pre class="programlisting prettyprint lang-js">{
   }
 }</pre><p>This will return a list of the top 10 actors, and for each actor, a list of their
 top five costars.  This seems like a very modest aggregation; only 50
-values will be returned!</p><p>However, this seemingly innocuous query can easily consume a vast amount of
+values will be returned!</p><p>However, this seemingly <a id="id-1.6.12.8.8.1" class="indexterm"></a>
+<a id="id-1.6.12.8.8.2" class="indexterm"></a>
+<a id="id-1.6.12.8.8.3" class="indexterm"></a>innocuous query can easily consume a vast amount of
 memory. You can visualize a <code class="literal">terms</code> aggregation as building a tree in memory.
 The <code class="literal">actors</code> aggregation will build the first level of the tree, with a bucket
 for every actor.  Then, nested under each node in the first level, the
