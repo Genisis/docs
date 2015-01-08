@@ -34,12 +34,25 @@ into the "twitter" index, under a type called "tweet" with an id of 1:</p><pre c
     "post_date" : "2009-11-15T14:12:12",
     "message" : "trying out Elasticsearch"
 }'</pre><p>The result of the above index operation is:</p><pre class="programlisting prettyprint lang-js">{
+    "_shards" : {
+        "total" : 10,
+        "failed" : 0,
+        "successful" : 10
+    },
     "_index" : "twitter",
     "_type" : "tweet",
     "_id" : "1",
     "_version" : 1,
     "created" : true
-}</pre><h3><a id="index-creation"></a>Automatic Index Creation<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/docs/index_.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The index operation automatically creates an index if it has not been
+}</pre><p>The <code class="literal">_shards</code> header provides information about the replication process of the index operation.
+* <code class="literal">total</code> - Indicates to how many shard copies (primary and replica shards) the index operation should be executed on.
+* <code class="literal">successful</code>- Indicates the number of shard copies the index operation succeeded on.
+* <code class="literal">pending</code> - Indicates how many shard copies this index operation still needs to go to at the time index operation
+ succeeded on the primary shard. This field is only returned if <code class="literal">async</code> replication is used.
+* <code class="literal">failures</code> - An array that contains replication related errors in the case an index operation failed on a replica shard.</p><p>The index operation is successful in the case <code class="literal">successful</code> is at least 1.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Replica shards may not all be started when an indexing operation successfully returns (by default, a  quorum is
+        required). In that case, <code class="literal">total</code> will be equal to the total shards based on the index replica settings and
+        <code class="literal">successful</code> will be equal to the number of shard started (primary plus replicas). As there were no failures,
+        the <code class="literal">failed</code> will be 0.</p></div></div><h3><a id="index-creation"></a>Automatic Index Creation<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/docs/index_.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The index operation automatically creates an index if it has not been
 created before (check out the
 <a class="link" href="indices-create-index.html" title="Create Index">create index API</a> for manually
 creating an index), and also automatically creates a
@@ -48,24 +61,7 @@ created (check out the <a class="link" href="indices-put-mapping.html" title="Pu
 API for manually creating a type mapping).</p><p>The mapping itself is very flexible and is schema-free. New fields and
 objects will automatically be added to the mapping definition of the
 type specified. Check out the <a class="link" href="mapping.html" title="Mapping">mapping</a>
-section for more information on mapping definitions.</p><p>Note that the format of the JSON document can also include the type (very handy
-when using JSON mappers) if the <code class="literal">index.mapping.allow_type_wrapper</code> setting is
-set to true, for example:</p><pre class="programlisting prettyprint lang-js">$ curl -XPOST 'http://localhost:9200/twitter' -d '{
-  "settings": {
-    "index": {
-      "mapping.allow_type_wrapper": true
-    }
-  }
-}'
-{"acknowledged":true}
-
-$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '{
-    "tweet" : {
-        "user" : "kimchy",
-        "post_date" : "2009-11-15T14:12:12",
-        "message" : "trying out Elasticsearch"
-    }
-}'</pre><p>Automatic index creation can be disabled by setting
+section for more information on mapping definitions.</p><p>Automatic index creation can be disabled by setting
 <code class="literal">action.auto_create_index</code> to <code class="literal">false</code> in the config file of all nodes.
 Automatic mapping creation can be disabled by setting
 <code class="literal">index.mapper.dynamic</code> to <code class="literal">false</code> in the config files of all nodes (or

@@ -31,6 +31,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 index based on its id. The following example deletes the JSON document
 from an index called twitter, under a type called tweet, with id valued
 1:</p><pre class="programlisting prettyprint lang-js">$ curl -XDELETE 'http://localhost:9200/twitter/tweet/1'</pre><p>The result of the above delete operation is:</p><pre class="programlisting prettyprint lang-js">{
+    "_shards" : {
+        "total" : 10,
+        "failed" : 0,
+        "successful" : 10
+    },
     "found" : true,
     "_index" : "twitter",
     "_type" : "tweet",
