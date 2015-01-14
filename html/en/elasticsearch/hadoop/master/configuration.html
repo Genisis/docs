@@ -127,6 +127,11 @@ The document field/property name containing the document parent. To specify a co
 </span></dt><dd>
 The document field/property name containing the document version. To specify a constant, use the <code class="literal">&lt;CONSTANT&gt;</code> format.
 </dd><dt><span class="term">
+<code class="literal">es.mapping.version.type</code> (default depends on <code class="literal">es.mapping.version</code>)
+</span></dt><dd>
+Indicates the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html#_version_types" target="_top">type of versioning</a> used.
+If <code class="literal">es.mapping.version</code> is undefined (default), its value is unspecified. If <code class="literal">es.mapping.version</code> is specified, its value becomes <code class="literal">external</code>.
+</dd><dt><span class="term">
 <code class="literal">es.mapping.routing</code> (default none)
 </span></dt><dd>
 The document field/property name containing the document routing. To specify a constant, use the <code class="literal">&lt;CONSTANT&gt;</code> format.
@@ -235,7 +240,7 @@ Timeout for HTTP/REST connections to Elasticsearch.
 </dd><dt><span class="term">
 <code class="literal">es.http.retries</code> (default 3)
 </span></dt><dd>
-Number of retries for estabilishing a (broken) http connection. The retries are applied for each <span class="emphasis"><em>conversation</em></span> with an Elasticsearch node. Once the retries are depleted, the connection will automatically be re-reouted to the next
+Number of retries for establishing a (broken) http connection. The retries are applied for each <span class="emphasis"><em>conversation</em></span> with an Elasticsearch node. Once the retries are depleted, the connection will automatically be re-reouted to the next
 available Elasticsearch node (based on the declaration of <code class="literal">es.nodes</code>, followed by the discovered nodes - if enabled).
 </dd><dt><span class="term">
 <code class="literal">es.scroll.keepalive</code> (default 10m)
