@@ -138,11 +138,31 @@ The document field/property name containing the document time-to-live. To specif
 <code class="literal">es.mapping.timestamp</code> (default none)
 </span></dt><dd>
 The document field/property name containing the document timestamp. To specify a constant, use the <code class="literal">&lt;CONSTANT&gt;</code> format.
+</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 2.1.</p></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">es.mapping.include</code> (default none)
+</span></dt><dd>
+Field/property to be included in final the document. Useful for <span class="emphasis"><em>extracting</em></span> the needed data from entities. The syntax is similar
+to that of Elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-source-filtering.html" target="_top">include/exclude</a>.
+Multiple values can be specified by using a comma. By default, no value is specified meaning all properties/fields are included.
+</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 2.1.</p></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">es.mapping.exclude</code> (default none)
+</span></dt><dd>
+Field/property to be excluded in final the document. Useful for <span class="emphasis"><em>eliminating</em></span> unneeded data from entities. The syntax is similar
+to that of Elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-source-filtering.html" target="_top">include/exclude</a>.
+Multiple values can be specified by using a comma. By default, no value is specified meaning no properties/fields are excluded
 </dd></dl></div><p>For example:</p><pre class="programlisting prettyprint lang-ini"># extracting the id from the field called 'uuid'
 es.mapping.id = uuid
 
 # specifying a parent with id '123'
-es.mapping.parent = &lt;123&gt;</pre><h4><a id="_metadata"></a>Metadata<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+es.mapping.parent = &lt;123&gt;
+
+# combine include / exclude for complete control
+# include
+es.mapping.include = u*, foo.*
+# exclude
+es.mapping.include = *.description</pre><p>Using the configuration above, each entry will have only its top-level fields, starting with u and nested fields under <code class="literal">foo</code> included
+in the document with the exception of any nested field named <code class="literal">descriptor</code>. Additionally the document parent will be <code class="literal">123</code> while the
+document id extracted from field <code class="literal">uuid</code>.</p><h4><a id="_metadata"></a>Metadata<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">es.read.metadata</code> (default false)
 </span></dt><dd>
 Whether to include the document metadata (such as id and version) in the results or not (default).
@@ -229,7 +249,7 @@ Number of results/items returned by each individual scroll.
 <code class="literal">es.action.heart.beat.lead</code> (default 15s)
 </span></dt><dd>
 The lead to task timeout before elasticsearch-hadoop informs Hadoop the task is still running to prevent task restart.
-</dd></dl></div><h4><a id="_basic_authentication"></a>Basic Authentication<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 2.1.</p></div></div><h4><a id="_basic_authentication"></a>Basic Authentication<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">es.net.http.auth.user</code>
 </span></dt><dd>
 Basic Authentication user name
@@ -237,7 +257,7 @@ Basic Authentication user name
 <code class="literal">es.net.http.auth.pass</code>
 </span></dt><dd>
 Basic Authentication password
-</dd></dl></div><h4><a id="_ssl"></a>SSL<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+</dd></dl></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Added in 2.1.</p></div></div><h4><a id="_ssl"></a>SSL<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">es.net.ssl</code> (default false)
 </span></dt><dd>
 Enable SSL
