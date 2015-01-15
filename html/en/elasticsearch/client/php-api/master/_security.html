@@ -72,7 +72,7 @@ Verify that the certificate has been signed by a CA and can be trusted
 Verify that the host you are talking to is the host in the certificate. Note that cURL needs the value of <code class="literal">2</code>, not <code class="literal">true</code> or <code class="literal">1</code> (due to an internal cURL depreciation)
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Tell cURL where the certificate bundle is located
-</p></td></tr></table></div><p>Note: Guzzle’s <code class="literal">CURL_OPTIONS</code> parameter will accept any PHP <a class="ulink" href="http://php.net/manual/en/function.curl-setopt.php" target="_top">curl_opt</a> constant for configuring.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_guzzleconnection_self_signed_certificate"></a>GuzzleConnection + Self-Signed Certificate<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/security.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Self-signed certificates are certs that have not been signed by a public CA.  They are signed by your own organization.  Self-signed certificates are often used for internal purposes, when you can securely spread the root certificate yourself.  It should not be used when being exposed to public consumers, since this leaves the client vulnerable to man-in-the-middle attacks.</p><p>If you are using a self-signed certificate, you need to provide the certificate to the client and disable peer verification.</p><pre class="programlisting prettyprint lang-php">$params = array();
+</p></td></tr></table></div><p>Note: Guzzle’s <code class="literal">CURL_OPTIONS</code> parameter will accept any PHP <a class="ulink" href="http://php.net/manual/en/function.curl-setopt.php" target="_top">curl_opt</a> constant for configuring.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_guzzleconnection_self_signed_certificate"></a>GuzzleConnection + Self-Signed Certificate<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/security.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Self-signed certificates are certs that have not been signed by a public CA.  They are signed by your own organization.  Self-signed certificates are often used for internal purposes, when you can securely spread the root certificate yourself.  It should not be used when being exposed to public consumers, since this leaves the client vulnerable to man-in-the-middle attacks.</p><p>If you are using a self-signed certificate, you need to provide the certificate to the client:</p><pre class="programlisting prettyprint lang-php">$params = array();
 $params['hosts'] = array (
     'https://localhost:9200'
 );
@@ -80,19 +80,15 @@ $params['hosts'] = array (
 $params['guzzleOptions'] = array(
     \Guzzle\Http\Client::SSL_CERT_AUTHORITY =&gt; 'system',
     \Guzzle\Http\Client::CURL_OPTIONS =&gt; [
-        CURLOPT_SSL_VERIFYPEER =&gt; false, <a id="CO11-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
-        CURLOPT_SSL_VERIFYHOST =&gt; 2, <a id="CO11-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
-        CURLOPT_CAINFO =&gt; 'cacert.pem', <a id="CO11-3"></a><span><img src="images/icons/callouts/3.png" alt="" /></span>
-        CURLOPT_SSLCERTTYPE =&gt; 'PEM', <a id="CO11-4"></a><span><img src="images/icons/callouts/4.png" alt="" /></span>
+        CURLOPT_SSL_VERIFYPEER =&gt; true,
+        CURLOPT_SSL_VERIFYHOST =&gt; 2,
+        CURLOPT_CAINFO =&gt; 'cacert.pem', <a id="CO11-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
+        CURLOPT_SSLCERTTYPE =&gt; 'PEM', <a id="CO11-2"></a><span><img src="images/icons/callouts/2.png" alt="" /></span>
     ]
 );
 $client = new Elasticsearch\Client($params);</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-Verify Peer is now false, since the cert cannot be verified against a public CA
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
-Verify Host should still be enabled, since you still want the host to match the certificate
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 CAInfo is used to specify the path to the self-signed certificate
-</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-4"><span><img src="images/icons/callouts/4.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Finally, the certificate type is specified.  PEM is default, so you can omit this if you are using .pem certs
 </p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_curlmulticonnection_public_ca_cert"></a>CurlMultiConnection + Public CA Cert<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/security.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Similar to Guzzle, CurlMultiConnection will work seamlessly with publicly signed certs.  You just need to specify the ConnectionClass and use <code class="literal">https</code> in the URI:</p><pre class="programlisting prettyprint lang-php">$params = array();
 $params['connectionClass'] = '\Elasticsearch\Connections\CurlMultiConnection';
@@ -114,7 +110,7 @@ $params['hosts'] = array (
 $params['connectionParams']['curlOpts'] = array(
     CURLOPT_CAINFO =&gt; \Kdyby\CurlCaBundle\CertificateHelper::getCaInfoFile()
 );
-$client = new Elasticsearch\Client($params);</pre><p>Note that the syntax for specifying curl options is different from Guzzle.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_curlmulticonnection_self_signed_certificates"></a>CurlMultiConnection + Self-Signed Certificates<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/security.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>To use self-signed certificates, you need to provide the certificate and disable peer verification, just like Guzzle, albeit with slightly different syntax:</p><pre class="programlisting prettyprint lang-php">$params = array();
+$client = new Elasticsearch\Client($params);</pre><p>Note that the syntax for specifying curl options is different from Guzzle.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_curlmulticonnection_self_signed_certificates"></a>CurlMultiConnection + Self-Signed Certificates<a href="https://github.com/elasticsearch/elasticsearch-php/edit/master/docs/security.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>To use self-signed certificates, you need to provide the certificate, just like Guzzle, albeit with slightly different syntax:</p><pre class="programlisting prettyprint lang-php">$params = array();
 $params['connectionClass'] = '\Elasticsearch\Connections\CurlMultiConnection';
 
 $params['hosts'] = array (
@@ -122,7 +118,7 @@ $params['hosts'] = array (
 );
 
 $params['connectionParams']['curlOpts'] = array(
-    CURLOPT_SSL_VERIFYPEER =&gt; false,
+    CURLOPT_SSL_VERIFYPEER =&gt; true,
     CURLOPT_SSL_VERIFYHOST =&gt; 2,
     CURLOPT_CAINFO =&gt; 'cacert.pem',
     CURLOPT_SSLCERTTYPE =&gt; 'PEM'
@@ -137,7 +133,7 @@ $params['connectionParams']['auth'] = array('user', 'pass', 'Basic');
 $params['guzzleOptions'] = array(
     \Guzzle\Http\Client::SSL_CERT_AUTHORITY =&gt; 'system',
     \Guzzle\Http\Client::CURL_OPTIONS =&gt; [
-        CURLOPT_SSL_VERIFYPEER =&gt; false,
+        CURLOPT_SSL_VERIFYPEER =&gt; true,
         CURLOPT_SSL_VERIFYHOST =&gt; 2,
         CURLOPT_CAINFO =&gt; 'cacert.pem',
         CURLOPT_SSLCERTTYPE =&gt; 'PEM',
