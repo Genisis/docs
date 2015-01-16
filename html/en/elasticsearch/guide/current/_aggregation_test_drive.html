@@ -29,7 +29,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 and their syntax,<a id="id-1.6.4.2.1" class="indexterm"></a>
 <a id="id-1.6.4.2.2" class="indexterm"></a> but aggregations are truly best learned by example.
 Once you learn how to think about aggregations, and how to nest them appropriately,
-the syntax is fairly trivial.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>A complete list of aggregation buckets and metrics can be found at the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html" target="_top">online
+the syntax is fairly trivial.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>A complete list of aggregation buckets and metrics can be found at the <a class="ulink" href="http://bit.ly/1KNL1R3" target="_top">online
 reference documentation</a>.  We’ll cover many of them in this chapter, but glance
 over it after finishing so you are familiar with the full range of capabilities.</p></div></div><p>So let’s just dive in and start with an example.  We are going to build some
 aggregations that might be useful to a car dealer.  Our data will be about car
@@ -73,7 +73,7 @@ Finally, we define a single bucket of type <code class="literal">terms</code>.
 just another top-level parameter in a search request (for example, using the <code class="literal">/_search</code>
 endpoint).  Aggregations can be paired with queries, but we’ll tackle that later
 in <a class="xref" href="_scoping_aggregations.html" title="Scoping Aggregations"><em>Scoping Aggregations</em></a>.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>You’ll notice that we used the <code class="literal">count</code> <a class="link" href="_search_options.html#search-type" title="search_type">search_type</a>.<a id="id-1.6.4.13.1.3" class="indexterm"></a>
-Because we don’t care about search results — the aggregation totals — the
+Because we don’t care about search results—the aggregation totals—the
 <code class="literal">count</code> search_type will be faster because it omits the fetch phase.</p></div></div><p>Next we define a name for our aggregation.  Naming is up to you;
 the response will be labeled with the name you provide so that your application
 can parse the results later.</p><p>Next we define the aggregation itself.  For this example, we are defining

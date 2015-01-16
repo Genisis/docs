@@ -50,7 +50,8 @@ The <code class="literal">stop</code> token filter, which removes stopwords—co
 custom analyzer based on the <code class="literal">standard</code> analyzer and setting the <code class="literal">stopwords</code>
 parameter.<a id="id-1.3.12.6.6.3" class="indexterm"></a> Either provide a list of stopwords or tell it to use a predefined
 stopwords list from a particular language.</p><p>In the following example, we create a new analyzer called the <code class="literal">es_std</code>
-analyzer, which uses the predefined list of <a id="id-1.3.12.6.7.2" class="indexterm"></a>Spanish stopwords:</p><pre class="programlisting prettyprint lang-js">PUT /spanish_docs
+analyzer, which uses the predefined list of <a id="id-1.3.12.6.7.2" class="indexterm"></a>
+<a id="id-1.3.12.6.7.3" class="indexterm"></a>Spanish stopwords:</p><pre class="programlisting prettyprint lang-js">PUT /spanish_docs
 {
     "settings": {
         "analysis": {

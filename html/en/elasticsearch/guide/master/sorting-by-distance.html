@@ -101,7 +101,7 @@ This can be used to return “friends nearest to my work and home locations.”<
 which results are returned, but more frequently we need to combine distance
 with other factors, such as full-text relevance, popularity, and price.</p><p>In these situations, we should reach for the
 <a class="link" href="function-score-query.html" title="function_score Query"><code class="literal">function_score</code> query</a> that allows us to blend all
-of these factors into an overall score.  See <a class="xref" href="decay-functions.html" title="The Closer, the Better">The Closer, the Better</a> for an
+of these factors into an overall score.  See <a class="xref" href="decay-functions.html" title="The Closer, The Better">The Closer, The Better</a> for an
 example that uses geo-distance to influence scoring.</p><p>The other drawback of sorting by distance is performance: the distance has to
 be calculated for all matching documents.  The <code class="literal">function_score</code> query, on the
 other hand, can be executed during the <a class="link" href="_improving_performance.html#rescore-api" title="Rescoring Results"><code class="literal">rescore</code> phase</a>,

@@ -40,7 +40,7 @@ Elasticsearch, while an <span class="emphasis"><em>index</em></span> in Elastics
 When Elasticsearch searches an index, it sends the query out to a copy of
 every shard (Lucene index) that belongs to the index, and then reduces the
 per-shards results to a global result set, as described in
-<a class="xref" href="distributed-search.html" title="Distributed Search Execution"><em>Distributed Search Execution</em></a>.</p></div><div class="figure"><a id="img-memory-buffer"></a><p class="title"><strong>Figure 17. A Lucene index with new documents in the in-memory buffer, ready to commit</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/elas_1102.png" alt="A Lucene index with new documents in the in-memory buffer, ready to commit" /></div></div></div><br class="figure-break" /><p>A per-segment search works as follows:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<a class="xref" href="distributed-search.html" title="Distributed Search Execution"><em>Distributed Search Execution</em></a>.</p></div><p>A per-segment search works as follows:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 New documents are collected in an in-memory indexing buffer.
    See <a class="xref" href="dynamic-indices.html#img-memory-buffer" title="Figure 17. A Lucene index with new documents in the in-memory buffer, ready to commit">Figure 17, “A Lucene index with new documents in the in-memory buffer, ready to commit”</a>.
 </li><li class="listitem"><p class="simpara">
@@ -57,12 +57,12 @@ The disk is <span class="emphasis"><em>fsync’ed</em></span>—all writes waiti
 The new segment is opened, making the documents it contains visible to search.
 </li><li class="listitem">
 The in-memory buffer is cleared, and is ready to accept new documents.
-</li></ol></div><div class="figure"><a id="img-post-commit"></a><p class="title"><strong>Figure 18. After a commit, a new segment is added to the commit point and the buffer is cleared</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/elas_1103.png" alt="After a commit, a new segment is added to the index and the buffer is cleared" /></div></div></div><br class="figure-break" /><p>When a query is issued, all known segments are queried in turn. Term
+</li></ol></div><div class="figure"><a id="img-memory-buffer"></a><p class="title"><strong>Figure 17. A Lucene index with new documents in the in-memory buffer, ready to commit</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/elas_1102.png" alt="A Lucene index with new documents in the in-memory buffer, ready to commit" /></div></div></div><br class="figure-break" /><div class="figure"><a id="img-post-commit"></a><p class="title"><strong>Figure 18. After a commit, a new segment is added to the commit point and the buffer is cleared</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/elas_1103.png" alt="After a commit, a new segment is added to the index and the buffer is cleared" /></div></div></div><br class="figure-break" /><p>When a query is issued, all known segments are queried in turn. Term
 statistics are aggregated across all segments to ensure that the relevance of
 each term and each document is calculated accurately. In this way, new
 documents can be added to the index relatively cheaply.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="deletes-and-updates"></a>Deletes and Updates<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/075_Inside_a_shard/30_Dynamic_indices.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Segments are immutable, so documents cannot be removed from older segments,
 nor can older segments be updated to reflect a newer version of a document.
-Instead, every commit point includes a <code class="literal">.del</code> file that lists which documents
+Instead, every <a id="id-1.3.13.7.12.2.1" class="indexterm"></a>commit point includes a <code class="literal">.del</code> file that lists which documents
 in which segments have been deleted.</p><p>When a document is “deleted,” it is actually just <span class="emphasis"><em>marked</em></span> as deleted in the
 <code class="literal">.del</code> file. A document that has been marked as deleted can still match a
 query, but it is removed from the results list before the final query results

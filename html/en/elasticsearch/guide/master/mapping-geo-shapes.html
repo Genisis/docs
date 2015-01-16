@@ -43,8 +43,7 @@ before they can be used:</p><pre class="programlisting prettyprint lang-json">PU
     }
   }
 }</pre><p>There are two important settings that you should consider changing <code class="literal">precision</code> and <code class="literal">distance_error_pct</code>.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_precision"></a>precision<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/340_Geoshapes/72_Mapping_geo_shapes.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">precision</code> parameter <a id="id-1.7.6.9.5.2.2" class="indexterm"></a>
-<a id="id-1.7.6.9.5.2.3" class="indexterm"></a><a id="id-1.7.6.9.5.2.4" class="indexterm"></a>
-<a id="id-1.7.6.9.5.2.5" class="indexterm"></a>controls the maximum length of the geohashes that
+<a id="id-1.7.6.9.5.2.3" class="indexterm"></a><a id="id-1.7.6.9.5.2.4" class="indexterm"></a>controls the maximum length of the geohashes that
 are generated.  It defaults to a precision of <code class="literal">9</code>, which equates to a
 <a class="link" href="geohashes.html" title="Geohashes">geohash</a> with dimensions of about 5m x 5m. That is probably far
 more precise than you need.</p><p>The lower the precision, the fewer terms that will be indexed and the faster

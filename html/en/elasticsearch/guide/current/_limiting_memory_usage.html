@@ -36,10 +36,12 @@ just the values for the documents that match your query. It loads the values
 for <span class="emphasis"><em>all documents in your index</em></span>, even documents with a different <code class="literal">_type</code>!</p><p>The logic is: if you need access to documents X, Y, and Z for this query, you
 will probably need access to other documents in the next query.  It is cheaper
 to load all values once, and to <span class="emphasis"><em>keep them in memory</em></span>, than to have to scan
-the inverted index on every request.</p><p>The JVM heap <a id="id-1.6.12.4.5.1" class="indexterm"></a>is a limited resource that should be used wisely. A number of
+the inverted index on every request.</p><p>The JVM heap <a id="id-1.6.12.4.5.1" class="indexterm"></a>
+<a id="id-1.6.12.4.5.2" class="indexterm"></a>is a limited resource that should be used wisely. A number of
 mechanisms exist to limit the impact of fielddata on heap usage. These limits
 are important because abuse of the heap will cause node instability (thanks to
-slow garbage collections) or even node death (with an OutOfMemory exception).</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Choosing a Heap Size</strong></p></div></div></div><p>There are two rules to apply when setting <a id="id-1.6.12.4.6.2.1" class="indexterm"></a>the Elasticsearch heap size, with
+slow garbage collections) or even node death (with an OutOfMemory exception).</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Choosing a Heap Size</strong></p></div></div></div><p>There are two rules to apply when setting <a id="id-1.6.12.4.6.2.1" class="indexterm"></a>
+<a id="id-1.6.12.4.6.2.2" class="indexterm"></a>the Elasticsearch heap size, with
 the <code class="literal">$ES_HEAP_SIZE</code> environment variable:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 No more than 50% of available RAM
 </span></dt><dd>
@@ -92,9 +94,9 @@ recommended in various articles on the Internet as a good performance tip.</p><p
 <a id="id-1.6.12.4.8.2.5" class="indexterm"></a> is being used by
 fielddata, and whether any data is being evicted.  High eviction counts can
 indicate a serious resource issue and a reason for poor performance.</p><p>Fielddata usage can be monitored:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
-per-index using the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/indices-stats.html" target="_top"><code class="literal">indices-stats</code> API</a>:
+per-index using the <a class="ulink" href="http://bit.ly/1BwZ61b" target="_top"><code class="literal">indices-stats</code> API</a>:
 </p><pre class="programlisting prettyprint lang-json">GET /_stats/fielddata?fields=*</pre></li><li class="listitem"><p class="simpara">
-per-node using the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html" target="_top"><code class="literal">nodes-stats</code> API</a>:
+per-node using the <a class="ulink" href="http://bit.ly/1586yDn" target="_top"><code class="literal">nodes-stats</code> API</a>:
 </p><pre class="programlisting prettyprint lang-json">GET /_nodes/stats/indices/fielddata?fields=*</pre></li><li class="listitem">
 Or even per-index per-node:
 </li></ul></div><pre class="programlisting prettyprint lang-json">GET /_nodes/stats/indices/fielddata?level=indices&amp;fields=*</pre><p>By setting <code class="literal">?fields=*</code>, the memory usage is broken down for each field.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="circuit-breaker"></a>Circuit Breaker<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/300_Aggregations/100_circuit_breaker_fd_settings.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>An astute reader might have noticed a problem with the fielddata size settings.

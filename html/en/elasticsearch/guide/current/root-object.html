@@ -57,8 +57,7 @@ fields or <a id="id-1.3.12.9.4.2.1" class="indexterm"></a>
    Which <code class="literal">analyzer</code> to use for a full-text field, both at index time and at search time
 </dd></dl></div><p>We will discuss other field types such as <code class="literal">ip</code>, <code class="literal">geo_point</code>, and <code class="literal">geo_shape</code> in
 the appropriate sections later in the book.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="source-field"></a>Metadata: _source Field<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/070_Index_Mgmt/31_Metadata_source.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>By default, Elasticsearch <a id="id-1.3.12.9.5.2.1" class="indexterm"></a>
-<a id="id-1.3.12.9.5.2.2" class="indexterm"></a>
-<a id="id-1.3.12.9.5.2.3" class="indexterm"></a><a id="id-1.3.12.9.5.2.4" class="indexterm"></a>stores the JSON string representing the
+<a id="id-1.3.12.9.5.2.2" class="indexterm"></a><a id="id-1.3.12.9.5.2.3" class="indexterm"></a>stores the JSON string representing the
 document body in the <code class="literal">_source</code> field. Like all stored fields, the <code class="literal">_source</code>
 field is compressed before being written to disk.</p><p>This is almost always desired functionality because it means the following:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 The full document is available directly from the search results—no need
@@ -77,8 +76,7 @@ It is easier to debug queries, because you can see exactly what each document
   contains, rather than having to guess their contents from a list of IDs.
 </li></ul></div><p>That said, storing the <code class="literal">_source</code> field does use disk space.  If none of the
 preceding reasons is important to you, you can disable the <code class="literal">_source</code> field with
-the following<a id="id-1.3.12.9.5.5.3" class="indexterm"></a>
-<a id="id-1.3.12.9.5.5.4" class="indexterm"></a> mapping:</p><pre class="programlisting prettyprint lang-js">PUT /my_index
+the following mapping:</p><pre class="programlisting prettyprint lang-js">PUT /my_index
 {
     "mappings": {
         "my_type": {
@@ -102,8 +100,7 @@ false optimization. The whole document is already stored as the <code class="lit
 field. It is almost always better to just extract the fields that you need
 by using the <code class="literal">_source</code> parameter.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="all-field"></a>Metadata: _all Field<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/070_Index_Mgmt/32_Metadata_all.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>In <a class="xref" href="search-lite.html" title="Search Lite">Search <span class="emphasis"><em>Lite</em></span></a>, we introduced the <code class="literal">_all</code> field: a special field that
 indexes the <a id="id-1.3.12.9.6.2.3" class="indexterm"></a>
-<a id="id-1.3.12.9.6.2.4" class="indexterm"></a>
-<a id="id-1.3.12.9.6.2.5" class="indexterm"></a><a id="id-1.3.12.9.6.2.6" class="indexterm"></a>values from all other fields as one big string. The <code class="literal">query_string</code>
+<a id="id-1.3.12.9.6.2.4" class="indexterm"></a><a id="id-1.3.12.9.6.2.5" class="indexterm"></a>values from all other fields as one big string. The <code class="literal">query_string</code>
 query clause (and searches performed as <code class="literal">?q=john</code>) defaults to searching in
 the <code class="literal">_all</code> field if no other field is specified.</p><p>The <code class="literal">_all</code> field is useful during the exploratory phase of a new application,
 while you are still unsure about the final structure that your documents will
@@ -122,16 +119,14 @@ to be most relevant.</p><div class="note admon"><div class="icon"><img alt="Note
 is the length of the field: the shorter the field, the more important. A term
 that appears in a short <code class="literal">title</code> field is likely to be more important than the
 same term that appears somewhere in a long <code class="literal">content</code> field. This distinction
-between field lengths disappears in the <code class="literal">_all</code> field.</p></div></div><p>If you decide that you no longer <a id="id-1.3.12.9.6.7.1" class="indexterm"></a>
-<a id="id-1.3.12.9.6.7.2" class="indexterm"></a>need the <code class="literal">_all</code> field, you can disable it
+between field lengths disappears in the <code class="literal">_all</code> field.</p></div></div><p>If you decide that you no longer need the <code class="literal">_all</code> field, you can disable it
 with this mapping:</p><pre class="programlisting prettyprint lang-js">PUT /my_index/_mapping/my_type
 {
     "my_type": {
         "_all": { "enabled": false }
     }
 }</pre><p>Inclusion in the <code class="literal">_all</code> field can be controlled on a field-by-field basis
-by using the <code class="literal">include_in_all</code> setting, <a id="id-1.3.12.9.6.9.3" class="indexterm"></a>which defaults to <code class="literal">true</code>. <a id="id-1.3.12.9.6.9.5" class="indexterm"></a>
-<a id="id-1.3.12.9.6.9.6" class="indexterm"></a> Setting
+by using the <code class="literal">include_in_all</code> setting, <a id="id-1.3.12.9.6.9.3" class="indexterm"></a>which defaults to <code class="literal">true</code>.  Setting
 <code class="literal">include_in_all</code> on an object (or on the root object) changes the
 default for all fields within that object.</p><p>You may find that you want to keep the <code class="literal">_all</code> field around to use
 as a catchall full-text field just for specific fields, such as
@@ -150,8 +145,7 @@ and enable it only on the fields you choose:</p><pre class="programlisting prett
         }
     }
 }</pre><p>Remember that the <code class="literal">_all</code> field is just<a id="id-1.3.12.9.6.12.2" class="indexterm"></a>
-<a id="id-1.3.12.9.6.12.3" class="indexterm"></a><a id="id-1.3.12.9.6.12.4" class="indexterm"></a>
-<a id="id-1.3.12.9.6.12.5" class="indexterm"></a> an analyzed <code class="literal">string</code> field.  It
+<a id="id-1.3.12.9.6.12.3" class="indexterm"></a> an analyzed <code class="literal">string</code> field.  It
 uses the default analyzer to analyze its values, regardless of which
 analyzer has been set on the fields where the values originate.  And
 like any <code class="literal">string</code> field, you can configure which analyzer the <code class="literal">_all</code>

@@ -30,7 +30,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 <a id="id-1.4.5.8.2.3" class="indexterm"></a><a id="id-1.4.5.8.2.4" class="indexterm"></a>
 <a id="id-1.4.5.8.2.5" class="indexterm"></a> had searched instead for “quick pets”?  Both
 documents contain the word <code class="literal">quick</code>, but only document 2 contains the word
-<code class="literal">pets</code>. Neither document contains <span class="emphasis"><em>both words</em></span> in the <span class="emphasis"><em>same field</em></span>.</p><p>A simple <code class="literal">dis_max</code> query like the following would <a id="id-1.4.5.8.3.2" class="indexterm"></a>choose the single best
+<code class="literal">pets</code>. Neither document contains <span class="emphasis"><em>both words</em></span> in the <span class="emphasis"><em>same field</em></span>.</p><p>A simple <code class="literal">dis_max</code> query like the following would <a id="id-1.4.5.8.3.2" class="indexterm"></a><a id="id-1.4.5.8.3.3" class="indexterm"></a>
+<a id="id-1.4.5.8.3.4" class="indexterm"></a>choose the single best
 matching field, and ignore the other:</p><pre class="programlisting prettyprint lang-js">{
     "query": {
         "dis_max": {
@@ -66,8 +67,9 @@ the <code class="literal">body</code> field to rank higher than documents that m
 but this isn’t the case. Remember: the <code class="literal">dis_max</code> query simply uses the
 <code class="literal">_score</code> from the <span class="emphasis"><em>single</em></span> best-matching clause.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_tie_breaker"></a>tie_breaker<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/110_Multi_Field_Search/20_Tuning_best_field_queries.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>It is possible, however, to<a id="id-1.4.5.8.9.2.1" class="indexterm"></a>
 <a id="id-1.4.5.8.9.2.2" class="indexterm"></a><a id="id-1.4.5.8.9.2.3" class="indexterm"></a>
-<a id="id-1.4.5.8.9.2.4" class="indexterm"></a> also take the <code class="literal">_score</code> from the other matching
-clauses into account, by specifying <a id="id-1.4.5.8.9.2.6" class="indexterm"></a>the <code class="literal">tie_breaker</code> parameter:</p><pre class="programlisting prettyprint lang-js">{
+<a id="id-1.4.5.8.9.2.4" class="indexterm"></a>
+<a id="id-1.4.5.8.9.2.5" class="indexterm"></a> also take the <code class="literal">_score</code> from the other matching
+clauses into account, by specifying <a id="id-1.4.5.8.9.2.7" class="indexterm"></a>the <code class="literal">tie_breaker</code> parameter:</p><pre class="programlisting prettyprint lang-js">{
     "query": {
         "dis_max": {
             "queries": [
@@ -98,8 +100,7 @@ clauses into account, by specifying <a id="id-1.4.5.8.9.2.6" class="indexterm"><
    ]
 }</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO69-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> <a href="#CO69-2"><span><img src="images/icons/callouts/2.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 Document 2 now has a small lead over document 1.
-</p></td></tr></table></div><p>The <code class="literal">tie_breaker</code> parameter <a id="id-1.4.5.8.9.8.2" class="indexterm"></a>
-<a id="id-1.4.5.8.9.8.3" class="indexterm"></a>makes the <code class="literal">dis_max</code> query behave more like a
+</p></td></tr></table></div><p>The <code class="literal">tie_breaker</code> parameter makes the <code class="literal">dis_max</code> query behave more like a
 halfway house between <code class="literal">dis_max</code> and <code class="literal">bool</code>. It changes the score calculation
 as follows:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 Take the <code class="literal">_score</code> of the best-matching clause.

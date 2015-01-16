@@ -37,7 +37,8 @@ group.<a id="id-1.5.7.14.3.6" class="indexterm"></a>
 query, while the high-frequency group (less-important terms) is used only for
 scoring, not for matching. By treating these two groups differently, we can
 gain a real boost of speed on previously slow queries.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Domain-Specific Stopwords</strong></p></div></div></div><p>One of the benefits of <code class="literal">cutoff_frequency</code> is that you get <span class="emphasis"><em>domain-specific</em></span>
-stopwords for free.<a id="id-1.5.7.14.4.2.3" class="indexterm"></a> For instance, a website about movies may use the words
+stopwords for free.<a id="id-1.5.7.14.4.2.3" class="indexterm"></a><a id="id-1.5.7.14.4.2.4" class="indexterm"></a>
+<a id="id-1.5.7.14.4.2.5" class="indexterm"></a> For instance, a website about movies may use the words
 <span class="emphasis"><em>movie</em></span>, <span class="emphasis"><em>color</em></span>, <span class="emphasis"><em>black</em></span>, and <span class="emphasis"><em>white</em></span> so often that they could be
 considered almost meaningless.  With the <code class="literal">stop</code> token filter, these domain-specific terms would have to be added to the stopwords list manually. However,
 because the <code class="literal">cutoff_frequency</code> looks at the actual frequency of terms in the
@@ -157,7 +158,7 @@ documents that have 75% of all high-frequency terms with a query like this:</p><
       }
     }
   }
-}</pre><p>See the <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/common-terms.html" target="_top"><code class="literal">common</code> terms query</a> reference page for more options.</p></div></div><div class="navfooter"><span class="prev"><a href="stopwords-performance.html">
+}</pre><p>See the <a class="ulink" href="http://bit.ly/1wdS2Qo" target="_top"><code class="literal">common</code> terms query</a> reference page for more options.</p></div></div><div class="navfooter"><span class="prev"><a href="stopwords-performance.html">
               « 
               Stopwords and Performance</a>
            

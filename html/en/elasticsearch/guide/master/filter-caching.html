@@ -72,24 +72,21 @@ the cached bitset.</p><p>This ties in nicely with the composability of the query
 move filters around, or reuse the same filter in multiple places within the
 same query.  This isn’t just convenient to the developer—it has direct
 performance benefits.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_controlling_caching"></a>Controlling Caching<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/40_bitsets.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Most <span class="emphasis"><em>leaf filters</em></span>—those dealing directly with fields like the <code class="literal">term</code>
-filter—are cached, while<a id="id-1.4.3.11.5.2.3" class="indexterm"></a>
-<a id="id-1.4.3.11.5.2.4" class="indexterm"></a><a id="id-1.4.3.11.5.2.5" class="indexterm"></a>
-<a id="id-1.4.3.11.5.2.6" class="indexterm"></a><a id="id-1.4.3.11.5.2.7" class="indexterm"></a>
-<a id="id-1.4.3.11.5.2.8" class="indexterm"></a> compound filters, like the <code class="literal">bool</code> filter, are not.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Leaf filters have to consult the inverted index on disk, so it makes sense to
+filter—are cached, while<a id="id-1.4.3.11.5.2.3" class="indexterm"></a><a id="id-1.4.3.11.5.2.4" class="indexterm"></a>
+<a id="id-1.4.3.11.5.2.5" class="indexterm"></a><a id="id-1.4.3.11.5.2.6" class="indexterm"></a>
+<a id="id-1.4.3.11.5.2.7" class="indexterm"></a> compound filters, like the <code class="literal">bool</code> filter, are not.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Leaf filters have to consult the inverted index on disk, so it makes sense to
 cache them. Compound filters, on the other hand, use fast bit logic to combine
 the bitsets resulting from their inner clauses, so it is efficient to
 recalculate them every time.</p></div></div><p>Certain leaf filters, however, are not cached by default, because it
 doesn’t make sense to do so:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 Script filters
 </span></dt><dd>
-The results<a id="id-1.4.3.11.5.5.1.2.1.1" class="indexterm"></a>
-<a id="id-1.4.3.11.5.5.1.2.1.2" class="indexterm"></a> from <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/filter-caching.html#_controlling_caching" target="_top"><code class="literal">script</code> filters</a> cannot
+The results<a id="id-1.4.3.11.5.5.1.2.1.1" class="indexterm"></a> from <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/filter-caching.html#_controlling_caching" target="_top"><code class="literal">script</code> filters</a> cannot
 be cached because the meaning of the script is opaque to Elasticsearch.
 </dd><dt><span class="term">
 Geo-filters
 </span></dt><dd>
-The geolocation filters, which<a id="id-1.4.3.11.5.5.2.2.1.1" class="indexterm"></a>
-<a id="id-1.4.3.11.5.5.2.2.1.2" class="indexterm"></a> we cover in more detail in <a class="xref" href="geoloc.html" title="Geolocation">Geolocation </a>, are
+The geolocation filters, which<a id="id-1.4.3.11.5.5.2.2.1.1" class="indexterm"></a> we cover in more detail in <a class="xref" href="geoloc.html" title="Geolocation">Geolocation </a>, are
 usually used to filter results based on the geolocation of a specific user.
 Since each user has a unique geolocation, it is unlikely that geo-filters will be reused, so it makes no sense to cache them.
 </dd><dt><span class="term">

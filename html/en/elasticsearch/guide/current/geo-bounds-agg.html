@@ -81,8 +81,7 @@ The <code class="literal">geo_bounds</code> aggregation will calculate the small
      }
   },
 ...</pre><p>In fact, we could even use the <code class="literal">geo_bounds</code> aggregation inside each geohash
-cell,<a id="id-1.7.5.7.8.2" class="indexterm"></a>
-<a id="id-1.7.5.7.8.3" class="indexterm"></a> in case the geo-points inside a cell are clustered in just a part of the
+cell,<a id="id-1.7.5.7.8.2" class="indexterm"></a> in case the geo-points inside a cell are clustered in just a part of the
 cell:</p><pre class="programlisting prettyprint lang-json">GET /attractions/restaurant/_search?search_type=count
 {
   "query": {

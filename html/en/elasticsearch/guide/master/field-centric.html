@@ -82,7 +82,8 @@ Inverse document frequency
 </dd></dl></div><p>When searching against multiple fields, TF/IDF can<a id="id-1.4.5.12.7.4.1" class="indexterm"></a>
 <a id="id-1.4.5.12.7.4.2" class="indexterm"></a> introduce some surprising
 results.</p><p>Consider our example of searching for “Peter Smith” using the <code class="literal">first_name</code>
-and <code class="literal">last_name</code> fields.  Peter is a common first name and Smith is a common
+and <code class="literal">last_name</code> fields.<a id="id-1.4.5.12.7.5.3" class="indexterm"></a>
+<a id="id-1.4.5.12.7.5.4" class="indexterm"></a>  Peter is a common first name and Smith is a common
 last name—both will have low IDFs.  But what if we have another person in
 the index whose name is Smith Williams?  Smith as a first name is very
 uncommon and so will have a high IDF!</p><p>A simple query like the following may well return Smith Williams above

@@ -33,8 +33,7 @@ Unicode algorithm expects.<a id="id-1.5.4.11.2.2" class="indexterm"></a>
 <a id="id-1.5.4.11.2.6" class="indexterm"></a>  Quite often, though, the text we need to process
 is anything but clean. Cleaning it up before tokenization improves the quality
 of the output.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_tokenizing_html"></a>Tokenizing HTML<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/210_Identifying_words/50_Tidying_text.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Passing HTML through the <code class="literal">standard</code> tokenizer or the <code class="literal">icu_tokenizer</code> produces
-poor results.<a id="id-1.5.4.11.3.2.3" class="indexterm"></a>
-<a id="id-1.5.4.11.3.2.4" class="indexterm"></a>  These tokenizers just don’t know what to do with the HTML tags.
+poor results.<a id="id-1.5.4.11.3.2.3" class="indexterm"></a>  These tokenizers just don’t know what to do with the HTML tags.
 For example:</p><pre class="programlisting prettyprint lang-js">GET /_analyzer?tokenizer=standard
 &lt;p&gt;Some d&amp;eacute;j&amp;agrave; vu &lt;a href="http://somedomain.com&gt;"&gt;website&lt;/a&gt;</pre><p>The <code class="literal">standard</code> tokenizer<a id="id-1.5.4.11.3.4.2" class="indexterm"></a>
 <a id="id-1.5.4.11.3.4.3" class="indexterm"></a> confuses HTML tags and entities, and emits the

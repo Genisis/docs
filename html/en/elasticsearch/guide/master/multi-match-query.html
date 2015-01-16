@@ -71,9 +71,8 @@ Parameters like <code class="literal">minimum_should_match</code> or <code class
     the generated <code class="literal">match</code> queries.
 </p></td></tr></table></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_using_wildcards_in_field_names"></a>Using Wildcards in Field Names<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/110_Multi_Field_Search/25_Multi_match_query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Field names can be specified with wildcards: any field that matches the
 wildcard pattern<a id="id-1.4.5.9.10.2.1" class="indexterm"></a>
-<a id="id-1.4.5.9.10.2.2" class="indexterm"></a><a id="id-1.4.5.9.10.2.3" class="indexterm"></a>
-<a id="id-1.4.5.9.10.2.4" class="indexterm"></a><a id="id-1.4.5.9.10.2.5" class="indexterm"></a>
-<a id="id-1.4.5.9.10.2.6" class="indexterm"></a> will be included in the search. You could match on the
+<a id="id-1.4.5.9.10.2.2" class="indexterm"></a><a id="id-1.4.5.9.10.2.3" class="indexterm"></a><a id="id-1.4.5.9.10.2.4" class="indexterm"></a>
+<a id="id-1.4.5.9.10.2.5" class="indexterm"></a> will be included in the search. You could match on the
 <code class="literal">book_title</code>, <code class="literal">chapter_title</code>, and <code class="literal">section_title</code> fields, with the following:</p><pre class="programlisting prettyprint lang-js">{
     "multi_match": {
         "query":  "Quick brown fox",

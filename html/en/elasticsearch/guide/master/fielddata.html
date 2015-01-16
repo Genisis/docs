@@ -86,9 +86,8 @@ Doc_2 | brown, dogs, foxes, in, lazy, leap, over, quick, summer
 Doc_3 | dog, dogs, fox, jumped, over, quick, the
 -----------------------------------------------------------------</pre><p>Once the data has been uninverted, it is trivial to collect the unique tokens from
 <code class="literal">Doc_1</code> and <code class="literal">Doc_2</code>.  Go to the rows for each document, collect all the terms, and
-take the union of the two sets.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The fielddata cache is per segment.<a id="id-1.6.12.2.14.1.1" class="indexterm"></a>
-<a id="id-1.6.12.2.14.1.2" class="indexterm"></a><a id="id-1.6.12.2.14.1.3" class="indexterm"></a>
-<a id="id-1.6.12.2.14.1.4" class="indexterm"></a> In other words, when a new segment becomes
+take the union of the two sets.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>The fielddata cache is per segment.<a id="id-1.6.12.2.14.1.1" class="indexterm"></a><a id="id-1.6.12.2.14.1.2" class="indexterm"></a>
+<a id="id-1.6.12.2.14.1.3" class="indexterm"></a> In other words, when a new segment becomes
 visible to search, the fielddata cached from old segments remains valid. Only
 the data for the new segment needs to be loaded into memory.</p></div></div><p>Thus, search and aggregations are closely intertwined.  Search finds documents
 by using the inverted index.  Aggregations collect and aggregate values from

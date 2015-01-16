@@ -61,7 +61,7 @@ Another aggregation named <code class="literal">make</code> is added to the <cod
 This aggregation is a <code class="literal">terms</code> bucket and will generate unique buckets for
 each car make.
 </p></td></tr></table></div><p>A few interesting things happened here.<a id="id-1.6.4.23.7.1" class="indexterm"></a>
-<a id="id-1.6.4.23.7.2" class="indexterm"></a><a id="id-1.6.4.23.7.3" class="indexterm"></a>  First, you’ll notice that the previous
+<a id="id-1.6.4.23.7.2" class="indexterm"></a>  First, you’ll notice that the previous
 <code class="literal">avg_price</code> metric is left entirely intact.  Each <span class="emphasis"><em>level</em></span> of an aggregation can
 have many metrics or buckets.  The <code class="literal">avg_price</code> metric tells us the average price
 for each car color.  This is independent of other buckets and metrics that

@@ -67,9 +67,8 @@ boundaries:</p><pre class="programlisting prettyprint lang-js">"range" : {
     "price" : {
         "gt" : 20
     }
-}</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/25_Range_filter.json" target="sense">View in Sense</a><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ranges_on_dates"></a>Ranges on Dates<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/25_ranges.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">range</code> filter can be used on date <a id="id-1.4.3.9.14.2.2" class="indexterm"></a>
-<a id="id-1.4.3.9.14.2.3" class="indexterm"></a><a id="id-1.4.3.9.14.2.4" class="indexterm"></a>
-<a id="id-1.4.3.9.14.2.5" class="indexterm"></a>fields too:</p><pre class="programlisting prettyprint lang-js">"range" : {
+}</pre><a class="sense_widget" href="sense_widget.html?snippets/080_Structured_Search/25_Range_filter.json" target="sense">View in Sense</a><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_ranges_on_dates"></a>Ranges on Dates<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/080_Structured_Search/25_ranges.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>The <code class="literal">range</code> filter can be used on date <a id="id-1.4.3.9.14.2.2" class="indexterm"></a><a id="id-1.4.3.9.14.2.3" class="indexterm"></a>
+<a id="id-1.4.3.9.14.2.4" class="indexterm"></a>fields too:</p><pre class="programlisting prettyprint lang-js">"range" : {
     "timestamp" : {
         "gt" : "2014-01-01 00:00:00",
         "lt" : "2014-01-07 00:00:00"
@@ -107,7 +106,8 @@ string ranges use this order.</p></div></div><p>If we want a range from <code cl
         "lt" :  "b"
     }
 }</pre><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Be Careful of Cardinality</strong></p></div></div></div><p>Numeric and date fields are indexed in such a way that ranges are efficient
-to calculate.<a id="id-1.4.3.9.15.7.2.1" class="indexterm"></a>  This is not the case for string fields, however.  To perform
+to calculate.<a id="id-1.4.3.9.15.7.2.1" class="indexterm"></a>
+<a id="id-1.4.3.9.15.7.2.2" class="indexterm"></a>  This is not the case for string fields, however.  To perform
 a range on a string field, Elasticsearch is effectively performing a <code class="literal">term</code>
 filter for every term that falls in the range.  This is much slower than
 a date or numeric range.</p><p>String ranges are fine on a field with <span class="emphasis"><em>low cardinality</em></span>—a small number of

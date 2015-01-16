@@ -29,7 +29,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 While we don’t demonstrate any new techniques here, fielddata is an
 important topic that we will refer to repeatedly, and is something that you
 should be aware of.<a id="id-1.3.10.6.2.1" class="indexterm"></a></p><p>When you sort on a field, Elasticsearch needs access to the value of that
-field for every document that matches the query.  The inverted index, which
+field for every document that matches the query.<a id="id-1.3.10.6.3.1" class="indexterm"></a>
+<a id="id-1.3.10.6.3.2" class="indexterm"></a>  The inverted index, which
 performs very well when searching, is not the ideal structure for sorting on
 field values:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 When searching, we need to be able to map a term to a list of documents.

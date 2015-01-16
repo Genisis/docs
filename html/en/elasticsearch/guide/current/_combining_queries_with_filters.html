@@ -39,7 +39,9 @@ vice versa, thus allowing us to switch from one context to another. It is
 important to choose the correct combination of query and filter clauses
 to achieve your goal in the most efficient way.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="filtered-query"></a>Filtering a Query<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/75_Queries_with_filters.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Let’s say we have<a id="id-1.3.9.8.5.2.1" class="indexterm"></a>
 <a id="id-1.3.9.8.5.2.2" class="indexterm"></a>
-<a id="id-1.3.9.8.5.2.3" class="indexterm"></a> this query:</p><pre class="programlisting prettyprint lang-js">{ "match": { "email": "business opportunity" }}</pre><p>We want to combine it with the following <code class="literal">term</code> filter, which will
+<a id="id-1.3.9.8.5.2.3" class="indexterm"></a><a id="id-1.3.9.8.5.2.4" class="indexterm"></a>
+<a id="id-1.3.9.8.5.2.5" class="indexterm"></a>
+<a id="id-1.3.9.8.5.2.6" class="indexterm"></a> this query:</p><pre class="programlisting prettyprint lang-js">{ "match": { "email": "business opportunity" }}</pre><p>We want to combine it with the following <code class="literal">term</code> filter, which will
 match only documents that are in our inbox:</p><pre class="programlisting prettyprint lang-js">{ "term": { "folder": "inbox" }}</pre><p>The <code class="literal">search</code> API accepts only a single <code class="literal">query</code> parameter, so we need
 to wrap the query and the filter in another query, called the <code class="literal">filtered</code>
 query:</p><pre class="programlisting prettyprint lang-js">{
@@ -57,7 +59,9 @@ query:</p><pre class="programlisting prettyprint lang-js">{
     }
 }</pre><a class="sense_widget" href="sense_widget.html?snippets/054_Query_DSL/75_Filtered_query.json" target="sense">View in Sense</a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_just_a_filter"></a>Just a Filter<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/054_Query_DSL/75_Queries_with_filters.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>While in query context, if <a id="id-1.3.9.8.6.2.1" class="indexterm"></a>
 <a id="id-1.3.9.8.6.2.2" class="indexterm"></a>
-<a id="id-1.3.9.8.6.2.3" class="indexterm"></a>you need to use a filter without a query (for
+<a id="id-1.3.9.8.6.2.3" class="indexterm"></a><a id="id-1.3.9.8.6.2.4" class="indexterm"></a>
+<a id="id-1.3.9.8.6.2.5" class="indexterm"></a>
+<a id="id-1.3.9.8.6.2.6" class="indexterm"></a>you need to use a filter without a query (for
 instance, to match all emails in the inbox), you can just omit the
 query:</p><pre class="programlisting prettyprint lang-js">GET /_search
 {

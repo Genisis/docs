@@ -43,9 +43,9 @@ value <code class="literal">1</code>:</p><pre class="programlisting prettyprint 
             }
         }
     }
-}</pre><p>Filters have no bearing on <code class="literal">_score</code>, and the<a id="id-1.3.10.3.5.2" class="indexterm"></a>
-<a id="id-1.3.10.3.5.3" class="indexterm"></a><a id="id-1.3.10.3.5.4" class="indexterm"></a>
-<a id="id-1.3.10.3.5.5" class="indexterm"></a> missing-but-implied <code class="literal">match_all</code>
+}</pre><p>Filters have no bearing on <code class="literal">_score</code>, and the<a id="id-1.3.10.3.5.2" class="indexterm"></a><a id="id-1.3.10.3.5.3" class="indexterm"></a>
+<a id="id-1.3.10.3.5.4" class="indexterm"></a><a id="id-1.3.10.3.5.5" class="indexterm"></a>
+<a id="id-1.3.10.3.5.6" class="indexterm"></a> missing-but-implied <code class="literal">match_all</code>
 query just sets the <code class="literal">_score</code> to a neutral value of <code class="literal">1</code> for all documents. In
 other words, all documents are considered to be equally relevant.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_sorting_by_field_values"></a>Sorting by Field Values<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/056_Sorting/85_Sorting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>In this case, it probably makes sense to sort tweets by recency, with the most
 recent tweets first.<a id="id-1.3.10.3.6.2.1" class="indexterm"></a>
@@ -78,10 +78,9 @@ The <code class="literal">_score</code> is not calculated, because it is not bei
 </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO23-3"><span><img src="images/icons/callouts/3.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 The value of the <code class="literal">date</code> field, expressed as milliseconds since the epoch,
     is returned in the <code class="literal">sort</code> values.
-</p></td></tr></table></div><p>The first is that we have <a id="id-1.3.10.3.6.8.1" class="indexterm"></a>
-<a id="id-1.3.10.3.6.8.2" class="indexterm"></a>a new element in each result called <code class="literal">sort</code>, which
+</p></td></tr></table></div><p>The first is that we have <a id="id-1.3.10.3.6.8.1" class="indexterm"></a>a new element in each result called <code class="literal">sort</code>, which
 contains the value(s) that was used for sorting.  In this case, we sorted on
-<code class="literal">date</code>, which internally is<a id="id-1.3.10.3.6.8.5" class="indexterm"></a> indexed as <span class="emphasis"><em>milliseconds since the epoch</em></span>. The long
+<code class="literal">date</code>, which internally is<a id="id-1.3.10.3.6.8.4" class="indexterm"></a> indexed as <span class="emphasis"><em>milliseconds since the epoch</em></span>. The long
 number <code class="literal">1411516800000</code> is equivalent to the date string <code class="literal">2014-09-24 00:00:00
 UTC</code>.</p><p>The second is that the <code class="literal">_score</code> and <code class="literal">max_score</code> are both <code class="literal">null</code>. <a id="id-1.3.10.3.6.9.4" class="indexterm"></a>
 <a id="id-1.3.10.3.6.9.5" class="indexterm"></a> Calculating
@@ -120,8 +119,7 @@ in the query string:</p><pre class="programlisting prettyprint lang-js">GET /_se
 <a id="id-1.3.10.3.8.2.5" class="indexterm"></a> remember that the values do
 not have any intrinsic order; a multivalue field is just a bag of values.
 Which one do you choose to sort on?</p><p>For numbers and dates, you can reduce a multivalue field to a single value
-by using the <code class="literal">min</code>, <code class="literal">max</code>, <code class="literal">avg</code>, or <code class="literal">sum</code> <span class="emphasis"><em>sort modes</em></span>. <a id="id-1.3.10.3.8.3.6" class="indexterm"></a><a id="id-1.3.10.3.8.3.7" class="indexterm"></a><a id="id-1.3.10.3.8.3.8" class="indexterm"></a><a id="id-1.3.10.3.8.3.9" class="indexterm"></a><a id="id-1.3.10.3.8.3.10" class="indexterm"></a><a id="id-1.3.10.3.8.3.11" class="indexterm"></a>
-<a id="id-1.3.10.3.8.3.12" class="indexterm"></a>For instance, you
+by using the <code class="literal">min</code>, <code class="literal">max</code>, <code class="literal">avg</code>, or <code class="literal">sum</code> <span class="emphasis"><em>sort modes</em></span>. <a id="id-1.3.10.3.8.3.6" class="indexterm"></a><a id="id-1.3.10.3.8.3.7" class="indexterm"></a><a id="id-1.3.10.3.8.3.8" class="indexterm"></a><a id="id-1.3.10.3.8.3.9" class="indexterm"></a><a id="id-1.3.10.3.8.3.10" class="indexterm"></a><a id="id-1.3.10.3.8.3.11" class="indexterm"></a>For instance, you
 could sort on the earliest date in each <code class="literal">dates</code> field by using the following:</p><pre class="programlisting prettyprint lang-js">"sort": {
     "dates": {
         "order": "asc",

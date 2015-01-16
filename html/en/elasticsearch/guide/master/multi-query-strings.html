@@ -29,9 +29,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 <a id="id-1.4.5.5.2.2" class="indexterm"></a>one where we can <span class="emphasis"><em>map
 search terms to specific fields</em></span>. If we know that <span class="emphasis"><em>War and Peace</em></span> is the
 title, and Leo Tolstoy is the author, it is easy to write each of these
-conditions as a <code class="literal">match</code> clause <a id="id-1.4.5.5.2.6" class="indexterm"></a>
-<a id="id-1.4.5.5.2.7" class="indexterm"></a><a id="id-1.4.5.5.2.8" class="indexterm"></a>
-<a id="id-1.4.5.5.2.9" class="indexterm"></a>and to combine them with a <a class="link" href="bool-query.html" title="Combining Queries"><code class="literal">bool</code> query</a>:</p><pre class="programlisting prettyprint lang-js">GET /_search
+conditions as a <code class="literal">match</code> clause <a id="id-1.4.5.5.2.6" class="indexterm"></a><a id="id-1.4.5.5.2.7" class="indexterm"></a>
+<a id="id-1.4.5.5.2.8" class="indexterm"></a>and to combine them with a <a class="link" href="bool-query.html" title="Combining Queries"><code class="literal">bool</code> query</a>:</p><pre class="programlisting prettyprint lang-js">GET /_search
 {
   "query": {
     "bool": {
