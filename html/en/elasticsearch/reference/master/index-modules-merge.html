@@ -31,10 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 down into segments. Segments are internal storage elements in the index
 where the index data is stored, and are immutable up to delete markers.
 Segments are, periodically, merged into larger segments to keep the
-index size at bay and expunge deletes.</p><p>The more segments one has in the Lucene index means slower searches and
-more memory used. Segment merging is used to reduce the number of segments,
-however merges can be expensive to perform, especially on low IO environments.
-Merges can be throttled using <a class="link" href="index-modules-store.html#store-throttling" title="Store Level Throttlingedit">store level throttling</a>.</p><h3><a id="policy"></a>Policy<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/index-modules/merge.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The index merge policy module allows one to control which segments of a
+index size at bay and expunge deletes.</p><h3><a id="policy"></a>Policy<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/index-modules/merge.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The index merge policy module allows one to control which segments of a
 shard index are to be merged. There are several types of policies with
 the default set to <code class="literal">tiered</code>.</p><h4><a id="tiered"></a>tiered<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/index-modules/merge.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Merges segments of approximately equal size, subject to an allowed
 number of segments per tier. This is similar to <code class="literal">log_bytes_size</code> merge
@@ -154,9 +151,20 @@ scheduler supports this setting:</p><div class="variablelist"><dl class="variabl
 <code class="literal">index.merge.scheduler.max_thread_count</code>
 </span></dt><dd>
 The maximum number of threads that may be merging at once. Defaults to
-<code class="literal">Math.max(1, Math.min(3, Runtime.getRuntime().availableProcessors() / 2))</code>
+<code class="literal">Math.max(1, Math.min(4, Runtime.getRuntime().availableProcessors() / 2))</code>
 which works well for a good solid-state-disk (SSD).  If your index is on
 spinning platter drives instead, decrease this to 1.
+</dd><dt><span class="term">
+<code class="literal">index.merge.scheduler.auto_throttle</code>
+</span></dt><dd>
+If this is true (the default), then the merge scheduler will
+rate-limit IO (writes) for merges to an adaptive value depending on
+how many merges are requested over time.  An application with a low
+indexing rate that unluckily suddenly requires a large merge will see
+that merge aggressively throttled, while an application doing heavy
+indexing will see the throttle move higher to allow merges to keep up
+with ongoing indexing.  This is a dynamic setting (you can &lt;&lt;../indices/update-settings,change it
+at any time on a running index&gt;&gt;).
 </dd></dl></div><h4><a id="_serialmergescheduler"></a>SerialMergeScheduler<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/index-modules/merge.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>This is accepted for backwards compatibility, but just uses
 ConcurrentMergeScheduler with index.merge.scheduler.max_thread_count
 set to 1 so that only 1 merge may run at a time.</p></div><div class="navfooter"><span class="prev"><a href="index-modules-slowlog.html">
