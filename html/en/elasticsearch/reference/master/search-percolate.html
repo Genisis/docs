@@ -299,7 +299,13 @@ the time the percolate api needs to run can be decreased.</p><h3><a id="_importa
 against child documents such as <code class="literal">has_child</code>, <code class="literal">has_parent</code> and <code class="literal">top_children</code>.</p><p>The <code class="literal">wildcard</code> and <code class="literal">regexp</code> query natively use a lot of memory and because the percolator keeps the queries into memory
 this can easily take up the available memory in the heap space. If possible try to use a <code class="literal">prefix</code> query or ngramming to
 achieve the same result (with way less memory being used).</p><p>The delete-by-query api doesn’t work to unregister a query, it only deletes the percolate documents from disk. In order
-to update the registered queries in memory the index needs be closed and opened.</p></div><div class="navfooter"><span class="prev"><a href="search-explain.html">
+to update the registered queries in memory the index needs be closed and opened.</p><h3><a id="_forcing_unmapped_fields_to_be_handled_as_string"></a>Forcing unmapped fields to be handled as string<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/search/percolate.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>In certain cases it is unknown what kind of percolator queries do get registered and if no field mapping exist for fields
+that are referred by percolator queries then adding a percolator query fails. This means the mapping needs to be updated
+to have the field with the appropriate settings and then the percolator query can be added. But sometimes it is sufficient
+if all unmapped fields are handled as if these were default string fields. In those cases one can configure the
+<code class="literal">index.percolator.map_unmapped_fields_as_string</code> setting to <code class="literal">true</code> (default to <code class="literal">false</code>) and then if a field referred in
+a percolator query does not exist, it will be handled as a default string field, so adding the percolator query doesn’t
+fail.</p></div><div class="navfooter"><span class="prev"><a href="search-explain.html">
               « 
               Explain API</a>
            
