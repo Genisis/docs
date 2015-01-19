@@ -34,11 +34,9 @@ based on matches in nested inner objects.</p><p>In both cases, the actual matche
 it’s very useful to know which inner nested objects (in the case of nested or children or parent documents), or (in the case
 of parent/child) caused certain information to be returned. The inner hits feature can be used for this. This feature
 returns per search hit in the search response additional nested hits that caused a search hit to match in a different scope.</p><p>Inner hits can be used by defining a <code class="literal">inner_hits</code> definition on a <code class="literal">nested</code>, <code class="literal">has_child</code> or <code class="literal">has_parent</code> query and filter.
-The structure looks like this:</p><pre class="programlisting prettyprint lang-js">"inner_hits" : {
-    "&lt;query&gt;" : {
-        "inner_hits" : {
-            &lt;inner_hits_options&gt;
-        }
+The structure looks like this:</p><pre class="programlisting prettyprint lang-js">"&lt;query&gt;" : {
+    "inner_hits" : {
+        &lt;inner_hits_options&gt;
     }
 }</pre><p>If <code class="literal">_inner_hits</code> is defined on a query that supports it then each search hit will contain a <code class="literal">inner_hits</code> json object with the following structure:</p><pre class="programlisting prettyprint lang-js">"hits": [
      {
