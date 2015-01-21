@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Configuring Logstash</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference" /><link rel="up" href="index.html" title="Reference" /><link rel="prev" href="pipeline.html" title="Logstash Processing Pipeline" /><link rel="next" href="config-examples.html" title="Logstash Configuration Examples" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5FTL28');}
+</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference</a></span> » <span class="breadcrumb-node">Configuring Logstash</span></div><div class="navheader"><span class="prev"><a href="pipeline.html">
+              « 
+              Logstash Processing Pipeline</a>
+           
+        </span><span class="next">
+           
+          <a href="config-examples.html">Logstash Configuration Examples
+               »
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="configuration"></a>Configuring Logstash<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="logstash-reference.html">Getting Started with Logstash</a></span></dt><dt><span class="chapter"><a href="pipeline.html">Logstash Processing Pipeline</a></span></dt><dt><span class="chapter"><a href="configuration.html">Configuring Logstash</a></span></dt><dt><span class="chapter"><a href="_command_line_flags.html">Command-line flags</a></span></dt><dt><span class="chapter"><a href="contributing-to-logstash.html">Extending Logstash</a></span></dt><dt><span class="chapter"><a href="_adding_a_filter_to_logstash.html">Adding a filter to Logstash</a></span></dt><dt><span class="chapter"><a href="input-plugins.html">Input plugins</a></span></dt><dt><span class="chapter"><a href="output-plugins.html">Output plugins</a></span></dt><dt><span class="chapter"><a href="filter-plugins.html">Filter plugins</a></span></dt><dt><span class="chapter"><a href="codec-plugins.html">Codec plugins</a></span></dt></dl></div><p>To configure Logstash, you create a config file that specifies which plugins you want to use and settings for each plugin.
+You can reference event fields in a configuration and use conditionals to process events when they meet certain
+criteria. When you run logstash, you use the <code class="literal">-f</code> to specify your config file.</p><p>Let’s step through creating a simple config file and using it to run Logstash. Create a file named "logstash-simple.conf" and save it in the same directory as Logstash.</p><pre class="programlisting prettyprint lang-ruby">input { stdin { } }
+output {
+  elasticsearch { host =&gt; localhost }
+  stdout { codec =&gt; rubydebug }
+}</pre><p>Then, run logstash and specify the configuration file with the <code class="literal">-f</code> flag.</p><pre class="programlisting prettyprint lang-ruby">bin/logstash -f logstash-simple.conf</pre><p>Et voilà! Logstash reads  the specified configuration file and outputs to both Elasticsearch and stdout. Before we
+move on to some <a class="link" href="config-examples.html" title="Logstash Configuration Examples">more complex examples</a>, let’s take a closer look at what’s in a config file.</p><h3><a id="_structure_of_a_config_file"></a>Structure of a Config File<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>A Logstash config file has a separate section for each type of plugin you want to add to the event processing pipeline. For example:</p><pre class="programlisting prettyprint lang-js"># This is a comment. You should use comments to describe
+# parts of your configuration.
+input {
+  ...
+}
+
+filter {
+  ...
+}
+
+output {
+  ...
+}</pre><p>Each section contains the configuration options for one or more plugins. If you specify
+multiple filters, they are applied in the order of their appearance in the configuration file.</p><h3><a id="plugin_configuration"></a>Plugins<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The configuration of a plugin consists of the plugin name followed
+by a block of settings for that plugin. For example, this input section configures two file inputs:</p><pre class="programlisting prettyprint lang-js">input {
+  file {
+    path =&gt; "/var/log/messages"
+    type =&gt; "syslog"
+  }
+
+  file {
+    path =&gt; "/var/log/apache/access.log"
+    type =&gt; "apache"
+  }
+}</pre><p>In this example, two settings are configured for each of the file inputs: <span class="emphasis"><em>path</em></span> and <span class="emphasis"><em>type</em></span>.</p><p>The settings you can configure vary according to the plugin type. For information about each plugin, see <a class="link" href="input-plugins.html" title="Input plugins">Input Plugins</a>, <a class="link" href="output-plugins.html" title="Output plugins">Output Plugins</a>, <a class="link" href="filter-plugins.html" title="Filter plugins">Filter Plugins</a>, and <a class="link" href="codec-plugins.html" title="Codec plugins">Codec Plugins</a>.</p><h3><a id="_value_types"></a>Value Types<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>A plugin can require that the value for a setting be a
+certain type, such as boolean or hash. The following value
+types are supported.</p><h4><a id="array"></a>Array<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>An array can be a single string value or multiple values. If you specify the same
+setting multiple times, it appends to the array.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  path =&gt; [ "/var/log/messages", "/var/log/*.log" ]
+  path =&gt; "/data/mysql/mysql.log"</pre><p>This example configures <code class="literal">path</code> to be an array that contains an element for each of the three strings.</p><h4><a id="boolean"></a>Boolean<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A boolean must be either <code class="literal">true</code> or <code class="literal">false</code>. Note that the <code class="literal">true</code> and <code class="literal">false</code> keywords
+are not enclosed in quotes.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  ssl_enable =&gt; true</pre><h4><a id="bytes"></a>Bytes<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A bytes field is a string field that represents a valid unit of bytes. It is a
+convenient way to declare specific sizes in your plugin options. Both SI (k M G T P E Z Y)
+and Binary (Ki Mi Gi Ti Pi Ei Zi Yi) units are supported. Binary units are in
+base-1024 and SI units are in base-1000. This field is case-insensitive
+and accepts space between the value and the unit. If no unit is specified, the integer string
+represents the number of bytes.</p><p>Examples:</p><pre class="programlisting prettyprint lang-js">  my_bytes =&gt; "1113"   # 1113 bytes
+  my_bytes =&gt; "10MiB"  # 10485760 bytes
+  my_bytes =&gt; "100kib" # 102400 bytes
+  my_bytes =&gt; "180 mb" # 180000000 bytes</pre><h4><a id="codec"></a>Codec<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A codec is the name of Logstash codec used to represent the data. Codecs can be
+used in both inputs and outputs.</p><p>Input codecs provide a convenient way to decode your data before it enters the input.
+Output codecs provide a convenient way to encode your data before it leaves the output.
+Using an input or output codec eliminates the need for a separate filter in your Logstash pipeline.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  codec =&gt; "json"</pre><h4><a id="hash"></a>Hash<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A hash is a collection of key value pairs specified in the format <code class="literal">"field1" =&gt; "value1"</code>.
+Note that mutliple key value entries are separated by spaces rather than commas.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">match =&gt; {
+  "field1" =&gt; "value1"
+  "field2" =&gt; "value2"
+  ...
+}</pre><h4><a id="number"></a>Number<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Numbers must be valid numeric values (floating point or integer).</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  port =&gt; 33</pre><h4><a id="password"></a>Password<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A password is a string with a single value that is not logged or printed.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  my_password =&gt; "password"</pre><h4><a id="path"></a>Path<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A path is a string that represents a valid operating system path.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  my_path =&gt; "/tmp/logstash"</pre><h4><a id="string"></a>String<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A string must be a single character sequence. Note that string values are enclosed in quotes.</p><p>Example:</p><pre class="programlisting prettyprint lang-js">  name =&gt; "Hello world"</pre><h3><a id="_comments"></a>Comments<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Comments are the same as in perl, ruby, and python. A comment starts with a <span class="emphasis"><em>#</em></span> character, and does not need to be at the beginning of a line. For example:</p><pre class="programlisting prettyprint lang-js"># this is a comment
+
+input { # comments can appear at the end of a line, too
+  # ...
+}</pre><h3><a id="_field_references"></a>Field References<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>All events have properties. For example, an apache access log has things
+like status code (200, 404), request path ("/", "index.html"), HTTP verb (GET, POST),
+and client IP address. Logstash calls these properties fields.</p><p>It is often useful to be able to refer to a field by name. To do this,
+you can use the Logstash field reference syntax.</p><p>The syntax to access a field is <code class="literal">[fieldname]</code>. If you are referring to a
+<span class="strong"><strong>top-level field</strong></span>, you can omit the <code class="literal">[]</code> and simply use <code class="literal">fieldname</code>.
+To refer to a <span class="strong"><strong>nested field</strong></span>, you specify
+the full path to that field: <code class="literal">[top-level field][nested field]</code>.</p><p>For example, the following event has five top-level fields (agent, ip, request, response,
+ua) and three nested fields (status, bytes, os).</p><pre class="programlisting prettyprint lang-js">{
+  "agent": "Mozilla/5.0 (compatible; MSIE 9.0)",
+  "ip": "192.168.24.44",
+  "request": "/index.html"
+  "response": {
+    "status": 200,
+    "bytes": 52353
+  },
+  "ua": {
+    "os": "Windows 7"
+  }
+}</pre><p>To reference the <code class="literal">os</code> field, you specify <code class="literal">[ua][os]</code>. To reference a top-level
+field such as <code class="literal">request</code>, you can simply specify the field name.</p><h4><a id="_sprintf_format"></a>sprintf format<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The field reference format is also used in what Logstash calls <span class="emphasis"><em>sprintf format</em></span>. This format
+enables you to refer to field values from within other strings. For example, the
+statsd output has an <span class="emphasis"><em>increment</em></span> setting that enables you to keep a count of
+apache logs by status code:</p><pre class="programlisting prettyprint lang-js">output {
+  statsd {
+    increment =&gt; "apache.%{[response][status]}"
+  }
+}</pre><p>You can also format times using in this sprintf format. Instead of specifying a field name, use the <code class="literal">+FORMAT</code> syntax where <code class="literal">FORMAT</code> is a <a class="ulink" href="http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html" target="_top">time format</a>.</p><p>For example, if you want to use the file output to write to logs based on the
+hour and the <span class="emphasis"><em>type</em></span> field:</p><pre class="programlisting prettyprint lang-js">output {
+  file {
+    path =&gt; "/var/log/%{type}.%{+yyyy.MM.dd.HH}"
+  }
+}</pre><h3><a id="conditionals"></a>Conditionals<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Sometimes you only want to filter or output an event under
+certain conditions. For that, you can use a conditional.</p><p>Conditionals in Logstash look and act the same way they do in programming
+languages. Conditionals support <code class="literal">if</code>, <code class="literal">else if</code> and <code class="literal">else</code> statements
+and can be nested.</p><p>The conditional syntax is:</p><pre class="programlisting prettyprint lang-js">if EXPRESSION {
+  ...
+} else if EXPRESSION {
+  ...
+} else {
+  ...
+}</pre><p>What’s an expression? Comparison tests, boolean logic, and so on!</p><p>You can use the following comparison operators:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+equality: ==,  !=,  &lt;,  &gt;,  ⇐,  &gt;=
+</li><li class="listitem">
+regexp: =<sub>, !</sub>
+</li><li class="listitem">
+inclusion: in, not in
+</li></ul></div><p>The supported boolean operators are:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+and, or, nand, xor
+</li></ul></div><p>The supported unary operators are:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+!
+</li></ul></div><p>Expressions can be long and complex. Expressions can contain other expressions,
+you can negate expressions with <code class="literal">!</code>, and you can group them with parentheses <code class="literal">(...)</code>.</p><p>For example, the following conditional uses the mutate filter to remove the field <code class="literal">secret</code> if the field
+<code class="literal">action</code> has a value of <code class="literal">login</code>:</p><pre class="programlisting prettyprint lang-js">filter {
+  if [action] == "login" {
+    mutate { remove =&gt; "secret" }
+  }
+}</pre><p>You can specify multiple expressions in a single condition:</p><pre class="programlisting prettyprint lang-js">output {
+  # Send production errors to pagerduty
+  if [loglevel] == "ERROR" and [deployment] == "production" {
+    pagerduty {
+    ...
+    }
+  }
+}</pre><p>The <code class="literal">in</code> conditional enables you to compare against the value of a field:</p><pre class="programlisting prettyprint lang-js">filter {
+  if [foo] in [foobar] {
+    mutate { add_tag =&gt; "field in field" }
+  }
+  if [foo] in "foo" {
+    mutate { add_tag =&gt; "field in string" }
+  }
+  if "hello" in [greeting] {
+    mutate { add_tag =&gt; "string in field" }
+  }
+  if [foo] in ["hello", "world", "foo"] {
+    mutate { add_tag =&gt; "field in list" }
+  }
+  if [missing] in [alsomissing] {
+    mutate { add_tag =&gt; "shouldnotexist" }
+  }
+  if !("foo" in ["hello", "world"]) {
+    mutate { add_tag =&gt; "shouldexist" }
+  }
+}</pre><p>You use the <code class="literal">not in</code> conditional the same way. For example,
+you could use <code class="literal">not in</code> to only route events to elasticsearch
+when <code class="literal">grok</code> is successful:</p><pre class="programlisting prettyprint lang-js">output {
+  if "_grokparsefailure" not in [tags] {
+    elasticsearch { ... }
+  }
+}</pre><p>For more complex examples, see <a class="link" href="config-examples.html#using-conditionals" title="Using Conditionalsedit">Using Conditionals</a>.</p></div><div class="navfooter"><span class="prev"><a href="pipeline.html">
+              « 
+              Logstash Processing Pipeline</a>
+           
+        </span><span class="next">
+           
+          <a href="config-examples.html">Logstash Configuration Examples
+               »
+            </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script></body></html>
