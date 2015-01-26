@@ -64,6 +64,12 @@ repos:
         current:    3.0
         branches:   [3.0]
 
+    shield:
+        url:        https://github.com/elasticsearch/elasticsearch-shield.git
+        current:    1.0
+        branches:   [1.0]
+        private:    1
+
 contents_title:     Guide
 
 contents:
@@ -95,6 +101,15 @@ contents:
             branches:   [master]
             current:    master
             single:     1
+
+    -
+        title:      Shield seurity for Elasticsearch
+        prefix:     en/shield
+        repo:       shield
+        index:      docs/public/00-index.asciidoc
+        abbr:       shield
+        chunk:      1
+        abbr:       shield
 
     -
         title:      Marvel management and monitoring
