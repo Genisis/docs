@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Appendix 8. Reference</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Shield - Elasticsearch Security Plugin" /><link rel="up" href="index.html" title="Shield - Elasticsearch Security Plugin" /><link rel="prev" href="trouble-shooting.html" title="Appendix 7. Trouble Shooting" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script src="//fast.wistia.com/static/iframe-api-v1.js"></script><script type="text/javascript">
+      jQuery(function() {
+        jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
+        jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
+      });
+    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5FTL28');}
+</script><!--[if lt IE 8]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+      <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Shield - Elasticsearch Security Plugin</a></span> » <span class="breadcrumb-node">Appendix 8. Reference</span></div><div class="navheader"><span class="prev"><a href="trouble-shooting.html">
+              « 
+              Appendix 7. Trouble Shooting</a>
+           
+        </span><span class="next">
+           
+          </span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="reference"></a>Appendix 8. Reference</h1></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="introduction.html">Introduction</a></span></dt><dt><span class="chapter"><a href="architecture.html">Architecture Overview</a></span></dt><dt><span class="chapter"><a href="getting-started.html">Getting Started</a></span></dt><dt><span class="chapter"><a href="authorization.html">Authorization</a></span></dt><dt><span class="chapter"><a href="authentication.html">Authentication</a></span></dt><dt><span class="chapter"><a href="securing-nodes.html">Securing Nodes</a></span></dt><dt><span class="chapter"><a href="auditing.html">Auditing</a></span></dt><dt><span class="chapter"><a href="clients.html">Integrating Shield with clients</a></span></dt><dt><span class="chapter"><a href="certificate-authority.html">Appendix 1. Running a Certificate Authority</a></span></dt><dt><span class="chapter"><a href="license-management.html">Appendix 2. License Management</a></span></dt><dt><span class="chapter"><a href="limitations.html">Appendix 3. Limitations</a></span></dt><dt><span class="chapter"><a href="securing-aliases.html">Appendix 4. Securing Indices &amp; Aliases</a></span></dt><dt><span class="chapter"><a href="tribe-node.html">Appendix 5. Tribe Node</a></span></dt><dt><span class="chapter"><a href="example.html">Appendix 6. Full <code class="literal">esusers</code> Example</a></span></dt><dt><span class="chapter"><a href="trouble-shooting.html">Appendix 7. Trouble Shooting</a></span></dt><dt><span class="chapter"><a href="reference.html">Appendix 8. Reference</a></span></dt></dl></div><h3><a id="privileges-list"></a>Privileges</h3><h4><a id="privileges-list-cluster"></a>Cluster</h4><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">all</code>
+</p>
+</td><td valign="top">
+<p>
+All cluster administration operations, like snapshotting, node shutdown/restart, settings update or rerouting
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">monitor</code>
+</p>
+</td><td valign="top">
+<p>
+All cluster read-ony operations, like cluster health &amp; state, hot threads, node info, node &amp; cluster
+stats, snapshot/restore status, pending cluster tasks
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">manage_shield</code>
+</p>
+</td><td valign="top">
+<p>
+All Shield related operations (currently only exposing an API for clearing the realm caches)
+</p>
+</td></tr></tbody></table></div><h4><a id="privileges-list-indices"></a>Indices</h4><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+<p>
+<code class="literal">all</code>
+</p>
+</td><td valign="top">
+<p>
+Any action on an index
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">manage</code>
+</p>
+</td><td valign="top">
+<p>
+All <code class="literal">monitor</code> privileges plus index administration (aliases, analyze, cache clear, close, delete, exists,
+flush, mapping, open, optimize, refresh, settings, search shards, templates, validate, warmers)
+<code class="literal">monitor</code>": All actions, that are required for monitoring and read-only (recovery, segments info, index stats &amp; status)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">data_access</code>
+</p>
+</td><td valign="top">
+<p>
+A shortcut of all of the below privileges
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">crud</code>
+</p>
+</td><td valign="top">
+<p>
+A shortcut of <code class="literal">read</code> and <code class="literal">write</code> privileges
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">read</code>
+</p>
+</td><td valign="top">
+<p>
+Read only access to actions (count, explain, get, exists, mget, get indexed scripts, more like this, multi
+percolate/search/termvector), percolate, scroll, clear_scroll, search, suggest, tv)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">search</code>
+</p>
+</td><td valign="top">
+<p>
+All of <code class="literal">suggest</code> and executing an arbitrary search request (including multi-search API)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">get</code>
+</p>
+</td><td valign="top">
+<p>
+Allow to execute a GET request for a single document or multiple documents via the multi-get API
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">suggest</code>
+</p>
+</td><td valign="top">
+<p>
+Allow to execute the <code class="literal">_suggest</code> API
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">index</code>
+</p>
+</td><td valign="top">
+<p>
+Privilege to index and update documents
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">create_index</code>
+</p>
+</td><td valign="top">
+<p>
+Privilege to create an index. A create index request may contain aliases to be added to the index once
+created. In that case the request requires <code class="literal">manage_aliases</code> privilege as well, on both the index and the aliases names.
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">manage_aliases</code>
+</p>
+</td><td valign="top">
+<p>
+Privilege to add and remove aliases, as well as retrieve aliases information. Note that in order
+to add an alias to an existing index, the <code class="literal">manage_aliases</code> privilege is required on the existing index as well as on the
+alias name
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">delete</code>
+</p>
+</td><td valign="top">
+<p>
+Privilege to delete documents (includes delete by query)
+</p>
+</td></tr><tr><td valign="top">
+<p>
+<code class="literal">write</code>
+</p>
+</td><td valign="top">
+<p>
+Privilege to index, update, delete, delete by query and bulk operations on documents, in addition to delete
+and put indexed scripts
+</p>
+</td></tr></tbody></table></div><h4><a id="ref-actions-list"></a>Action level privileges</h4><p>Although rarely needed, it is also possible to define privileges on specific actions that are available in
+Elasticsearch. This only applies to publicly available indices and cluster actions.</p><h5><a id="ref-actions-list-cluster"></a>Cluster actions privileges</h5><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">cluster:admin/nodes/restart</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/nodes/shutdown</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/repository/delete</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/repository/get</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/repository/put</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/repository/verify</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/reroute</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/settings/update</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/snapshot/create</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/snapshot/delete</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/snapshot/get</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/snapshot/restore</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/snapshot/status</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/plugin/license/get</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/plugin/license/delete</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/plugin/license/put</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/indices/scroll/clear_all</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/analyze</code>
+</li><li class="listitem">
+<code class="literal">cluster:admin/shield/realm/cache/clear</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/health</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/nodes/hot_threads</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/nodes/info</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/nodes/stats</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/state</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/stats</code>
+</li><li class="listitem">
+<code class="literal">cluster:monitor/task</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/template/delete</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/template/get</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/template/put</code>
+</li></ul></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>While indices template actions typically relate to indices, they are categorized under cluster actions to avoid
+      potential security leaks (e.g. having one user define a template that may match another user’s index and then be
+      applied).</p></div></div><h5><a id="ref-actions-list-indices"></a>Indices actions privileges</h5><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">indices:admin/aliases</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/aliases/exists</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/aliases/get</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/analyze</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/cache/clear</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/close</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/create</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/delete</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/exists</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/flush</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/get</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/mapping/delete</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/mapping/put</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/mappings/fields/get</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/mappings/get</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/open</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/optimize</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/refresh</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/settings/update</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/shards/search_shards</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/types/exists</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/validate/query</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/warmers/delete</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/warmers/get</code>
+</li><li class="listitem">
+<code class="literal">indices:admin/warmers/put</code>
+</li><li class="listitem">
+<code class="literal">indices:monitor/recovery</code>
+</li><li class="listitem">
+<code class="literal">indices:monitor/segments</code>
+</li><li class="listitem">
+<code class="literal">indices:monitor/settings/get</code>
+</li><li class="listitem">
+<code class="literal">indices:monitor/stats</code>
+</li><li class="listitem">
+<code class="literal">indices:monitor/status</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/count</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/exists</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/explain</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/get</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/mget</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/mlt</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/mpercolate</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/msearch</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/mtv</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/percolate</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/script/get</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/scroll</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/scroll/clear</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/search</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/suggest</code>
+</li><li class="listitem">
+<code class="literal">indices:data/read/tv</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/bulk</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/delete</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/delete/by_query</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/index</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/script/delete</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/script/put</code>
+</li><li class="listitem">
+<code class="literal">indices:data/write/update</code>
+</li></ul></div><h3><a id="ref-shield-settings"></a>Shield Settings</h3><p>The parameters listed in this section are configured in the <code class="literal">config/elasticsearch.yml</code> configuration file.</p><div class="table"><a id="message-auth-settings"></a><p class="title"><strong>Table 18. Shield Message Authentication Settings</strong></p><div class="table-contents"><table summary="Shield Message Authentication Settings" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th align="left" valign="top"> Name                     </th><th align="left" valign="top"> Default                                               </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">shield.system_key.file</code></p></td><td align="left" valign="top"><p><code class="literal">system_key</code> under Shield’s <a class="link" href="getting-started.html#shield-config">config</a></p></td><td align="left" valign="top"><p>Sets the location of the <code class="literal">system_key</code> file (read more <a class="link" href="getting-started.html#message-authentication" title="Message Authentication">here</a>)</p></td></tr></tbody></table></div></div><br class="table-break" /><h4><a id="ref-realm-settings"></a>Realm Settings</h4><p>All realms are configured under the <code class="literal">shield.authc.realms</code> settings, keyed by their names as follows:</p><pre class="programlisting prettyprint lang-yaml">shield.authc.realms:
+
+    realm1:
+        type: esusers
+        order: 0
+        ...
+
+    realm2:
+        type: ldap
+        order: 1
+        ...
+
+    realm3:
+        type: active_directory
+        order: 2
+        ...
+    ...</pre><div class="table"><a id="id-1.17.20"></a><p class="title"><strong>Table 19. Common Settings to All Realms</strong></p><div class="table-contents"><table summary="Common Settings to All Realms" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /><col class="col_4" /></colgroup><thead><tr><th align="left" valign="top"> Name          </th><th align="left" valign="top"> Required    </th><th align="left" valign="top"> Default              </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">type</code></p></td><td align="left" valign="top"><p>yes</p></td><td align="left" valign="top"><p>-</p></td><td align="left" valign="top"><p>The type of the reamlm (currently <code class="literal">esusers</code>, <code class="literal">ldap</code> or <code class="literal">active_directory</code>)</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">order</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>Integer.MAX_VALUE</p></td><td align="left" valign="top"><p>The priority of the realm within the realm chain</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">enabled</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>true</p></td><td align="left" valign="top"><p>Enable/disable the realm</p></td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="ref-esusers-settings"></a><p class="title"><strong>Table 20. <span class="emphasis"><em>esusers</em></span> Realm</strong></p><div class="table-contents"><table summary="esusers Realm" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /><col class="col_4" /></colgroup><thead><tr><th align="left" valign="top"> Name                 </th><th align="left" valign="top"> Required    </th><th align="left" valign="top"> Default                                               </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">files.users</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">users</code> under Shield’s <a class="link" href="getting-started.html#shield-config">config</a></p></td><td align="left" valign="top"><p>The location of <a class="link" href="esusers.html#users-file" title="The users File"><span class="emphasis"><em>users</em></span></a> file</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">files.users_roles</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">users_roles</code> under Shield’s <a class="link" href="getting-started.html#shield-config">config</a></p></td><td align="left" valign="top"><p>The location of <a class="link" href="esusers.html#users_roles-file" title="The users_roles File"><span class="emphasis"><em>users_roles</em></span></a> file</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.ttl</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">20m</code></p></td><td align="left" valign="top"><p>Specified the time-to-live for cached user entries (a user and its credentials will be cached for this configured period of time). Defaults to <code class="literal">20m</code> (use the standard elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/common-options.html#time-units" target="_top">time units</a>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.max_users</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>100000</p></td><td align="left" valign="top"><p>Specified the maximum number of user entries that can live in the cache at a given time. Defaults to 100,000.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.hash_algo</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">bcrypt4</code></p></td><td align="left" valign="top"><p>(Expert Setting) Specifies the hashing algorithm that will be used for the in-memory cached user credentials (see <a class="link" href="reference.html#ref-cache-hash-algo" title="Table 23. Cache hash algorithms">Cache hash algorithms</a> table for all possible values).</p></td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="ref-ldap-settings"></a><p class="title"><strong>Table 21. Shield LDAP Settings</strong></p><div class="table-contents"><table summary="Shield LDAP Settings" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /><col class="col_4" /></colgroup><thead><tr><th align="left" valign="top"> Name                             </th><th align="left" valign="top"> Required   </th><th align="left" valign="top"> Default                                                    </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">url</code></p></td><td align="left" valign="top"><p>yes</p></td><td align="left" valign="top"><p>-</p></td><td align="left" valign="top"><p>An LDAP URL in the format <code class="literal">ldap[s]://&lt;server&gt;:&lt;port&gt;</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">user_dn_templates</code></p></td><td align="left" valign="top"><p>yes</p></td><td align="left" valign="top"><p>-</p></td><td align="left" valign="top"><p>The DN template that replaces the user name with the string <code class="literal">{0}</code>. This element is multivalued, allowing for multiple user contexts.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">group_search.base_dn</code></p></td><td align="left" valign="top"><p>yes</p></td><td align="left" valign="top"><p>-</p></td><td align="left" valign="top"><p>The container DN to search for groups in which the user has membership. When this element is absent, Shield searches for a <code class="literal">memberOf</code> attribute set on the user in order to determine group membership.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">group_search.scope</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">sub_tree</code></p></td><td align="left" valign="top"><p>Specifies whether the group search should be <code class="literal">sub_tree</code>, <code class="literal">one_level</code> or <code class="literal">base</code>.  <code class="literal">one_level</code> only searches objects directly contained within the <code class="literal">base_dn</code>. <code class="literal">sub_tree</code> searches all objects contained under <code class="literal">base_dn</code>. <code class="literal">base</code> specifies that the <code class="literal">base_dn</code> is a group object, and that it is the only group considered.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">group_search.filter</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>See description</p></td><td align="left" valign="top"><p>When not set, the realm will search for <code class="literal">group</code>, <code class="literal">groupOfNames</code>, or <code class="literal">groupOfUniqueNames', with the attributes `member</code> or <code class="literal">memberOf</code>.  Any instance of <code class="literal">{0}</code> in the filter will be replaced by the user attribute defined in <code class="literal">group_search.user_attribute</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">group_search.user_attribute</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>Empty</p></td><td align="left" valign="top"><p>Specifies the user attribute that will be fetched and provided as a parameter to the filter.  If not set, the user DN is passed into the filter.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">unmapped_groups_as_roles</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>false</p></td><td align="left" valign="top"><p>Takes a boolean variable. When this element is set to <code class="literal">true</code>, the names of any unmapped LDAP groups are used as role names and assigned to the user. THe default value is <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">files.role_mapping</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">role_mapping.yml</code> under Shield’s <a class="link" href="getting-started.html#shield-config">config</a></p></td><td align="left" valign="top"><p>The path and file name for the <a class="link" href="ldap.html#ldap-role-mapping" title="Mapping Groups to Roles">YAML role mapping configuration file</a>. The default file name is <code class="literal">role_mapping.yml</code> in the <a class="link" href="getting-started.html#shield-config">Shield config directory</a>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">connect_timeout</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>"5s" - for 5 seconds</p></td><td align="left" valign="top"><p>The timeout period for establishing an LDAP connection.  An <code class="literal">s</code> at the end indicates seconds, or <code class="literal">ms</code> indicates milliseconds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">read_timeout</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>"5s" - for 5 seconds</p></td><td align="left" valign="top"><p>The timeout period for an LDAP operation.  An <code class="literal">s</code> at the end indicates seconds, or <code class="literal">ms</code> indicates milliseconds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">hostname_verification</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>true</p></td><td align="left" valign="top"><p>Performs hostname verification when using <code class="literal">ldaps</code> to protect against man in the middle attacks.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.ttl</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">20m</code></p></td><td align="left" valign="top"><p>Specified the time-to-live for cached user entries (a user and its credentials will be cached for this configured period of time). (use the standard elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/common-options.html#time-units" target="_top">time units</a>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.max_users</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>100000</p></td><td align="left" valign="top"><p>Specified the maximum number of user entries that can live in the cache at a given time.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.hash_algo</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">bcrypt4</code></p></td><td align="left" valign="top"><p>(Expert Setting) Specifies the hashing algorithm that will be used for the in-memory cached user credentials (see <a class="link" href="reference.html#ref-cache-hash-algo" title="Table 23. Cache hash algorithms">Cache hash algorithms</a> table for all possible values).</p></td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="ref-ad-settings"></a><p class="title"><strong>Table 22. Shield Active Directory Settings</strong></p><div class="table-contents"><table summary="Shield Active Directory Settings" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /><col class="col_4" /></colgroup><thead><tr><th align="left" valign="top"> Name                          </th><th align="left" valign="top"> Required    </th><th align="left" valign="top"> Default                                                     </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">url</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">ldap://&lt;domain_name&gt;:389</code></p></td><td align="left" valign="top"><p>A URL in the format <code class="literal">ldap[s]://&lt;server&gt;:&lt;port&gt;</code>  If not specified the URL will be derived from the domain_name, assuming clear-text <code class="literal">ldap</code> and port <code class="literal">389</code> (e.g. <code class="literal">ldap://&lt;domain_name&gt;:389</code>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">domain_name</code></p></td><td align="left" valign="top"><p>yes</p></td><td align="left" valign="top"><p>-</p></td><td align="left" valign="top"><p>The domain name of Active Directory. The cluster can derive the URL and <code class="literal">user_search_dn</code> fields from values in this element if those fields are not otherwise specified.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">unmapped_groups_as_roles</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>false</p></td><td align="left" valign="top"><p>Takes a boolean variable. When this element is set to <code class="literal">true</code>, the names of any unmapped groups are used as role names and assigned to the user. THe default value is <code class="literal">false</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">files.role_mapping</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">role_mapping.yml</code> under Shield’s <a class="link" href="getting-started.html#shield-config">config</a></p></td><td align="left" valign="top"><p>The path and file name for the <a class="link" href="active_directory.html#ad-role-mapping" title="Mapping Groups to Roles">YAML role mapping configuration file</a>. The default file name is <code class="literal">role_mapping.yml</code> in the <a class="link" href="getting-started.html#shield-config">Shield config directory</a>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">user_search.base_dn</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>Root of Active Directory</p></td><td align="left" valign="top"><p>The context to search for a user. The default value for this element is the root of the Active Directory domain.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">user_search.scope</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">sub_tree</code></p></td><td align="left" valign="top"><p>Specifies whether the user search should be <code class="literal">sub_tree</code>, <code class="literal">one_level</code> or <code class="literal">base</code>.  <code class="literal">one_level</code> only searches users directly contained within the <code class="literal">base_dn</code>. <code class="literal">sub_tree</code> searches all objects contained under <code class="literal">base_dn</code>. <code class="literal">base</code> specifies that the <code class="literal">base_dn</code> is a user object, and that it is the only user considered.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">user_search.filter</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>See description</p></td><td align="left" valign="top"><p>Specifies a filter to use to lookup a user given a username.  The default filter looks up <code class="literal">user</code> objects with either <code class="literal">sAMAccountName</code> or <code class="literal">userPrincipalName</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">group_search.base_dn</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>Root of Active Directory</p></td><td align="left" valign="top"><p>The context to search for groups in which the user has membership.  The default value for this element is the root of the the Active Directory domain</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">group_search.scope</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">sub_tree</code></p></td><td align="left" valign="top"><p>Specifies whether the group search should be <code class="literal">sub_tree</code>, <code class="literal">one_level</code> or <code class="literal">base</code>.  <code class="literal">one_level</code> searches for groups directly contained within the <code class="literal">base_dn</code>. <code class="literal">sub_tree</code> searches all objects contained under <code class="literal">base_dn</code>. <code class="literal">base</code> specifies that the <code class="literal">base_dn</code> is a group object, and that it is the only group considered.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">timeout.tcp_connect</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">5s</code> - for 5 seconds</p></td><td align="left" valign="top"><p>The TCP connect timeout period for establishing an LDAP connection.  An <code class="literal">s</code> at the end indicates seconds, or <code class="literal">ms</code> indicates milliseconds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">timeout.tcp_read</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">5s</code> - for 5 seconds</p></td><td align="left" valign="top"><p>The TCP read timeout period after establishing an LDAP connection.  An <code class="literal">s</code> at the end indicates seconds, or <code class="literal">ms</code> indicates milliseconds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">timeout.ldap_search</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">5s</code> - for 5 seconds</p></td><td align="left" valign="top"><p>The LDAP Server enforced timeout period for an LDAP search.  An <code class="literal">s</code> at the end indicates seconds, or <code class="literal">ms</code> indicates milliseconds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">hostname_verification</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>true</p></td><td align="left" valign="top"><p>Performs hostname verification when using <code class="literal">ldaps</code> to protect against man in the middle attacks.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.ttl</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">20m</code></p></td><td align="left" valign="top"><p>Specified the time-to-live for cached user entries (a user and its credentials will be cached for this configured period of time). (use the standard elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/common-options.html#time-units" target="_top">time units</a>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.max_users</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p>100000</p></td><td align="left" valign="top"><p>Specified the maximum number of user entries that can live in the cache at a given time.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">cache.hash_algo</code></p></td><td align="left" valign="top"><p>no</p></td><td align="left" valign="top"><p><code class="literal">bcrypt4</code></p></td><td align="left" valign="top"><p>(Expert Setting) Specifies the hashing algorithm that will be used for the in-memory cached user credentials (see <a class="link" href="reference.html#ref-cache-hash-algo" title="Table 23. Cache hash algorithms">Cache hash algorithms</a> table for all possible values).</p></td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="ref-cache-hash-algo"></a><p class="title"><strong>Table 23. Cache hash algorithms</strong></p><div class="table-contents"><table summary="Cache hash algorithms" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /></colgroup><tbody><tr><td align="left" valign="top"><p>Algorithm</p></td><td align="left" valign="top"><p>Description</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 10 rounds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt4</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 4 rounds (default).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt5</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 5 rounds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt6</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 6 rounds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt7</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 7 rounds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt8</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 8 rounds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">bcrypt9</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">bcrypt</code> algorithm with salt generated in 9 rounds.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">sha1</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">SHA1</code> algorithm.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">sha2</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">SHA2</code> algorithm.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">md5</code></p></td><td align="left" valign="top"><p>Uses <code class="literal">MD5</code> algorithm.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">noop</code>,<code class="literal">clear_text</code></p></td><td align="left" valign="top"><p>Doesn’t hash the credentials and keeps it in clear text in memory. CAUTION:
+                                    keeping clear text is considered insecure and can be compromised at the OS
+                                    level (e.g. memory dumps and <code class="literal">ptrace</code>).</p></td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="ref-roles-settings"></a><p class="title"><strong>Table 24. Shield Roles Settings</strong></p><div class="table-contents"><table summary="Shield Roles Settings" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th align="left" valign="top"> Name                                        </th><th align="left" valign="top"> Default                                 </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">shield.authz.store.file.roles</code></p></td><td align="left" valign="top"><p><code class="literal">roles.yml</code> under Shield’s <a class="link" href="getting-started.html#shield-config">config</a></p></td><td align="left" valign="top"><p>The location of the roles definition file</p></td></tr></tbody></table></div></div><br class="table-break" /><h4><a id="ref-ssl-tls-settings"></a>TLS/SSL Settings</h4><div class="table"><a id="id-1.17.27"></a><p class="title"><strong>Table 25. Shield TLS/SSL Settings</strong></p><div class="table-contents"><table summary="Shield TLS/SSL Settings" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th align="left" valign="top"> Name                                            </th><th align="left" valign="top"> Default </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.keystore.path</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>Absolute path to the keystore that holds the private keys</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.keystore.password</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>Password to the keystore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.keystore.key_password</code></p></td><td align="left" valign="top"><p>Same value as <code class="literal">shield.ssl.keystore.password</code></p></td><td align="left" valign="top"><p>Password for the private key in the keystore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.keystore.algorithm</code></p></td><td align="left" valign="top"><p>SunX509</p></td><td align="left" valign="top"><p>Format for the keystore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.truststore.path</code></p></td><td align="left" valign="top"><p><code class="literal">shield.ssl.keystore.path</code></p></td><td align="left" valign="top"><p>If not set, this setting defaults to <code class="literal">shield.ssl.keystore</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.truststore.password</code></p></td><td align="left" valign="top"><p><code class="literal">shield.ssl.keystore.password</code></p></td><td align="left" valign="top"><p>Password to the truststore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.truststore.algorithm</code></p></td><td align="left" valign="top"><p>SunX509</p></td><td align="left" valign="top"><p>Format for the truststore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.protocol</code></p></td><td align="left" valign="top"><p><code class="literal">TLS</code></p></td><td align="left" valign="top"><p>Protocol for security: <code class="literal">SSL</code>, <code class="literal">SSLv2</code>, <code class="literal">SSLv3</code>, <code class="literal">TLS</code>, <code class="literal">TLSv1</code>, <code class="literal">TLSv1.1</code>, <code class="literal">TLSv1.2</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.supported_protocols</code></p></td><td align="left" valign="top"><p><code class="literal">TLSv1</code>, <code class="literal">TLSv1.1</code>, <code class="literal">TLSv1.2</code></p></td><td align="left" valign="top"><p>Supported protocols with versions. Valid protocols: <code class="literal">SSLv2Hello</code>, <code class="literal">SSLv3</code>, <code class="literal">TLSv1</code>, <code class="literal">TLSv1.1</code>, <code class="literal">TLSv1.2</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.ciphers</code></p></td><td align="left" valign="top"><p><code class="literal">TLS_RSA_WITH_AES_128_CBC_SHA256</code>, <code class="literal">TLS_RSA_WITH_AES_128_CBC_SHA</code>, <code class="literal">TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code>, <code class="literal">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</code></p></td><td align="left" valign="top"><p>Supported cipher suites can be found in Oracle’s <a class="ulink" href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/SunProviders.html" target="_top">Java Cryptography Architecture documentation</a>. Cipher suites using key lengths greater than 128 bits require the <a class="link" href="ciphers.html" title="Enabling Cipher Suites for Stronger Encryption">JCE Unlimited Strength Jurisdiction Policy Files</a>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.hostname_verification</code></p></td><td align="left" valign="top"><p><code class="literal">true</code></p></td><td align="left" valign="top"><p>Performs hostname verification on client connections to nodes. This is enabled by default to protect against man in the middle attacks.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.hostname_verification.resolve_name</code></p></td><td align="left" valign="top"><p><code class="literal">true</code></p></td><td align="left" valign="top"><p>If an IP address is used to connect to a node, a reverse DNS lookup can be used to find the hostname. This is enabled by default. If this is disabled, the IP address used to connect to the node must be specified as a SubjectAlternativeName when <a class="link" href="private-key.html" title="Generate a node private key and certificate">creating the certificate</a>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.session.cache_size</code></p></td><td align="left" valign="top"><p><code class="literal">1000</code></p></td><td align="left" valign="top"><p>Number of SSL Sessions to cache in order to support session resumption. Setting the value to <code class="literal">0</code> means there is no size limit.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.ssl.session.cache_timeout</code></p></td><td align="left" valign="top"><p><code class="literal">24h</code></p></td><td align="left" valign="top"><p>The time after the creation of a SSL session before it times out. (uses the standard elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/common-options.html#time-units" target="_top">time units</a>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.transport.ssl</code></p></td><td align="left" valign="top"><p><code class="literal">false</code></p></td><td align="left" valign="top"><p>Set this parameter to <code class="literal">true</code> to enable SSL/TLS</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.transport.ssl.client.auth</code></p></td><td align="left" valign="top"><p><code class="literal">true</code></p></td><td align="left" valign="top"><p>Require client side certificates for transport protocol</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.transport.filter.allow</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>List of IP addresses to allow</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.transport.filter.deny</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>List of IP addresses to deny</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.http.ssl</code></p></td><td align="left" valign="top"><p><code class="literal">false</code></p></td><td align="left" valign="top"><p>Set this parameter to <code class="literal">true</code> to enable SSL/TLS</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.http.ssl.client.auth</code></p></td><td align="left" valign="top"><p><code class="literal">false</code></p></td><td align="left" valign="top"><p>Require client side certificates for HTTP</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.http.filter.allow</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>List of IP addresses to allow just for HTTP</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">shield.http.filter.deny</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>List of IP addresses to deny just for HTTP</p></td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="ref-ssl-tls-profile-settings"></a><p class="title"><strong>Table 26. Shield TLS/SSL settings per profile</strong></p><div class="table-contents"><table summary="Shield TLS/SSL settings per profile" cellpadding="4px" border="1"><colgroup><col class="col_1" /><col class="col_2" /><col class="col_3" /></colgroup><thead><tr><th align="left" valign="top"> Name                                                        </th><th align="left" valign="top"> Default  </th><th align="left" valign="top"> Description</th></tr></thead><tbody><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.ssl</code></p></td><td align="left" valign="top"><p>Same as <code class="literal">shield.transport.ssl</code></p></td><td align="left" valign="top"><p>Setting this parameter to true will enable SSL/TLS for this profile; false will disable SSL/TLS for this profile.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.truststore.path</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>Absolute path to the truststore of this profile</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.truststore.password</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>Password to the truststore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.truststore.algorithm</code></p></td><td align="left" valign="top"><p>SunX509</p></td><td align="left" valign="top"><p>Format for the truststore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.keystore.path</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>Absolute path to the keystore of this profile</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.keystore.password</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>Password to the keystore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.keystore.key_password</code></p></td><td align="left" valign="top"><p>Same value as <code class="literal">transport.profiles.$PROFILE.shield.keystore.password</code></p></td><td align="left" valign="top"><p>Password for the private key in the keystore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.keystore.algorithm</code></p></td><td align="left" valign="top"><p>SunX509</p></td><td align="left" valign="top"><p>Format for the keystore</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.session.cache_size</code></p></td><td align="left" valign="top"><p><code class="literal">1000</code></p></td><td align="left" valign="top"><p>Number of SSL Sessions to cache in order to support session resumption. Setting the value to <code class="literal">0</code> means there is no size limit.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.session.cache_timeout</code></p></td><td align="left" valign="top"><p><code class="literal">24h</code></p></td><td align="left" valign="top"><p>The time after the creation of a SSL session before it times out. (uses the standard elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/common-options.html#time-units" target="_top">time units</a>).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.filter.allow</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>List of IP addresses to allow for this profile</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.filter.deny</code></p></td><td align="left" valign="top"><p>None</p></td><td align="left" valign="top"><p>List of IP addresses to deny for this profile</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.ssl.client.auth</code></p></td><td align="left" valign="top"><p><code class="literal">true</code></p></td><td align="left" valign="top"><p>Require client side certificates</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.type</code></p></td><td align="left" valign="top"><p><code class="literal">node</code></p></td><td align="left" valign="top"><p>Defines allowed actions on this profile, allowed values: <code class="literal">node</code> and <code class="literal">client</code></p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.ciphers</code></p></td><td align="left" valign="top"><p><code class="literal">TLS_RSA_WITH_AES_128_CBC_SHA256</code>, <code class="literal">TLS_RSA_WITH_AES_128_CBC_SHA</code>, <code class="literal">TLS_DHE_RSA_WITH_AES_128_CBC_SHA</code>, <code class="literal">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</code></p></td><td align="left" valign="top"><p>Supported cipher suites can be found in Oracle’s <a class="ulink" href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/SunProviders.html" target="_top">Java Cryptography Architecture documentation</a>. Cipher suites using key lengths greater than 128 bits require the <a class="link" href="ciphers.html" title="Enabling Cipher Suites for Stronger Encryption">JCE Unlimited Strength Jurisdiction Policy Files</a>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">transport.profiles.$PROFILE.shield.supported_protocols</code></p></td><td align="left" valign="top"><p><code class="literal">TLSv1</code>, <code class="literal">TLSv1.1</code>, <code class="literal">TLSv1.2</code></p></td><td align="left" valign="top"><p>Supported protocols with versions. Valid protocols: <code class="literal">SSLv2Hello</code>, <code class="literal">SSLv3</code>, <code class="literal">TLSv1</code>, <code class="literal">TLSv1.1</code>, <code class="literal">TLSv1.2</code></p></td></tr></tbody></table></div></div><br class="table-break" /><h3><a id="ref-shield-files"></a>Files used by Shield</h3><p>The Shield security plugin uses the following files:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">config/shield/roles.yml</code> defines the roles in use on the cluster (read more <a class="link" href="authorization.html#roles-file" title="The Role Definition File roles.yml">here</a>).
+</li><li class="listitem">
+<code class="literal">config/shield/users</code> defines the hashed passwords for users on the cluster (read more <a class="link" href="esusers.html#users-file" title="The users File">here</a>).
+</li><li class="listitem">
+<code class="literal">config/shield/users_roles</code> defines the role assignments for users on the cluster (read more <a class="link" href="esusers.html#users_roles-file" title="The users_roles File">here</a>).
+</li><li class="listitem">
+<code class="literal">config/shield/ldap_role_mapping</code> defines the role assignments for LDAP or Active Directory groups (read more <a class="link" href="ldap.html#ldap-role-mapping" title="Mapping Groups to Roles">here</a>).
+</li><li class="listitem">
+<code class="literal">config/shield/logging.yml</code> contains audit information (read more <a class="link" href="auditing.html#logging-file" title="Default logging.yml File">here</a>).
+</li><li class="listitem">
+<code class="literal">config/shield/system_key</code> holds a cluster secret key used for message authentication (read more <a class="link" href="getting-started.html#message-authentication" title="Message Authentication">here</a>).
+</li></ul></div><p>Several of these files are in the YAML format. When you edit these files, be aware that YAML is indentation-level
+sensitive and indentation errors can lead to configuration errors. Avoid the tab character to set indentation levels,
+or use an editor that automatically expands tabs to spaces.</p><p>Be careful to properly escape YAML constructs such as <code class="literal">:</code> or leading exclamation points within quoted strings. Using
+the <code class="literal">|</code> or <code class="literal">&gt;</code> characters to define block literals instead of escaping the problematic characters can help avoid
+problems.</p></div><div class="navfooter"><span class="prev"><a href="trouble-shooting.html">
+              « 
+              Appendix 7. Trouble Shooting</a>
+           
+        </span><span class="next">
+           
+          </span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
+            jQuery(function(){
+                jQuery('#gform_submit_button_4').click( function() {
+                    if(window["gf_submitting_4"]){
+                        return false;
+                    }
+                    if( !jQuery("#gform_4")[0].checkValidity || jQuery("#gform_4")[0].checkValidity()){
+                        window["gf_submitting_4"]=true;
+                    }
+                });
+            });
+            //]]></script><div class="gform_footer top_label"><input type="submit" id="gform_submit_button_4" class="button gform_button" value="Submit" tabindex="51" /><input type="hidden" name="gform_ajax" value="form_id=4&amp;title=&amp;description=" /><input type="hidden" class="gform_hidden" name="is_submit_4" value="1" /><input type="hidden" class="gform_hidden" name="gform_submit" value="4" /><input type="hidden" class="gform_hidden" name="gform_unique_id" value="" /><input type="hidden" class="gform_hidden" name="state_4" value="WyJhOjA6e30iLCJmMjE2MmM2ZjUxYmQ4M2Q3ZmMzNzVlNmY2ODYyZTI2NCJd" /><input type="hidden" class="gform_hidden" name="gform_target_page_number_4" id="gform_target_page_number_4" value="0" /><input type="hidden" class="gform_hidden" name="gform_source_page_number_4" id="gform_source_page_number_4" value="1" /><input type="hidden" name="gform_field_values" value="" /></div></form></div><iframe style="display:none;width:0px; height:0px;" src="about:blank" name="gform_ajax_frame_4" id="gform_ajax_frame_4"></iframe><script type="text/javascript">//<![CDATA[
+                    function gformInitSpinner_4(){jQuery('#gform_4').submit(function(){if(jQuery('#gform_ajax_spinner_4').length == 0){jQuery('#gform_submit_button_4, #gform_wrapper_4 .gform_next_button, #gform_wrapper_4 .gform_image_button').after('<' + 'img id="gform_ajax_spinner_4"  class="gform_ajax_spinner" src="http://www.elasticsearch.org/content/plugins/gravityforms/images/spinner.gif" alt="" />'); }} );}jQuery(document).ready(function($){gformInitSpinner_4();jQuery('#gform_ajax_frame_4').load( function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_4');var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = !(form_content.length <= 0 || is_redirect);if(is_form){jQuery('#gform_wrapper_4').html(form_content.html());jQuery(document).scrollTop(jQuery('#gform_wrapper_4').offset().top);if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_4').val();gformInitSpinner_4();jQuery(document).trigger('gform_page_loaded', [4, current_page]);window['gf_submitting_4'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('#gforms_confirmation_message').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_4').replaceWith('<' + 'div id=\'gforms_confirmation_message\' class=\'gform_confirmation_message_4\'' + '>' + confirmation_content + '<' + '/div' + '>');jQuery(document).scrollTop(jQuery('#gforms_confirmation_message').offset().top);jQuery(document).trigger('gform_confirmation_loaded', [4]);window['gf_submitting_4'] = false;}, 50);}else{jQuery('#gform_4').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [4, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [4, 1]) } );
+                    //]]></script></div><div class="legal"><p>© 2014 All Rights Reserved - Elasticsearch </p><p>Apache Lucene and Lucene are trademarks of the Apache Software Foundation</p></div></div></div></footer><section id="cookie"><div class="container"><div class="eu">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="accept" class="cta">Accept cookies</a></div><div class="uk">
+                Elasticsearch uses cookies to provide a better user experience to visitors of our website. Read more about our cookie policy <a href="/privacy-and-cookie-policy/">here.</a><a data-action="dismiss" class="cta dismiss">X</a></div></div></section><script type="text/javascript">
+      if (window.aiModifyParent) aiModifyParent();
+      (function ($, $a, $title, $list) {
+        $a = $('[id^="js-api-method-index"]');
+        if (!$a.size()) return;
+        $('.guide_content').addClass('js-client-docs');
+        $list = $a.siblings('.itemizedlist').detach();
+        $title = $(document.createElement('h2')).text('api methods')
+        $a.parent().remove();
+        $('.toc').first().append($(document.createElement('div')).addClass('js-api-method-index').append($title).append($list));
+      }(jQuery));
+    </script><script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2"></script><script type="text/javascript" src="http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082598"></script><script type="text/javascript" src="http://www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1"></script></body></html>
