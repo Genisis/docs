@@ -103,7 +103,7 @@ contents:
             single:     1
 
     -
-        title:      Shield seurity for Elasticsearch
+        title:      Shield security for Elasticsearch
         prefix:     en/shield
         repo:       shield
         index:      docs/public/00-index.asciidoc
