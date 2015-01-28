@@ -37,13 +37,12 @@ specifying the <code class="literal">tweet</code> type in the document itself:</
 and search that will be used with all different fields that do not
 explicitly set analyzers on their own. Here is an example:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {
-        "index_analyzer" : "standard",
-        "search_analyzer" : "standard"
+        "analyzer" : "standard",
+        "search_analyzer" : "standard_with_synonyms"
     }
-}</pre><p>The above simply explicitly defines both the <code class="literal">index_analyzer</code> and
-<code class="literal">search_analyzer</code> that will be used. There is also an option to use the
-<code class="literal">analyzer</code> attribute to set both the <code class="literal">search_analyzer</code> and
-<code class="literal">index_analyzer</code>.</p><h4><a id="_dynamic_date_formats"></a>dynamic_date_formats<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/mapping/types/root-object-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p><code class="literal">dynamic_date_formats</code> (old setting called <code class="literal">date_formats</code> still works)
+}</pre><p>The above simply explicitly defines both the <code class="literal">analyzer</code> and
+<code class="literal">search_analyzer</code> that will be used. If <code class="literal">search_analyzer</code> is not specified,
+it defaults to the value of <code class="literal">analyzer</code>.</p><h4><a id="_dynamic_date_formats"></a>dynamic_date_formats<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/mapping/types/root-object-type.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p><code class="literal">dynamic_date_formats</code> (old setting called <code class="literal">date_formats</code> still works)
 is the ability to set one or more date formats that will be used to
 detect <code class="literal">date</code> fields. For example:</p><pre class="programlisting prettyprint lang-js">{
     "tweet" : {

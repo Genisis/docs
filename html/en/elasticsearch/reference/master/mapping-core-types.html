@@ -102,10 +102,9 @@ numbers, term frequencies and positions). Defaults to <code class="literal">posi
 <code class="literal">analyzed</code> fields, and to <code class="literal">docs</code> for <code class="literal">not_analyzed</code> fields. It
 is also possible to set it to <code class="literal">offsets</code> (doc numbers, term
 frequencies, positions and offsets).</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the text contents when
-<code class="literal">analyzed</code> during indexing and when searching using a query string.
-Defaults to the globally configured analyzer.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">index_analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the text contents when
-<code class="literal">analyzed</code> during indexing.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">search_analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the field when part of
-a query string. Can be updated on an existing field.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
+<code class="literal">analyzed</code> during indexing and searching.
+Defaults to the globally configured analyzer.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">search_analyzer</code></p></td><td align="left" valign="top"><p>The analyzer used to analyze the field when searching, which
+overrides the value of <code class="literal">analyzer</code>. Can be updated on an existing field.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">include_in_all</code></p></td><td align="left" valign="top"><p>Should the field be included in the <code class="literal">_all</code> field (if
 enabled). If <code class="literal">index</code> is set to <code class="literal">no</code> this defaults to <code class="literal">false</code>, otherwise,
 defaults to <code class="literal">true</code> or to the parent <code class="literal">object</code> type setting.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">ignore_above</code></p></td><td align="left" valign="top"><p>The analyzer will ignore strings larger than this size.
 Useful for generic <code class="literal">not_analyzed</code> fields that should ignore long text.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">position_offset_gap</code></p></td><td align="left" valign="top"><p>Position increment gap between field instances
@@ -371,10 +370,10 @@ processed as an analyzed string and this version is accessible under the field n
 it gets processed as a not analyzed string and is accessible under the name <code class="literal">name.raw</code>.</p><h4><a id="_include_in_all"></a>Include in All<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/mapping/types/core-types.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The <code class="literal">include_in_all</code> setting is ignored on any field that is defined in
 the <code class="literal">fields</code> options. Setting the <code class="literal">include_in_all</code> only makes sense on
 the main field, since the raw field value is copied to the <code class="literal">_all</code> field,
-the tokens aren’t copied.</p><h4><a id="_updating_a_field"></a>Updating a field<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/mapping/types/core-types.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>In the essence a field can’t be updated. However multi fields can be
+the tokens aren’t copied.</p><h4><a id="_updating_a_field"></a>Updating a field<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/mapping/types/core-types.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>In essence a field cannot be updated. However multi fields can be
 added to existing fields. This allows for example to have a different
-<code class="literal">index_analyzer</code> configuration in addition to the already configured
-<code class="literal">index_analyzer</code> configuration specified in the main and other multi fields.</p><p>Also the new multi field will only be applied on document that have been
+<code class="literal">analyzer</code> configuration in addition to the already configured
+<code class="literal">analyzer</code> configuration specified in the main and other multi fields.</p><p>Also the new multi field will only be applied on document that have been
 added after the multi field has been added and in fact the new multi field
 doesn’t exist in existing documents.</p><p>Another important note is that new multi fields will be merged into the
 list of existing multi fields, so when adding new multi fields for a field
