@@ -13,7 +13,6 @@
     <script type="text/javascript" src="http://www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script>
     <link rel="stylesheet" href="http://www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" />
     <script src="//cdn.optimizely.com/js/281975433.js"></script>
-    <script src="//fast.wistia.com/static/iframe-api-v1.js"></script>
 
     <script type="text/javascript">
       jQuery(function() {
