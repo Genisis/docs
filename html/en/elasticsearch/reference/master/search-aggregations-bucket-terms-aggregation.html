@@ -207,7 +207,7 @@ PATH                :=  &lt;AGG_NAME&gt;[&lt;AGG_SEPARATOR&gt;&lt;AGG_NAME&gt;]*
             },
             "aggs" : {
                 "females" : {
-                    "filter" : { "term" : { "gender" : { "female" }}},
+                    "filter" : { "term" : { "gender" :  "female" }},
                     "aggs" : {
                         "height_stats" : { "stats" : { "field" : "height" }}
                     }
