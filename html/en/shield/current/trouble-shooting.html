@@ -56,7 +56,40 @@ authentication should produce debug statements that list groups and role mapping
 </span></dt><dd><p class="simpara">Apple’s integration of <code class="literal">curl</code> with their keychain technology disables the <code class="literal">--cacert</code> option.
 See <a class="ulink" href="http://curl.haxx.se/mail/archive-2013-10/0036.html" target="_top">http://curl.haxx.se/mail/archive-2013-10/0036.html</a> for more information.</p><p class="simpara">You can use another tool, such as <code class="literal">wget</code>, to test certificates. Alternately, you can add the certificate for the
 signing certificate authority MacOS system keychain, using a procedure similar to the one detailed at the
-<a class="ulink" href="http://support.apple.com/kb/PH14003" target="_top">Apple knowledge base</a>. Be sure to add the signing CA’s certificate and not the server’s certificate.</p></dd></dl></div><h3><a id="_exceptions_when_unlicensed"></a>Exceptions when unlicensed</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<a class="ulink" href="http://support.apple.com/kb/PH14003" target="_top">Apple knowledge base</a>. Be sure to add the signing CA’s certificate and not the server’s certificate.</p></dd></dl></div><h4><a id="_sslhandshakeexception_causing_connections_to_fail"></a>SSLHandshakeException causing connections to fail</h4><p>A <code class="literal">SSLHandshakeException</code> will cause a connection to a node to fail and indicates that there is a configuration issue. Some of the
+common exceptions are shown below with tips on how to resolve these issues.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">java.security.cert.CertificateException: No name matching node01.example.com found</code>
+</span></dt><dd><p class="simpara">Indicates that a client connection was made to <code class="literal">node01.example.com</code> but the certificate returned did not contain the name <code class="literal">node01.example.com</code>.
+In most cases, the issue can be resolved by ensuring the name is specified as a <code class="literal">SubjectAlternativeName</code> during <a class="link" href="private-key.html" title="Generate a node private key and certificate">certificate creation</a>.
+Another scenario is when the environment does not wish to use DNS names in certificates at all. In this scenario, all settings
+in <code class="literal">elasticsearch.yml</code> should only use IP addresses and the following setting needs to be set in <code class="literal">elasticsearch.yml</code>:</p><pre class="programlisting prettyprint lang-yaml">shield.ssl.hostname_verification.resolve_name: false</pre></dd><dt><span class="term">
+<code class="literal">java.security.cert.CertificateException: No subject alternative names present</code>
+</span></dt><dd>Indicates that a client connection was made to an IP address but the returned certificate did not contain any <code class="literal">SubjectAlternativeName</code> entries.
+IP addresses are only used for hostname verification if they are specified as a <code class="literal">SubjectAlternativeName</code> during
+<a class="link" href="private-key.html" title="Generate a node private key and certificate">certificate creation</a>. If the intent was to use IP addresses for hostname verification, then the certificate
+will need to be regenerated. Also verify that <code class="literal">shield.ssl.hostname_verification.resolve_name: false</code> is <span class="strong"><strong>not</strong></span> set in
+<code class="literal">elasticsearch.yml</code>.</dd><dt><span class="term">
+<code class="literal">javax.net.ssl.SSLHandshakeException: null cert chain</code> and <code class="literal">javax.net.ssl.SSLException: Received fatal alert: bad_certificate</code>
+</span></dt><dd>The <code class="literal">SSLHandshakeException</code> above indicates that a self-signed certificate was returned by the client that is not trusted
+as it cannot be found in the <code class="literal">truststore</code> or <code class="literal">keystore</code>. The <code class="literal">SSLException</code> above is seen on the client side of the connection.</dd><dt><span class="term">
+<code class="literal">sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code> and <code class="literal">javax.net.ssl.SSLException: Received fatal alert: certificate_unknown</code>
+</span></dt><dd>The <code class="literal">SunCertPathBuilderException</code> above indicates that a certificate was returned during the handshake that is not trusted.
+This message is seen on the client side of the connection. The <code class="literal">SSLException</code> above is seen on the server side of the
+connection. The CA certificate that signed the returned certificate was not found in the <code class="literal">keystore</code> or <code class="literal">truststore</code> and
+needs to be added to trust this certificate.</dd></dl></div><h4><a id="_other_ssl_tls_related_exceptions"></a>Other SSL/TLS related exceptions</h4><p>The are other exceptions related to SSL that may be seen in the logs. Below you will find some common exceptions and their
+meaning.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">org.elasticsearch.common.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record:</code>
+</span></dt><dd>Indicates that there was incoming plaintext traffic on an SSL connection. This typically occurs when a node is not
+configured to use encrypted communication and tries to connect to nodes that are using encrypted communication or when a
+plain <code class="literal">http</code> request is made to a node that is expecting <code class="literal">https</code> traffic. Please verify that all nodes are using the
+same setting for <code class="literal">shield.transport.ssl</code> and that external applications are using <code class="literal">https</code> when using the REST interface.</dd><dt><span class="term">
+<code class="literal">java.io.StreamCorruptedException: invalid internal transport message format, got</code>
+</span></dt><dd>Indicates an issue with data received on the transport interface in an unknown format. This can happen when a node with
+encrypted communication enabled connects to a node that has encrypted communication disabled. Please verify that all
+nodes are using the same setting for <code class="literal">shield.transport.ssl</code>.</dd><dt><span class="term">
+<code class="literal">java.lang.IllegalArgumentException: empty text</code>
+</span></dt><dd><p class="simpara">The exception is typically seen when a <code class="literal">https</code> request is made to a node that is not using <code class="literal">https</code>. If <code class="literal">https</code> is desired,
+please ensure the following setting is in <code class="literal">elasticsearch.yml</code>:</p><pre class="programlisting prettyprint lang-yaml">shield.http.ssl: true</pre></dd></dl></div><h3><a id="_exceptions_when_unlicensed"></a>Exceptions when unlicensed</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 WARN: Failed to execute IndicesStatsAction for ClusterInfoUpdateJob
 </span></dt><dd><p class="simpara">This warning occurs in the logs every 30 seconds when the Shield license is expired or invalid. It is caused by a periodic
 internal request to gather disk usage information from the nodes and indices, to enable
