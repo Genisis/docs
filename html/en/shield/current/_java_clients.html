@@ -137,7 +137,9 @@ Node node = nodeBuilder().client(true).settings(ImmutableSettings.builder()
     ...
     .node();
 Client client = node.client();</pre><p>Once the client is created as above, the <code class="literal">shield.user</code> setting is translated to a request header in the standard HTTP
-basic authentication form <code class="literal">Authentication base64("test_user:changeme")</code> which will be sent with every request executed.</p><p>To skip the global configuration of the token, manually set the authentication token header on every request:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.node.NodeBuilder.*;
+basic authentication form <code class="literal">Authentication base64("test_user:changeme")</code> which will be sent with every request executed.</p><p>To skip the global configuration of the token, manually set the authentication token header on every request:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.shield.authc.support.SecuredString;
+
+import static org.elasticsearch.node.NodeBuilder.*;
 import static org.elasticsearch.shield.authc.support.UsernamePasswordToken.basicAuthHeaderValue;
 ...
 
@@ -226,7 +228,7 @@ nodes in the cluster.  For this reason, the authenticated user of the transport 
         <code class="literal">cluster:monitor/nodes/info</code> cluster permission. You can use this role and assign it to any user
         that will be attached to a transport client.</p></div></div><p>Setting up the transport client is similar to the Node client except authentication files do not need to be configured.
 Without SSL, it is as easy as setting up the authentication token on the request, similarly to how they’re set up with
-the <span class="emphasis"><em>Node Client</em></span>:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.client.transport.TransportClient;
+the <span class="emphasis"><em>Node Client</em></span>:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.client.transport.TransportClient;
 ...
 
 TransportClient client = new TransportClient(ImmutableSettings.builder()
@@ -235,7 +237,7 @@ TransportClient client = new TransportClient(ImmutableSettings.builder()
     .addTransportAddress(new InetSocketTransportAddress("localhost", 9300))
     .addTransportAddress(new InetSocketTransportAddress("localhost", 9301));</pre><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>Configuring a Transport Client without SSL will send passwords in plaintext.</p></div></div><p>When using SSL for transport client communication, a few more settings are required. By default, Shield requires client
 authentication for secured transport communication. This means that every client would need to have a certificate signed
-by a trusted CA. The client authentication can be disabled through the use of a <a class="link" href="separating-node-client-traffic.html" title="Separating node to node and client traffic">client specific transport profile</a>.</p><p>Configuration required for SSL when using client authentication:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.client.transport.TransportClient;
+by a trusted CA. The client authentication can be disabled through the use of a <a class="link" href="separating-node-client-traffic.html" title="Separating node to node and client traffic">client specific transport profile</a>.</p><p>Configuration required for SSL when using client authentication:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.client.transport.TransportClient;
 ...
 
 TransportClient client = new TransportClient(ImmutableSettings.builder()
@@ -245,7 +247,7 @@ TransportClient client = new TransportClient(ImmutableSettings.builder()
     .put("shield.ssl.keystore.password", "password")
     .put("shield.transport.ssl", "true"))
     .addTransportAddress(new InetSocketTransportAddress("localhost", 9300))
-    .addTransportAddress(new InetSocketTransportAddress("localhost", 9301));</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The <code class="literal">client.jks</code> keystore needs to contain the client’s signed CA certificate and the CA certificate.</p></div></div><p>Configuration required for SSL without client authentication:</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.client.transport.TransportClient;
+    .addTransportAddress(new InetSocketTransportAddress("localhost", 9301));</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The <code class="literal">client.jks</code> keystore needs to contain the client’s signed CA certificate and the CA certificate.</p></div></div><p>Configuration required for SSL without client authentication:</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.client.transport.TransportClient;
 ...
 
 TransportClient client = new TransportClient(ImmutableSettings.builder()
@@ -258,15 +260,19 @@ TransportClient client = new TransportClient(ImmutableSettings.builder()
     .addTransportAddress(new InetSocketTransportAddress("localhost", 9301));</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>The ‘truststore.jks` truststore needs to contain the certificate of the CA that has signed the Elasticsearch nodes’
 certificates. If you are using a public CA that is already trusted by the Java runtime, then you can omit
 <code class="literal">shield.ssl.truststore.path</code> and <code class="literal">shield.ssl.truststore.password</code>.</p></div></div><p>In the above code snippets, we set up a <span class="emphasis"><em>Transport Client</em></span> and configured the authentication token globally. Meaning,
-that every request executed with this client will include this token in its headers.</p><p>The global configuration of the token must be set to some user with the privileges in the default transport_client
-role, as described earlier. The authentication token may also be set on each request. This is useful when an
-application uses multiple users to access Elasticsearch via the same client. The following example directly sets
-the authentication token on the request when executing a search. This holds for each request executed by the client.</p><pre class="programlisting prettyprint lang-java">import static org.elasticsearch.client.transport.TransportClient;
+that every request executed with this client will include this token in its headers.</p><p>The global configuration of the token <span class="strong"><strong>must be</strong></span> set to some user with the privileges in the default <code class="literal">transport_client</code>
+role, as described earlier. The global authentication token may also be overridden by adding a <code class="literal">Authorization</code> header on
+each request. This is useful when an application uses multiple users to access Elasticsearch via the same client. When
+operating in this mode, it is best to set the global token to a user that only has the <code class="literal">transport_client</code> role. The
+following example directly sets the authentication token on the request when executing a search.</p><pre class="programlisting prettyprint lang-java">import org.elasticsearch.shield.authc.support.SecuredString;
+import org.elasticsearch.client.transport.TransportClient;
+
 import static org.elasticsearch.shield.authc.support.UsernamePasswordToken.basicAuthHeaderValue;
 ...
 
 String token = basicAuthHeaderValue("test_user", new SecuredString("changeme".toCharArray()));
 TransportClient client = new TransportClient(ImmutableSettings.builder()
+    .put("shield.user", "transport_client_user:changeme")
     ...
     .addTransportAddress(new InetSocketTransportAddress("localhost", 9300))
     .addTransportAddress(new InetSocketTransportAddress("localhost", 9301));
