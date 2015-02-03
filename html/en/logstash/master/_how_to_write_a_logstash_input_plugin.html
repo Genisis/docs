@@ -230,7 +230,31 @@ more examples of how they have been created:</p><div class="itemizedlist"><ul cl
 called when a shutdown happens to ensure that sockets, files, connections and
 threads are all closed down properly.  If your plugin uses these connections,
 you should include a teardown method.</p><h2><a id="_building_the_plugin"></a>Building the Plugin<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2><p>At this point in the process you have coded your plugin and are ready to build
-a Ruby Gem from it.  The following steps will help you complete the process.</p><h3><a id="_add_a_gemfile"></a>Add a Gemfile<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Gemfiles allow Ruby’s Bundler to maintain the dependencies for your plugin.
+a Ruby Gem from it.  The following steps will help you complete the process.</p><h3><a id="_external_dependencies"></a>External dependencies<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>A <code class="literal">require</code> statement in Ruby is used to include necessary code. In some cases
+your plugin may require additional files.  For example, the collectd plugin
+<a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/lib/logstash/codecs/collectd.rb#L148" target="_top">uses</a>
+the <code class="literal">types.db</code> file provided by collectd.  In the main directory of your plugin,
+a file called <code class="literal">vendor.json</code> is where these files are described.</p><p>The <code class="literal">vendor.json</code> file contains an array of JSON objects, each describing a file
+dependency. This example comes from the
+<a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/vendor.json" target="_top">collectd</a>
+codec plugin:</p><pre class="programlisting prettyprint lang-json">[{
+        "sha1": "a90fe6cc53b76b7bdd56dc57950d90787cb9c96e",
+        "url": "http://collectd.org/files/collectd-5.4.0.tar.gz",
+        "files": [ "/src/types.db" ]
+}]</pre><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<code class="literal">sha1</code> is the sha1 signature used to verify the integrity of the file
+referenced by <code class="literal">url</code>.
+</li><li class="listitem">
+<code class="literal">url</code> is the address from where Logstash will download the file.
+</li><li class="listitem">
+<code class="literal">files</code> is an optional array of files to extract from the downloaded file.
+Note that while tar archives can use absolute or relative paths, treat them as
+absolute in this array.  If <code class="literal">files</code> is not present, all files will be
+uncompressed and extracted into the vendor directory.
+</li></ul></div><p>Another example of the <code class="literal">vendor.json</code> file is the
+<a class="ulink" href="https://github.com/logstash-plugins/logstash-filter-geoip/blob/master/vendor.json" target="_top"><code class="literal">geoip</code> filter</a></p><p>The process used to download these dependencies is to call <code class="literal">rake vendor</code>.  This
+will be discussed further in the testing section of this document.</p><p>Another kind of external dependency is on jar files.  This will be described
+in the "Add a <code class="literal">gemspec</code> file" section.</p><h3><a id="_add_a_gemfile"></a>Add a Gemfile<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Gemfiles allow Ruby’s Bundler to maintain the dependencies for your plugin.
 Currently, all we’ll need is the Logstash gem, for testing, but if you require
 other gems, you should add them in here.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>See <a class="ulink" href="http://bundler.io/gemfile.html" target="_top">Bundler’s Gemfile page</a> for more details.</p></div></div><pre class="programlisting prettyprint lang-ruby">source 'https://rubygems.org'
 gemspec
@@ -283,7 +307,13 @@ Logstash plugins:</p><pre class="programlisting prettyprint lang-ruby">  # Gem d
   s.add_development_dependency 'logstash-devutils'</pre><p>This gemspec has a runtime dependency on the core Logstash gem and requires that
 it have a version number greater than or equal to version 1.4.0 <code class="literal">'&gt;= 1.4.0'</code>,
 and less than version 2.0 <code class="literal">'&lt; 2.0.0'</code>.</p></div></div><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>All plugins have a runtime dependency on the <code class="literal">logstash</code> core gem, and
-a development dependency on <code class="literal">logstash-devutils</code>.</p></div></div><h3><a id="_add_tests"></a>Add Tests<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Logstash loves tests. Lots of tests. If you’re using your new input
+a development dependency on <code class="literal">logstash-devutils</code>.</p></div></div><h4><a id="_jar_dependencies"></a>Jar dependencies<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>In some cases, such as the
+<a class="ulink" href="https://github.com/logstash-plugins/logstash-output-elasticsearch/blob/master/logstash-output-elasticsearch.gemspec#L22-L23" target="_top">Elasticsearch output plugin</a>,
+your code may depend on a jar file.  In cases such as this, the dependency is
+added in the gemspec file in this manner:</p><pre class="programlisting prettyprint lang-ruby">  # Jar dependencies
+  s.requirements &lt;&lt; "jar 'org.elasticsearch:elasticsearch', '1.4.0'"
+  s.add_runtime_dependency 'jar-dependencies'</pre><p>With these both defined, the install process will search for the required jar
+file at <a class="ulink" href="http://mvnrepository.com" target="_top">http://mvnrepository.com</a> and download the specified version.</p><h3><a id="_add_tests"></a>Add Tests<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Logstash loves tests. Lots of tests. If you’re using your new input
 plugin in a production environment, you’ll want to have some tests to ensure you
 are not breaking any existing functionality.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>A full exposition on RSpec is outside the scope of this document. Learn
 more about RSpec at <a class="ulink" href="http://rspec.info" target="_top">http://rspec.info</a></p></div></div><p>For help learning about tests and testing, look in the
@@ -297,7 +327,9 @@ your github username, and <code class="literal">MYPLUGINNAME</code> with your pl
 alternately, via ssh: <code class="literal">git clone git@github.com:GITUSERNAME/logstash-</code><code class="literal">input-MYPLUGINNAME.git</code>
 </li></ul></div></li><li class="listitem">
 <code class="literal">cd logstash-input-MYPLUGINNAME</code>
-</li></ul></div></li></ul></div><p>Then, you’ll need to install your plugins dependencies with bundler:</p><pre class="screen">bundle install</pre><p>And finally, run the tests:</p><pre class="screen">bundle exec rspec</pre><p>You should see a success message, which looks something like this:</p><pre class="screen">Finished in 0.034 seconds
+</li></ul></div></li></ul></div><p>Then, you’ll need to install your plugins dependencies with bundler:</p><pre class="screen">bundle install</pre><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><p>If your plugin has an external file dependency described in <code class="literal">vendor.json</code>, you
+must download that dependency before running or testing.  You can do this by
+running:</p><pre class="screen">rake vendor</pre></div></div><p>And finally, run the tests:</p><pre class="screen">bundle exec rspec</pre><p>You should see a success message, which looks something like this:</p><pre class="screen">Finished in 0.034 seconds
 1 example, 0 failures</pre><p>Hooray! You’re almost there! (Unless you saw failures… you should fix those
   first).</p><h3><a id="_building_and_testing"></a>Building and Testing<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>Now you’re ready to build your (well-tested) plugin into a Ruby gem.</p><h4><a id="_build"></a>Build<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>You already have all the necessary ingredients, so let’s go ahead and run the
 build command:</p><pre class="programlisting prettyprint lang-sh">gem build logstash-input-example.gemspec</pre><p>That’s it!  Your gem should be built and be in the same path with the name</p><pre class="programlisting prettyprint lang-sh">logstash-input-mypluginname-0.1.0.gem</pre><p>The <code class="literal">s.version</code> number from your gemspec file will provide the gem version, in
