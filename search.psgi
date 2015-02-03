@@ -45,6 +45,7 @@ sub doc_search {
     my $callback = $req->param('callback');
 
     my $ref = $env->{"HTTP_REFERER"} || '';
+    $ref =~ s{/index.html[^/]*$}{};
     my ( $book, $version );
     if ( $ref =~ m{^https?://[^/]+/guide/(.+?)(?:/([^/]+)/([^/]+))?$} ) {
         $book    = $1;
@@ -56,7 +57,8 @@ sub doc_search {
         filtered => {
             query => {
                 multi_match => {
-                    query  => $q,
+                    query => $q,
+
                     #type   => 'cross_fields',
                     fields => [
                         'title^2',        'title.content',
@@ -68,9 +70,8 @@ sub doc_search {
                     }
 
             },
-            filter => {
-                bool => { must => [ { term => { version => $version } } ] }
-            }
+            filter =>
+                { bool => { must => [ { term => { version => $version } } ] } }
         },
 
     };
@@ -84,9 +85,8 @@ sub doc_search {
                 query     => $query,
                 functions => [
                     {   filter => {
-                            term => {
-                                "book.raw" => 'en/elasticsearch/reference'
-                            }
+                            term =>
+                                { "book.raw" => 'en/elasticsearch/reference' }
                         },
                         boost_factor => 1.5
                     }
