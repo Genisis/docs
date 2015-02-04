@@ -1214,6 +1214,51 @@ deprecated[0.90.4,Replace by `foo.baz`. See <<new-section>>]
 
 Text about old functionality...
 
+[[experimental]]
+== Experimental
+
+APIs or parameters that are experimental can be marked as such, using
+markup similar to that used in <<changes>>.  For instance:
+
+[source,asciidoc]
+----------------------------------
+[[new-feature]]
+=== New experimental feature
+
+experimental[]
+
+Text about new feature...
+
+[[old-feature]]
+=== Established feature
+
+This feature has been around for a while, but we're adding
+a new experimental parameter:
+
+[horizontal]
+`established_param`::  This param has been around for ages and won't change.
+`experimental_param`:: experimental[] This param is experimental and may change in the future.
+
+----------------------------------
+
+[[new-feature]]
+=== New experimental feature
+
+experimental[]
+
+Text about new feature...
+
+[[old-feature]]
+=== Established feature
+
+This feature has been around for a while, but we're adding
+a new experimental parameter:
+
+[horizontal]
+`established_param`::  This param has been around for ages and won't change.
+`experimental_param`:: experimental[] This param is experimental and may change in the future.
+
+
 [[images]]
 == Images
 

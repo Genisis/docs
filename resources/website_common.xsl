@@ -137,6 +137,15 @@
     </span>
   </xsl:template>
 
+  <xsl:template match="phrase[@role='experimental']">
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">
+        <xsl:apply-templates />
+      </span>
+    </span>
+  </xsl:template>
+
   <!-- Don't display in ToC -->
   <xsl:template match="phrase" mode="no.anchor.mode" />
 

@@ -20,7 +20,7 @@
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
       });
     </script>
-    <link rel="stylesheet" type="text/css" href="styles.css?3" />
+    <link rel="stylesheet" type="text/css" href="styles.css?4" />
   </xsl:template>
 
   <!-- Wraps the content in required divs -->
