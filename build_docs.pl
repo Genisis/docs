@@ -48,6 +48,7 @@ sub build_local {
     die "File <$doc> doesn't exist" unless -f $index;
 
     say "Building HTML from $doc";
+    $Opts->{protocol} = 'http:';
 
     my $dir = dir( $Opts->{out} || 'html_docs' )->absolute($Old_Pwd);
     my $html;

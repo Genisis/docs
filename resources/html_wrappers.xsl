@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <link rel="shortcut icon" href="//www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" />
-    <link rel="stylesheet" id="prettify-gc-syntax-highlighter-css"  href="//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" />
-    <link rel="stylesheet" id="appStyles-css"  href="//www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" />
-    <script type="text/javascript" src="//www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script>
-    <link rel="stylesheet" href="//www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" />
-    <script src="//cdn.optimizely.com/js/281975433.js"></script>
+    <link rel="shortcut icon" href="{$local.protocol}//www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" />
+    <link rel="stylesheet" id="prettify-gc-syntax-highlighter-css"  href="{$local.protocol}//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" />
+    <link rel="stylesheet" id="appStyles-css"  href="{$local.protocol}//www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" />
+    <script type="text/javascript" src="{$local.protocol}//www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script>
+    <link rel="stylesheet" href="{$local.protocol}//www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" />
+    <script src="{$local.protocol}//cdn.optimizely.com/js/281975433.js"></script>
 
     <script type="text/javascript">
       jQuery(function() {
@@ -223,11 +223,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ]]></script>
     <!-- / Custom JS API -->
 
-<script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type='text/javascript' src='//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2'></script>
-<script type='text/javascript' src='//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2'></script>
-<script type='text/javascript' src='//s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413'></script>
-<script type='text/javascript' src='//www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082599'></script>
-<script type='text/javascript' src='//www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1'></script>
+<script type="text/javascript">if(window.aiModifyParent) {aiModifyParent();}</script><script type='text/javascript' src='{$local.protocol}//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.js?ver=3.5.2'></script>
+<script type='text/javascript' src='{$local.protocol}//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/launch.js?ver=3.5.2'></script>
+<script type='text/javascript' src='{$local.protocol}//s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201413'></script>
+<script type='text/javascript' src='{$local.protocol}//www.elasticsearch.org/content/themes/elasticsearch-org/js/global.min.js?ver=1395082599'></script>
+<script type='text/javascript' src='{$local.protocol}//www.elasticsearch.org/content/themes/elasticsearch-org/js/froogaloop.min.js?ver=1'></script>
    </xsl:template>
 
 </xsl:stylesheet>

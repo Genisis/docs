@@ -12,6 +12,7 @@
   <xsl:param name="local.book.multi_version" select="0"/>
 
   <!-- css -->
+  <xsl:param name="local.protocol"          select="''" />
   <xsl:param name="generate.consistent.ids" select="1"/>
   <xsl:param name="css.decoration"          select="0"/>
   <xsl:param name="html.stylesheet"></xsl:param>

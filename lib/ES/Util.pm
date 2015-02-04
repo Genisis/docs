@@ -36,6 +36,7 @@ sub build_chunked {
     my $lenient   = $opts{lenient} || '';
     my $toc_level = $opts{toc_level} || 1;
     my $edit_url  = $opts{edit_url} || '';
+    my $protocol  = $opts{protocol} || '';
 
     my $output = run(
         'a2x', '-v',
@@ -54,7 +55,8 @@ sub build_chunked {
             "local.book.version"       => $version,
             "local.book.multi_version" => $multi,
             "local.root_dir"           => $index->dir->absolute,
-            "local.edit_url"           => $edit_url
+            "local.edit_url"           => $edit_url,
+            "local.protocol"           => $protocol
         ),
         $index
     );
@@ -93,6 +95,7 @@ sub build_single {
     my $multi    = $opts{multi}    || 0;
     my $edit_url = $opts{edit_url} || '';
     my $comments = $opts{comments} || 0;
+    my $protocol = $opts{protocol} || '';
 
     fcopy( 'resources/styles.css', $index->parent )
         or die "Couldn't copy <styles.css> to <" . $index->parent . ">: $!";
@@ -115,6 +118,7 @@ sub build_single {
             "local.root_dir"           => $index->dir->absolute,
             "local.edit_url"           => $edit_url,
             "local.comments"           => $comments,
+            "local.protocol"           => $protocol
         ),
         $index
     );
