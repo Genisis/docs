@@ -8,7 +8,7 @@
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
       });
-    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    </script><link rel="stylesheet" type="text/css" href="styles.css?4" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
     if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -224,7 +224,7 @@ sub-queries:</p><pre class="literallayout">(quick OR brown) AND fox</pre><p>Grou
 of a sub-query:</p><pre class="literallayout">status:(active OR pending) title:(full text search)^2</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_reserved_characters"></a>Reserved characters<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/query-dsl/queries/query-string-syntax.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>If you need to use any of the characters which function as operators in your
 query itself (and not as operators), then you should escape them with
 a leading backslash. For instance, to search for <code class="literal">(1+1)=2</code>, you would
-need to write your query as <code class="literal">\(1\+1\)=2</code>.</p><p>The reserved characters are:  <code class="literal">+ - &amp;&amp; || ! ( ) { } [ ] ^ " ~ * ? : \ /</code></p><p>Failing to escape these special characters correctly could lead to a syntax
+need to write your query as <code class="literal">\(1\+1\)=2</code>.</p><p>The reserved characters are:  <code class="literal">+ - = &amp;&amp; || &gt; &lt; ! ( ) { } [ ] ^ " ~ * ? : \ /</code></p><p>Failing to escape these special characters correctly could lead to a syntax
 error which prevents your query from running.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><strong>Watch this space</strong></p></div></div></div><p>A space may also be a reserved character.  For instance, if you have a
 synonym list which converts <code class="literal">"wi fi"</code> to <code class="literal">"wifi"</code>, a <code class="literal">query_string</code> search
 for <code class="literal">"wi fi"</code> would fail. The query string parser would interpret your
