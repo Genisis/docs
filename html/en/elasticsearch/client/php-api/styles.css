@@ -390,6 +390,7 @@ text-transform:none;
     margin-bottom: 10px;
 }
 
+.guide .experimental
 .guide .coming,
 .guide .deprecated,
 .guide .added {
@@ -397,6 +398,7 @@ text-transform:none;
     font-size: 16px;
 }
 
+.guide .experimental .exp_title,
 .guide .coming .version,
 .guide .deprecated .version,
 .guide .added .version {
@@ -409,6 +411,7 @@ text-transform:none;
     text-decoration: line-through;
 }
 
+.guide .experimental .detail,
 .guide .coming .detail,
 .guide .deprecated .detail,
 .guide .added .detail {
@@ -424,6 +427,7 @@ text-transform:none;
     line-height: 1.2em;
 }
 
+.guide .experimental:hover ,
 .guide .coming:hover ,
 .guide .deprecated:hover ,
 .guide .added:hover {
@@ -431,6 +435,7 @@ text-transform:none;
     transition: all 0.3s ease;
 }
 
+.guide .experimental:hover .detail,
 .guide .coming:hover .detail,
 .guide .deprecated:hover .detail,
 .guide .added:hover .detail {
@@ -441,7 +446,8 @@ text-transform:none;
     transition: color 0.5s ease;
 }
 
-.guide .coming .added,
+.guide .toc .experimental,
+.guide .toc .coming,
 .guide .toc .added,
 .guide .toc .deprecated {
     display: none;
