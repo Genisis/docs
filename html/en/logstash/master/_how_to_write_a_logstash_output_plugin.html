@@ -96,130 +96,6 @@ walkthrough of the Ruby gem creation process, see
 and take a look.</p><pre class="programlisting prettyprint lang-ruby"># encoding: utf-8
 require "logstash/outputs/base"
 require "logstash/namespace"
-require "stud/interval"
-require "socket" # for Socket.gethostname
-
-# Add any asciidoc formatted documentation here
-# Generate a repeating message.
-#
-# This plugin is intended only as an example.
-
-class LogStash::Outputs::Example &lt; LogStash::Outputs::Base
-  config_name "example"
-
-  # If undefined, Logstash will complain, even if codec is unused.
-  default :codec, "plain"
-
-  # The message string to use in the event.
-  config :message, :validate =&gt; :string, :default =&gt; "Hello World!"
-
-  # Set how frequently messages should be sent.
-  #
-  # The default, `1`, means send a message every second.
-  config :interval, :validate =&gt; :number, :default =&gt; 1
-
-  public
-  def register
-    @host = Socket.gethostname
-  end # def register
-
-  def run(queue)
-    Stud.interval(@interval) do
-      event = LogStash::Event.new("message" =&gt; @message, "host" =&gt; @host)
-      decorate(event)
-      queue &lt;&lt; event
-    end # loop
-  end # def run
-
-end # class LogStash::Outputs::Example</pre><pre class="programlisting prettyprint lang-ruby"># encoding: utf-8
-require "logstash/outputs/base"
-require "logstash/codecs/line"
-
-# Add any asciidoc formatted documentation here
-class LogStash::Outputs::Example &lt; LogStash::Outputs::Base
-
-  # This example codec will append a string to the message field
-  # of an event, either in the decoding or encoding methods
-  #
-  # This is only intended to be used as an example.
-  #
-  # input {
-  #   stdin { codec =&gt; example }
-  # }
-  #
-  # or
-  #
-  # output {
-  #   stdout { codec =&gt; example }
-  # }
-  config_name "example"
-
-  # Append a string to the message
-  config :append, :validate =&gt; :string, :default =&gt; ', Hello World!'
-
-  public
-  def register
-    @lines = LogStash::Codecs::Line.new
-    @lines.charset = "UTF-8"
-  end
-
-  public
-  def decode(data)
-    @lines.decode(data) do |line|
-      replace = { "message" =&gt; line["message"].to_s + @append }
-      yield LogStash::Event.new(replace)
-    end
-  end # def decode
-
-  public
-  def encode(event)
-    @on_event.call(event, event["message"].to_s + @append + NL)
-  end # def encode
-
-end # class LogStash::Outputs::Example</pre><pre class="programlisting prettyprint lang-ruby"># encoding: utf-8
-require "logstash/outputs/base"
-require "logstash/namespace"
-
-# Add any asciidoc formatted documentation here
-# This example filter will replace the contents of the default
-# message field with whatever you specify in the configuration.
-#
-# It is only intended to be used as an example.
-class LogStash::Outputs::Example &lt; LogStash::Outputs::Base
-
-  # Setting the config_name here is required. This is how you
-  # configure this output from your Logstash config.
-  #
-  # output {
-  #   example { message =&gt; "My message..." }
-  # }
-  config_name "example"
-
-  # Replace the message with this value.
-  config :message, :validate =&gt; :string, :default =&gt; "Hello World!"
-
-
-  public
-  def register
-    # Add instance variables
-  end # def register
-
-  public
-  def filter(event)
-
-    if @message
-      # Replace the event message with our message as configured in the
-      # config file.
-      event["message"] = @message
-    end
-
-    # filter_matched should go in the last line of our successful code
-    filter_matched(event)
-  end # def output
-
-end # class LogStash::Outputs::Example</pre><pre class="programlisting prettyprint lang-ruby"># encoding: utf-8
-require "logstash/outputs/base"
-require "logstash/namespace"
 
 # Add any asciidoc formatted documentation here
 # An example output that does nothing.
@@ -259,11 +135,7 @@ Ruby code, use the asciidoc <code class="literal">[source,ruby]</code> directive
 <a class="ulink" href="https://github.com/elasticsearch/docs#asciidoc-guide" target="_top">https://github.com/elasticsearch/docs#asciidoc-guide</a></p></div></div><h3><a id="_literal_class_literal_declaration_4"></a><code class="literal">class</code> Declaration<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The output plugin class should be a subclass of
 <code class="literal">LogStash::Outputs::Base</code>:</p><pre class="programlisting prettyprint lang-ruby">class LogStash::Outputs::Example &lt; LogStash::Outputs::Base</pre><p>The class name should closely mirror the plugin name, for example:</p><pre class="programlisting prettyprint lang-ruby">LogStash::Outputs::Example</pre><h3><a id="_literal_config_name_literal_4"></a><code class="literal">config_name</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><pre class="programlisting prettyprint lang-ruby">  config_name "example"</pre><p>This is the name your plugin will call inside the output configuration
 block.</p><p>If you set <code class="literal">config_name "example"</code> in your plugin code,
-the corresponding Logstash configuration block would need to look like this:</p><pre class="programlisting prettyprint lang-js">input {
-  codec =&gt; example {...}
-}</pre><p>Or if using the codec in an output block:</p><pre class="programlisting prettyprint lang-js">output {
-  codec =&gt; example {...}
-}</pre><h3><a id="_configuration_parameters_4"></a>Configuration Parameters<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><pre class="programlisting prettyprint lang-ruby">  config :variable_name, :validate =&gt; :variable_type, :default =&gt; "Default value", :required =&gt; boolean, :deprecated =&gt; boolean</pre><p>The configuration, or <code class="literal">config</code> section allows you to define as many (or as few)
+the corresponding Logstash configuration block would need to look like this:</p><h3><a id="_configuration_parameters_4"></a>Configuration Parameters<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><pre class="programlisting prettyprint lang-ruby">  config :variable_name, :validate =&gt; :variable_type, :default =&gt; "Default value", :required =&gt; boolean, :deprecated =&gt; boolean</pre><p>The configuration, or <code class="literal">config</code> section allows you to define as many (or as few)
 parameters as are needed to enable Logstash to process events.</p><p>There are several configuration attributes:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">:validate</code> - allows you to enforce passing a particular data type to Logstash
 for this configuration option, such as <code class="literal">:string</code>, <code class="literal">:password</code>, <code class="literal">:boolean</code>,
@@ -287,83 +159,7 @@ created to enforce having <code class="literal">super</code> called, preventing 
 enforced testing to ensure <code class="literal">super</code> is called.)</p><p><code class="literal">public</code> means the method can be called anywhere, not just within the class.
 This is the default behavior for methods in Ruby, but it is specified explicitly
 here anyway.</p><p>You can also assign instance variables here (variables prepended by <code class="literal">@</code>).
-Configuration variables are now in scope as instance variables, like <code class="literal">@message</code></p><h4><a id="_literal_filter_literal_method_2"></a><code class="literal">filter</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
-  def filter(event)
-
-    if @message
-      # Replace the event message with our message as configured in the
-      # config file.
-      event["message"] = @message
-    end
-
-  # filter_matched should go in the last line of our successful code
-  filter_matched(event)
-end # def filter</pre><p>The plugin’s <code class="literal">filter</code> method is where the actual filtering work takes place!
-Inside the <code class="literal">filter</code> method you can refer to the event data using the <code class="literal">event</code>
-hash. Configuration variables are now in scope as instance variables, like
-<code class="literal">@message</code></p><pre class="programlisting prettyprint lang-ruby">  filter_matched(event)</pre><p>Calling the <code class="literal">filter_matched</code> method upon succesful execution of the plugin will
-ensure that any fields or tags added through the Logstash configuration for this
-filter will be handled correctly. For example, any <code class="literal">add_field</code>, <code class="literal">remove_field</code>,
-<code class="literal">add_tag</code> and/or <code class="literal">remove_tag</code> actions will be performed at this time.</p><p>Event methods such as <code class="literal">event.cancel</code> are now available to control the workflow
-of the event being processed.</p><h4><a id="_literal_decode_literal_method_3"></a><code class="literal">decode</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
-  def decode(data)
-    @lines.decode(data) do |line|
-      replace = { "message" =&gt; line["message"].to_s + @append }
-      yield LogStash::Event.new(replace)
-    end
-  end # def decode</pre><p>The codec’s <code class="literal">decode</code> method is where data coming in from an input is transformed
-into an event.  There are complex examples like the
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/lib/logstash/codecs/collectd.rb#L386-L484" target="_top">collectd</a>
-codec, and simpler examples like the <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-spool/blob/master/lib/logstash/codecs/spool.rb#L11-L16" target="_top">spool</a>
-codec.</p><p>There must be a <code class="literal">yield</code> statement as part of the <code class="literal">decode</code> method which will
-return decoded events to the pipeline.</p><h4><a id="_literal_encode_literal_method_3"></a><code class="literal">encode</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
-  def encode(event)
-    @on_event.call(event, event["message"].to_s + @append + NL)
-  end # def encode</pre><p>The <code class="literal">encode</code> method takes an event and serializes it (<span class="emphasis"><em>encodes</em></span>) into another
-format.  Good examples of <code class="literal">encode</code> methods include the simple <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-plain/blob/master/lib/logstash/codecs/plain.rb#L39-L46" target="_top">plain</a>
-codec, the slightly more involved <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-msgpack/blob/master/lib/logstash/codecs/msgpack.rb#L38-L46" target="_top">msgpack</a>
-codec, and even an <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-avro/blob/master/lib/logstash/codecs/avro.rb#L38-L45" target="_top">avro</a>
-codec.</p><p>In most cases, your <code class="literal">encode</code> method should have an <code class="literal">@on_event.call()</code> statement.
-This call will output data per event in the described way.</p><h4><a id="_literal_run_literal_method_4"></a><code class="literal">run</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The example input plugin has the following <code class="literal">run</code> Method:</p><pre class="programlisting prettyprint lang-ruby">  def run(queue)
-    Stud.interval(@interval) do
-      event = LogStash::Event.new("message" =&gt; @message, "host" =&gt; @host)
-      decorate(event)
-      queue &lt;&lt; event
-    end # loop
-  end # def run</pre><p>The <code class="literal">run</code> method is where a stream of data from an input becomes an event.</p><p>The stream can be plain or generated as with the
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-input-heartbeat/blob/master/lib/logstash/inputs/heartbeat.rb#L43-L61" target="_top">heartbeat</a>
-input plugin.  In these cases, though no codec is used,
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-input-heartbeat/blob/master/lib/logstash/inputs/heartbeat.rb#L17" target="_top">a default codec</a>
-must be set in the code to avoid errors.</p><p>Here’s another example <code class="literal">run</code> method:</p><pre class="programlisting prettyprint lang-ruby">  def run(queue)
-    while true
-      begin
-        # Based on some testing, there is no way to interrupt an IO.sysread nor
-        # IO.select call in JRuby.
-        data = $stdin.sysread(16384)
-        @codec.decode(data) do |event|
-          decorate(event)
-          event["host"] = @host if !event.include?("host")
-          queue &lt;&lt; event
-        end
-      rescue IOError, EOFError, LogStash::ShutdownSignal
-        # stdin closed or a requested shutdown
-        break
-      end
-    end # while true
-    finished
-  end # def run</pre><p>In this example, the <code class="literal">data</code> is being sent to the codec defined in the
-configuration block to <code class="literal">decode</code> the data stream and return an event.</p><p>In both examples, the resulting <code class="literal">event</code> is passed to the <code class="literal">decorate</code> method:</p><pre class="programlisting prettyprint lang-ruby">      decorate(event)</pre><p>This applies any tags you might have set in the input configuration block. For
-example, <code class="literal">tags =&gt; ["tag1", "tag2"]</code>.</p><p>Also in both examples, the <code class="literal">event</code>, after being "decorated," is appended to the
-queue:</p><pre class="programlisting prettyprint lang-ruby">      queue &lt;&lt; event</pre><p>This inserts the event into the pipeline.</p><div class="tip admon"><div class="icon"><img alt="Tip" src="images/icons/tip.png" /></div><div class="admon_content"><p>Because input plugins can range from simple to complex, it is helpful to see
-more examples of how they have been created:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-input-syslog/blob/master/lib/logstash/inputs/syslog.rb" target="_top">syslog</a>
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-input-zeromq/blob/master/lib/logstash/inputs/zeromq.rb" target="_top">zeromq</a>
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-input-stdin/blob/master/lib/logstash/inputs/stdin.rb" target="_top">stdin</a>
-</li><li class="listitem">
-<a class="ulink" href="https://github.com/logstash-plugins/logstash-input-tcp/blob/master/lib/logstash/inputs/tcp.rb" target="_top">tcp</a>
-</li></ul></div><p>There are many more more examples in the <a class="ulink" href="https://github.com/logstash-plugins?query=logstash-input" target="_top">logstash-plugin github repository</a>.</p></div></div><h4><a id="_literal_receive_literal_method"></a><code class="literal">receive</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
+Configuration variables are now in scope as instance variables, like <code class="literal">@message</code></p><h4><a id="_literal_receive_literal_method"></a><code class="literal">receive</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
   def receive(event)
   end # def event</pre><p>This empty <code class="literal">receive</code> method does absolutely nothing, which is valid code from
 the <a class="ulink" href="https://github.com/logstash-plugins/logstash-output-null/blob/master/lib/logstash/outputs/null.rb" target="_top">null</a>
@@ -380,13 +176,7 @@ codec by including code similar to this:</p><pre class="programlisting prettypri
   def receive(event)
     return unless output?(event)
     @codec.encode(event)
-  end # def receive</pre><p>For more examples of output plugins, see the <a class="ulink" href="https://github.com/logstash-plugins?query=logstash-output" target="_top">logstash-plugin github repository</a>.</p><h4><a id="_literal_teardown_literal_method_4"></a><code class="literal">teardown</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
-  def teardown
-    @udp.close if @udp &amp;&amp; !@udp.closed?
-  end</pre><p>The <code class="literal">teardown</code> method is not present in all input or output plugins.  It is
-called when a shutdown happens to ensure that sockets, files, connections and
-threads are all closed down properly.  If your plugin uses these connections,
-you should include a teardown method.</p><h2><a id="_building_the_plugin_4"></a>Building the Plugin<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2><p>At this point in the process you have coded your plugin and are ready to build
+  end # def receive</pre><p>For more examples of output plugins, see the <a class="ulink" href="https://github.com/logstash-plugins?query=logstash-output" target="_top">logstash-plugin github repository</a>.</p><h2><a id="_building_the_plugin_4"></a>Building the Plugin<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2><p>At this point in the process you have coded your plugin and are ready to build
 a Ruby Gem from it.  The following steps will help you complete the process.</p><h3><a id="_external_dependencies_4"></a>External dependencies<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>A <code class="literal">require</code> statement in Ruby is used to include necessary code. In some cases
 your plugin may require additional files.  For example, the collectd plugin
 <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/lib/logstash/codecs/collectd.rb#L148" target="_top">uses</a>
@@ -394,7 +184,7 @@ the <code class="literal">types.db</code> file provided by collectd.  In the mai
 a file called <code class="literal">vendor.json</code> is where these files are described.</p><p>The <code class="literal">vendor.json</code> file contains an array of JSON objects, each describing a file
 dependency. This example comes from the
 <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/vendor.json" target="_top">collectd</a>
-codec plugin:</p><pre class="programlisting prettyprint lang-json">[{
+codec plugin:</p><pre class="programlisting prettyprint lang-txt">[{
         "sha1": "a90fe6cc53b76b7bdd56dc57950d90787cb9c96e",
         "url": "http://collectd.org/files/collectd-5.4.0.tar.gz",
         "files": [ "/src/types.db" ]
@@ -511,31 +301,7 @@ currently available:</p><pre class="programlisting prettyprint lang-sh">bin/plug
 plugins: inputs, codecs, filters and outputs.</p></div></div></li></ul></div></li><li class="listitem">
 Now try running Logstash with a simple configuration passed in via the
 command-line, using the <code class="literal">-e</code> flag.
-</li></ol></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Your results will depend on what your output plugin is designed to do.</p></div></div><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { example{} } output {stdout { codec =&gt; rubydebug }}'</pre><p>The example output plugin will send the contents of <code class="literal">message</code> (with a
-default message of "Hello World!") every second.</p><pre class="programlisting prettyprint lang-sh">{
-       "message" =&gt; "Hello World!",
-      "@version" =&gt; "1",
-    "@timestamp" =&gt; "2015-01-27T19:17:18.932Z",
-          "host" =&gt; "cadenza"
-}</pre><p>Feel free to experiment and test this by changing the <code class="literal">message</code> and <code class="literal">interval</code> parameters:</p><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { example{ message =&gt; "A different message" interval =&gt; 5 } } output {stdout { codec =&gt; rubydebug }}'</pre><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { stdin{ codec =&gt; example{}} } output {stdout { codec =&gt; rubydebug }}'</pre><p>The example output plugin will append the contents of <code class="literal">append</code> (which
-by default appends ", Hello World!")</p><p>After starting Logstash, type something, for example "Random output string".
-The resulting output message field contents should be,
-"Random output string, Hello World!":</p><pre class="programlisting prettyprint lang-sh">Random output string
-{
-       "message" =&gt; "Random output string, Hello World!",
-      "@version" =&gt; "1",
-    "@timestamp" =&gt; "2015-01-27T19:17:18.932Z",
-          "host" =&gt; "cadenza"
-}</pre><p>Feel free to experiment and test this by changing the <code class="literal">append</code> parameter:</p><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { stdin{ codec =&gt; example{ append =&gt; ", I am appending this! }} } output {stdout { codec =&gt; rubydebug }}'</pre><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { stdin{} } output { example {} } output {stdout { codec =&gt; rubydebug }}'</pre><p>Test your filter by sending input through <code class="literal">stdin</code> and output (after filtering)
-through <code class="literal">stdout</code> with the <code class="literal">rubydebug</code> codec, which enhances readability.</p><p>In the case of the example output plugin, any text you send will be
-replaced by the contents of the <code class="literal">message</code> configuration parameter, the default
-value being "Hello World!":</p><pre class="programlisting prettyprint lang-sh">Testing 1, 2, 3
-{
-       "message" =&gt; "Hello World!",
-      "@version" =&gt; "1",
-    "@timestamp" =&gt; "2015-01-27T19:17:18.932Z",
-          "host" =&gt; "cadenza"
-}</pre><p>Feel free to experiment and test this by changing the <code class="literal">message</code> parameter:</p><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { stdin{} } output { example { message =&gt; "This is a new message!"} } output {stdout { codec =&gt; rubydebug }}'</pre><p>It is harder to display console proof of a working output—with the notable
+</li></ol></div><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Your results will depend on what your output plugin is designed to do.</p></div></div><p>It is harder to display console proof of a working output—with the notable
 exception of the <code class="literal">stdout</code> plugin.</p><pre class="programlisting prettyprint lang-sh">bin/logstash -e 'input { stdin {} } output { example{} }'</pre><p>Depending on your plugin, you may or may not be immediately able to tell it is
 working.  If your output plugin sends to a network socket, you may want to set
 up a listener to test the results.  Through your testing, you should be able to

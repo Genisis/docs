@@ -223,13 +223,7 @@ more examples of how they have been created:</p><div class="itemizedlist"><ul cl
 <a class="ulink" href="https://github.com/logstash-plugins/logstash-input-stdin/blob/master/lib/logstash/inputs/stdin.rb" target="_top">stdin</a>
 </li><li class="listitem">
 <a class="ulink" href="https://github.com/logstash-plugins/logstash-input-tcp/blob/master/lib/logstash/inputs/tcp.rb" target="_top">tcp</a>
-</li></ul></div><p>There are many more more examples in the <a class="ulink" href="https://github.com/logstash-plugins?query=logstash-input" target="_top">logstash-plugin github repository</a>.</p></div></div><h4><a id="_literal_teardown_literal_method"></a><code class="literal">teardown</code> Method<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><pre class="programlisting prettyprint lang-ruby">  public
-  def teardown
-    @udp.close if @udp &amp;&amp; !@udp.closed?
-  end</pre><p>The <code class="literal">teardown</code> method is not present in all input or output plugins.  It is
-called when a shutdown happens to ensure that sockets, files, connections and
-threads are all closed down properly.  If your plugin uses these connections,
-you should include a teardown method.</p><h2><a id="_building_the_plugin"></a>Building the Plugin<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2><p>At this point in the process you have coded your plugin and are ready to build
+</li></ul></div><p>There are many more more examples in the <a class="ulink" href="https://github.com/logstash-plugins?query=logstash-input" target="_top">logstash-plugin github repository</a>.</p></div></div><h2><a id="_building_the_plugin"></a>Building the Plugin<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2><p>At this point in the process you have coded your plugin and are ready to build
 a Ruby Gem from it.  The following steps will help you complete the process.</p><h3><a id="_external_dependencies"></a>External dependencies<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>A <code class="literal">require</code> statement in Ruby is used to include necessary code. In some cases
 your plugin may require additional files.  For example, the collectd plugin
 <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/lib/logstash/codecs/collectd.rb#L148" target="_top">uses</a>
@@ -237,7 +231,7 @@ the <code class="literal">types.db</code> file provided by collectd.  In the mai
 a file called <code class="literal">vendor.json</code> is where these files are described.</p><p>The <code class="literal">vendor.json</code> file contains an array of JSON objects, each describing a file
 dependency. This example comes from the
 <a class="ulink" href="https://github.com/logstash-plugins/logstash-codec-collectd/blob/master/vendor.json" target="_top">collectd</a>
-codec plugin:</p><pre class="programlisting prettyprint lang-json">[{
+codec plugin:</p><pre class="programlisting prettyprint lang-txt">[{
         "sha1": "a90fe6cc53b76b7bdd56dc57950d90787cb9c96e",
         "url": "http://collectd.org/files/collectd-5.4.0.tar.gz",
         "files": [ "/src/types.db" ]
