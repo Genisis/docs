@@ -73,11 +73,15 @@ settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span cl
 </dd><dt><span class="term">
 <code class="literal">index.index_concurrency</code>
 </span></dt><dd>
-    Defaults to <code class="literal">8</code>.
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> Defaults to <code class="literal">8</code>.
 </dd><dt><span class="term">
 <code class="literal">index.fail_on_merge_failure</code>
 </span></dt><dd>
-    Default to <code class="literal">true</code>.
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> Default to <code class="literal">true</code>.
 </dd><dt><span class="term">
 <code class="literal">index.translog.flush_threshold_ops</code>
 </span></dt><dd>
@@ -103,13 +107,17 @@ settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span cl
 </dd><dt><span class="term">
 <code class="literal">index.cache.filter.expire</code>
 </span></dt><dd>
-    The expire after access time for filter cache.
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> The expire after access time for filter cache.
     Set to <code class="literal">-1</code> to disable.
 </dd><dt><span class="term">
 <code class="literal">index.gateway.snapshot_interval</code>
 </span></dt><dd>
-    The gateway snapshot interval (only applies to shared gateways).
-    Defaults to 10s.
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> The gateway snapshot interval (only applies to shared
+    gateways). Defaults to 10s.
 </dd><dt><span class="term">
 <a class="link" href="index-modules-merge.html" title="Merge">merge policy</a>
 </span></dt><dd>
@@ -171,10 +179,16 @@ settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span cl
 Number values are also supported, e.g. <code class="literal">1</code>.
 </li></ul></div></dd><dt><span class="term">
 <code class="literal">index.gc_deletes</code>
-, </span><span class="term">
+</span></dt><dd>
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span>
+</dd><dt><span class="term">
 <code class="literal">index.ttl.disable_purge</code>
 </span></dt><dd>
-    Disables temporarily the purge of expired docs.
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> Disables temporarily the purge of expired docs.
 </dd><dt><span class="term">
 <a class="link" href="index-modules-store.html" title="Store">store level throttling</a>
 </span></dt><dd>
@@ -182,16 +196,22 @@ Number values are also supported, e.g. <code class="literal">1</code>.
 </dd><dt><span class="term">
 <code class="literal">index.translog.fs.type</code>
 </span></dt><dd>
-    Either <code class="literal">simple</code> or <code class="literal">buffered</code> (default).
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> Either <code class="literal">simple</code> or <code class="literal">buffered</code> (default).
 </dd><dt><span class="term">
 <code class="literal">index.compound_format</code>
 </span></dt><dd>
-    See <a class="link" href="index-modules.html#index-compound-format"><code class="literal">index.compound_format</code></a> in
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> See <a class="link" href="index-modules.html#index-compound-format"><code class="literal">index.compound_format</code></a> in
     <a class="xref" href="index-modules.html#index-modules-settings" title="Index Settingsedit">the section called “Index Settings<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/index-modules.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a>.
 </dd><dt><span class="term">
 <code class="literal">index.compound_on_flush</code>
 </span></dt><dd>
-    See <a class="link" href="index-modules.html#index-compound-on-flush">`index.compound_on_flush</a> in
+    <span class="experimental">
+      [<span class="exp_title">experimental</span>]
+      <span class="detail">This functionality is experimental and may be changed or removed completely in a future release.</span></span> See <a class="link" href="index-modules.html#index-compound-on-flush">`index.compound_on_flush</a> in
     <a class="xref" href="index-modules.html#index-modules-settings" title="Index Settingsedit">the section called “Index Settings<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/index-modules.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a>.
 </dd><dt><span class="term">
 <a class="xref" href="index-modules-slowlog.html" title="Index Slow Log"><em>Index Slow Log</em></a>
