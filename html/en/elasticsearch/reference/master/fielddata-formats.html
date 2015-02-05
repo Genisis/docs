@@ -137,7 +137,8 @@ API. After changing the filters, use the
 <a class="link" href="indices-clearcache.html" title="Clear Cache">Clear Cache</a> API
 to reload the fielddata using the new filters.</p><h4><a id="_filtering_by_frequency"></a>Filtering by frequency:<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/index-modules/fielddata.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The frequency filter allows you to only load terms whose frequency falls
 between a <code class="literal">min</code> and <code class="literal">max</code> value, which can be expressed an absolute
-number or as a percentage (eg <code class="literal">0.01</code> is <code class="literal">1%</code>). Frequency is calculated
+number (when the number is bigger than 1.0) or as a percentage
+(eg <code class="literal">0.01</code> is <code class="literal">1%</code> and <code class="literal">1.0</code> is <code class="literal">100%</code>). Frequency is calculated
 <span class="strong"><strong>per segment</strong></span>. Percentages are based on the number of docs which have a
 value for the field, as opposed to all docs in the segment.</p><p>Small segments can be excluded completely by specifying the minimum
 number of docs that the segment should contain with <code class="literal">min_segment_size</code>:</p><pre class="programlisting prettyprint lang-js">{
