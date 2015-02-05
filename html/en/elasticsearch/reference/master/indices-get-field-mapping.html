@@ -61,15 +61,6 @@ the full path, including any parent object name the field is
 </p>
 </td></tr><tr><td valign="top">
 <p>
-Index names
-</p>
-</td><td valign="top">
-<p>
-the name of the lucene field (can be different than the
-   field name if the <code class="literal">index_name</code> option of the mapping is used).
-</p>
-</td></tr><tr><td valign="top">
-<p>
 Field names
 </p>
 </td><td valign="top">
@@ -82,25 +73,24 @@ if index names or field names are used as those can be ambiguous.</p><p>For exam
      "article": {
          "properties": {
              "id": { "type": "string" },
-             "title":  { "type": "string", "index_name": "text" },
-             "abstract": { "type": "string", "index_name": "text" },
+             "title":  { "type": "string"},
+             "abstract": { "type": "string"},
              "author": {
                  "properties": {
                      "id": { "type": "string" },
-                     "name": { "type": "string", "index_name": "author" }
+                     "name": { "type": "string" }
                  }
              }
          }
      }
- }</pre><p>To select the <code class="literal">id</code> of the <code class="literal">author</code> field, you can use its full name <code class="literal">author.id</code>. Using <code class="literal">text</code> will return
-the mapping of <code class="literal">abstract</code> as it is one of the fields which map to the Lucene field <code class="literal">text</code>. <code class="literal">name</code> will return
-the field <code class="literal">author.name</code>:</p><pre class="programlisting prettyprint lang-js">curl -XGET "http://localhost:9200/publications/_mapping/article/field/author.id,text,name"</pre><p>returns:</p><pre class="programlisting prettyprint lang-js">{
+ }</pre><p>To select the <code class="literal">id</code> of the <code class="literal">author</code> field, you can use its full name <code class="literal">author.id</code>. <code class="literal">name</code> will return
+the field <code class="literal">author.name</code>:</p><pre class="programlisting prettyprint lang-js">curl -XGET "http://localhost:9200/publications/_mapping/article/field/author.id,abstract,name"</pre><p>returns:</p><pre class="programlisting prettyprint lang-js">{
    "publications": {
       "article": {
-         "text": {
+         "abstract": {
             "full_name": "abstract",
             "mapping": {
-               "abstract": { "type": "string", "index_name": "text" }
+               "abstract": { "type": "string" }
             }
          },
          "author.id": {
@@ -112,14 +102,14 @@ the field <code class="literal">author.name</code>:</p><pre class="programlistin
          "name": {
             "full_name": "author.name",
             "mapping": {
-               "name": { "type": "string", "index_name": "author" }
+               "name": { "type": "string" }
             }
          }
       }
    }
 }</pre><p>Note how the response always use the same fields specified in the request as keys.
 The <code class="literal">full_name</code> in every entry contains the full name of the field whose mapping were returned.
-This is useful when the request can refer to to multiple fields (like <code class="literal">text</code> above).</p><h3><a id="_other_options"></a>Other options<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/indices/get-field-mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
+This is useful when the request can refer to to multiple fields.</p><h3><a id="_other_options"></a>Other options<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/indices/get-field-mapping.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
 <p>
 <code class="literal">include_defaults</code>
 </p>
