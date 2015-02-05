@@ -17,6 +17,12 @@ chdir($FindBin::RealBin);
 our $host = 'localhost:9200';
 our $es   = Search::Elasticsearch->new( nodes => $host );
 our $JSON = $es->transport->serializer;
+my $url_re = qr{
+    ^https?://[^/]+/guide/
+    (.+?)                           # book
+    (?:/(current|master|\d[^/]+))?  # version
+    (/[^/]+)                        # remainder
+    $}x;
 
 builder {
     mount '/search/' => \&doc_search;
@@ -45,9 +51,8 @@ sub doc_search {
     my $callback = $req->param('callback');
 
     my $ref = $env->{"HTTP_REFERER"} || '';
-    $ref =~ s{/index.html[^/]*$}{};
     my ( $book, $version );
-    if ( $ref =~ m{^https?://[^/]+/guide/(.+?)(?:/([^/]+)/([^/]+))?$} ) {
+    if ( $ref =~ /$url_re/ ) {
         $book    = $1;
         $version = $2;
     }
