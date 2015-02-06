@@ -39,7 +39,8 @@ number of replicas. Here is a curl example:</p><pre class="programlisting pretty
     "index" : {
         "number_of_replicas" : 4
     }
-}'</pre><p>Below is the list of settings that can be changed using the update
+}'</pre><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>When changing the number of replicas the index needs to be open. Changing
+the number of replicas on a closed index might prevent the index to be opened correctly again.</p></div></div><p>Below is the list of settings that can be changed using the update
 settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">index.number_of_replicas</code>
 </span></dt><dd>
