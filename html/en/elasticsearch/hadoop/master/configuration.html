@@ -8,7 +8,7 @@
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
       });
-    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    </script><link rel="stylesheet" type="text/css" href="styles.css?4" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
     if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -237,7 +237,11 @@ an exception is thrown, halting the job, if a field is missing
    in the Elasticsearch mapping specified; did you mean [name, location.address]?</pre><h4><a id="_network"></a>Network<a href="https://github.com/elasticsearch/elasticsearch-hadoop/edit/master/docs/src/reference/asciidoc/core/configuration.adoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 <code class="literal">es.nodes.discovery</code> (default true)
 </span></dt><dd>
-Whether to discovery the nodes within the Elasticsearch cluster or only to use the ones given in <code class="literal">es.nodes</code> for metadata queries. Note that when reading and writing, elasticsearch-hadoop uses the target index shards (and their hosting nodes), regardless of this setting.
+Whether to discovery the nodes within the Elasticsearch cluster or only to use the ones given in <code class="literal">es.nodes</code> for metadata queries. Note that this setting only applies during start-up; afterwards when reading and writing, elasticsearch-hadoop uses the target index shards (and their hosting nodes) unless <code class="literal">es.nodes.client.only</code> is enabled.
+</dd><dt><span class="term">
+<code class="literal">es.nodes.client.only</code> (default false)
+</span></dt><dd>
+Whether to use Elasticsearch <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-node.html#modules-node" target="_top">client nodes</a> (or <span class="emphasis"><em>load-balancers</em></span>). When enabled, elasticsearch-hadoop will route <span class="emphasis"><em>all</em></span> its requests (after nodes discovery, if enabled) through the <span class="emphasis"><em>client</em></span> nodes within the cluster. Note this typically significantly reduces the node parallelism and thus it is disabled by default.
 </dd><dt><span class="term">
 <code class="literal">es.http.timeout</code> (default 1m)
 </span></dt><dd>
