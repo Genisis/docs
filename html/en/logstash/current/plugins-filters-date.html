@@ -74,8 +74,7 @@ DEPRECATED WARNING: This configuration item is deprecated and may not be availab
 Value type is <a class="link" href="configuration.html#array" title="Arrayedit">array</a>
 </li><li class="listitem">
 Default value is <code class="literal">[]</code>
-</li></ul></div><p>Only handle events without all/any (controlled by <code class="literal">exclude_any</code> config
-option) of these tags.
+</li></ul></div><p>Only handle events without any of these tags.
 Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-locale"></a><code class="literal">locale</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Value type is <a class="link" href="configuration.html#string" title="Stringedit">string</a>
 </li><li class="listitem">
@@ -95,9 +94,9 @@ to help you save time and ensure correctness of date parsing.</p><div class="ite
 <code class="literal">ISO8601</code> - should parse any valid ISO8601 timestamp, such as
   <code class="literal">2011-04-19T03:44:01.103Z</code>
 </li><li class="listitem">
-<code class="literal">UNIX</code> - will parse unix time in seconds since epoch
+<code class="literal">UNIX</code> - will parse <span class="strong"><strong>float or int</strong></span> value expressing unix time in seconds since epoch like 1326149001.132 as well as 1326149001
 </li><li class="listitem">
-<code class="literal">UNIX_MS</code> - will parse unix time in milliseconds since epoch
+<code class="literal">UNIX_MS</code> - will parse <span class="strong"><strong>int</strong></span> value expressing unix time in milliseconds since epoch like 1366125117000
 </li><li class="listitem">
 <code class="literal">TAI64N</code> - will parse tai64n time values
 </li></ul></div><p>For example, if you have a field <code class="literal">logdate</code>, with a value that looks like
@@ -107,7 +106,7 @@ to help you save time and ensure correctness of date parsing.</p><div class="ite
   }
 }</pre><p>If your field is nested in your structure, you can use the nested
 syntax <code class="literal">[foo][bar]</code> to match its value. For more information, please refer to
-<a class="ulink" href="http://logstash.net/docs/latest/configuration#fieldreferences" target="_top">http://logstash.net/docs/latest/configuration#fieldreferences</a></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-periodic_flush"></a><code class="literal">periodic_flush</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<a class="xref" href="configuration.html#logstash-config-field-references" title="Field Referencesedit">the section called “Field References<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a>”</a></p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-periodic_flush"></a><code class="literal">periodic_flush</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Value type is <a class="link" href="configuration.html#boolean" title="Booleanedit">boolean</a>
 </li><li class="listitem">
 Default value is <code class="literal">false</code>
@@ -151,7 +150,7 @@ DEPRECATED WARNING: This configuration item is deprecated and may not be availab
 Value type is <a class="link" href="configuration.html#array" title="Arrayedit">array</a>
 </li><li class="listitem">
 Default value is <code class="literal">[]</code>
-</li></ul></div><p>Only handle events with all/any (controlled by <code class="literal">include_any</code> config option) of these tags.
+</li></ul></div><p>Only handle events with all of these tags.
 Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-date-target"></a><code class="literal">target</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/date.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Value type is <a class="link" href="configuration.html#string" title="Stringedit">string</a>
 </li><li class="listitem">
@@ -176,7 +175,7 @@ Default value is <code class="literal">""</code>
 </li></ul></div><p>Note that all of the specified routing options (<code class="literal">type</code>,<code class="literal">tags</code>,<code class="literal">exclude_tags</code>,<code class="literal">include_fields</code>,
 <code class="literal">exclude_fields</code>) must be met in order for the event to be handled by the filter.
 The type to act on. If a type is given, then this filter will only
-act on messages with the same type. See any input plugin’s "type"
+act on messages with the same type. See any input plugin’s <code class="literal">type</code>
 attribute for more.
 Optional.</p></div></div></div><div class="navfooter"><span class="prev"><a href="plugins-filters-checksum.html">
               « 

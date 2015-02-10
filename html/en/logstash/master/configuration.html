@@ -81,7 +81,7 @@ Note that mutliple key value entries are separated by spaces rather than commas.
 
 input { # comments can appear at the end of a line, too
   # ...
-}</pre><h3><a id="_field_references"></a>Field References<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>All events have properties. For example, an apache access log has things
+}</pre><h3><a id="logstash-config-field-references"></a>Field References<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/configuration.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>All events have properties. For example, an apache access log has things
 like status code (200, 404), request path ("/", "index.html"), HTTP verb (GET, POST),
 and client IP address. Logstash calls these properties fields.</p><p>It is often useful to be able to refer to a field by name. To do this,
 you can use the Logstash field reference syntax.</p><p>The syntax to access a field is <code class="literal">[fieldname]</code>. If you are referring to a
