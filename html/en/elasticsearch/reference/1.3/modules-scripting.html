@@ -33,7 +33,38 @@ as part of a search request, or can be used to evaluate a custom score
 for a query and so on.</p><p>The scripting module uses by default <a class="ulink" href="http://mvel.codehaus.org/" target="_top">mvel</a> as
 the scripting language with some extensions. mvel is used since it is
 extremely fast and very simple to use, and in most cases, simple
-expressions are needed (for example, mathematical equations).</p><p>Additional <code class="literal">lang</code> plugins are provided to allow to execute scripts in
+expressions are needed (for example, mathematical equations).</p><div class="important admon"><div class="icon"><img alt="Important" src="images/icons/important.png" /></div><div class="admon_content"><h4>Groovy dynamic scripting disabled by default from v1.4.3</h4><p>Elasticsearch versions 1.3.0-1.3.7 and 1.4.0-1.4.2 have a vulnerability in the
+Groovy scripting engine.  The vulnerability allows an attacker to construct
+Groovy scripts that escape the sandbox and execute shell commands as the user
+running the Elasticsearch Java VM.</p><p>If you are running a vulnerable version of Elasticsearch, you should either
+upgrade to at least v1.3.8 or v1.4.3, or disable dynamic Groovy scripts by
+adding this setting to the <code class="literal">config/elasticsearch.yml</code> file in all nodes in the
+cluster:</p><pre class="programlisting prettyprint lang-yaml">script.groovy.sandbox.enabled: false</pre><p>This will turn off the Groovy sandbox, thus preventing dynamic Groovy scripts
+from being accepted as part of a request or retrieved from the special
+<code class="literal">.scripts</code> index. You will still be able to use Groovy scripts stored in files
+in the <code class="literal">config/scripts/</code> directory on every node.</p><p>To convert an inline script to a file, take this simple script
+as an example:</p><pre class="programlisting prettyprint lang-json">GET /_search
+{
+    "script_fields": {
+        "my_field": {
+            "script": "1 + my_var",
+            "params": {
+              "my_var": 2
+            }
+        }
+    }
+}</pre><p>Save the contents of the script as a file called <code class="literal">config/script/my_script.groovy</code>
+on every data node in the cluster:</p><pre class="programlisting prettyprint lang-js">1 + my_var</pre><p>Now you can access the script by file name (without the extension):</p><pre class="programlisting prettyprint lang-json">GET /_search
+{
+    "script_fields": {
+        "my_field": {
+            "file": "my_test",
+            "params": {
+              "my_var": 2
+            }
+        }
+    }
+}</pre></div></div><p>Additional <code class="literal">lang</code> plugins are provided to allow to execute scripts in
 different languages. Currently supported plugins are <code class="literal">lang-javascript</code>
 for JavaScript, <code class="literal">lang-groovy</code> for Groovy, and <code class="literal">lang-python</code> for Python.
 All places where a <code class="literal">script</code> parameter can be used, a <code class="literal">lang</code> parameter
@@ -143,8 +174,10 @@ that can be used for configuring this sandbox:</p><div class="variablelist"><dl 
 </dd><dt><span class="term">
 <code class="literal">script.groovy.sandbox.enabled</code>
 </span></dt><dd>
-    Flag to disable the sandbox (defaults to <code class="literal">true</code> meaning the sandbox is
-    enabled).
+    Flag to disable the sandbox (defaults to <code class="literal">false</code> <span class="added">
+      [<span class="version">v1.4.3</span>]
+      <span class="detail">Added in v1.4.3.</span></span> meaning the sandbox is
+    disabled).
 </dd></dl></div><p>When specifying whitelist or blacklist settings for the groovy sandbox, all
 options replace the current whitelist, they are not additive.</p><h3><a id="_automatic_script_reloading"></a>Automatic Script Reloading<a href="https://github.com/elasticsearch/elasticsearch/edit/1.3/docs/reference/modules/scripting.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>The <code class="literal">config/scripts</code> directory is scanned periodically for changes.
 New and changed scripts are reloaded and deleted script are removed
