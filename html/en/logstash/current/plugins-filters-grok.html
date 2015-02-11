@@ -29,7 +29,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 data into something structured and queryable.</p><p>This tool is perfect for syslog logs, apache and other webserver logs, mysql
 logs, and in general, any log format that is generally written for humans
 and not computer consumption.</p><p>Logstash ships with about 120 patterns by default. You can find them here:
-<a class="ulink" href="https://github.com/logstash/logstash/tree/v2.0.0.dev/patterns" target="_top">https://github.com/logstash/logstash/tree/v2.0.0.dev/patterns</a>. You can add
+<a class="ulink" href="https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns" target="_top">https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns</a>. You can add
 your own trivially. (See the <code class="literal">patterns_dir</code> setting)</p><p>If you need help building patterns to match your logs, you will find the
 <a class="ulink" href="http://grokdebug.herokuapp.com" target="_top">http://grokdebug.herokuapp.com</a> too quite useful!</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_grok_basics"></a>Grok Basics<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/grok.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Grok works by combining text patterns into something that matches your
 logs.</p><p>The syntax for a grok pattern is <code class="literal">%{SYNTAX:SEMANTIC}</code></p><p>The <code class="literal">SYNTAX</code> is the name of the pattern that will match your text. For
@@ -142,8 +142,7 @@ DEPRECATED WARNING: This configuration item is deprecated and may not be availab
 Value type is <a class="link" href="configuration.html#array" title="Arrayedit">array</a>
 </li><li class="listitem">
 Default value is <code class="literal">[]</code>
-</li></ul></div><p>Only handle events without all/any (controlled by <code class="literal">exclude_any</code> config
-option) of these tags.
+</li></ul></div><p>Only handle events without any of these tags.
 Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-grok-keep_empty_captures"></a><code class="literal">keep_empty_captures</code><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/grok.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Value type is <a class="link" href="configuration.html#boolean" title="Booleanedit">boolean</a>
 </li><li class="listitem">
@@ -240,7 +239,7 @@ DEPRECATED WARNING: This configuration item is deprecated and may not be availab
 Value type is <a class="link" href="configuration.html#array" title="Arrayedit">array</a>
 </li><li class="listitem">
 Default value is <code class="literal">[]</code>
-</li></ul></div><p>Only handle events with all/any (controlled by <code class="literal">include_any</code> config option) of these tags.
+</li></ul></div><p>Only handle events with all of these tags.
 Optional.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="plugins-filters-grok-type"></a><code class="literal">type</code>  (DEPRECATED)<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/plugins/filters/grok.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 DEPRECATED WARNING: This configuration item is deprecated and may not be available in future versions.
 </li><li class="listitem">
@@ -250,7 +249,7 @@ Default value is <code class="literal">""</code>
 </li></ul></div><p>Note that all of the specified routing options (<code class="literal">type</code>,<code class="literal">tags</code>,<code class="literal">exclude_tags</code>,<code class="literal">include_fields</code>,
 <code class="literal">exclude_fields</code>) must be met in order for the event to be handled by the filter.
 The type to act on. If a type is given, then this filter will only
-act on messages with the same type. See any input plugin’s "type"
+act on messages with the same type. See any input plugin’s <code class="literal">type</code>
 attribute for more.
 Optional.</p></div></div></div><div class="navfooter"><span class="prev"><a href="plugins-filters-geoip.html">
               « 
