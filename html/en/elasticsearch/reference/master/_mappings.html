@@ -50,6 +50,32 @@ The setting <code class="literal">index.mapping.allow_type_wrapper</code> has be
       ]
     }
   }
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_removed_short_name_field_access"></a>Removed short name field access<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/migration/migrate_2_0.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Field names in queries, aggregations, etc. must now use the complete name.  Use of the short name
+caused ambiguities in field lookups when the same name existed within multiple object mappings.</p><p>The following example illustrates the difference between 1.x and 2.0.</p><p>Given these mappings:</p><pre class="screen">curl -XPUT 'localhost:9200/index'
+{
+  "mappings": {
+    "type": {
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "first": {"type": "string"},
+            "last": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}</pre><p>The following query was possible in 1.x:</p><pre class="screen">curl -XGET 'localhost:9200/index/type/_search'
+{
+  "query": {
+    "match": { "first": "foo" }
+  }
+}</pre><p>In 2.0, the same query should now be:</p><pre class="screen">curl -XGET 'localhost:9200/index/type/_search'
+{
+  "query": {
+    "match": { "name.first": "foo" }
+  }
 }</pre></div></div><div class="navfooter"><span class="prev"><a href="_parent_parameter_on_update_request.html">
               « 
               Parent parameter on update request</a>
