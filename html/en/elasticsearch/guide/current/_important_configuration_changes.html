@@ -8,7 +8,7 @@
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
       });
-    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    </script><link rel="stylesheet" type="text/css" href="styles.css?4" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
     if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -112,11 +112,11 @@ data around—for no good reason. For large clusters with terabytes of data,
 this useless shuffling of data can take a <span class="emphasis"><em>really long time</em></span>.  If all the nodes
 had simply waited for the cluster to come online, all the data would have been
 local and nothing would need to move.</p><p>Now that we know the problem, we can configure a few settings to alleviate it.
-First, we need to give Elasticsearch a hard limit:</p><pre class="programlisting prettyprint lang-yaml">gateway.recover_after_nodes: 8</pre><p>This will prevent Elasticsearch from starting a recovery until at least eight nodes
+First, we need to give Elasticsearch a hard limit:</p><pre class="programlisting prettyprint lang-yaml">gateway.recover_after_nodes: 8</pre><p>This will prevent Elasticsearch from starting a recovery until at least eight (data or master) nodes
 are present.  The value for this setting is a matter of personal preference: how
 many nodes do you want present before you consider your cluster functional?
 In this case, we are setting it to <code class="literal">8</code>, which means the cluster is inoperable
-unless there are eight nodes.</p><p>Then we tell Elasticsearch how many nodes <span class="emphasis"><em>should</em></span> be in the cluster, and how
+unless there are at least eight nodes.</p><p>Then we tell Elasticsearch how many nodes <span class="emphasis"><em>should</em></span> be in the cluster, and how
 long we want to wait for all those nodes:</p><pre class="programlisting prettyprint lang-yaml">gateway.expected_nodes: 10
 gateway.recover_after_time: 5m</pre><p>What this means is that Elasticsearch will do the following:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 Wait for eight nodes to be present
@@ -125,7 +125,9 @@ Begin recovering after 5 minutes <span class="emphasis"><em>or</em></span> after
 whichever comes first.
 </li></ul></div><p>These three settings allow you to avoid the excessive shard swapping that can
 occur on cluster restarts.  It can literally make recovery take seconds instead
-of hours.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_prefer_unicast_over_multicast"></a>Prefer Unicast over Multicast<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/510_Deployment/40_config.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Elasticsearch is configured to use multicast discovery out of the box.  Multicast<a id="id-1.9.4.9.10.2.1" class="indexterm"></a>
+of hours.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>These settings can only be set in the <code class="literal">config/elasticsearch.yml</code> file or on
+the command line (they are not dynamically updatable) and they are only relevant
+during a full cluster restart.</p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_prefer_unicast_over_multicast"></a>Prefer Unicast over Multicast<a href="https://github.com/elasticsearch/elasticsearch-definitive-guide/edit/master/510_Deployment/40_config.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Elasticsearch is configured to use multicast discovery out of the box.  Multicast<a id="id-1.9.4.9.10.2.1" class="indexterm"></a>
 <a id="id-1.9.4.9.10.2.2" class="indexterm"></a><a id="id-1.9.4.9.10.2.3" class="indexterm"></a><a id="id-1.9.4.9.10.2.4" class="indexterm"></a>
 works by sending UDP pings across your local network to discover nodes.  Other
 Elasticsearch nodes will receive these pings and respond.  A cluster is formed
