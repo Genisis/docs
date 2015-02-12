@@ -32,7 +32,9 @@ the browser.</p><div class="note admon"><div class="icon"><img alt="Note" src="i
       to authenticate when loading Kibana 4 will appear to fail. You should be sure to enter your credentials in the
       authentication dialog. If Kibana 4 then fails to load, hit the reload button in your browser. The browser now has
       access to your credentials. Kibana 4 should load properly with this second attempt.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_shield_configuration_2"></a>Shield configuration</h3></div></div></div><p>Shield includes a default <a class="link" href="authorization.html#roles" title="Roles, Permissions and Privileges">role</a> for usage with Kibana 4:</p><pre class="programlisting prettyprint lang-yaml">kibana4:
-  cluster: cluster:monitor/nodes/info, cluster:monitor/health
+  cluster:
+      - cluster:monitor/nodes/info
+      - cluster:monitor/health
   indices:
     '*':
       - indices:admin/mappings/fields/get
@@ -41,6 +43,7 @@ the browser.</p><div class="note admon"><div class="icon"><img alt="Note" src="i
       - indices:data/read/msearch
       - indices:admin/get <a id="CO20-1"></a><span><img src="images/icons/callouts/1.png" alt="" /></span>
     '.kibana':
+      - indices:admin/create
       - indices:admin/exists
       - indices:admin/mapping/put
       - indices:admin/mappings/fields/get
@@ -51,7 +54,8 @@ the browser.</p><div class="note admon"><div class="icon"><img alt="Note" src="i
       - indices:data/read/search
       - indices:data/write/delete
       - indices:data/write/index
-      - indices:data/write/update</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO20-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
+      - indices:data/write/update
+      - indices:admin/create</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO20-1"><span><img src="images/icons/callouts/1.png" alt="" /></span></a> </p></td><td valign="top" align="left"><p>
 This line gives the Kibana 4 user read access to indices in order to search and display the data in them. To
 constrain this role’s access to specific indices, alter the wildcard.
 </p></td></tr></table></div><p>Kibana 4 uses the <code class="literal">.kibana</code> index to save and load dashboards. This role definition allows the user to manage and use
