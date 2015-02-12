@@ -71,7 +71,7 @@ expand each query term to an OR clause like this:</p><pre class="literallayout">
     }
 }</pre><p>matches the same words as</p><pre class="programlisting prettyprint lang-js">{
     "query_string": {
-      "query": "(content:this OR content:that) AND (name:this OR name:that)"
+      "query": "(content:this OR name:this) AND (content:that OR name:that)"
     }
 }</pre><p>Since several queries are generated from the individual search terms,
 combining them can be automatically done using either a <code class="literal">dis_max</code> query or a
