@@ -125,9 +125,19 @@ even for documents that don’t have this specific field). As a consequence, if
 you don’t need scoring on a specific field, it is highly recommended to disable
 norms on it. In  particular, this is the case for fields that are used solely
 for filtering or aggregations.</p><p>In case you would like to disable norms after the fact, it is possible to do so
-by using the <a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping API</a>. Please however note that
-norms won’t be removed instantly, but as your index will receive new insertions
-or updates, and segments get merged. Any score computation on a field that got
+by using the <a class="link" href="indices-put-mapping.html" title="Put Mapping">PUT mapping API</a>, like this:</p><pre class="programlisting prettyprint lang-json">PUT my_index/_mapping/my_type
+{
+  "properties": {
+    "title": {
+      "type": "string",
+      "norms": {
+        "enabled": false
+      }
+    }
+  }
+}</pre><p>Please however note that norms won’t be removed instantly, but will be removed
+as old segments are merged into new segments as you continue indexing new documents.
+Any score computation on a field that has had
 norms removed might return inconsistent results since some documents won’t have
 norms anymore while other documents might still have norms.</p><h4><a id="number"></a>Number<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/mapping/types/core-types.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>A number based type supporting <code class="literal">float</code>, <code class="literal">double</code>, <code class="literal">byte</code>, <code class="literal">short</code>,
 <code class="literal">integer</code>, and <code class="literal">long</code>. It uses specific constructs within Lucene in
