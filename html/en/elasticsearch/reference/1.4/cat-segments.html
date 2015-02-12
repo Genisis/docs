@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>cat master</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="cat.html" title="cat APIs" /><link rel="prev" href="cat-indices.html" title="cat indices" /><link rel="next" href="cat-nodes.html" title="cat nodes" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="//www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="//www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="//www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="//www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>cat segments</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.4]" /><link rel="up" href="cat.html" title="cat APIs" /><link rel="prev" href="states.html" title="Shard states" /><link rel="next" href="cluster.html" title="Cluster APIs" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="//www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="//www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="//www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="//www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,32 +19,95 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
       [1.4]
-    </a></span> » <span class="breadcrumb-link"><a href="cat.html">cat APIs </a></span> » <span class="breadcrumb-node">cat master</span></div><div class="navheader"><span class="prev"><a href="cat-indices.html">
+    </a></span> » <span class="breadcrumb-link"><a href="cat.html">cat APIs </a></span> » <span class="breadcrumb-node">cat segments</span></div><div class="navheader"><span class="prev"><a href="states.html">
               « 
-              cat indices</a>
+              Shard states</a>
            
         </span><span class="next">
            
-          <a href="cat-nodes.html">cat nodes
+          <a href="cluster.html">Cluster APIs 
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cat-master"></a>cat master<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/cat/master.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="cat-alias.html">cat aliases</a></span></dt><dt><span class="chapter"><a href="cat-allocation.html">cat allocation</a></span></dt><dt><span class="chapter"><a href="cat-count.html">cat count</a></span></dt><dt><span class="chapter"><a href="cat-fielddata.html">cat fielddata</a></span></dt><dt><span class="chapter"><a href="cat-health.html">cat health</a></span></dt><dt><span class="chapter"><a href="cat-indices.html">cat indices</a></span></dt><dt><span class="chapter"><a href="cat-master.html">cat master</a></span></dt><dt><span class="chapter"><a href="cat-nodes.html">cat nodes</a></span></dt><dt><span class="chapter"><a href="cat-pending-tasks.html">cat pending tasks</a></span></dt><dt><span class="chapter"><a href="cat-plugins.html">cat plugins</a></span></dt><dt><span class="chapter"><a href="cat-recovery.html">cat recovery</a></span></dt><dt><span class="chapter"><a href="cat-thread-pool.html">cat thread pool</a></span></dt><dt><span class="chapter"><a href="cat-shards.html">cat shards</a></span></dt><dt><span class="chapter"><a href="cat-segments.html">cat segments</a></span></dt></dl></div><p><code class="literal">master</code> doesn’t have any extra options. It simply displays the
-master’s node ID, bound IP address, and node name.</p><pre class="programlisting prettyprint lang-shell">% curl 'localhost:9200/_cat/master?v'
-id                     ip            node
-Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 Solarr</pre><p>This information is also available via the <code class="literal">nodes</code> command, but this
-is slightly shorter when all you want to do, for example, is verify
-all nodes agree on the master:</p><pre class="programlisting prettyprint lang-shell">% pssh -i -h list.of.cluster.hosts curl -s localhost:9200/_cat/master
-[1] 19:16:37 [SUCCESS] es3.vm
-Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 Solarr
-[2] 19:16:37 [SUCCESS] es2.vm
-Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 Solarr
-[3] 19:16:37 [SUCCESS] es1.vm
-Ntgn2DcuTjGuXlhKDUD4vA 192.168.56.30 Solarr</pre></div><div class="navfooter"><span class="prev"><a href="cat-indices.html">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="cat-segments"></a>cat segments<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/cat/segments.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="cat-alias.html">cat aliases</a></span></dt><dt><span class="chapter"><a href="cat-allocation.html">cat allocation</a></span></dt><dt><span class="chapter"><a href="cat-count.html">cat count</a></span></dt><dt><span class="chapter"><a href="cat-fielddata.html">cat fielddata</a></span></dt><dt><span class="chapter"><a href="cat-health.html">cat health</a></span></dt><dt><span class="chapter"><a href="cat-indices.html">cat indices</a></span></dt><dt><span class="chapter"><a href="cat-master.html">cat master</a></span></dt><dt><span class="chapter"><a href="cat-nodes.html">cat nodes</a></span></dt><dt><span class="chapter"><a href="cat-pending-tasks.html">cat pending tasks</a></span></dt><dt><span class="chapter"><a href="cat-plugins.html">cat plugins</a></span></dt><dt><span class="chapter"><a href="cat-recovery.html">cat recovery</a></span></dt><dt><span class="chapter"><a href="cat-thread-pool.html">cat thread pool</a></span></dt><dt><span class="chapter"><a href="cat-shards.html">cat shards</a></span></dt><dt><span class="chapter"><a href="cat-segments.html">cat segments</a></span></dt></dl></div><p>The <code class="literal">segments</code> command provides low level information about the segments
+in the shards of an index. It provides information similar to the
+<a class="ulink" href="indices-segments.html" target="_top">_segments</a> endpoint.</p><pre class="programlisting prettyprint lang-shell">% curl 'http://localhost:9200/_cat/segments?v'
+index shard prirep ip            segment generation docs.count [...]
+test  4     p      192.168.2.105 _0               0          1
+test1 2     p      192.168.2.105 _0               0          1
+test1 3     p      192.168.2.105 _2               2          1</pre><pre class="programlisting prettyprint lang-shell">[...] docs.deleted  size size.memory committed searchable version compound
+                 0 2.9kb        7818 false     true       4.10.2  true
+                 0 2.9kb        7818 false     true       4.10.2  true
+                 0 2.9kb        7818 false     true       4.10.2  true</pre><p>The output shows information about index names and shard numbers in the first
+two columns.</p><p>If you only want to get information about segments in one particular index,
+you can add the index name in the URL, for example <code class="literal">/_cat/segments/test</code>. Also,
+several indexes can be queried like <code class="literal">/_cat/segments/test,test1</code></p><p>The following columns provide additional monitoring information:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+prirep
+</span></dt><dd>
+Whether this segment belongs to a primary or replica shard.
+</dd><dt><span class="term">
+ip
+</span></dt><dd>
+The ip address of the segments shard.
+</dd><dt><span class="term">
+segment
+</span></dt><dd>
+A segment name, derived from the segment generation. The name
+                is internally used to generate the file names in the directory
+                of the shard this segment belongs to.
+</dd><dt><span class="term">
+generation
+</span></dt><dd>
+The generation number is incremented with each segment that is written.
+                The name of the segment is derived from this generation number.
+</dd><dt><span class="term">
+docs.count
+</span></dt><dd>
+The number of non-deleted documents that are stored in this segment.
+</dd><dt><span class="term">
+docs.deleted
+</span></dt><dd>
+The number of deleted documents that are stored in this segment.
+                It is perfectly fine if this number is greater than 0, space is
+                going to be reclaimed when this segment gets merged.
+</dd><dt><span class="term">
+size
+</span></dt><dd>
+The amount of disk space that this segment uses.
+</dd><dt><span class="term">
+size.memory
+</span></dt><dd>
+Segments store some data into memory in order to be searchable efficiently.
+                This column shows the number of bytes in memory that are used.
+</dd><dt><span class="term">
+committed
+</span></dt><dd>
+Whether the segment has been sync’ed on disk. Segments that are
+                committed would survive a hard reboot. No need to worry in case
+                of false, the data from uncommitted segments is also stored in
+                the transaction log so that Elasticsearch is able to replay
+                changes on the next start.
+</dd><dt><span class="term">
+searchable
+</span></dt><dd>
+True if the segment is searchable. A value of false would most
+                likely mean that the segment has been written to disk but no
+                refresh occurred since then to make it searchable.
+</dd><dt><span class="term">
+version
+</span></dt><dd>
+The version of Lucene that has been used to write this segment.
+</dd><dt><span class="term">
+compound
+</span></dt><dd>
+Whether the segment is stored in a compound file. When true, this
+                means that Lucene merged all files from the segment in a single
+                one in order to save file descriptors.
+</dd></dl></div></div><div class="navfooter"><span class="prev"><a href="states.html">
               « 
-              cat indices</a>
+              Shard states</a>
            
         </span><span class="next">
            
-          <a href="cat-nodes.html">cat nodes
+          <a href="cluster.html">Cluster APIs 
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){
