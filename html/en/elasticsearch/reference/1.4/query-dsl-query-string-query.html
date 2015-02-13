@@ -173,7 +173,7 @@ Numbers from 1 up to but not including 5
 age:&gt;=10
 age:&lt;10
 age:&lt;=10</pre><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>To combine an upper and lower bound with the simplified syntax, you
-would need to join two clauses with an <code class="literal">AND</code> operator:</p><pre class="literallayout">age:(&gt;=10 AND &lt; 20)
+would need to join two clauses with an <code class="literal">AND</code> operator:</p><pre class="literallayout">age:(&gt;=10 AND &lt;20)
 age:(+&gt;=10 +&lt;20)</pre></div></div><p>The parsing of ranges in query strings can be complex and error prone. It is
 much more reliable to use an explicit <a class="link" href="query-dsl-range-filter.html" title="Range Filter"><code class="literal">range</code> filter</a>.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="_boosting"></a>Boosting<a href="https://github.com/elasticsearch/elasticsearch/edit/1.4/docs/reference/query-dsl/queries/query-string-syntax.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4></div></div></div><p>Use the <span class="emphasis"><em>boost</em></span> operator <code class="literal">^</code> to make one term more relevant than another.
 For instance, if we want to find all documents about foxes, but we are
