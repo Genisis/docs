@@ -90,8 +90,9 @@ field/substitution.</p><p>Be aware of escaping any backslash in the config file.
   mutate {
     gsub =&gt; [
       # replace all forward slashes with underscore
-      "fieldname", "/", "_",</pre><pre class="literallayout">      # replace backslashes, question marks, hashes, and minuses with
-      # dot
+      "fieldname", "/", "_",
+      # replace backslashes, question marks, hashes, and minuses
+      # with a dot "."
       "fieldname2", "[\\?#-]", "."
     ]
   }
