@@ -91,7 +91,11 @@ the password to use when accessing the trust store.
 <code class="literal">marvel.agent.exporter.es.ssl.truststore.algorithm</code>
 </span></dt><dd>
 Trust store format (defaults to SunX509).
-</dd></dl></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="marvel-indices"></a>Marvel indices</h2></div></div></div><p>Marvel stores it’s data using time based indices. By default, Marvel generates
+</dd><dt><span class="term">
+<code class="literal">marvel.agent.exporter.es.ssl.hostname_verification</code>
+</span></dt><dd><p class="simpara"><span class="added">
+      [<span class="version">1.3.1</span>]
+      <span class="detail">Added in 1.3.1.</span></span> - Set this to <code class="literal">false</code> to disable HTTPS hostname verification when exporting.</p><p class="simpara">This setting is update-able via the Cluster Update Settings API.</p></dd></dl></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="marvel-indices"></a>Marvel indices</h2></div></div></div><p>Marvel stores it’s data using time based indices. By default, Marvel generates
 an index per day, with one shard and one replica. We expect this to be a good
 default which will fit most use cases. You may need to change it for very big
 installations.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="config-marvel-indices"></a>Configuring Marvel’s indices</h3></div></div></div><p>Marvel uses an <a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-templates.html" target="_top">index template</a> to preconfigure newly created indices. You can retrieve it with:</p><pre class="programlisting prettyprint lang-sh">GET /_template/marvel</pre><p>To change the default settings, you may add your own template to override it. Make sure your template uses
