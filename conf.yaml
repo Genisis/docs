@@ -61,8 +61,10 @@ repos:
 
     kibana:
         url:        https://github.com/elasticsearch/kibana.git
-        current:    3.0
-        branches:   [3.0]
+        current:    4.0
+        branches:   
+            - 4.0
+            - 3.0
 
     shield:
         url:        https://github.com/elasticsearch/elasticsearch-shield.git
