@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Indices Stats</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="indices.html" title="Indices APIs" /><link rel="prev" href="indices-status.html" title="Status" /><link rel="next" href="indices-segments.html" title="Indices Segments" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="//www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="//www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="//www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="//www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script type="text/javascript">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Shadow replica indices</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /><link rel="home" href="index.html" title="Reference [1.x]" /><link rel="up" href="indices.html" title="Indices APIs" /><link rel="prev" href="indices-upgrade.html" title="Upgrade" /><link rel="next" href="_node_level_settings_related_to_shadow_replicas.html" title="Node level settings related to shadow replicas" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><link rel="shortcut icon" href="//www.elasticsearch.org/content/themes/elasticsearch-org/favicon.ico" /><link rel="stylesheet" id="prettify-gc-syntax-highlighter-css" href="//www.elasticsearch.org/content/plugins/prettify-gc-syntax-highlighter/prettify.css?ver=3.5.2" type="text/css" media="all" /><link rel="stylesheet" id="appStyles-css" href="//www.elasticsearch.org/content/themes/elasticsearch-org/css/main.css?ver=1395693666" type="text/css" media="all" /><script type="text/javascript" src="//www.elasticsearch.org/wp-includes/js/jquery/jquery.js?ver=1.8.3"></script><link rel="stylesheet" href="//www.elasticsearch.org/content/themes/elasticsearch-org/style.css" type="text/css" media="all" /><script src="//cdn.optimizely.com/js/281975433.js"></script><script type="text/javascript">
       jQuery(function() {
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
@@ -19,170 +19,73 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]--><header><nav role="navigation" id="mobile-nav-container" class="off-canvas-nav"><ul id="mobile-nav" class="menu"><li id="menu-item-75892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a><ul class="sub-menu"><li id="menu-item-75895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75895"><a href="/overview/">Overview</a></li><li id="menu-item-68760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68760"><a href="/overview/elasticsearch/">Elasticsearch</a></li><li id="menu-item-75894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75894"><a href="/overview/marvel/">Marvel</a></li><li id="menu-item-68758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68758"><a href="/overview/kibana/">Kibana</a></li><li id="menu-item-68756" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68756"><a href="/overview/kibana/installation/">Kibana Installation</a></li><li id="menu-item-68757" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68757"><a href="/overview/kibana/support/">Kibana Support</a></li><li id="menu-item-68759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68759"><a href="/overview/logstash/">Logstash</a></li><li id="menu-item-74019" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74019"><a href="/overview/hadoop/">Hadoop</a></li><li id="menu-item-75893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75893"><a href="/overview/elkdownloads/">ELK Downloads</a></li></ul></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="/resources/">Resources</a><ul class="sub-menu"><li id="menu-item-76342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li id="menu-item-4843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></li><li id="menu-item-657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li id="menu-item-68802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="container"><div id="header-inner"><h1 id="header-logo"><a class="faux" href="http://www.elasticsearch.org">Elasticsearch</a></h1><nav role="navigation" id="main-nav-container" class="main-nav"><ul id="top-nav" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75892"><a href="/overview/">Overview</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-53 current_page_item menu-item-55"><a href="/resources/">Resources</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-657"><a href="/community/">Community</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68802"><a href="/case-studies/">Case Studies</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="/blog/">Blog</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a target="_blank" href="http://elasticsearch.com">Company</a></li></ul><ul class="add-on"><li><a class="btn btn-primary" href="/overview/elkdownloads/">Download</a></li></ul></nav><div class="slide-trigger navigation" id="nav-trigger" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><hr /><ul id="sub_nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76342"><a href="/guide/">Guide</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4843"><a href="/videos/">Videos</a></li></ul></div></div></header><div class="global_wrapper"><div class="page_content"><div class="container"><section id="search_container" class="active"><form id="blog_search" role="search" action="/" method="get"><div class="blog_search_wrapper"><input id="s" name="s" class="search_term" type="text" placeholder="search" autocomplete="off" tabindex="1" /><input type="submit" class="search_submit" value=" " /><ul id="results"></ul></div></form></section><section class="full_width guide"><article class="guide_content"><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Reference
       [1.x]
-    </a></span> » <span class="breadcrumb-link"><a href="indices.html">Indices APIs </a></span> » <span class="breadcrumb-node">Indices Stats</span></div><div class="navheader"><span class="prev"><a href="indices-status.html">
+    </a></span> » <span class="breadcrumb-link"><a href="indices.html">Indices APIs </a></span> » <span class="breadcrumb-node">Shadow replica indices</span></div><div class="navheader"><span class="prev"><a href="indices-upgrade.html">
               « 
-              Status</a>
+              Upgrade</a>
            
         </span><span class="next">
            
-          <a href="indices-segments.html">Indices Segments
+          <a href="_node_level_settings_related_to_shadow_replicas.html">Node level settings related to shadow replicas
                »
-            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="indices-stats"></a>Indices Stats<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/stats.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="indices-create-index.html">Create Index</a></span></dt><dt><span class="chapter"><a href="indices-delete-index.html">Delete Index</a></span></dt><dt><span class="chapter"><a href="indices-get-index.html">Get Index</a></span></dt><dt><span class="chapter"><a href="indices-exists.html">Indices Exists</a></span></dt><dt><span class="chapter"><a href="indices-open-close.html">Open / Close Index API</a></span></dt><dt><span class="chapter"><a href="indices-put-mapping.html">Put Mapping</a></span></dt><dt><span class="chapter"><a href="indices-get-mapping.html">Get Mapping</a></span></dt><dt><span class="chapter"><a href="indices-get-field-mapping.html">Get Field Mapping</a></span></dt><dt><span class="chapter"><a href="indices-types-exists.html">Types Exists</a></span></dt><dt><span class="chapter"><a href="indices-delete-mapping.html">Delete Mapping</a></span></dt><dt><span class="chapter"><a href="indices-aliases.html">Index Aliases</a></span></dt><dt><span class="chapter"><a href="indices-update-settings.html">Update Indices Settings</a></span></dt><dt><span class="chapter"><a href="indices-get-settings.html">Get Settings</a></span></dt><dt><span class="chapter"><a href="indices-analyze.html">Analyze</a></span></dt><dt><span class="chapter"><a href="indices-templates.html">Index Templates</a></span></dt><dt><span class="chapter"><a href="indices-warmers.html">Warmers</a></span></dt><dt><span class="chapter"><a href="indices-status.html">Status</a></span></dt><dt><span class="chapter"><a href="indices-stats.html">Indices Stats</a></span></dt><dt><span class="chapter"><a href="indices-segments.html">Indices Segments</a></span></dt><dt><span class="chapter"><a href="indices-recovery.html">Indices Recovery</a></span></dt><dt><span class="chapter"><a href="indices-clearcache.html">Clear Cache</a></span></dt><dt><span class="chapter"><a href="indices-flush.html">Flush</a></span></dt><dt><span class="chapter"><a href="indices-refresh.html">Refresh</a></span></dt><dt><span class="chapter"><a href="indices-optimize.html">Optimize</a></span></dt><dt><span class="chapter"><a href="indices-upgrade.html">Upgrade</a></span></dt><dt><span class="chapter"><a href="indices-shadow-replicas.html">Shadow replica indices</a></span></dt></dl></div><p>Indices level stats provide statistics on different operations happening
-on an index. The API provides statistics on the index level scope
-(though most stats can also be retrieved using node level scope).</p><p>The following returns high level aggregation and index level stats for
-all indices:</p><pre class="programlisting prettyprint lang-js">curl localhost:9200/_stats</pre><p>Specific index stats can be retrieved using:</p><pre class="programlisting prettyprint lang-js">curl localhost:9200/index1,index2/_stats</pre><p>By default, all stats are returned, returning only specific stats can be
-specified as well in the URI. Those stats can be any of:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-<code class="literal">docs</code>
-</p>
-</td><td valign="top">
-<p>
-The number of docs / deleted docs (docs not yet merged out).
-                                Note, affected by refreshing the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">store</code>
-</p>
-</td><td valign="top">
-<p>
-The size of the index.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">indexing</code>
-</p>
-</td><td valign="top">
-<p>
-Indexing statistics, can be combined with a comma
-                                separated list of <code class="literal">types</code> to provide document type level stats.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">get</code>
-</p>
-</td><td valign="top">
-<p>
-Get statistics, including missing stats.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">search</code>
-</p>
-</td><td valign="top">
-<p>
-Search statistics. You can include statistics for custom groups by adding
-                an extra <code class="literal">groups</code> parameter (search operations can be associated with one or more
-                groups). The <code class="literal">groups</code> parameter accepts a comma separated list of group names.
-                Use <code class="literal">_all</code> to return statistics for all groups.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">completion</code>
-</p>
-</td><td valign="top">
-<p>
-Completion suggest statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">fielddata</code>
-</p>
-</td><td valign="top">
-<p>
-Fielddata statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">flush</code>
-</p>
-</td><td valign="top">
-<p>
-Flush statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">merge</code>
-</p>
-</td><td valign="top">
-<p>
-Merge statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">query_cache</code>
-</p>
-</td><td valign="top">
-<p>
-<a class="link" href="index-modules-shard-query-cache.html" title="Shard query cache">Shard query cache</a> statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">refresh</code>
-</p>
-</td><td valign="top">
-<p>
-Refresh statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">suggest</code>
-</p>
-</td><td valign="top">
-<p>
-Suggest statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">warmer</code>
-</p>
-</td><td valign="top">
-<p>
-Warmer statistics.
-</p>
-</td></tr></tbody></table></div><p>Some statistics allow per field granularity which accepts a list
-comma-separated list of included fields. By default all fields are included:</p><div class="horizontal"><table cellpadding="4px" border="0"><colgroup><col /><col /></colgroup><tbody valign="top"><tr><td valign="top">
-<p>
-<code class="literal">fields</code>
-</p>
-</td><td valign="top">
-<p>
-    List of fields to be included in the statistics. This is used as the
-    default list unless a more specific field list is provided (see below).
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">completion_fields</code>
-</p>
-</td><td valign="top">
-<p>
-    List of fields to be included in the Completion Suggest statistics.
-</p>
-</td></tr><tr><td valign="top">
-<p>
-<code class="literal">fielddata_fields</code>
-</p>
-</td><td valign="top">
-<p>
-    List of fields to be included in the Fielddata statistics.
-</p>
-</td></tr></tbody></table></div><p>Here are some samples:</p><pre class="programlisting prettyprint lang-js"># Get back stats for merge and refresh only for all indices
-curl 'localhost:9200/_stats/merge,refresh'
-# Get back stats for type1 and type2 documents for the my_index index
-curl 'localhost:9200/my_index/_stats/indexing?types=type1,type2
-# Get back just search stats for group1 and group2
-curl 'localhost:9200/_stats/search?groups=group1,group2</pre><p>The stats returned are aggregated on the index level, with
-<code class="literal">primaries</code> and <code class="literal">total</code> aggregations. In order to get back shard level
-stats, set the <code class="literal">level</code> parameter to <code class="literal">shards</code>.</p><p>Note, as shards move around the cluster, their stats will be cleared as
-they are created on other nodes. On the other hand, even though a shard
-"left" a node, that node will still retain the stats that shard
-contributed to.</p></div><div class="navfooter"><span class="prev"><a href="indices-status.html">
+            </a></span></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="indices-shadow-replicas"></a>Shadow replica indices<a href="https://github.com/elasticsearch/elasticsearch/edit/1.x/docs/reference/indices/shadow-replicas.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><div class="toc"><dl><dt><span class="chapter"><a href="indices-create-index.html">Create Index</a></span></dt><dt><span class="chapter"><a href="indices-delete-index.html">Delete Index</a></span></dt><dt><span class="chapter"><a href="indices-get-index.html">Get Index</a></span></dt><dt><span class="chapter"><a href="indices-exists.html">Indices Exists</a></span></dt><dt><span class="chapter"><a href="indices-open-close.html">Open / Close Index API</a></span></dt><dt><span class="chapter"><a href="indices-put-mapping.html">Put Mapping</a></span></dt><dt><span class="chapter"><a href="indices-get-mapping.html">Get Mapping</a></span></dt><dt><span class="chapter"><a href="indices-get-field-mapping.html">Get Field Mapping</a></span></dt><dt><span class="chapter"><a href="indices-types-exists.html">Types Exists</a></span></dt><dt><span class="chapter"><a href="indices-delete-mapping.html">Delete Mapping</a></span></dt><dt><span class="chapter"><a href="indices-aliases.html">Index Aliases</a></span></dt><dt><span class="chapter"><a href="indices-update-settings.html">Update Indices Settings</a></span></dt><dt><span class="chapter"><a href="indices-get-settings.html">Get Settings</a></span></dt><dt><span class="chapter"><a href="indices-analyze.html">Analyze</a></span></dt><dt><span class="chapter"><a href="indices-templates.html">Index Templates</a></span></dt><dt><span class="chapter"><a href="indices-warmers.html">Warmers</a></span></dt><dt><span class="chapter"><a href="indices-status.html">Status</a></span></dt><dt><span class="chapter"><a href="indices-stats.html">Indices Stats</a></span></dt><dt><span class="chapter"><a href="indices-segments.html">Indices Segments</a></span></dt><dt><span class="chapter"><a href="indices-recovery.html">Indices Recovery</a></span></dt><dt><span class="chapter"><a href="indices-clearcache.html">Clear Cache</a></span></dt><dt><span class="chapter"><a href="indices-flush.html">Flush</a></span></dt><dt><span class="chapter"><a href="indices-refresh.html">Refresh</a></span></dt><dt><span class="chapter"><a href="indices-optimize.html">Optimize</a></span></dt><dt><span class="chapter"><a href="indices-upgrade.html">Upgrade</a></span></dt><dt><span class="chapter"><a href="indices-shadow-replicas.html">Shadow replica indices</a></span></dt></dl></div><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>This functionality is experimental and may be changed or removed completely in a future release.</p></div></div><p>If you would like to use a shared filesystem, you can use the shadow replicas
+settings to choose where on disk the data for an index should be kept, as well
+as how Elasticsearch should replay operations on all the replica shards of an
+index.</p><p>In order to fully utilize the <code class="literal">index.data_path</code> and <code class="literal">index.shadow_replicas</code>
+settings, you need to enable using it in elasticsearch.yml:</p><pre class="programlisting prettyprint lang-yaml">node.enable_custom_paths: true</pre><p>You can then create an index with a custom data path, where each node will use
+this path for the data:</p><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>Because shadow replicas do not index the document on replica shards, it’s
+possible for the replica’s known mapping to be behind the index’s known mapping
+if the latest cluster state has not yet been processed on the node containing
+the replica. Because of this, it is highly recommended to use pre-defined
+mappings when using shadow replicas.</p></div></div><pre class="programlisting prettyprint lang-js">curl -XPUT 'localhost:9200/my_index' -d '
+{
+    "index" : {
+        "number_of_shards" : 1,
+        "number_of_replicas" : 4,
+        "data_path": "/var/data/my_index",
+        "shadow_replicas": true
+    }
+}'</pre><div class="warning admon"><div class="icon"><img alt="Warning" src="images/icons/warning.png" /></div><div class="admon_content"><p>In the above example, the "/var/data/my_index" path is a shared filesystem that
+must be available on every node in the Elasticsearch cluster. You must also
+ensure that the Elasticsearch process has the correct permissions to read from
+and write to the directory used in the <code class="literal">index.data_path</code> setting.</p></div></div><p>An index that has been created with the <code class="literal">index.shadow_replicas</code> setting set to
+"true" will not replicate document operations to any of the replica shards,
+instead, it will only continually refresh. Once segments are available on the
+filesystem where the shadow replica resides (after an Elasticsearch "flush"), a
+regular refresh (governed by the <code class="literal">index.refresh_interval</code>) can be used to make
+the new data searchable.</p><div class="note admon"><div class="icon"><img alt="Note" src="images/icons/note.png" /></div><div class="admon_content"><p>Since documents are only indexed on the primary shard, realtime GET
+requests could fail to return a document if executed on the replica shard,
+therefore, GET API requests automatically have the <code class="literal">?preference=_primary</code> flag
+set if there is no preference flag already set.</p></div></div><p>In order to ensure the data is being synchronized in a fast enough manner, you
+may need to tune the flush threshold for the index to a desired number. A flush
+is needed to fsync segment files to disk, so they will be visible to all other
+replica nodes. Users should test what flush threshold levels they are
+comfortable with, as increased flushing can impact indexing performance.</p><p>The Elasticsearch cluster will still detect the loss of a primary shard, and
+transform the replica into a primary in this situation. This transformation will
+take slightly longer, since no <code class="literal">IndexWriter</code> is maintained for each shadow
+replica.</p><p>Below is the list of settings that can be changed using the update
+settings API:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+<code class="literal">index.data_path</code> (string)
+</span></dt><dd>
+    Path to use for the index’s data. Note that by default Elasticsearch will
+    append the node ordinal by default to the path to ensure multiple instances
+    of Elasticsearch on the same machine do not share a data directory.
+</dd><dt><span class="term">
+<code class="literal">index.shadow_replicas</code>
+</span></dt><dd>
+    Boolean value indicating this index should use shadow replicas. Defaults to
+    <code class="literal">false</code>.
+</dd><dt><span class="term">
+<code class="literal">index.shared_filesystem</code>
+</span></dt><dd>
+    Boolean value indicating this index uses a shared filesystem. Defaults to
+    the <code class="literal">true</code> if <code class="literal">index.shadow_replicas</code> is set to true, <code class="literal">false</code> otherwise.
+</dd></dl></div></div><div class="navfooter"><span class="prev"><a href="indices-upgrade.html">
               « 
-              Status</a>
+              Upgrade</a>
            
         </span><span class="next">
            
-          <a href="indices-segments.html">Indices Segments
+          <a href="_node_level_settings_related_to_shadow_replicas.html">Node level settings related to shadow replicas
                »
             </a></span></div></article></section></div></div></div><footer><div id="footer_container" class="full_wrapper"><div class="container"><nav role="navigation"><ul id="footer_nav" class="menu"><li id="menu-item-36" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-36"><a target="_blank" href="http://elasticsearch.com">Company</a></li><li id="menu-item-74980" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74980"><a href="/resources/">Resources</a></li><li id="menu-item-3106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3106"><a href="/terms-of-use/">Terms</a></li><li id="menu-item-3107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3107"><a href="/privacy-and-cookie-policy/">Privacy</a></li><li id="menu-item-3105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3105"><a href="/contact/">Contact</a></li><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="/blog/">Blog</a></li></ul></nav><div id="social"><a href="https://twitter.com/elasticsearch" class="social_icons" target="_blank"><i class="twitter"></i></a><a href="https://www.facebook.com/elasticsearch" class="social_icons" target="_blank"><i class="facebook"></i></a></div><div id="footer_form"><label class="form_label">Sign up for updates!</label><div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_4"><a id="gf_4" name="gf_4" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_4" id="gform_4" action="/empty-template/#gf_4"><div class="gform_body"><ul id="gform_fields_4" class="gform_fields top_label description_below"><li id="field_4_6" class="gfield               gfield_contains_required"><label class="gfield_label" for="input_4_6">enter you email<span class="gfield_required">*</span></label><div class="ginput_container"><input name="input_6" id="input_4_6" type="email" value="" class="medium" tabindex="50" /></div></li><li id="field_4_2" class="gfield     gform_hidden"><input name="input_2" id="input_4_2" type="hidden" class="gform_hidden" value="813-MAM-392" /></li><li id="field_4_3" class="gfield     gform_hidden"><input name="input_3" id="input_4_3" type="hidden" class="gform_hidden" value="WEB.org" /></li><li id="field_4_4" class="gfield     gform_hidden"><input name="input_4" id="input_4_4" type="hidden" class="gform_hidden" value="WEB.org - Footer - Updates" /></li></ul></div><script type="text/javascript">//<![CDATA[
             jQuery(function(){
