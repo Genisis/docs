@@ -55,7 +55,7 @@ will get a better score because <code class="literal">Alice Smith</code> is a be
   "query": {
     "has_child": {
       "type":       "employee",
-      "score_mode": "max"
+      "score_mode": "max",
       "query": {
         "match": {
           "name": "Alice Smith"
