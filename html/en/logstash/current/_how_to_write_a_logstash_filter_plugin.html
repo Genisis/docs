@@ -372,10 +372,31 @@ Publishes the gem to RubyGems.org
 </li></ol></div></div></div><p>That’s it! Your plugin is published! Logstash users can now install your plugin
 by running:</p><pre class="programlisting prettyprint lang-sh">bin/plugin install logstash-filter-mypluginname</pre><h3><a id="_contributing_your_source_code_to_ulink_url_https_github_com_logstash_plugins_logstash_plugins_ulink_3"></a>Contributing your source code to <a class="ulink" href="https://github.com/logstash-plugins" target="_top">logstash-plugins</a><a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3><p>It is not required to contribute your source code to
 <a class="ulink" href="https://github.com/logstash-plugins" target="_top">logstash-plugins</a> github organization, but
-we always welcome new plugins!</p><p>To migrate your plugin to logstash-plugins,
-simply create a new <a class="ulink" href="https://github.com/elasticsearch/logstash/issues" target="_top">issue</a> in
-the Logstash repository. We will facilitate the move to the logstash-plugins
-organization using the recommended
+we always welcome new plugins!</p><h4><a id="_benefits_3"></a>Benefits<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>Some of the many benefits of having your plugin in the logstash-plugins
+repository are:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<span class="strong"><strong>Discovery</strong></span> Your plugin will appear in the <a class="ulink" href="http://www.elasticsearch.org/guide/en/logstash/current/index.html" target="_top">Logstash Reference</a>,
+where Logstash users look first for plugins and documentation.
+</li><li class="listitem">
+<span class="strong"><strong>Documentation</strong></span> Your plugin documentation will automatically be added to the
+ <a class="ulink" href="http://www.elasticsearch.org/guide/en/logstash/current/index.html" target="_top">Logstash Reference</a>.
+</li><li class="listitem">
+<span class="strong"><strong>Testing</strong></span> With our testing infrastructure, your plugin will be continuously
+tested against current and future releases of Logstash.  As a result, users will
+have the assurance that if incompatibilities arise, they will be quickly
+discovered and corrected.
+</li></ul></div><h4><a id="_acceptance_guidelines_3"></a>Acceptance Guidelines<a href="https://github.com/elasticsearch/logstash-docs/edit/master/docs/static/include/pluginbody.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<span class="strong"><strong>Code Review</strong></span> Your plugin must be reviewed by members of the community for
+coherence, quality, readability, stability and security.
+</li><li class="listitem">
+<span class="strong"><strong>Tests</strong></span> Your plugin must contain tests to be accepted.  These tests are also
+subject to code review for scope and completeness.  It’s ok if you don’t know
+how to write tests — we will guide you. We are working on publishing a guide to
+creating tests for Logstash which will make it easier.  In the meantime, you can
+refer to <a class="ulink" href="http://betterspecs.org/" target="_top">http://betterspecs.org/</a> for examples.
+</li></ul></div><p>To begin migrating your plugin to logstash-plugins, simply create a new
+<a class="ulink" href="https://github.com/elasticsearch/logstash/issues" target="_top">issue</a> in
+the Logstash repository. When the acceptance guidelines are completed, we will
+facilitate the move to the logstash-plugins organization using the recommended
 <a class="ulink" href="https://help.github.com/articles/transferring-a-repository/#transferring-from-a-user-to-an-organization" target="_top">github process</a>.</p></div><div class="navfooter"><span class="prev"><a href="_how_to_write_a_logstash_codec_plugin.html">
               « 
               How to write a Logstash codec plugin</a>
