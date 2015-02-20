@@ -32,6 +32,7 @@ repos:
         current:    1.0
         branches:
             - master
+            - 2.0
             - 1.0
             - 0.4
 
