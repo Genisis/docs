@@ -188,6 +188,7 @@ contents:
             abbr:       php
             branches:
                 - master
+                - 2.0
                 - 1.0
                 - 0.4
 
