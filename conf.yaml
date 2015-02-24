@@ -128,13 +128,26 @@ contents:
         index:      docs/index.asciidoc
         abbr:       kibana
 
-    -
-        title:      Logstash
-        prefix:     en/logstash
-        repo:       logstash
-        index:      docs/index.asciidoc
-        abbr:       logstash
-        chunk:      1
+    -   title:      Logstash
+        sections:
+          -
+            title:      Logstash reference
+            prefix:     en/logstash
+            repo:       logstash
+            index:      docs/index.asciidoc
+            chunk:      1
+            abbr:       logstash
+
+          -
+            title:      Logstash roadmap
+            prefix:     en/logstash/roadmap
+            repo:       logstash
+            index:      docs/roadmap/index.asciidoc
+            toc:        1
+            abbr:       roadmap
+            branches:   [master]
+            current:    master
+            single:     1
 
     -
         title:      Elasticsearch for Apache Hadoop
