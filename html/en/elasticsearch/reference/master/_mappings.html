@@ -79,6 +79,8 @@ caused ambiguities in field lookups when the same name existed within multiple o
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="_meta_fields_have_limited_confiugration"></a>Meta fields have limited confiugration<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/migration/migrate_2_0.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h3></div></div></div><p>Meta fields (those beginning with underscore) are fields used by elasticsearch
 to provide special features.  They now have limited configuration options.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">_id</code> configuration can no longer be changed.  If you need to sort, use <code class="literal">_uid</code> instead.
+</li><li class="listitem">
+<code class="literal">_type</code> configuration can no longer be changed.
 </li></ul></div></div></div><div class="navfooter"><span class="prev"><a href="_parent_parameter_on_update_request.html">
               « 
               Parent parameter on update request</a>
