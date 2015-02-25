@@ -48,7 +48,10 @@ enable. Defaults to <code class="literal">ALL</code>.</p></td></tr><tr><td align
 be automatically lower-cased or not (since they are not analyzed). Defaults to
 true.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">locale</code></p></td><td align="left" valign="top"><p>Locale that should be used for string conversions.
 Defaults to <code class="literal">ROOT</code>.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">lenient</code></p></td><td align="left" valign="top"><p>If set to <code class="literal">true</code> will cause format based failures
-(like providing text to a numeric field) to be ignored.</p></td></tr></tbody></table></div><h4><a id="_simple_query_string_syntax"></a>Simple Query String Syntax<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/query-dsl/queries/simple-query-string-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The <code class="literal">simple_query_string</code> supports the following special characters:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+(like providing text to a numeric field) to be ignored.</p></td></tr><tr><td align="left" valign="top"><p><code class="literal">minimum_should_match</code></p></td><td align="left" valign="top"><p>The minimum number of clauses that must match for a
+ document to be returned. See the
+ <a class="link" href="query-dsl-minimum-should-match.html" title="Minimum Should Match"><code class="literal">minimum_should_match</code></a> documentation for the
+ full list of options.</p></td></tr></tbody></table></div><h4><a id="_simple_query_string_syntax"></a>Simple Query String Syntax<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/reference/query-dsl/queries/simple-query-string-query.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h4><p>The <code class="literal">simple_query_string</code> supports the following special characters:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 <code class="literal">+</code> signifies AND operation
 </li><li class="listitem">
 <code class="literal">|</code> signifies OR operation
