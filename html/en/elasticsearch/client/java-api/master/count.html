@@ -8,7 +8,7 @@
         jQuery('div.navheader+div').css('minHeight',jQuery('div.toc').height()+'px');
         jQuery('article.guide_content a[id]').each(function() { this.href='#'+this.id });
       });
-    </script><link rel="stylesheet" type="text/css" href="styles.css?3" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+    </script><link rel="stylesheet" type="text/css" href="styles.css?4" /></head><body class="single single-guide"><!--Google Tag Manager--><script> dataLayer = []; </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5FTL28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
     if(jQuery('body').data('cookie') != "eu" || jQuery.cookie('allowCookies')){
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,7 +37,7 @@ CountResponse response = client.prepareCount("test")
         .setQuery(termQuery("_type", "type1"))
         .execute()
         .actionGet();</pre><p>For more information on the count operation, check out the REST
-<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-count.html" target="_top">count</a> docs.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_operation_threading_4"></a>Operation Threading<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/count.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>The count API allows one to set the threading model the operation will be
+<a class="ulink" href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-count.html" target="_top">count</a> docs.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="_operation_threading_3"></a>Operation Threading<a href="https://github.com/elasticsearch/elasticsearch/edit/master/docs/java-api/count.asciidoc" class="edit_me" title="Edit this page on GitHub" rel="nofollow">edit</a></h2></div></div></div><p>The count API allows one to set the threading model the operation will be
 performed when the actual execution of the API is performed on the same
 node (the API is executed on a shard that is allocated on the same
 server).</p><p>There are three threading modes.The <code class="literal">NO_THREADS</code> mode means that the
