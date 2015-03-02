@@ -57,7 +57,7 @@ repos:
     marvel:
         url:        https://github.com/elasticsearch/elasticsearch-marvel.git
         current:    1.3
-        branches:   [1.3]
+        branches:   [1.3.0]
         private:    1
 
     kibana:
