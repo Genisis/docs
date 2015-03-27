@@ -37,12 +37,12 @@ repos:
             - 0.4
 
     elasticsearch-js:
-        url:        https://github.com/elasticsearch/elasticsearch-js.git
-        current:    3.1
+        url:        https://github.com/elastic/elasticsearch-js.git
+        current:    4.0
         branches:
+            - 4.0
             - 3.1
             - 2.4
-            - 1.5
 
     elasticsearch-net:
         url:        https://github.com/elasticsearch/elasticsearch-net.git
@@ -63,7 +63,7 @@ repos:
     kibana:
         url:        https://github.com/elasticsearch/kibana.git
         current:    4.0
-        branches:   
+        branches:
             - 4.0
             - 3.0
 
@@ -173,9 +173,9 @@ contents:
             index:      docs/index.asciidoc
             abbr:       js
             branches:
+                - 4.0
                 - 3.1
                 - 2.4
-                - 1.5
 
           -
             title:      Groovy API
